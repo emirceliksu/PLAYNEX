@@ -1,0 +1,26 @@
+{
+  "name": "@playnex/design-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./css/tokens.css": "./dist/tokens.css",
+    "./css/theme.css": "./dist/theme.css",
+    "./css/fonts.css": "./fonts/fonts.css",
+    "./fonts/*": "./fonts/*"
+  },
+  "scripts": {
+    "build": "tsx scripts/build-css.ts",
+    "dev": "tsx watch scripts/build-css.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playnex/config": "workspace:*",
+    "@types/node": "26.6.5",
+    "eslint": "9.39.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

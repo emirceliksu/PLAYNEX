@@ -1,0 +1,25 @@
+/* Used by Storybook and any non-Next consumer. The web app loads the same files via next/font. */
+
+@font-face {
+  font-family: 'Space Grotesk Variable';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('./SpaceGrotesk-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Variable';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('./PlusJakartaSans-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Variable';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('./PlusJakartaSans-Italic-Variable.woff2') format('woff2');
+}
