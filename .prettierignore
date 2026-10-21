@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.next/
+.turbo/
+storybook-static/
+target/
+test-results/
+playwright-report/
+pnpm-lock.yaml
+Cargo.lock
+docs/design/screenshots/
+packages/design-tokens/fonts/
+# The product plan is authored by hand; keep its formatting as-is.
+PLAN.md
