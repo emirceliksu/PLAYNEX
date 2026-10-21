@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+.next/
+.turbo/
+storybook-static/
+target/
+*.tsbuildinfo
+next-env.d.ts
+
+# environment
+.env
+.env.*
+!.env.example
+
+# test artifacts
+test-results/
+playwright-report/
+coverage/
+
+# editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
