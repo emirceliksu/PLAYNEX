@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@import '@playnex/design-tokens/css/tokens.css';
+@import '@playnex/design-tokens/css/theme.css';
+
+/* Component sources live next to this file; the consuming app's own sources are detected automatically. */
+@source '../';
+
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light;
+  }
+
+  html {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-surface-canvas);
+    color: var(--color-fg-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

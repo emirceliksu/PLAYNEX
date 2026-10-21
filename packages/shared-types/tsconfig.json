@@ -1,0 +1,4 @@
+{
+  "extends": "@playnex/config/tsconfig/base.json",
+  "include": ["src", "eslint.config.mjs"]
+}
