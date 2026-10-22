@@ -1,0 +1,206 @@
+name: playnex
+
+x-node: &node
+  build:
+    context: .
+    dockerfile: infrastructure/docker/web.dev.Dockerfile
+  image: playnex/web-dev
+  env_file:
+    - path: .env
+      required: false
+  volumes: &node-volumes
+    - .:/workspace
+    - node_modules_root:/workspace/node_modules
+    - node_modules_web:/workspace/apps/web/node_modules
+    - node_modules_ui:/workspace/packages/ui/node_modules
+    - node_modules_design_tokens:/workspace/packages/design-tokens/node_modules
+    - node_modules_shared_types:/workspace/packages/shared-types/node_modules
+    - node_modules_config:/workspace/packages/config/node_modules
+    - next_cache:/workspace/apps/web/.next
+
+x-rust: &rust
+  build:
+    context: .
+    dockerfile: infrastructure/docker/rust.dev.Dockerfile
+  image: playnex/rust-dev
+  env_file:
+    - path: .env
+      required: false
+
+x-node-healthcheck: &node-healthcheck
+  interval: 10s
+  timeout: 5s
+  retries: 18
+  start_period: 90s
+
+x-rust-healthcheck: &rust-healthcheck
+  interval: 10s
+  timeout: 5s
+  retries: 60
+  # The first compile of the workspace takes minutes on a cold target volume.
+  start_period: 600s
+
+services:
+  # One-shot: installs JS dependencies and builds design tokens once, so web and
+  # storybook never race each other inside the shared node_modules volumes.
+  deps:
+    <<: *node
+    command: sh -c "pnpm install && pnpm turbo run build --filter=@playnex/design-tokens"
+
+  web:
+    <<: *node
+    command: pnpm turbo run dev --filter=@playnex/web
+    ports:
+      - '3000:3000'
+    depends_on:
+      deps:
+        condition: service_completed_successfully
+    healthcheck:
+      <<: *node-healthcheck
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3000/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+
+  storybook:
+    <<: *node
+    command: pnpm turbo run storybook --filter=@playnex/ui
+    ports:
+      - '6006:6006'
+    depends_on:
+      deps:
+        condition: service_completed_successfully
+    healthcheck:
+      <<: *node-healthcheck
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:6006/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+
+  api:
+    <<: *rust
+    command: cargo watch --poll -w apps/api -w Cargo.toml -w Cargo.lock -x "run -p playnex-api"
+    environment:
+      PORT: 8080
+      CARGO_TARGET_DIR: /cargo-target
+      CARGO_BUILD_JOBS: 4
+      RUST_LOG: info
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/workspace
+      - cargo_registry:/usr/local/cargo/registry
+      - cargo_target_api:/cargo-target
+    healthcheck:
+      <<: *rust-healthcheck
+      test: ['CMD', 'curl', '-fsS', 'http://localhost:8080/health']
+
+  realtime:
+    <<: *rust
+    command: cargo watch --poll -w apps/realtime -w Cargo.toml -w Cargo.lock -x "run -p playnex-realtime"
+    environment:
+      PORT: 8081
+      CARGO_TARGET_DIR: /cargo-target
+      CARGO_BUILD_JOBS: 4
+      RUST_LOG: info
+    ports:
+      - '8081:8081'
+    volumes:
+      - .:/workspace
+      - cargo_registry:/usr/local/cargo/registry
+      - cargo_target_realtime:/cargo-target
+    healthcheck:
+      <<: *rust-healthcheck
+      test: ['CMD', 'curl', '-fsS', 'http://localhost:8081/health']
+
+  postgres:
+    image: postgres:18.6-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-playnex}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-playnex}
+      POSTGRES_DB: ${POSTGRES_DB:-playnex}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  valkey:
+    image: valkey/valkey:9.0.6-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - valkey_data:/data
+    healthcheck:
+      test: ['CMD', 'valkey-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # S3 compatible local object storage. MinIO stopped publishing container images in late 2025,
+  # so the dev stack uses RustFS, which speaks the same API and env-var conventions.
+  storage:
+    image: rustfs/rustfs:1.0.3
+    environment:
+      RUSTFS_ACCESS_KEY: ${STORAGE_ACCESS_KEY:-playnex}
+      RUSTFS_SECRET_KEY: ${STORAGE_SECRET_KEY:-playnex-dev-secret}
+      RUSTFS_CONSOLE_ENABLE: 'true'
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - storage_data:/data
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://localhost:9000/health']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  mailpit:
+    image: axllent/mailpit:v1.31.6
+    ports:
+      - '8025:8025'
+      - '1025:1025'
+    healthcheck:
+      test: ['CMD', '/mailpit', 'readyz']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Screenshot and e2e runner. Not part of `make up`; run with `make screenshots`.
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.64.1-noble
+    profiles:
+      - tools
+    init: true
+    ipc: host
+    working_dir: /workspace/apps/web
+    command: node_modules/.bin/playwright test
+    environment:
+      PLAYWRIGHT_BASE_URL: http://web:3000
+    volumes: *node-volumes
+    depends_on:
+      web:
+        condition: service_healthy
+
+volumes:
+  node_modules_root:
+  node_modules_web:
+  node_modules_ui:
+  node_modules_design_tokens:
+  node_modules_shared_types:
+  node_modules_config:
+  next_cache:
+  cargo_registry:
+  cargo_target_api:
+  cargo_target_realtime:
+  postgres_data:
+  valkey_data:
+  storage_data:
