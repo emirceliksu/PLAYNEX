@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: Lint, typecheck, build (JS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      # Same Node major as infrastructure/docker/web.dev.Dockerfile.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm turbo run build --filter=@playnex/design-tokens
+
+      - run: pnpm format:check
+
+      - run: pnpm turbo run lint typecheck
+
+      - run: pnpm turbo run build build-storybook
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          STORYBOOK_DISABLE_TELEMETRY: 1
+          TURBO_TELEMETRY_DISABLED: 1
+
+  rust:
+    name: fmt, clippy, check (Rust)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      # Toolchain version comes from rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: cargo fmt --all --check
+
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - run: cargo check --workspace
