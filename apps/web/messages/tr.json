@@ -1,0 +1,18 @@
+{
+  "app": {
+    "name": "PLAYNEX",
+    "tagline": "Tarayıcıda oyna, skorun kalsın."
+  },
+  "common": {
+    "loading": "Yükleniyor",
+    "play": "Hemen oyna",
+    "comingSoon": "Yakında"
+  },
+  "home": {
+    "eyebrow": "Açık beta hazırlığı",
+    "title": "Oyun salonu açılıyor.",
+    "intro": "Beş oyun, tek hesap, gerçek sıralama. Platform iskeleti kuruldu; ekranlar ve oyunlar sırayla geliyor.",
+    "primaryCta": "Oyunları gör",
+    "secondaryCta": "Nasıl çalışır?"
+  }
+}

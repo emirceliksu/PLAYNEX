@@ -1,0 +1,18 @@
+{
+  "app": {
+    "name": "PLAYNEX",
+    "tagline": "Play in the browser, keep your score."
+  },
+  "common": {
+    "loading": "Loading",
+    "play": "Play now",
+    "comingSoon": "Coming soon"
+  },
+  "home": {
+    "eyebrow": "Preparing open beta",
+    "title": "The arcade is opening.",
+    "intro": "Five games, one account, real rankings. The platform skeleton is in place; screens and games are landing one by one.",
+    "primaryCta": "Browse games",
+    "secondaryCta": "How it works"
+  }
+}
