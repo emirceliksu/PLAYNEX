@@ -5,14 +5,264 @@
   },
   "common": {
     "loading": "Yükleniyor",
-    "play": "Hemen oyna",
-    "comingSoon": "Yakında"
+    "play": "Oyna",
+    "playNow": "Hemen oyna",
+    "comingSoon": "Yakında",
+    "beta": "Beta",
+    "back": "Geri",
+    "retry": "Tekrar dene",
+    "close": "Kapat",
+    "viewAll": "Tümünü gör",
+    "you": "sen",
+    "plays": "{count, plural, =0 {Henüz oynanmadı} other {# oynama}}",
+    "minutes": "{count} dk",
+    "level": "Seviye {level}",
+    "levelShort": "Sv {level}",
+    "status": {
+      "online": "Çevrim içi",
+      "in-game": "Oyunda",
+      "offline": "Çevrimdışı"
+    },
+    "search": {
+      "label": "Oyun ara",
+      "placeholder": "Oyun ara…"
+    },
+    "notifications": "Bildirimler",
+    "mainNav": "Ana menü",
+    "mobileNav": "Alt menü",
+    "myProfile": "Profilim"
+  },
+  "nav": {
+    "home": "Keşfet",
+    "games": "Oyunlar",
+    "favorites": "Favoriler",
+    "friends": "Arkadaşlar",
+    "tournaments": "Turnuvalar",
+    "leaderboard": "Sıralama",
+    "profile": "Profil"
+  },
+  "meta": {
+    "games": "Oyunlar",
+    "leaderboard": "Sıralama",
+    "profile": "{name} profili",
+    "play": "{title} oyna"
   },
   "home": {
-    "eyebrow": "Açık beta hazırlığı",
-    "title": "Oyun salonu açılıyor.",
-    "intro": "Beş oyun, tek hesap, gerçek sıralama. Platform iskeleti kuruldu; ekranlar ve oyunlar sırayla geliyor.",
-    "primaryCta": "Oyunları gör",
-    "secondaryCta": "Nasıl çalışır?"
+    "featuredEyebrow": "Haftanın oyunu",
+    "quickPlay": "Hemen oyna",
+    "quickPlayHint": "Kayıt yok, bekleme yok.",
+    "popular": "Popüler",
+    "popularHint": "Son 7 günün en çok oynananları",
+    "ranking": "Haftalık sıralama",
+    "rankingHint": "Tüm oyunlardan en iyi dereceler",
+    "comingSoon": "Yakında",
+    "comingSoonHint": "Sırada ne var",
+    "friends": "Arkadaşlar",
+    "friendsOnline": "{count} çevrim içi",
+    "quest": "Günün görevi",
+    "questTitle": "Üç farklı oyun oyna",
+    "questProgress": "{done}/{total} tamamlandı",
+    "questReward": "+{xp} XP",
+    "yourRank": "Senin yerin"
+  },
+  "games": {
+    "title": "Oyunlar",
+    "subtitle": "{live} oynanabilir, {soon} yakında",
+    "searchPlaceholder": "Ada veya türe göre ara",
+    "resultCount": "{count, plural, =0 {Sonuç yok} =1 {1 oyun} other {# oyun}}",
+    "clearFilters": "Filtreleri temizle",
+    "filters": {
+      "category": "Tür",
+      "dimension": "Boyut",
+      "mode": "Mod",
+      "sort": "Sırala"
+    },
+    "category": {
+      "all": "Hepsi",
+      "arcade": "Arcade",
+      "puzzle": "Bulmaca",
+      "strategy": "Strateji",
+      "party": "Parti",
+      "racing": "Yarış",
+      "action": "Aksiyon"
+    },
+    "dimension": {
+      "all": "2D ve 3D",
+      "2d": "2D",
+      "3d": "3D"
+    },
+    "mode": {
+      "all": "Tüm modlar",
+      "solo": "Tek kişilik",
+      "1v1": "1v1",
+      "party": "Parti",
+      "co-op": "Ortak"
+    },
+    "sort": {
+      "popular": "Popüler",
+      "new": "Yeni"
+    },
+    "empty": {
+      "title": "Bu filtrelere uyan oyun yok",
+      "description": "Aramayı değiştir ya da filtreleri temizleyip tüm kataloğa dön.",
+      "action": "Filtreleri temizle"
+    }
+  },
+  "game": {
+    "about": "Hakkında",
+    "controls": "Kontroller",
+    "details": "Ayrıntılar",
+    "age": "Yaş",
+    "devices": "Cihaz",
+    "version": "Sürüm",
+    "released": "Yayın",
+    "duration": "Süre",
+    "players": "Oyuncu",
+    "playersRange": "{min}–{max}",
+    "leaderboard": "Sıralama",
+    "similar": "Benzer oyunlar",
+    "scoringLabel": "Puanlama",
+    "comingSoonNotice": "Bu oyun henüz oynanamıyor. Yayınlandığında burada görünecek.",
+    "scoring": {
+      "high-score": "Yüksek skor",
+      "fastest-time": "En iyi süre",
+      "wins": "Galibiyet"
+    },
+    "modes": {
+      "solo": "Tek kişilik",
+      "1v1": "1v1",
+      "party": "Parti",
+      "co-op": "Ortak"
+    },
+    "categories": {
+      "arcade": "Arcade",
+      "puzzle": "Bulmaca",
+      "strategy": "Strateji",
+      "party": "Parti",
+      "racing": "Yarış",
+      "action": "Aksiyon"
+    },
+    "dimensions": {
+      "2d": "2D",
+      "3d": "3D"
+    },
+    "controlNames": {
+      "keyboard": "Klavye",
+      "mouse": "Fare",
+      "touch": "Dokunmatik",
+      "gamepad": "Gamepad"
+    },
+    "statuses": {
+      "live": "Oynanabilir",
+      "beta": "Beta",
+      "coming-soon": "Yakında"
+    }
+  },
+  "leaderboard": {
+    "title": "Sıralama",
+    "subtitle": "Doğrulanmış skorlar, oyun bazında",
+    "chooseGame": "Oyun seç",
+    "windows": {
+      "daily": "Bugün",
+      "weekly": "Bu hafta",
+      "all-time": "Tüm zamanlar"
+    },
+    "rank": "Sıra",
+    "player": "Oyuncu",
+    "score": "Skor",
+    "when": "Ne zaman",
+    "trend": {
+      "up": "Yükseldi",
+      "down": "Düştü",
+      "same": "Aynı"
+    },
+    "empty": {
+      "title": "Henüz skor yok",
+      "description": "Bu pencerede doğrulanmış skor bulunmuyor. İlk sen ol."
+    }
+  },
+  "profile": {
+    "joined": "{date} tarihinden beri",
+    "xp": "{xp} / {max} XP",
+    "stats": {
+      "games": "Oyun",
+      "minutes": "Süre",
+      "achievements": "Başarım",
+      "best": "En iyi"
+    },
+    "history": "Oyun geçmişi",
+    "historyHint": "Son oturumlar",
+    "achievements": "Başarımlar",
+    "achievementsHint": "{unlocked}/{total} açıldı",
+    "bestScores": "Kişisel rekorlar",
+    "personalBest": "Rekor",
+    "locked": "Kilitli",
+    "points": "{points} puan",
+    "verification": {
+      "verified": "Doğrulandı",
+      "pending": "Bekliyor",
+      "rejected": "Reddedildi"
+    },
+    "emptyHistory": {
+      "title": "Henüz oyun geçmişi yok",
+      "description": "İlk oyunu bitirdiğinde skorlar burada listelenir.",
+      "action": "Oyunlara göz at"
+    }
+  },
+  "player": {
+    "backToGame": "Oyun sayfası",
+    "score": "Skor",
+    "best": "Rekor",
+    "time": "Süre",
+    "pause": "Duraklat",
+    "resume": "Devam et",
+    "restart": "Yeniden başlat",
+    "fullscreen": "Tam ekran",
+    "exitFullscreen": "Tam ekrandan çık",
+    "quit": "Çık",
+    "localBestNote": "Rekor bu tarayıcıda saklanır; hesap bağlantısı yakında.",
+    "states": {
+      "loading": {
+        "title": "Yükleniyor",
+        "hint": "Oyun motoru hazırlanıyor"
+      },
+      "ready": {
+        "title": "Hazır mısın?",
+        "start": "Başla",
+        "controls": "Kontroller"
+      },
+      "paused": {
+        "title": "Duraklatıldı",
+        "hint": "Nefes al. Skor seni bekliyor."
+      },
+      "finished": {
+        "title": "Oyun bitti",
+        "newRecord": "Yeni rekor",
+        "playAgain": "Yeniden oyna",
+        "backToCatalog": "Kataloğa dön",
+        "share": "Paylaş"
+      },
+      "error": {
+        "title": "Oyun yüklenemedi",
+        "description": "Bir şeyler ters gitti. Sayfayı yenilemeden tekrar deneyebilirsin.",
+        "retry": "Tekrar dene"
+      }
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Burada bir şey yok",
+      "description": "Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.",
+      "action": "Ana sayfaya dön"
+    },
+    "generic": {
+      "title": "Bir şeyler ters gitti",
+      "description": "Sayfa yüklenirken hata oluştu. Tekrar denemek genellikle işe yarar.",
+      "retry": "Tekrar dene"
+    },
+    "offline": {
+      "title": "Bağlantı yok",
+      "description": "Skorlar kaydedilemez; bağlantı gelince otomatik gönderilir."
+    }
   }
 }

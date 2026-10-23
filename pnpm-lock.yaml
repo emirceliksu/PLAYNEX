@@ -187,6 +187,18 @@ importers:
       '@playnex/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens
+      '@playnex/game-2048-fusion':
+        specifier: workspace:*
+        version: link:../../games/2d/2048-fusion
+      '@playnex/game-memory-flip':
+        specifier: workspace:*
+        version: link:../../games/2d/memory-flip
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../../packages/game-sdk
+      '@playnex/game-snake-rush':
+        specifier: workspace:*
+        version: link:../../games/2d/snake-rush
       '@playnex/shared-types':
         specifier: workspace:*
         version: link:../../packages/shared-types
@@ -236,6 +248,63 @@ importers:
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  games/2d/2048-fusion:
+    dependencies:
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../../../packages/game-sdk
+      phaser:
+        specifier: 4.2.1
+        version: 4.2.1
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  games/2d/memory-flip:
+    dependencies:
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../../../packages/game-sdk
+      phaser:
+        specifier: 4.2.1
+        version: 4.2.1
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  games/2d/snake-rush:
+    dependencies:
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../../../packages/game-sdk
+      phaser:
+        specifier: 4.2.1
+        version: 4.2.1
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -290,6 +359,22 @@ importers:
       tsx:
         specifier: 4.23.15
         version: 4.23.15
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  packages/game-sdk:
+    dependencies:
+      '@playnex/shared-types':
+        specifier: workspace:*
+        version: link:../shared-types
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -3212,6 +3297,9 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
+  eventemitter3@5.0.4:
+    resolution: {integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==}
+
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -3978,6 +4066,9 @@ packages:
   pathval@2.0.1:
     resolution: {integrity: sha512-//nshmD55c46FuFw26xV/xFAaB5HF9Xdap7HJBBnrKdAd6/GxDBaNA1870O79+9ueg61cZLSVc+OaFlfmObYVQ==}
     engines: {node: '>= 14.16'}
+
+  phaser@4.2.1:
+    resolution: {integrity: sha512-WUNwCPJpdjvZiuT6SgCfYVW8Qw/3j0jJ4ws7P2QkhFLFu74sbGuyHJcbFueGkY/AYO4Pi47bNQXn1OCJeLX//w==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -7353,6 +7444,8 @@ snapshots:
 
   esutils@2.0.3: {}
 
+  eventemitter3@5.0.4: {}
+
   fast-deep-equal@3.1.3: {}
 
   fast-glob@3.3.1:
@@ -8106,6 +8199,10 @@ snapshots:
       minipass: 7.1.3
 
   pathval@2.0.1: {}
+
+  phaser@4.2.1:
+    dependencies:
+      eventemitter3: 5.0.4
 
   picocolors@1.1.1: {}
 

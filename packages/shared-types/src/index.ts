@@ -32,6 +32,8 @@ export interface Game {
   orientation: GameOrientation;
   scoring: GameScoring;
   estimatedMinutes: number;
+  // Short, player-facing control instructions shown on the detail page and the ready screen.
+  controlsGuide: string[];
 }
 
 export type PresenceStatus = 'online' | 'in-game' | 'offline';

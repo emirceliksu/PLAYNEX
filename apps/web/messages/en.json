@@ -5,14 +5,264 @@
   },
   "common": {
     "loading": "Loading",
-    "play": "Play now",
-    "comingSoon": "Coming soon"
+    "play": "Play",
+    "playNow": "Play now",
+    "comingSoon": "Coming soon",
+    "beta": "Beta",
+    "back": "Back",
+    "retry": "Try again",
+    "close": "Close",
+    "viewAll": "View all",
+    "you": "you",
+    "plays": "{count, plural, =0 {Not played yet} =1 {1 play} other {# plays}}",
+    "minutes": "{count} min",
+    "level": "Level {level}",
+    "levelShort": "Lv {level}",
+    "status": {
+      "online": "Online",
+      "in-game": "In game",
+      "offline": "Offline"
+    },
+    "search": {
+      "label": "Search games",
+      "placeholder": "Search games…"
+    },
+    "notifications": "Notifications",
+    "mainNav": "Main menu",
+    "mobileNav": "Bottom menu",
+    "myProfile": "My profile"
+  },
+  "nav": {
+    "home": "Discover",
+    "games": "Games",
+    "favorites": "Favorites",
+    "friends": "Friends",
+    "tournaments": "Tournaments",
+    "leaderboard": "Leaderboard",
+    "profile": "Profile"
+  },
+  "meta": {
+    "games": "Games",
+    "leaderboard": "Leaderboard",
+    "profile": "{name}'s profile",
+    "play": "Play {title}"
   },
   "home": {
-    "eyebrow": "Preparing open beta",
-    "title": "The arcade is opening.",
-    "intro": "Five games, one account, real rankings. The platform skeleton is in place; screens and games are landing one by one.",
-    "primaryCta": "Browse games",
-    "secondaryCta": "How it works"
+    "featuredEyebrow": "Game of the week",
+    "quickPlay": "Play now",
+    "quickPlayHint": "No sign-up, no waiting.",
+    "popular": "Popular",
+    "popularHint": "Most played in the last 7 days",
+    "ranking": "Weekly ranking",
+    "rankingHint": "Best placings across all games",
+    "comingSoon": "Coming soon",
+    "comingSoonHint": "What is next",
+    "friends": "Friends",
+    "friendsOnline": "{count} online",
+    "quest": "Daily quest",
+    "questTitle": "Play three different games",
+    "questProgress": "{done}/{total} done",
+    "questReward": "+{xp} XP",
+    "yourRank": "Your place"
+  },
+  "games": {
+    "title": "Games",
+    "subtitle": "{live} playable, {soon} coming soon",
+    "searchPlaceholder": "Search by name or genre",
+    "resultCount": "{count, plural, =0 {No results} =1 {1 game} other {# games}}",
+    "clearFilters": "Clear filters",
+    "filters": {
+      "category": "Genre",
+      "dimension": "Dimension",
+      "mode": "Mode",
+      "sort": "Sort"
+    },
+    "category": {
+      "all": "All",
+      "arcade": "Arcade",
+      "puzzle": "Puzzle",
+      "strategy": "Strategy",
+      "party": "Party",
+      "racing": "Racing",
+      "action": "Action"
+    },
+    "dimension": {
+      "all": "2D and 3D",
+      "2d": "2D",
+      "3d": "3D"
+    },
+    "mode": {
+      "all": "All modes",
+      "solo": "Solo",
+      "1v1": "1v1",
+      "party": "Party",
+      "co-op": "Co-op"
+    },
+    "sort": {
+      "popular": "Popular",
+      "new": "New"
+    },
+    "empty": {
+      "title": "No games match these filters",
+      "description": "Change the search or clear the filters to see the whole catalog.",
+      "action": "Clear filters"
+    }
+  },
+  "game": {
+    "about": "About",
+    "controls": "Controls",
+    "details": "Details",
+    "age": "Age",
+    "devices": "Devices",
+    "version": "Version",
+    "released": "Released",
+    "duration": "Duration",
+    "players": "Players",
+    "playersRange": "{min}–{max}",
+    "leaderboard": "Leaderboard",
+    "similar": "Similar games",
+    "scoringLabel": "Scoring",
+    "comingSoonNotice": "This game cannot be played yet. It will show up here when it launches.",
+    "scoring": {
+      "high-score": "High score",
+      "fastest-time": "Best time",
+      "wins": "Wins"
+    },
+    "modes": {
+      "solo": "Solo",
+      "1v1": "1v1",
+      "party": "Party",
+      "co-op": "Co-op"
+    },
+    "categories": {
+      "arcade": "Arcade",
+      "puzzle": "Puzzle",
+      "strategy": "Strategy",
+      "party": "Party",
+      "racing": "Racing",
+      "action": "Action"
+    },
+    "dimensions": {
+      "2d": "2D",
+      "3d": "3D"
+    },
+    "controlNames": {
+      "keyboard": "Keyboard",
+      "mouse": "Mouse",
+      "touch": "Touch",
+      "gamepad": "Gamepad"
+    },
+    "statuses": {
+      "live": "Playable",
+      "beta": "Beta",
+      "coming-soon": "Coming soon"
+    }
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Verified scores, per game",
+    "chooseGame": "Choose a game",
+    "windows": {
+      "daily": "Today",
+      "weekly": "This week",
+      "all-time": "All time"
+    },
+    "rank": "Rank",
+    "player": "Player",
+    "score": "Score",
+    "when": "When",
+    "trend": {
+      "up": "Climbed",
+      "down": "Dropped",
+      "same": "Unchanged"
+    },
+    "empty": {
+      "title": "No scores yet",
+      "description": "There are no verified scores in this window. Be the first."
+    }
+  },
+  "profile": {
+    "joined": "Member since {date}",
+    "xp": "{xp} / {max} XP",
+    "stats": {
+      "games": "Games",
+      "minutes": "Time",
+      "achievements": "Achievements",
+      "best": "Best"
+    },
+    "history": "Game history",
+    "historyHint": "Recent sessions",
+    "achievements": "Achievements",
+    "achievementsHint": "{unlocked}/{total} unlocked",
+    "bestScores": "Personal bests",
+    "personalBest": "Best",
+    "locked": "Locked",
+    "points": "{points} pts",
+    "verification": {
+      "verified": "Verified",
+      "pending": "Pending",
+      "rejected": "Rejected"
+    },
+    "emptyHistory": {
+      "title": "No game history yet",
+      "description": "Scores show up here once you finish your first game.",
+      "action": "Browse games"
+    }
+  },
+  "player": {
+    "backToGame": "Game page",
+    "score": "Score",
+    "best": "Best",
+    "time": "Time",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit fullscreen",
+    "quit": "Quit",
+    "localBestNote": "Best score is stored in this browser; account sync is coming.",
+    "states": {
+      "loading": {
+        "title": "Loading",
+        "hint": "Preparing the game engine"
+      },
+      "ready": {
+        "title": "Ready?",
+        "start": "Start",
+        "controls": "Controls"
+      },
+      "paused": {
+        "title": "Paused",
+        "hint": "Take a breath. The score is waiting."
+      },
+      "finished": {
+        "title": "Game over",
+        "newRecord": "New record",
+        "playAgain": "Play again",
+        "backToCatalog": "Back to catalog",
+        "share": "Share"
+      },
+      "error": {
+        "title": "The game could not load",
+        "description": "Something went wrong. You can try again without reloading the page.",
+        "retry": "Try again"
+      }
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Nothing here",
+      "description": "The page you are looking for may have moved or never existed.",
+      "action": "Go to the home page"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "description": "The page failed to load. Trying again usually works.",
+      "retry": "Try again"
+    },
+    "offline": {
+      "title": "No connection",
+      "description": "Scores cannot be saved; they will be sent automatically once you are back online."
+    }
   }
 }

@@ -8,7 +8,17 @@ const usePolling = process.env.WATCH_POLLING !== '0';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@playnex/ui', '@playnex/design-tokens', '@playnex/shared-types'],
+  // The Playwright container reaches the dev server as http://web:3000.
+  allowedDevOrigins: ['web', 'web:3000'],
+  transpilePackages: [
+    '@playnex/ui',
+    '@playnex/design-tokens',
+    '@playnex/shared-types',
+    '@playnex/game-sdk',
+    '@playnex/game-snake-rush',
+    '@playnex/game-2048-fusion',
+    '@playnex/game-memory-flip',
+  ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };
 

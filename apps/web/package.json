@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@playnex/design-tokens": "workspace:*",
+    "@playnex/game-2048-fusion": "workspace:*",
+    "@playnex/game-memory-flip": "workspace:*",
+    "@playnex/game-sdk": "workspace:*",
+    "@playnex/game-snake-rush": "workspace:*",
     "@playnex/shared-types": "workspace:*",
     "@playnex/ui": "workspace:*",
     "lucide-react": "1.60.0",

@@ -43,3 +43,89 @@
     }
   }
 }
+
+@theme {
+  --animate-pop-in: pn-pop-in var(--pn-duration-modal) var(--pn-ease-out) both;
+  --animate-fade-in: pn-fade-in var(--pn-duration-modal) var(--pn-ease-out) both;
+  --animate-rise-in: pn-rise-in var(--pn-duration-page) var(--pn-ease-out) both;
+
+  @keyframes pn-pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes pn-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pn-rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Indeterminate progress: a short bar sweeping across its track. */
+  @keyframes pn-slide {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(300%);
+    }
+  }
+}
+
+/* Signature texture: a faint SVG noise layer on canvas-level surfaces only. */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+    background-size: 160px 160px;
+  }
+}
+
+/* Horizontal shelves: snap to cards, hide the scrollbar, keep keyboard scrolling. */
+@utility shelf {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > * {
+    scroll-snap-align: start;
+    flex: none;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

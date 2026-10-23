@@ -16,6 +16,10 @@ x-node: &node
     - node_modules_design_tokens:/workspace/packages/design-tokens/node_modules
     - node_modules_shared_types:/workspace/packages/shared-types/node_modules
     - node_modules_config:/workspace/packages/config/node_modules
+    - node_modules_game_sdk:/workspace/packages/game-sdk/node_modules
+    - node_modules_game_snake_rush:/workspace/games/2d/snake-rush/node_modules
+    - node_modules_game_2048_fusion:/workspace/games/2d/2048-fusion/node_modules
+    - node_modules_game_memory_flip:/workspace/games/2d/memory-flip/node_modules
     - next_cache:/workspace/apps/web/.next
 
 x-rust: &rust
@@ -197,6 +201,10 @@ volumes:
   node_modules_design_tokens:
   node_modules_shared_types:
   node_modules_config:
+  node_modules_game_sdk:
+  node_modules_game_snake_rush:
+  node_modules_game_2048_fusion:
+  node_modules_game_memory_flip:
   next_cache:
   cargo_registry:
   cargo_target_api:

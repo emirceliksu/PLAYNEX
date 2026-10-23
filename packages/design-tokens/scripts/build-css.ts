@@ -83,7 +83,6 @@ function buildThemeCss(): string {
     '--inset-shadow-*',
     '--radius-*',
     '--breakpoint-*',
-    '--container-*',
     '--ease-*',
   ].map((namespace) => [namespace, 'initial']);
 
