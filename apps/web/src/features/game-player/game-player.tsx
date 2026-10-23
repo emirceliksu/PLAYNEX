@@ -188,17 +188,9 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
     const palette = buildGamePalette(game.accent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    console.log('[player] loading module', game.slug);
     loadGameModule(game.slug)
-      .then((module) => {
-        console.log(
-          '[player] module loaded',
-          module.manifest.slug,
-          'container',
-          container.clientWidth,
-          container.clientHeight,
-        );
-        return module.mount(container, {
+      .then((module) =>
+        module.mount(container, {
           locale,
           reducedMotion,
           palette,
@@ -207,14 +199,10 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
             dispatch({ type: 'runtime', state: runtime, now: Date.now() }),
           onFinish: (result) =>
             dispatch({ type: 'finish', result, isRecord: record(result.score) }),
-          onError: (error) => {
-            console.error('[player] game error', error);
-            dispatch({ type: 'error' });
-          },
-        });
-      })
+          onError: () => dispatch({ type: 'error' }),
+        }),
+      )
       .then((mounted) => {
-        console.log('[player] mounted, cancelled =', cancelled);
         if (cancelled) {
           mounted.destroy();
           return;
@@ -228,8 +216,7 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           mounted.pause();
         }
       })
-      .catch((error: unknown) => {
-        console.error('[player] mount failed', error);
+      .catch(() => {
         if (!cancelled) dispatch({ type: 'error' });
       });
 
@@ -311,14 +298,16 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           <Stat label={labels.score}>
             <ScoreValue value={state.score} locale={tag} className="text-title-md" />
           </Stat>
-          <Stat label={labels.best}>
-            <ScoreValue
-              value={Math.max(best, state.score)}
-              locale={tag}
-              animate={false}
-              className="hidden text-title-md text-fg-secondary sm:block"
-            />
-          </Stat>
+          <div className="hidden sm:block">
+            <Stat label={labels.best}>
+              <ScoreValue
+                value={Math.max(best, state.score)}
+                locale={tag}
+                animate={false}
+                className="text-title-md text-fg-secondary"
+              />
+            </Stat>
+          </div>
           <Stat label={labels.time}>
             <span className="font-display text-title-md text-fg-secondary tabular-nums">
               {formatDuration(state.elapsedMs)}

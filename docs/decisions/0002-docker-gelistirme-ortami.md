@@ -18,6 +18,8 @@ Host'ta yalnızca Docker ve Git var; Node, pnpm, Rust container içinde çalış
 - pnpm `npm install -g` ile kurulur; corepack'in imza anahtarları npm'in anahtar rotasyonlarının gerisinde kalabiliyor.
 - `cargo-watch` ve `sqlx-cli`, `cargo-binstall` ile prebuilt indirilir. `cargo-watch` artık aktif bakımda değil; sorun çıkarsa `bacon` veya `watchexec` değerlendirilir.
 - Üretim Dockerfile'ları henüz yok; gerçek uygulama oluştukça multi-stage, non-root ve healthcheck'li olarak eklenecek.
+- Next 16 dev sunucusu `localhost` dışındaki origin'lerden gelen dev isteklerini engeller; Playwright container'ı `http://web:3000` kullandığı için `next.config.ts` içinde `allowedDevOrigins: ['web', 'web:3000']` tanımlıdır. Bu olmadan istemci hidrate olmaz ve testler yanıltıcı şekilde "tepkisiz" sayfa görür.
+- Polling tabanlı izleme yeni `app/` route klasörlerini fark etmez; yeni route dizini eklendiğinde `docker compose restart web` gerekir.
 
 ## Sonuçlar
 

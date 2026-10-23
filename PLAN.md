@@ -380,8 +380,8 @@ playnex/
 **Çıkış kriteri:** Tasarım sistemi, mimari ve kapsam onaylı; geliştirme ortamı çalışır.
 
 ### Faz 1 — Platform MVP (6–10 hafta)
-- [ ] Next.js layout, sidebar, mobil nav, tema ve UI kütüphanesi
-- [ ] Katalog, arama, filtreler, oyun detay ve loading/error ekranları
+- [x] Next.js layout, sidebar, mobil nav, tema ve UI kütüphanesi
+- [x] Katalog, arama, filtreler, oyun detay ve loading/error ekranları
 - [ ] Rust API, PostgreSQL migration, auth ve profil
 - [ ] Game SDK v1, manifest, lazy loader, GamePlayer, HUD
 - [ ] Snake Rush, blok bulmacası, Memory Flip, 2048 Fusion

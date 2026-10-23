@@ -27,7 +27,7 @@ export const games: Game[] = [
       'Yön tuşları ya da WASD ile dön.',
       'Dokunmatik ekranda gitmek istediğin yöne kaydır.',
       'Her elma +10, kısa süreli bonus +50 puan.',
-      'Boşluk tuşu oyunu duraklatır.',
+      'Esc tuşu oyunu duraklatır.',
     ],
   },
   {

@@ -53,6 +53,8 @@ Paket eklemek: `docker compose exec web pnpm --filter @playnex/web add <paket>`;
 
 Windows ve macOS'ta bind mount dosya olaylarını güvenilir iletmediği için dev sunucular varsayılan olarak polling yapar (`WATCH_POLLING=1`). Linux host'ta veya Docker Desktop "Synchronized file shares" ile `.env` içinde `WATCH_POLLING=0` yapılabilir.
 
+Polling yeni `app/` route klasörlerini fark etmez; yeni bir route dizini eklendiğinde `docker compose restart web` çalıştırın.
+
 ## Yapı
 
 ```text
