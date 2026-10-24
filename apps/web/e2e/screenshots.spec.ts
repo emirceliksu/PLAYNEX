@@ -36,6 +36,16 @@ for (const route of routes) {
   }
 }
 
+for (const slug of ['tugla-tugla', 'connect-four', '2048-fusion', 'memory-flip'] as const) {
+  test(`${slug} board at 1280px`, async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(`/play/${slug}?state=playing`);
+    await page.getByRole('heading', { level: 1 }).waitFor();
+    await page.waitForTimeout(2500);
+    await page.screenshot({ path: path.join(outputDir, 'player', `${slug}-board-1280.png`) });
+  });
+}
+
 for (const state of playerStates) {
   for (const width of [375, 1280] as const) {
     test(`player ${state} at ${width}px`, async ({ page }) => {
