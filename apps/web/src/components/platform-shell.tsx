@@ -8,6 +8,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 
 import { NavLink } from './nav-link';
 import { NotificationsButton } from './notifications-button';
+import { OfflineBanner } from './offline-banner';
 import { SearchForm } from './search-form';
 
 export interface PlatformShellLabels {
@@ -22,6 +23,8 @@ export interface PlatformShellLabels {
   notifications: string;
   close: string;
   myProfile: string;
+  offlineTitle: string;
+  offlineDescription: string;
 }
 
 interface PlatformShellProps {
@@ -107,6 +110,7 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
             </>
           }
         />
+        <OfflineBanner title={labels.offlineTitle} description={labels.offlineDescription} />
         <main className="mx-auto w-full max-w-page flex-1 px-4 pt-6 pb-28 md:px-8 md:pt-8 md:pb-12">
           {children}
         </main>

@@ -12,6 +12,9 @@ const scoreBands: Record<string, { top: number; floor: number }> = {
   'snake-rush': { top: 12480, floor: 1900 },
   '2048-fusion': { top: 48210, floor: 6400 },
   'memory-flip': { top: 1180, floor: 610 },
+  'tugla-tugla': { top: 6400, floor: 900 },
+  // Connect Four ranks by wins, so the band is a win count.
+  'connect-four': { top: 38, floor: 4 },
 };
 
 const windowHours: Record<LeaderboardWindow, number> = {

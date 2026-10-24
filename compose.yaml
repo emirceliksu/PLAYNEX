@@ -20,6 +20,8 @@ x-node: &node
     - node_modules_game_snake_rush:/workspace/games/2d/snake-rush/node_modules
     - node_modules_game_2048_fusion:/workspace/games/2d/2048-fusion/node_modules
     - node_modules_game_memory_flip:/workspace/games/2d/memory-flip/node_modules
+    - node_modules_game_tugla_tugla:/workspace/games/2d/tugla-tugla/node_modules
+    - node_modules_game_connect_four:/workspace/games/2d/connect-four/node_modules
     - next_cache:/workspace/apps/web/.next
 
 x-rust: &rust
@@ -205,6 +207,8 @@ volumes:
   node_modules_game_snake_rush:
   node_modules_game_2048_fusion:
   node_modules_game_memory_flip:
+  node_modules_game_tugla_tugla:
+  node_modules_game_connect_four:
   next_cache:
   cargo_registry:
   cargo_target_api:

@@ -383,8 +383,8 @@ playnex/
 - [x] Next.js layout, sidebar, mobil nav, tema ve UI kütüphanesi
 - [x] Katalog, arama, filtreler, oyun detay ve loading/error ekranları
 - [ ] Rust API, PostgreSQL migration, auth ve profil
-- [ ] Game SDK v1, manifest, lazy loader, GamePlayer, HUD
-- [ ] Snake Rush, blok bulmacası, Memory Flip, 2048 Fusion
+- [x] Game SDK v1, manifest, lazy loader, GamePlayer, HUD
+- [x] Snake Rush, blok bulmacası (Tuğla Tuğla), Memory Flip, 2048 Fusion (istemci tarafı; skor doğrulaması sprint 6)
 - [ ] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
 - [ ] Skor doğrulama, liderlik tabloları, favoriler, oyun geçmişi
 - [ ] Temel raporlama, admin ve operasyon paneli

@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     '@playnex/game-snake-rush',
     '@playnex/game-2048-fusion',
     '@playnex/game-memory-flip',
+    '@playnex/game-tugla-tugla',
+    '@playnex/game-connect-four',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

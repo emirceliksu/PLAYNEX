@@ -49,6 +49,8 @@ export default async function PlatformLayout({ children }: { children: ReactNode
         notifications: t('common.notifications'),
         close: t('common.close'),
         myProfile: t('common.myProfile'),
+        offlineTitle: t('errors.offline.title'),
+        offlineDescription: t('errors.offline.description'),
       }}
       user={{
         username: currentPlayer.username,
