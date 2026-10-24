@@ -105,12 +105,18 @@ services:
 
   realtime:
     <<: *rust
-    command: cargo watch --poll -w apps/realtime -w Cargo.toml -w Cargo.lock -x "run -p playnex-realtime"
+    command: >-
+      cargo watch --poll -w apps/realtime -w Cargo.toml -w Cargo.lock
+      -w games/2d/air-hockey/data -w games/2d/trivia-battle/data
+      -w games/2d/drawing-party/data -w games/3d/neon-kart-racing/data
+      -x "run -p playnex-realtime"
     environment:
       PORT: 8081
       CARGO_TARGET_DIR: /cargo-target
       CARGO_BUILD_JOBS: 4
       RUST_LOG: info
+      REALTIME_TOKEN_SECRET: ${REALTIME_TOKEN_SECRET:-}
+      REALTIME_ALLOWED_ORIGINS: ${REALTIME_ALLOWED_ORIGINS:-http://localhost:3000,http://web:3000}
     ports:
       - '8081:8081'
     volumes:

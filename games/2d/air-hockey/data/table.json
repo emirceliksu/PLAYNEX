@@ -1,0 +1,16 @@
+{
+  "width": 360,
+  "height": 640,
+  "goalWidth": 132,
+  "puckRadius": 15,
+  "paddleRadius": 27,
+  "maxPuckSpeed": 1500,
+  "maxPaddleSpeed": 2400,
+  "friction": 0.35,
+  "wallRestitution": 0.9,
+  "paddleRestitution": 0.95,
+  "winScore": 7,
+  "serveDelayMs": 1000,
+  "serveOffset": 90,
+  "substeps": 4
+}

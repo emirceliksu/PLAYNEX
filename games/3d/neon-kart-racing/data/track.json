@@ -1,0 +1,37 @@
+{
+  "laps": 3,
+  "width": 16,
+  "wallMargin": 6,
+  "samplesPerSegment": 16,
+  "controlPoints": [
+    [0, 0],
+    [70, 0],
+    [130, 15],
+    [165, 60],
+    [160, 120],
+    [120, 150],
+    [70, 140],
+    [40, 105],
+    [0, 110],
+    [-40, 150],
+    [-100, 145],
+    [-140, 100],
+    [-135, 40],
+    [-80, 5]
+  ],
+  "kart": {
+    "radius": 1.2,
+    "maxSpeed": 30,
+    "acceleration": 16,
+    "braking": 34,
+    "reverseMax": 8,
+    "drag": 0.25,
+    "offTrackMaxSpeed": 12,
+    "offTrackDrag": 2,
+    "steerRate": 2.2,
+    "fullSteerSpeed": 6,
+    "driftTurn": 1.45,
+    "driftDrag": 0.35,
+    "wallSlowdown": 0.6
+  }
+}
