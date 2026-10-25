@@ -1,130 +1,1468 @@
 {
   "categories": ["geography", "science", "history", "sports", "culture", "technology"],
   "questions": [
-    { "id": "geo-01", "category": "geography", "correct": 2, "tr": { "q": "Avustralya'nın başkenti hangisidir?", "a": ["Sidney", "Melbourne", "Kanberra", "Perth"] }, "en": { "q": "What is the capital of Australia?", "a": ["Sydney", "Melbourne", "Canberra", "Perth"] } },
-    { "id": "geo-02", "category": "geography", "correct": 1, "tr": { "q": "Tamamı Türkiye sınırları içinde kalan en uzun nehir hangisidir?", "a": ["Sakarya", "Kızılırmak", "Yeşilırmak", "Fırat"] }, "en": { "q": "Which is the longest river flowing entirely within Turkey?", "a": ["Sakarya", "Kızılırmak", "Yeşilırmak", "Euphrates"] } },
-    { "id": "geo-03", "category": "geography", "correct": 0, "tr": { "q": "Dünyanın en büyük okyanusu hangisidir?", "a": ["Büyük Okyanus", "Atlas Okyanusu", "Hint Okyanusu", "Arktik Okyanusu"] }, "en": { "q": "Which is the largest ocean on Earth?", "a": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"] } },
-    { "id": "geo-04", "category": "geography", "correct": 2, "tr": { "q": "Türkiye'nin en yüksek dağı hangisidir?", "a": ["Erciyes", "Uludağ", "Ağrı Dağı", "Kaçkar Dağı"] }, "en": { "q": "What is the highest mountain in Turkey?", "a": ["Mount Erciyes", "Uludağ", "Mount Ararat", "Kaçkar Mountain"] } },
-    { "id": "geo-05", "category": "geography", "correct": 1, "tr": { "q": "2023'ten bu yana nüfusu en kalabalık ülke hangisidir?", "a": ["Çin", "Hindistan", "ABD", "Endonezya"] }, "en": { "q": "Since 2023, which country has the largest population?", "a": ["China", "India", "United States", "Indonesia"] } },
-    { "id": "geo-06", "category": "geography", "correct": 3, "tr": { "q": "Kanada'nın başkenti hangisidir?", "a": ["Toronto", "Vancouver", "Montreal", "Ottava"] }, "en": { "q": "What is the capital of Canada?", "a": ["Toronto", "Vancouver", "Montreal", "Ottawa"] } },
-    { "id": "geo-07", "category": "geography", "correct": 1, "tr": { "q": "Dünyanın en büyük sıcak çölü hangisidir?", "a": ["Gobi", "Sahra", "Kalahari", "Atacama"] }, "en": { "q": "Which is the largest hot desert in the world?", "a": ["Gobi", "Sahara", "Kalahari", "Atacama"] } },
-    { "id": "geo-08", "category": "geography", "correct": 2, "tr": { "q": "Türkiye'nin kara sınırı komşusu kaç ülkedir?", "a": ["6", "7", "8", "9"] }, "en": { "q": "How many countries share a land border with Turkey?", "a": ["6", "7", "8", "9"] } },
-    { "id": "geo-09", "category": "geography", "correct": 2, "tr": { "q": "Peri bacalarıyla ünlü Göreme hangi ildedir?", "a": ["Konya", "Kayseri", "Nevşehir", "Aksaray"] }, "en": { "q": "Göreme, famous for its fairy chimneys, is in which Turkish province?", "a": ["Konya", "Kayseri", "Nevşehir", "Aksaray"] } },
-    { "id": "geo-10", "category": "geography", "correct": 1, "tr": { "q": "Karadeniz'i Marmara Denizi'ne bağlayan boğaz hangisidir?", "a": ["Çanakkale Boğazı", "İstanbul Boğazı", "Cebelitarık Boğazı", "Hürmüz Boğazı"] }, "en": { "q": "Which strait connects the Black Sea to the Sea of Marmara?", "a": ["Dardanelles", "Bosphorus", "Strait of Gibraltar", "Strait of Hormuz"] } },
-    { "id": "geo-11", "category": "geography", "correct": 2, "tr": { "q": "Brezilya'nın başkenti hangisidir?", "a": ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"] }, "en": { "q": "What is the capital of Brazil?", "a": ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"] } },
-    { "id": "geo-12", "category": "geography", "correct": 1, "tr": { "q": "Everest Dağı Nepal ile hangi ülkenin sınırındadır?", "a": ["Hindistan", "Çin", "Butan", "Pakistan"] }, "en": { "q": "Mount Everest lies on the border of Nepal and which country?", "a": ["India", "China", "Bhutan", "Pakistan"] } },
-    { "id": "geo-13", "category": "geography", "correct": 0, "tr": { "q": "Yüzölçümü bakımından dünyanın en küçük ülkesi hangisidir?", "a": ["Vatikan", "Monako", "Malta", "San Marino"] }, "en": { "q": "Which is the smallest country in the world by area?", "a": ["Vatican City", "Monaco", "Malta", "San Marino"] } },
-    { "id": "geo-14", "category": "geography", "correct": 2, "tr": { "q": "Marakeş şehri hangi ülkededir?", "a": ["Tunus", "Cezayir", "Fas", "Mısır"] }, "en": { "q": "In which country is the city of Marrakesh?", "a": ["Tunisia", "Algeria", "Morocco", "Egypt"] } },
-    { "id": "geo-15", "category": "geography", "correct": 1, "tr": { "q": "Türkiye'nin en büyük gölü hangisidir?", "a": ["Tuz Gölü", "Van Gölü", "Beyşehir Gölü", "Eğirdir Gölü"] }, "en": { "q": "What is the largest lake in Turkey?", "a": ["Lake Tuz", "Lake Van", "Lake Beyşehir", "Lake Eğirdir"] } },
-    { "id": "geo-16", "category": "geography", "correct": 3, "tr": { "q": "Japonya'nın para birimi hangisidir?", "a": ["Von", "Yuan", "Ringgit", "Yen"] }, "en": { "q": "What is the currency of Japan?", "a": ["Won", "Yuan", "Ringgit", "Yen"] } },
-    { "id": "geo-17", "category": "geography", "correct": 0, "tr": { "q": "Türkiye dışında hem Avrupa'da hem Asya'da toprağı olan ülke hangisidir?", "a": ["Rusya", "Ukrayna", "İran", "Polonya"] }, "en": { "q": "Besides Turkey, which country has territory in both Europe and Asia?", "a": ["Russia", "Ukraine", "Iran", "Poland"] } },
-    { "id": "geo-18", "category": "geography", "correct": 1, "tr": { "q": "Yeni Zelanda'nın başkenti hangisidir?", "a": ["Auckland", "Wellington", "Christchurch", "Queenstown"] }, "en": { "q": "What is the capital of New Zealand?", "a": ["Auckland", "Wellington", "Christchurch", "Queenstown"] } },
-    { "id": "geo-19", "category": "geography", "correct": 2, "tr": { "q": "Amazon yağmur ormanlarının büyük kısmı hangi ülkededir?", "a": ["Peru", "Kolombiya", "Brezilya", "Venezuela"] }, "en": { "q": "Most of the Amazon rainforest lies in which country?", "a": ["Peru", "Colombia", "Brazil", "Venezuela"] } },
-    { "id": "geo-20", "category": "geography", "correct": 1, "tr": { "q": "Bağdat hangi nehrin kıyısındadır?", "a": ["Fırat", "Dicle", "Nil", "Ürdün"] }, "en": { "q": "Baghdad lies on which river?", "a": ["Euphrates", "Tigris", "Nile", "Jordan"] } },
+    {
+      "id": "geo-01",
+      "category": "geography",
+      "correct": 2,
+      "tr": {
+        "q": "Avustralya'nın başkenti hangisidir?",
+        "a": ["Sidney", "Melbourne", "Kanberra", "Perth"]
+      },
+      "en": {
+        "q": "What is the capital of Australia?",
+        "a": ["Sydney", "Melbourne", "Canberra", "Perth"]
+      }
+    },
+    {
+      "id": "geo-02",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Tamamı Türkiye sınırları içinde kalan en uzun nehir hangisidir?",
+        "a": ["Sakarya", "Kızılırmak", "Yeşilırmak", "Fırat"]
+      },
+      "en": {
+        "q": "Which is the longest river flowing entirely within Turkey?",
+        "a": ["Sakarya", "Kızılırmak", "Yeşilırmak", "Euphrates"]
+      }
+    },
+    {
+      "id": "geo-03",
+      "category": "geography",
+      "correct": 0,
+      "tr": {
+        "q": "Dünyanın en büyük okyanusu hangisidir?",
+        "a": ["Büyük Okyanus", "Atlas Okyanusu", "Hint Okyanusu", "Arktik Okyanusu"]
+      },
+      "en": {
+        "q": "Which is the largest ocean on Earth?",
+        "a": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"]
+      }
+    },
+    {
+      "id": "geo-04",
+      "category": "geography",
+      "correct": 2,
+      "tr": {
+        "q": "Türkiye'nin en yüksek dağı hangisidir?",
+        "a": ["Erciyes", "Uludağ", "Ağrı Dağı", "Kaçkar Dağı"]
+      },
+      "en": {
+        "q": "What is the highest mountain in Turkey?",
+        "a": ["Mount Erciyes", "Uludağ", "Mount Ararat", "Kaçkar Mountain"]
+      }
+    },
+    {
+      "id": "geo-05",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "2023'ten bu yana nüfusu en kalabalık ülke hangisidir?",
+        "a": ["Çin", "Hindistan", "ABD", "Endonezya"]
+      },
+      "en": {
+        "q": "Since 2023, which country has the largest population?",
+        "a": ["China", "India", "United States", "Indonesia"]
+      }
+    },
+    {
+      "id": "geo-06",
+      "category": "geography",
+      "correct": 3,
+      "tr": {
+        "q": "Kanada'nın başkenti hangisidir?",
+        "a": ["Toronto", "Vancouver", "Montreal", "Ottava"]
+      },
+      "en": {
+        "q": "What is the capital of Canada?",
+        "a": ["Toronto", "Vancouver", "Montreal", "Ottawa"]
+      }
+    },
+    {
+      "id": "geo-07",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Dünyanın en büyük sıcak çölü hangisidir?",
+        "a": ["Gobi", "Sahra", "Kalahari", "Atacama"]
+      },
+      "en": {
+        "q": "Which is the largest hot desert in the world?",
+        "a": ["Gobi", "Sahara", "Kalahari", "Atacama"]
+      }
+    },
+    {
+      "id": "geo-08",
+      "category": "geography",
+      "correct": 2,
+      "tr": { "q": "Türkiye'nin kara sınırı komşusu kaç ülkedir?", "a": ["6", "7", "8", "9"] },
+      "en": {
+        "q": "How many countries share a land border with Turkey?",
+        "a": ["6", "7", "8", "9"]
+      }
+    },
+    {
+      "id": "geo-09",
+      "category": "geography",
+      "correct": 2,
+      "tr": {
+        "q": "Peri bacalarıyla ünlü Göreme hangi ildedir?",
+        "a": ["Konya", "Kayseri", "Nevşehir", "Aksaray"]
+      },
+      "en": {
+        "q": "Göreme, famous for its fairy chimneys, is in which Turkish province?",
+        "a": ["Konya", "Kayseri", "Nevşehir", "Aksaray"]
+      }
+    },
+    {
+      "id": "geo-10",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Karadeniz'i Marmara Denizi'ne bağlayan boğaz hangisidir?",
+        "a": ["Çanakkale Boğazı", "İstanbul Boğazı", "Cebelitarık Boğazı", "Hürmüz Boğazı"]
+      },
+      "en": {
+        "q": "Which strait connects the Black Sea to the Sea of Marmara?",
+        "a": ["Dardanelles", "Bosphorus", "Strait of Gibraltar", "Strait of Hormuz"]
+      }
+    },
+    {
+      "id": "geo-11",
+      "category": "geography",
+      "correct": 2,
+      "tr": {
+        "q": "Brezilya'nın başkenti hangisidir?",
+        "a": ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"]
+      },
+      "en": {
+        "q": "What is the capital of Brazil?",
+        "a": ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"]
+      }
+    },
+    {
+      "id": "geo-12",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Everest Dağı Nepal ile hangi ülkenin sınırındadır?",
+        "a": ["Hindistan", "Çin", "Butan", "Pakistan"]
+      },
+      "en": {
+        "q": "Mount Everest lies on the border of Nepal and which country?",
+        "a": ["India", "China", "Bhutan", "Pakistan"]
+      }
+    },
+    {
+      "id": "geo-13",
+      "category": "geography",
+      "correct": 0,
+      "tr": {
+        "q": "Yüzölçümü bakımından dünyanın en küçük ülkesi hangisidir?",
+        "a": ["Vatikan", "Monako", "Malta", "San Marino"]
+      },
+      "en": {
+        "q": "Which is the smallest country in the world by area?",
+        "a": ["Vatican City", "Monaco", "Malta", "San Marino"]
+      }
+    },
+    {
+      "id": "geo-14",
+      "category": "geography",
+      "correct": 2,
+      "tr": { "q": "Marakeş şehri hangi ülkededir?", "a": ["Tunus", "Cezayir", "Fas", "Mısır"] },
+      "en": {
+        "q": "In which country is the city of Marrakesh?",
+        "a": ["Tunisia", "Algeria", "Morocco", "Egypt"]
+      }
+    },
+    {
+      "id": "geo-15",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Türkiye'nin en büyük gölü hangisidir?",
+        "a": ["Tuz Gölü", "Van Gölü", "Beyşehir Gölü", "Eğirdir Gölü"]
+      },
+      "en": {
+        "q": "What is the largest lake in Turkey?",
+        "a": ["Lake Tuz", "Lake Van", "Lake Beyşehir", "Lake Eğirdir"]
+      }
+    },
+    {
+      "id": "geo-16",
+      "category": "geography",
+      "correct": 3,
+      "tr": { "q": "Japonya'nın para birimi hangisidir?", "a": ["Von", "Yuan", "Ringgit", "Yen"] },
+      "en": { "q": "What is the currency of Japan?", "a": ["Won", "Yuan", "Ringgit", "Yen"] }
+    },
+    {
+      "id": "geo-17",
+      "category": "geography",
+      "correct": 0,
+      "tr": {
+        "q": "Türkiye dışında hem Avrupa'da hem Asya'da toprağı olan ülke hangisidir?",
+        "a": ["Rusya", "Ukrayna", "İran", "Polonya"]
+      },
+      "en": {
+        "q": "Besides Turkey, which country has territory in both Europe and Asia?",
+        "a": ["Russia", "Ukraine", "Iran", "Poland"]
+      }
+    },
+    {
+      "id": "geo-18",
+      "category": "geography",
+      "correct": 1,
+      "tr": {
+        "q": "Yeni Zelanda'nın başkenti hangisidir?",
+        "a": ["Auckland", "Wellington", "Christchurch", "Queenstown"]
+      },
+      "en": {
+        "q": "What is the capital of New Zealand?",
+        "a": ["Auckland", "Wellington", "Christchurch", "Queenstown"]
+      }
+    },
+    {
+      "id": "geo-19",
+      "category": "geography",
+      "correct": 2,
+      "tr": {
+        "q": "Amazon yağmur ormanlarının büyük kısmı hangi ülkededir?",
+        "a": ["Peru", "Kolombiya", "Brezilya", "Venezuela"]
+      },
+      "en": {
+        "q": "Most of the Amazon rainforest lies in which country?",
+        "a": ["Peru", "Colombia", "Brazil", "Venezuela"]
+      }
+    },
+    {
+      "id": "geo-20",
+      "category": "geography",
+      "correct": 1,
+      "tr": { "q": "Bağdat hangi nehrin kıyısındadır?", "a": ["Fırat", "Dicle", "Nil", "Ürdün"] },
+      "en": { "q": "Baghdad lies on which river?", "a": ["Euphrates", "Tigris", "Nile", "Jordan"] }
+    },
 
-    { "id": "sci-01", "category": "science", "correct": 1, "tr": { "q": "Altının kimyasal simgesi nedir?", "a": ["Ag", "Au", "Gd", "Al"] }, "en": { "q": "What is the chemical symbol for gold?", "a": ["Ag", "Au", "Gd", "Al"] } },
-    { "id": "sci-02", "category": "science", "correct": 0, "tr": { "q": "Güneş'e en yakın gezegen hangisidir?", "a": ["Merkür", "Venüs", "Mars", "Jüpiter"] }, "en": { "q": "Which planet is closest to the Sun?", "a": ["Mercury", "Venus", "Mars", "Jupiter"] } },
-    { "id": "sci-03", "category": "science", "correct": 1, "tr": { "q": "Deniz seviyesinde su kaç santigrat derecede kaynar?", "a": ["90", "100", "110", "120"] }, "en": { "q": "At sea level, water boils at how many degrees Celsius?", "a": ["90", "100", "110", "120"] } },
-    { "id": "sci-04", "category": "science", "correct": 2, "tr": { "q": "Güneş Sistemi'nin en büyük gezegeni hangisidir?", "a": ["Satürn", "Neptün", "Jüpiter", "Uranüs"] }, "en": { "q": "Which is the largest planet in the Solar System?", "a": ["Saturn", "Neptune", "Jupiter", "Uranus"] } },
-    { "id": "sci-05", "category": "science", "correct": 1, "tr": { "q": "Yetişkin bir insan iskeletinde kaç kemik bulunur?", "a": ["186", "206", "226", "246"] }, "en": { "q": "How many bones are in the adult human skeleton?", "a": ["186", "206", "226", "246"] } },
-    { "id": "sci-06", "category": "science", "correct": 2, "tr": { "q": "Bitkiler fotosentezde havadan hangi gazı alır?", "a": ["Oksijen", "Azot", "Karbondioksit", "Hidrojen"] }, "en": { "q": "Which gas do plants take from the air for photosynthesis?", "a": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"] } },
-    { "id": "sci-07", "category": "science", "correct": 2, "tr": { "q": "Işığın boşluktaki hızı yaklaşık saniyede kaç kilometredir?", "a": ["30.000", "150.000", "300.000", "3.000.000"] }, "en": { "q": "Roughly how many kilometres per second does light travel in a vacuum?", "a": ["30,000", "150,000", "300,000", "3,000,000"] } },
-    { "id": "sci-08", "category": "science", "correct": 3, "tr": { "q": "Doğada bulunan en sert madde hangisidir?", "a": ["Kuvars", "Granit", "Demir", "Elmas"] }, "en": { "q": "What is the hardest naturally occurring material?", "a": ["Quartz", "Granite", "Iron", "Diamond"] } },
-    { "id": "sci-09", "category": "science", "correct": 1, "tr": { "q": "İnsülin hormonunu hangi organ üretir?", "a": ["Karaciğer", "Pankreas", "Böbrek", "Dalak"] }, "en": { "q": "Which organ produces insulin?", "a": ["Liver", "Pancreas", "Kidney", "Spleen"] } },
-    { "id": "sci-10", "category": "science", "correct": 0, "tr": { "q": "\"Kızıl Gezegen\" olarak bilinen gezegen hangisidir?", "a": ["Mars", "Venüs", "Jüpiter", "Merkür"] }, "en": { "q": "Which planet is known as the Red Planet?", "a": ["Mars", "Venus", "Jupiter", "Mercury"] } },
-    { "id": "sci-11", "category": "science", "correct": 0, "tr": { "q": "Hidrojenin atom numarası kaçtır?", "a": ["1", "2", "4", "8"] }, "en": { "q": "What is the atomic number of hydrogen?", "a": ["1", "2", "4", "8"] } },
-    { "id": "sci-12", "category": "science", "correct": 2, "tr": { "q": "Genel verici olarak bilinen kan grubu hangisidir?", "a": ["A Rh+", "AB Rh+", "0 Rh-", "B Rh-"] }, "en": { "q": "Which blood type is known as the universal donor?", "a": ["A+", "AB+", "O-", "B-"] } },
-    { "id": "sci-13", "category": "science", "correct": 2, "tr": { "q": "Elektriksel direncin birimi nedir?", "a": ["Volt", "Amper", "Ohm", "Watt"] }, "en": { "q": "What is the unit of electrical resistance?", "a": ["Volt", "Ampere", "Ohm", "Watt"] } },
-    { "id": "sci-14", "category": "science", "correct": 1, "tr": { "q": "Genel görelilik kuramını kim ortaya koydu?", "a": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Nikola Tesla"] }, "en": { "q": "Who formulated the general theory of relativity?", "a": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Nikola Tesla"] } },
-    { "id": "sci-15", "category": "science", "correct": 1, "tr": { "q": "DNA molekülünün yapısı nasıl tanımlanır?", "a": ["Tek sarmal", "Çift sarmal", "Halka", "Üçlü sarmal"] }, "en": { "q": "How is the structure of a DNA molecule described?", "a": ["Single helix", "Double helix", "Ring", "Triple helix"] } },
-    { "id": "sci-16", "category": "science", "correct": 3, "tr": { "q": "Dünya atmosferinde en çok bulunan gaz hangisidir?", "a": ["Oksijen", "Argon", "Karbondioksit", "Azot"] }, "en": { "q": "Which gas makes up most of Earth's atmosphere?", "a": ["Oxygen", "Argon", "Carbon dioxide", "Nitrogen"] } },
-    { "id": "sci-17", "category": "science", "correct": 2, "tr": { "q": "İnsan kalbi kaç odacıktan oluşur?", "a": ["2", "3", "4", "5"] }, "en": { "q": "How many chambers does the human heart have?", "a": ["2", "3", "4", "5"] } },
-    { "id": "sci-18", "category": "science", "correct": 2, "tr": { "q": "Mars'ın kaç doğal uydusu vardır?", "a": ["0", "1", "2", "4"] }, "en": { "q": "How many natural moons does Mars have?", "a": ["0", "1", "2", "4"] } },
-    { "id": "sci-19", "category": "science", "correct": 1, "tr": { "q": "Kimyasal simgesi Fe olan element hangisidir?", "a": ["Flor", "Demir", "Fosfor", "Fermiyum"] }, "en": { "q": "Which element has the chemical symbol Fe?", "a": ["Fluorine", "Iron", "Phosphorus", "Fermium"] } },
-    { "id": "sci-20", "category": "science", "correct": 2, "tr": { "q": "Deri güneş ışığı altında hangi vitamini üretir?", "a": ["A", "C", "D", "K"] }, "en": { "q": "Which vitamin does the skin produce in sunlight?", "a": ["A", "C", "D", "K"] } },
+    {
+      "id": "sci-01",
+      "category": "science",
+      "correct": 1,
+      "tr": { "q": "Altının kimyasal simgesi nedir?", "a": ["Ag", "Au", "Gd", "Al"] },
+      "en": { "q": "What is the chemical symbol for gold?", "a": ["Ag", "Au", "Gd", "Al"] }
+    },
+    {
+      "id": "sci-02",
+      "category": "science",
+      "correct": 0,
+      "tr": {
+        "q": "Güneş'e en yakın gezegen hangisidir?",
+        "a": ["Merkür", "Venüs", "Mars", "Jüpiter"]
+      },
+      "en": {
+        "q": "Which planet is closest to the Sun?",
+        "a": ["Mercury", "Venus", "Mars", "Jupiter"]
+      }
+    },
+    {
+      "id": "sci-03",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "Deniz seviyesinde su kaç santigrat derecede kaynar?",
+        "a": ["90", "100", "110", "120"]
+      },
+      "en": {
+        "q": "At sea level, water boils at how many degrees Celsius?",
+        "a": ["90", "100", "110", "120"]
+      }
+    },
+    {
+      "id": "sci-04",
+      "category": "science",
+      "correct": 2,
+      "tr": {
+        "q": "Güneş Sistemi'nin en büyük gezegeni hangisidir?",
+        "a": ["Satürn", "Neptün", "Jüpiter", "Uranüs"]
+      },
+      "en": {
+        "q": "Which is the largest planet in the Solar System?",
+        "a": ["Saturn", "Neptune", "Jupiter", "Uranus"]
+      }
+    },
+    {
+      "id": "sci-05",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "Yetişkin bir insan iskeletinde kaç kemik bulunur?",
+        "a": ["186", "206", "226", "246"]
+      },
+      "en": {
+        "q": "How many bones are in the adult human skeleton?",
+        "a": ["186", "206", "226", "246"]
+      }
+    },
+    {
+      "id": "sci-06",
+      "category": "science",
+      "correct": 2,
+      "tr": {
+        "q": "Bitkiler fotosentezde havadan hangi gazı alır?",
+        "a": ["Oksijen", "Azot", "Karbondioksit", "Hidrojen"]
+      },
+      "en": {
+        "q": "Which gas do plants take from the air for photosynthesis?",
+        "a": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"]
+      }
+    },
+    {
+      "id": "sci-07",
+      "category": "science",
+      "correct": 2,
+      "tr": {
+        "q": "Işığın boşluktaki hızı yaklaşık saniyede kaç kilometredir?",
+        "a": ["30.000", "150.000", "300.000", "3.000.000"]
+      },
+      "en": {
+        "q": "Roughly how many kilometres per second does light travel in a vacuum?",
+        "a": ["30,000", "150,000", "300,000", "3,000,000"]
+      }
+    },
+    {
+      "id": "sci-08",
+      "category": "science",
+      "correct": 3,
+      "tr": {
+        "q": "Doğada bulunan en sert madde hangisidir?",
+        "a": ["Kuvars", "Granit", "Demir", "Elmas"]
+      },
+      "en": {
+        "q": "What is the hardest naturally occurring material?",
+        "a": ["Quartz", "Granite", "Iron", "Diamond"]
+      }
+    },
+    {
+      "id": "sci-09",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "İnsülin hormonunu hangi organ üretir?",
+        "a": ["Karaciğer", "Pankreas", "Böbrek", "Dalak"]
+      },
+      "en": { "q": "Which organ produces insulin?", "a": ["Liver", "Pancreas", "Kidney", "Spleen"] }
+    },
+    {
+      "id": "sci-10",
+      "category": "science",
+      "correct": 0,
+      "tr": {
+        "q": "\"Kızıl Gezegen\" olarak bilinen gezegen hangisidir?",
+        "a": ["Mars", "Venüs", "Jüpiter", "Merkür"]
+      },
+      "en": {
+        "q": "Which planet is known as the Red Planet?",
+        "a": ["Mars", "Venus", "Jupiter", "Mercury"]
+      }
+    },
+    {
+      "id": "sci-11",
+      "category": "science",
+      "correct": 0,
+      "tr": { "q": "Hidrojenin atom numarası kaçtır?", "a": ["1", "2", "4", "8"] },
+      "en": { "q": "What is the atomic number of hydrogen?", "a": ["1", "2", "4", "8"] }
+    },
+    {
+      "id": "sci-12",
+      "category": "science",
+      "correct": 2,
+      "tr": {
+        "q": "Genel verici olarak bilinen kan grubu hangisidir?",
+        "a": ["A Rh+", "AB Rh+", "0 Rh-", "B Rh-"]
+      },
+      "en": {
+        "q": "Which blood type is known as the universal donor?",
+        "a": ["A+", "AB+", "O-", "B-"]
+      }
+    },
+    {
+      "id": "sci-13",
+      "category": "science",
+      "correct": 2,
+      "tr": { "q": "Elektriksel direncin birimi nedir?", "a": ["Volt", "Amper", "Ohm", "Watt"] },
+      "en": {
+        "q": "What is the unit of electrical resistance?",
+        "a": ["Volt", "Ampere", "Ohm", "Watt"]
+      }
+    },
+    {
+      "id": "sci-14",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "Genel görelilik kuramını kim ortaya koydu?",
+        "a": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Nikola Tesla"]
+      },
+      "en": {
+        "q": "Who formulated the general theory of relativity?",
+        "a": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Nikola Tesla"]
+      }
+    },
+    {
+      "id": "sci-15",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "DNA molekülünün yapısı nasıl tanımlanır?",
+        "a": ["Tek sarmal", "Çift sarmal", "Halka", "Üçlü sarmal"]
+      },
+      "en": {
+        "q": "How is the structure of a DNA molecule described?",
+        "a": ["Single helix", "Double helix", "Ring", "Triple helix"]
+      }
+    },
+    {
+      "id": "sci-16",
+      "category": "science",
+      "correct": 3,
+      "tr": {
+        "q": "Dünya atmosferinde en çok bulunan gaz hangisidir?",
+        "a": ["Oksijen", "Argon", "Karbondioksit", "Azot"]
+      },
+      "en": {
+        "q": "Which gas makes up most of Earth's atmosphere?",
+        "a": ["Oxygen", "Argon", "Carbon dioxide", "Nitrogen"]
+      }
+    },
+    {
+      "id": "sci-17",
+      "category": "science",
+      "correct": 2,
+      "tr": { "q": "İnsan kalbi kaç odacıktan oluşur?", "a": ["2", "3", "4", "5"] },
+      "en": { "q": "How many chambers does the human heart have?", "a": ["2", "3", "4", "5"] }
+    },
+    {
+      "id": "sci-18",
+      "category": "science",
+      "correct": 2,
+      "tr": { "q": "Mars'ın kaç doğal uydusu vardır?", "a": ["0", "1", "2", "4"] },
+      "en": { "q": "How many natural moons does Mars have?", "a": ["0", "1", "2", "4"] }
+    },
+    {
+      "id": "sci-19",
+      "category": "science",
+      "correct": 1,
+      "tr": {
+        "q": "Kimyasal simgesi Fe olan element hangisidir?",
+        "a": ["Flor", "Demir", "Fosfor", "Fermiyum"]
+      },
+      "en": {
+        "q": "Which element has the chemical symbol Fe?",
+        "a": ["Fluorine", "Iron", "Phosphorus", "Fermium"]
+      }
+    },
+    {
+      "id": "sci-20",
+      "category": "science",
+      "correct": 2,
+      "tr": { "q": "Deri güneş ışığı altında hangi vitamini üretir?", "a": ["A", "C", "D", "K"] },
+      "en": { "q": "Which vitamin does the skin produce in sunlight?", "a": ["A", "C", "D", "K"] }
+    },
 
-    { "id": "his-01", "category": "history", "correct": 2, "tr": { "q": "Türkiye Cumhuriyeti hangi yıl ilan edildi?", "a": ["1920", "1921", "1923", "1925"] }, "en": { "q": "In which year was the Republic of Turkey proclaimed?", "a": ["1920", "1921", "1923", "1925"] } },
-    { "id": "his-02", "category": "history", "correct": 0, "tr": { "q": "İstanbul hangi yıl fethedildi?", "a": ["1453", "1071", "1299", "1517"] }, "en": { "q": "In which year did the Ottomans conquer Constantinople?", "a": ["1453", "1071", "1299", "1517"] } },
-    { "id": "his-03", "category": "history", "correct": 1, "tr": { "q": "Malazgirt Meydan Muharebesi hangi yıl yapıldı?", "a": ["1040", "1071", "1176", "1243"] }, "en": { "q": "In which year was the Battle of Manzikert fought?", "a": ["1040", "1071", "1176", "1243"] } },
-    { "id": "his-04", "category": "history", "correct": 2, "tr": { "q": "Ay'a ayak basan ilk insan kimdir?", "a": ["Yuri Gagarin", "Buzz Aldrin", "Neil Armstrong", "Michael Collins"] }, "en": { "q": "Who was the first person to walk on the Moon?", "a": ["Yuri Gagarin", "Buzz Aldrin", "Neil Armstrong", "Michael Collins"] } },
-    { "id": "his-05", "category": "history", "correct": 1, "tr": { "q": "Birinci Dünya Savaşı hangi yıl başladı?", "a": ["1912", "1914", "1916", "1918"] }, "en": { "q": "In which year did the First World War begin?", "a": ["1912", "1914", "1916", "1918"] } },
-    { "id": "his-06", "category": "history", "correct": 2, "tr": { "q": "Berlin Duvarı hangi yıl yıkıldı?", "a": ["1961", "1975", "1989", "1991"] }, "en": { "q": "In which year did the Berlin Wall fall?", "a": ["1961", "1975", "1989", "1991"] } },
-    { "id": "his-07", "category": "history", "correct": 0, "tr": { "q": "ABD'nin ilk başkanı kimdir?", "a": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"] }, "en": { "q": "Who was the first president of the United States?", "a": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"] } },
-    { "id": "his-08", "category": "history", "correct": 1, "tr": { "q": "Gize'deki Büyük Piramit hangi firavun için yapıldı?", "a": ["Tutankamon", "Keops", "II. Ramses", "Kleopatra"] }, "en": { "q": "The Great Pyramid of Giza was built for which pharaoh?", "a": ["Tutankhamun", "Khufu", "Ramesses II", "Cleopatra"] } },
-    { "id": "his-09", "category": "history", "correct": 1, "tr": { "q": "Osmanlı Beyliği'nin kurucusu kimdir?", "a": ["Orhan Bey", "Osman Bey", "Ertuğrul Gazi", "I. Murad"] }, "en": { "q": "Who founded the Ottoman state?", "a": ["Orhan", "Osman I", "Ertuğrul", "Murad I"] } },
-    { "id": "his-10", "category": "history", "correct": 2, "tr": { "q": "Türkiye'de kadınlar milletvekili seçme ve seçilme hakkını hangi yıl kazandı?", "a": ["1926", "1930", "1934", "1946"] }, "en": { "q": "In which year did women in Turkey gain the right to vote and stand in national elections?", "a": ["1926", "1930", "1934", "1946"] } },
-    { "id": "his-11", "category": "history", "correct": 3, "tr": { "q": "Avrupa'da hareketli harfli matbaayı kim geliştirdi?", "a": ["Leonardo da Vinci", "Galileo Galilei", "Isaac Newton", "Johannes Gutenberg"] }, "en": { "q": "Who developed the movable-type printing press in Europe?", "a": ["Leonardo da Vinci", "Galileo Galilei", "Isaac Newton", "Johannes Gutenberg"] } },
-    { "id": "his-12", "category": "history", "correct": 1, "tr": { "q": "Kristof Kolomb Amerika kıtasına hangi yıl ulaştı?", "a": ["1453", "1492", "1517", "1588"] }, "en": { "q": "In which year did Christopher Columbus reach the Americas?", "a": ["1453", "1492", "1517", "1588"] } },
-    { "id": "his-13", "category": "history", "correct": 2, "tr": { "q": "Machu Picchu'yu hangi uygarlık inşa etti?", "a": ["Maya", "Aztek", "İnka", "Olmek"] }, "en": { "q": "Which civilisation built Machu Picchu?", "a": ["Maya", "Aztec", "Inca", "Olmec"] } },
-    { "id": "his-14", "category": "history", "correct": 0, "tr": { "q": "Nobel Ödülü kazanan ilk kadın kimdir?", "a": ["Marie Curie", "Ada Lovelace", "Rosalind Franklin", "Florence Nightingale"] }, "en": { "q": "Who was the first woman to win a Nobel Prize?", "a": ["Marie Curie", "Ada Lovelace", "Rosalind Franklin", "Florence Nightingale"] } },
-    { "id": "his-15", "category": "history", "correct": 2, "tr": { "q": "Yeni Türk devletinin uluslararası alanda tanındığı 1923 antlaşması hangisidir?", "a": ["Sevr", "Mondros", "Lozan", "Mudanya"] }, "en": { "q": "Which 1923 treaty brought international recognition to the new Turkish state?", "a": ["Sèvres", "Mudros", "Lausanne", "Mudanya"] } },
-    { "id": "his-16", "category": "history", "correct": 2, "tr": { "q": "Türkiye'de Latin alfabesine geçiş (Harf Devrimi) hangi yıl yapıldı?", "a": ["1924", "1926", "1928", "1934"] }, "en": { "q": "In which year did Turkey adopt the Latin alphabet?", "a": ["1924", "1926", "1928", "1934"] } },
-    { "id": "his-17", "category": "history", "correct": 1, "tr": { "q": "Titanik hangi yıl battı?", "a": ["1905", "1912", "1918", "1923"] }, "en": { "q": "In which year did the Titanic sink?", "a": ["1905", "1912", "1918", "1923"] } },
-    { "id": "his-18", "category": "history", "correct": 2, "tr": { "q": "Fransız Devrimi hangi yıl başladı?", "a": ["1689", "1776", "1789", "1815"] }, "en": { "q": "In which year did the French Revolution begin?", "a": ["1689", "1776", "1789", "1815"] } },
-    { "id": "his-19", "category": "history", "correct": 0, "tr": { "q": "Konstantinopolis'i yeni başkent olarak kuran Roma imparatoru kimdir?", "a": ["I. Konstantin", "Augustus", "Neron", "Jüstinyen"] }, "en": { "q": "Which Roman emperor founded Constantinople as a new capital?", "a": ["Constantine I", "Augustus", "Nero", "Justinian"] } },
-    { "id": "his-20", "category": "history", "correct": 0, "tr": { "q": "Çanakkale Deniz Zaferi hangi tarihte anılır?", "a": ["18 Mart", "19 Mayıs", "23 Nisan", "30 Ağustos"] }, "en": { "q": "The Ottoman naval victory at Çanakkale (Gallipoli) is commemorated on which date?", "a": ["18 March", "19 May", "23 April", "30 August"] } },
+    {
+      "id": "his-01",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Türkiye Cumhuriyeti hangi yıl ilan edildi?",
+        "a": ["1920", "1921", "1923", "1925"]
+      },
+      "en": {
+        "q": "In which year was the Republic of Turkey proclaimed?",
+        "a": ["1920", "1921", "1923", "1925"]
+      }
+    },
+    {
+      "id": "his-02",
+      "category": "history",
+      "correct": 0,
+      "tr": { "q": "İstanbul hangi yıl fethedildi?", "a": ["1453", "1071", "1299", "1517"] },
+      "en": {
+        "q": "In which year did the Ottomans conquer Constantinople?",
+        "a": ["1453", "1071", "1299", "1517"]
+      }
+    },
+    {
+      "id": "his-03",
+      "category": "history",
+      "correct": 1,
+      "tr": {
+        "q": "Malazgirt Meydan Muharebesi hangi yıl yapıldı?",
+        "a": ["1040", "1071", "1176", "1243"]
+      },
+      "en": {
+        "q": "In which year was the Battle of Manzikert fought?",
+        "a": ["1040", "1071", "1176", "1243"]
+      }
+    },
+    {
+      "id": "his-04",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Ay'a ayak basan ilk insan kimdir?",
+        "a": ["Yuri Gagarin", "Buzz Aldrin", "Neil Armstrong", "Michael Collins"]
+      },
+      "en": {
+        "q": "Who was the first person to walk on the Moon?",
+        "a": ["Yuri Gagarin", "Buzz Aldrin", "Neil Armstrong", "Michael Collins"]
+      }
+    },
+    {
+      "id": "his-05",
+      "category": "history",
+      "correct": 1,
+      "tr": {
+        "q": "Birinci Dünya Savaşı hangi yıl başladı?",
+        "a": ["1912", "1914", "1916", "1918"]
+      },
+      "en": {
+        "q": "In which year did the First World War begin?",
+        "a": ["1912", "1914", "1916", "1918"]
+      }
+    },
+    {
+      "id": "his-06",
+      "category": "history",
+      "correct": 2,
+      "tr": { "q": "Berlin Duvarı hangi yıl yıkıldı?", "a": ["1961", "1975", "1989", "1991"] },
+      "en": {
+        "q": "In which year did the Berlin Wall fall?",
+        "a": ["1961", "1975", "1989", "1991"]
+      }
+    },
+    {
+      "id": "his-07",
+      "category": "history",
+      "correct": 0,
+      "tr": {
+        "q": "ABD'nin ilk başkanı kimdir?",
+        "a": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"]
+      },
+      "en": {
+        "q": "Who was the first president of the United States?",
+        "a": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"]
+      }
+    },
+    {
+      "id": "his-08",
+      "category": "history",
+      "correct": 1,
+      "tr": {
+        "q": "Gize'deki Büyük Piramit hangi firavun için yapıldı?",
+        "a": ["Tutankamon", "Keops", "II. Ramses", "Kleopatra"]
+      },
+      "en": {
+        "q": "The Great Pyramid of Giza was built for which pharaoh?",
+        "a": ["Tutankhamun", "Khufu", "Ramesses II", "Cleopatra"]
+      }
+    },
+    {
+      "id": "his-09",
+      "category": "history",
+      "correct": 1,
+      "tr": {
+        "q": "Osmanlı Beyliği'nin kurucusu kimdir?",
+        "a": ["Orhan Bey", "Osman Bey", "Ertuğrul Gazi", "I. Murad"]
+      },
+      "en": {
+        "q": "Who founded the Ottoman state?",
+        "a": ["Orhan", "Osman I", "Ertuğrul", "Murad I"]
+      }
+    },
+    {
+      "id": "his-10",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Türkiye'de kadınlar milletvekili seçme ve seçilme hakkını hangi yıl kazandı?",
+        "a": ["1926", "1930", "1934", "1946"]
+      },
+      "en": {
+        "q": "In which year did women in Turkey gain the right to vote and stand in national elections?",
+        "a": ["1926", "1930", "1934", "1946"]
+      }
+    },
+    {
+      "id": "his-11",
+      "category": "history",
+      "correct": 3,
+      "tr": {
+        "q": "Avrupa'da hareketli harfli matbaayı kim geliştirdi?",
+        "a": ["Leonardo da Vinci", "Galileo Galilei", "Isaac Newton", "Johannes Gutenberg"]
+      },
+      "en": {
+        "q": "Who developed the movable-type printing press in Europe?",
+        "a": ["Leonardo da Vinci", "Galileo Galilei", "Isaac Newton", "Johannes Gutenberg"]
+      }
+    },
+    {
+      "id": "his-12",
+      "category": "history",
+      "correct": 1,
+      "tr": {
+        "q": "Kristof Kolomb Amerika kıtasına hangi yıl ulaştı?",
+        "a": ["1453", "1492", "1517", "1588"]
+      },
+      "en": {
+        "q": "In which year did Christopher Columbus reach the Americas?",
+        "a": ["1453", "1492", "1517", "1588"]
+      }
+    },
+    {
+      "id": "his-13",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Machu Picchu'yu hangi uygarlık inşa etti?",
+        "a": ["Maya", "Aztek", "İnka", "Olmek"]
+      },
+      "en": {
+        "q": "Which civilisation built Machu Picchu?",
+        "a": ["Maya", "Aztec", "Inca", "Olmec"]
+      }
+    },
+    {
+      "id": "his-14",
+      "category": "history",
+      "correct": 0,
+      "tr": {
+        "q": "Nobel Ödülü kazanan ilk kadın kimdir?",
+        "a": ["Marie Curie", "Ada Lovelace", "Rosalind Franklin", "Florence Nightingale"]
+      },
+      "en": {
+        "q": "Who was the first woman to win a Nobel Prize?",
+        "a": ["Marie Curie", "Ada Lovelace", "Rosalind Franklin", "Florence Nightingale"]
+      }
+    },
+    {
+      "id": "his-15",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Yeni Türk devletinin uluslararası alanda tanındığı 1923 antlaşması hangisidir?",
+        "a": ["Sevr", "Mondros", "Lozan", "Mudanya"]
+      },
+      "en": {
+        "q": "Which 1923 treaty brought international recognition to the new Turkish state?",
+        "a": ["Sèvres", "Mudros", "Lausanne", "Mudanya"]
+      }
+    },
+    {
+      "id": "his-16",
+      "category": "history",
+      "correct": 2,
+      "tr": {
+        "q": "Türkiye'de Latin alfabesine geçiş (Harf Devrimi) hangi yıl yapıldı?",
+        "a": ["1924", "1926", "1928", "1934"]
+      },
+      "en": {
+        "q": "In which year did Turkey adopt the Latin alphabet?",
+        "a": ["1924", "1926", "1928", "1934"]
+      }
+    },
+    {
+      "id": "his-17",
+      "category": "history",
+      "correct": 1,
+      "tr": { "q": "Titanik hangi yıl battı?", "a": ["1905", "1912", "1918", "1923"] },
+      "en": { "q": "In which year did the Titanic sink?", "a": ["1905", "1912", "1918", "1923"] }
+    },
+    {
+      "id": "his-18",
+      "category": "history",
+      "correct": 2,
+      "tr": { "q": "Fransız Devrimi hangi yıl başladı?", "a": ["1689", "1776", "1789", "1815"] },
+      "en": {
+        "q": "In which year did the French Revolution begin?",
+        "a": ["1689", "1776", "1789", "1815"]
+      }
+    },
+    {
+      "id": "his-19",
+      "category": "history",
+      "correct": 0,
+      "tr": {
+        "q": "Konstantinopolis'i yeni başkent olarak kuran Roma imparatoru kimdir?",
+        "a": ["I. Konstantin", "Augustus", "Neron", "Jüstinyen"]
+      },
+      "en": {
+        "q": "Which Roman emperor founded Constantinople as a new capital?",
+        "a": ["Constantine I", "Augustus", "Nero", "Justinian"]
+      }
+    },
+    {
+      "id": "his-20",
+      "category": "history",
+      "correct": 0,
+      "tr": {
+        "q": "Çanakkale Deniz Zaferi hangi tarihte anılır?",
+        "a": ["18 Mart", "19 Mayıs", "23 Nisan", "30 Ağustos"]
+      },
+      "en": {
+        "q": "The Ottoman naval victory at Çanakkale (Gallipoli) is commemorated on which date?",
+        "a": ["18 March", "19 May", "23 April", "30 August"]
+      }
+    },
 
-    { "id": "spo-01", "category": "sports", "correct": 2, "tr": { "q": "Bir futbol takımı sahada kaç oyuncuyla oynar?", "a": ["9", "10", "11", "12"] }, "en": { "q": "How many players does a football team have on the pitch?", "a": ["9", "10", "11", "12"] } },
-    { "id": "spo-02", "category": "sports", "correct": 1, "tr": { "q": "Olimpiyat bayrağında kaç halka vardır?", "a": ["4", "5", "6", "7"] }, "en": { "q": "How many rings are on the Olympic flag?", "a": ["4", "5", "6", "7"] } },
-    { "id": "spo-03", "category": "sports", "correct": 1, "tr": { "q": "Basketbolda bir takım sahada kaç oyuncuyla oynar?", "a": ["4", "5", "6", "7"] }, "en": { "q": "How many players does a basketball team have on the court?", "a": ["4", "5", "6", "7"] } },
-    { "id": "spo-04", "category": "sports", "correct": 1, "tr": { "q": "2022 FIFA Dünya Kupası'nı hangi ülke kazandı?", "a": ["Fransa", "Arjantin", "Hırvatistan", "Fas"] }, "en": { "q": "Which country won the 2022 FIFA World Cup?", "a": ["France", "Argentina", "Croatia", "Morocco"] } },
-    { "id": "spo-05", "category": "sports", "correct": 1, "tr": { "q": "Türkiye 2002 FIFA Dünya Kupası'nı kaçıncı sırada tamamladı?", "a": ["İkinci", "Üçüncü", "Dördüncü", "Beşinci"] }, "en": { "q": "In what position did Turkey finish the 2002 FIFA World Cup?", "a": ["Second", "Third", "Fourth", "Fifth"] } },
-    { "id": "spo-06", "category": "sports", "correct": 2, "tr": { "q": "Toprak kortta oynanan Grand Slam turnuvası hangisidir?", "a": ["Wimbledon", "ABD Açık", "Roland Garros", "Avustralya Açık"] }, "en": { "q": "Which Grand Slam tournament is played on clay?", "a": ["Wimbledon", "US Open", "Roland Garros", "Australian Open"] } },
-    { "id": "spo-07", "category": "sports", "correct": 2, "tr": { "q": "Maraton koşusu kaç kilometredir?", "a": ["40", "41,195", "42,195", "45"] }, "en": { "q": "How many kilometres is a marathon?", "a": ["40", "41.195", "42.195", "45"] } },
-    { "id": "spo-08", "category": "sports", "correct": 1, "tr": { "q": "Naim Süleymanoğlu hangi spor dalında olimpiyat şampiyonu oldu?", "a": ["Güreş", "Halter", "Boks", "Judo"] }, "en": { "q": "In which sport was Naim Süleymanoğlu an Olympic champion?", "a": ["Wrestling", "Weightlifting", "Boxing", "Judo"] } },
-    { "id": "spo-09", "category": "sports", "correct": 1, "tr": { "q": "Voleybolda bir takım sahada kaç oyuncuyla oynar?", "a": ["5", "6", "7", "8"] }, "en": { "q": "How many players does a volleyball team have on the court?", "a": ["5", "6", "7", "8"] } },
-    { "id": "spo-10", "category": "sports", "correct": 2, "tr": { "q": "Yaz Olimpiyat Oyunları kaç yılda bir düzenlenir?", "a": ["2", "3", "4", "5"] }, "en": { "q": "How often are the Summer Olympic Games held?", "a": ["Every 2 years", "Every 3 years", "Every 4 years", "Every 5 years"] } },
-    { "id": "spo-11", "category": "sports", "correct": 1, "tr": { "q": "Usain Bolt'un 100 metre dünya rekoru kaç saniyedir?", "a": ["9,48", "9,58", "9,69", "9,72"] }, "en": { "q": "What is Usain Bolt's 100 metres world record in seconds?", "a": ["9.48", "9.58", "9.69", "9.72"] } },
-    { "id": "spo-12", "category": "sports", "correct": 0, "tr": { "q": "\"Smaç\" (slam dunk) hangi sporla ilişkilidir?", "a": ["Basketbol", "Voleybol", "Tenis", "Hentbol"] }, "en": { "q": "The slam dunk belongs to which sport?", "a": ["Basketball", "Volleyball", "Tennis", "Handball"] } },
-    { "id": "spo-13", "category": "sports", "correct": 2, "tr": { "q": "Standart bir golf turu kaç delikten oluşur?", "a": ["9", "12", "18", "24"] }, "en": { "q": "How many holes are in a standard round of golf?", "a": ["9", "12", "18", "24"] } },
-    { "id": "spo-14", "category": "sports", "correct": 1, "tr": { "q": "Satrançta diğer taşların üzerinden atlayabilen taş hangisidir?", "a": ["Fil", "At", "Kale", "Vezir"] }, "en": { "q": "In chess, which piece can jump over other pieces?", "a": ["Bishop", "Knight", "Rook", "Queen"] } },
-    { "id": "spo-15", "category": "sports", "correct": 1, "tr": { "q": "2016 Yaz Olimpiyatları hangi şehirde yapıldı?", "a": ["Londra", "Rio de Janeiro", "Tokyo", "Pekin"] }, "en": { "q": "Which city hosted the 2016 Summer Olympics?", "a": ["London", "Rio de Janeiro", "Tokyo", "Beijing"] } },
-    { "id": "spo-16", "category": "sports", "correct": 2, "tr": { "q": "Formula 1 Türkiye Grand Prix'si hangi şehirde koşuldu?", "a": ["İzmir", "Antalya", "İstanbul", "Ankara"] }, "en": { "q": "In which city was the Formula 1 Turkish Grand Prix held?", "a": ["Izmir", "Antalya", "Istanbul", "Ankara"] } },
-    { "id": "spo-17", "category": "sports", "correct": 1, "tr": { "q": "Normal süresinde bir futbol maçı kaç dakikadır?", "a": ["80", "90", "100", "120"] }, "en": { "q": "How many minutes is a football match in regular time?", "a": ["80", "90", "100", "120"] } },
-    { "id": "spo-18", "category": "sports", "correct": 2, "tr": { "q": "Judo hangi ülkede doğdu?", "a": ["Çin", "Kore", "Japonya", "Tayland"] }, "en": { "q": "In which country did judo originate?", "a": ["China", "Korea", "Japan", "Thailand"] } },
-    { "id": "spo-19", "category": "sports", "correct": 1, "tr": { "q": "Ryder Cup hangi sporun turnuvasıdır?", "a": ["Tenis", "Golf", "Kriket", "Polo"] }, "en": { "q": "The Ryder Cup is contested in which sport?", "a": ["Tennis", "Golf", "Cricket", "Polo"] } },
-    { "id": "spo-20", "category": "sports", "correct": 2, "tr": { "q": "Rugby union'da bir takım sahada kaç oyuncuyla oynar?", "a": ["11", "13", "15", "18"] }, "en": { "q": "How many players does a rugby union team have on the field?", "a": ["11", "13", "15", "18"] } },
+    {
+      "id": "spo-01",
+      "category": "sports",
+      "correct": 2,
+      "tr": { "q": "Bir futbol takımı sahada kaç oyuncuyla oynar?", "a": ["9", "10", "11", "12"] },
+      "en": {
+        "q": "How many players does a football team have on the pitch?",
+        "a": ["9", "10", "11", "12"]
+      }
+    },
+    {
+      "id": "spo-02",
+      "category": "sports",
+      "correct": 1,
+      "tr": { "q": "Olimpiyat bayrağında kaç halka vardır?", "a": ["4", "5", "6", "7"] },
+      "en": { "q": "How many rings are on the Olympic flag?", "a": ["4", "5", "6", "7"] }
+    },
+    {
+      "id": "spo-03",
+      "category": "sports",
+      "correct": 1,
+      "tr": { "q": "Basketbolda bir takım sahada kaç oyuncuyla oynar?", "a": ["4", "5", "6", "7"] },
+      "en": {
+        "q": "How many players does a basketball team have on the court?",
+        "a": ["4", "5", "6", "7"]
+      }
+    },
+    {
+      "id": "spo-04",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "2022 FIFA Dünya Kupası'nı hangi ülke kazandı?",
+        "a": ["Fransa", "Arjantin", "Hırvatistan", "Fas"]
+      },
+      "en": {
+        "q": "Which country won the 2022 FIFA World Cup?",
+        "a": ["France", "Argentina", "Croatia", "Morocco"]
+      }
+    },
+    {
+      "id": "spo-05",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Türkiye 2002 FIFA Dünya Kupası'nı kaçıncı sırada tamamladı?",
+        "a": ["İkinci", "Üçüncü", "Dördüncü", "Beşinci"]
+      },
+      "en": {
+        "q": "In what position did Turkey finish the 2002 FIFA World Cup?",
+        "a": ["Second", "Third", "Fourth", "Fifth"]
+      }
+    },
+    {
+      "id": "spo-06",
+      "category": "sports",
+      "correct": 2,
+      "tr": {
+        "q": "Toprak kortta oynanan Grand Slam turnuvası hangisidir?",
+        "a": ["Wimbledon", "ABD Açık", "Roland Garros", "Avustralya Açık"]
+      },
+      "en": {
+        "q": "Which Grand Slam tournament is played on clay?",
+        "a": ["Wimbledon", "US Open", "Roland Garros", "Australian Open"]
+      }
+    },
+    {
+      "id": "spo-07",
+      "category": "sports",
+      "correct": 2,
+      "tr": { "q": "Maraton koşusu kaç kilometredir?", "a": ["40", "41,195", "42,195", "45"] },
+      "en": { "q": "How many kilometres is a marathon?", "a": ["40", "41.195", "42.195", "45"] }
+    },
+    {
+      "id": "spo-08",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Naim Süleymanoğlu hangi spor dalında olimpiyat şampiyonu oldu?",
+        "a": ["Güreş", "Halter", "Boks", "Judo"]
+      },
+      "en": {
+        "q": "In which sport was Naim Süleymanoğlu an Olympic champion?",
+        "a": ["Wrestling", "Weightlifting", "Boxing", "Judo"]
+      }
+    },
+    {
+      "id": "spo-09",
+      "category": "sports",
+      "correct": 1,
+      "tr": { "q": "Voleybolda bir takım sahada kaç oyuncuyla oynar?", "a": ["5", "6", "7", "8"] },
+      "en": {
+        "q": "How many players does a volleyball team have on the court?",
+        "a": ["5", "6", "7", "8"]
+      }
+    },
+    {
+      "id": "spo-10",
+      "category": "sports",
+      "correct": 2,
+      "tr": { "q": "Yaz Olimpiyat Oyunları kaç yılda bir düzenlenir?", "a": ["2", "3", "4", "5"] },
+      "en": {
+        "q": "How often are the Summer Olympic Games held?",
+        "a": ["Every 2 years", "Every 3 years", "Every 4 years", "Every 5 years"]
+      }
+    },
+    {
+      "id": "spo-11",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Usain Bolt'un 100 metre dünya rekoru kaç saniyedir?",
+        "a": ["9,48", "9,58", "9,69", "9,72"]
+      },
+      "en": {
+        "q": "What is Usain Bolt's 100 metres world record in seconds?",
+        "a": ["9.48", "9.58", "9.69", "9.72"]
+      }
+    },
+    {
+      "id": "spo-12",
+      "category": "sports",
+      "correct": 0,
+      "tr": {
+        "q": "\"Smaç\" (slam dunk) hangi sporla ilişkilidir?",
+        "a": ["Basketbol", "Voleybol", "Tenis", "Hentbol"]
+      },
+      "en": {
+        "q": "The slam dunk belongs to which sport?",
+        "a": ["Basketball", "Volleyball", "Tennis", "Handball"]
+      }
+    },
+    {
+      "id": "spo-13",
+      "category": "sports",
+      "correct": 2,
+      "tr": { "q": "Standart bir golf turu kaç delikten oluşur?", "a": ["9", "12", "18", "24"] },
+      "en": { "q": "How many holes are in a standard round of golf?", "a": ["9", "12", "18", "24"] }
+    },
+    {
+      "id": "spo-14",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Satrançta diğer taşların üzerinden atlayabilen taş hangisidir?",
+        "a": ["Fil", "At", "Kale", "Vezir"]
+      },
+      "en": {
+        "q": "In chess, which piece can jump over other pieces?",
+        "a": ["Bishop", "Knight", "Rook", "Queen"]
+      }
+    },
+    {
+      "id": "spo-15",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "2016 Yaz Olimpiyatları hangi şehirde yapıldı?",
+        "a": ["Londra", "Rio de Janeiro", "Tokyo", "Pekin"]
+      },
+      "en": {
+        "q": "Which city hosted the 2016 Summer Olympics?",
+        "a": ["London", "Rio de Janeiro", "Tokyo", "Beijing"]
+      }
+    },
+    {
+      "id": "spo-16",
+      "category": "sports",
+      "correct": 2,
+      "tr": {
+        "q": "Formula 1 Türkiye Grand Prix'si hangi şehirde koşuldu?",
+        "a": ["İzmir", "Antalya", "İstanbul", "Ankara"]
+      },
+      "en": {
+        "q": "In which city was the Formula 1 Turkish Grand Prix held?",
+        "a": ["Izmir", "Antalya", "Istanbul", "Ankara"]
+      }
+    },
+    {
+      "id": "spo-17",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Normal süresinde bir futbol maçı kaç dakikadır?",
+        "a": ["80", "90", "100", "120"]
+      },
+      "en": {
+        "q": "How many minutes is a football match in regular time?",
+        "a": ["80", "90", "100", "120"]
+      }
+    },
+    {
+      "id": "spo-18",
+      "category": "sports",
+      "correct": 2,
+      "tr": { "q": "Judo hangi ülkede doğdu?", "a": ["Çin", "Kore", "Japonya", "Tayland"] },
+      "en": {
+        "q": "In which country did judo originate?",
+        "a": ["China", "Korea", "Japan", "Thailand"]
+      }
+    },
+    {
+      "id": "spo-19",
+      "category": "sports",
+      "correct": 1,
+      "tr": {
+        "q": "Ryder Cup hangi sporun turnuvasıdır?",
+        "a": ["Tenis", "Golf", "Kriket", "Polo"]
+      },
+      "en": {
+        "q": "The Ryder Cup is contested in which sport?",
+        "a": ["Tennis", "Golf", "Cricket", "Polo"]
+      }
+    },
+    {
+      "id": "spo-20",
+      "category": "sports",
+      "correct": 2,
+      "tr": {
+        "q": "Rugby union'da bir takım sahada kaç oyuncuyla oynar?",
+        "a": ["11", "13", "15", "18"]
+      },
+      "en": {
+        "q": "How many players does a rugby union team have on the field?",
+        "a": ["11", "13", "15", "18"]
+      }
+    },
 
-    { "id": "cul-01", "category": "culture", "correct": 2, "tr": { "q": "Mona Lisa tablosunu kim yaptı?", "a": ["Michelangelo", "Rafael", "Leonardo da Vinci", "Donatello"] }, "en": { "q": "Who painted the Mona Lisa?", "a": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"] } },
-    { "id": "cul-02", "category": "culture", "correct": 1, "tr": { "q": "\"Kürk Mantolu Madonna\" romanının yazarı kimdir?", "a": ["Orhan Pamuk", "Sabahattin Ali", "Yaşar Kemal", "Ahmet Hamdi Tanpınar"] }, "en": { "q": "Who wrote the novel \"Madonna in a Fur Coat\"?", "a": ["Orhan Pamuk", "Sabahattin Ali", "Yaşar Kemal", "Ahmet Hamdi Tanpınar"] } },
-    { "id": "cul-03", "category": "culture", "correct": 2, "tr": { "q": "Orhan Pamuk Nobel Edebiyat Ödülü'nü hangi yıl aldı?", "a": ["2001", "2004", "2006", "2009"] }, "en": { "q": "In which year did Orhan Pamuk receive the Nobel Prize in Literature?", "a": ["2001", "2004", "2006", "2009"] } },
-    { "id": "cul-04", "category": "culture", "correct": 2, "tr": { "q": "\"Ay Işığı Sonatı\"nın bestecisi kimdir?", "a": ["Mozart", "Bach", "Beethoven", "Chopin"] }, "en": { "q": "Who composed the \"Moonlight Sonata\"?", "a": ["Mozart", "Bach", "Beethoven", "Chopin"] } },
-    { "id": "cul-05", "category": "culture", "correct": 0, "tr": { "q": "\"Romeo ve Juliet\"i kim yazdı?", "a": ["William Shakespeare", "Charles Dickens", "Molière", "Goethe"] }, "en": { "q": "Who wrote \"Romeo and Juliet\"?", "a": ["William Shakespeare", "Charles Dickens", "Molière", "Goethe"] } },
-    { "id": "cul-06", "category": "culture", "correct": 1, "tr": { "q": "İstiklal Marşı'nın şairi kimdir?", "a": ["Namık Kemal", "Mehmet Akif Ersoy", "Ziya Gökalp", "Tevfik Fikret"] }, "en": { "q": "Who wrote the lyrics of the Turkish national anthem?", "a": ["Namık Kemal", "Mehmet Akif Ersoy", "Ziya Gökalp", "Tevfik Fikret"] } },
-    { "id": "cul-07", "category": "culture", "correct": 1, "tr": { "q": "\"İnce Memed\" romanının yazarı kimdir?", "a": ["Orhan Kemal", "Yaşar Kemal", "Kemal Tahir", "Aziz Nesin"] }, "en": { "q": "Who wrote the novel \"Memed, My Hawk\"?", "a": ["Orhan Kemal", "Yaşar Kemal", "Kemal Tahir", "Aziz Nesin"] } },
-    { "id": "cul-08", "category": "culture", "correct": 2, "tr": { "q": "Standart bir klasik gitarda kaç tel bulunur?", "a": ["4", "5", "6", "7"] }, "en": { "q": "How many strings does a standard classical guitar have?", "a": ["4", "5", "6", "7"] } },
-    { "id": "cul-09", "category": "culture", "correct": 1, "tr": { "q": "Mimar Sinan'ın \"ustalık eserim\" dediği cami hangisidir?", "a": ["Süleymaniye", "Selimiye", "Şehzade", "Sultanahmet"] }, "en": { "q": "Which mosque did Mimar Sinan call his masterpiece?", "a": ["Süleymaniye", "Selimiye", "Şehzade", "Sultan Ahmed"] } },
-    { "id": "cul-10", "category": "culture", "correct": 3, "tr": { "q": "\"Don Kişot\"un yazarı kimdir?", "a": ["Dante", "Goethe", "Victor Hugo", "Cervantes"] }, "en": { "q": "Who wrote \"Don Quixote\"?", "a": ["Dante", "Goethe", "Victor Hugo", "Cervantes"] } },
-    { "id": "cul-11", "category": "culture", "correct": 1, "tr": { "q": "\"Yıldızlı Gece\" tablosu kime aittir?", "a": ["Claude Monet", "Vincent van Gogh", "Pablo Picasso", "Salvador Dalí"] }, "en": { "q": "Who painted \"The Starry Night\"?", "a": ["Claude Monet", "Vincent van Gogh", "Pablo Picasso", "Salvador Dalí"] } },
-    { "id": "cul-12", "category": "culture", "correct": 0, "tr": { "q": "Kâğıt katlama sanatı origami hangi ülkeyle özdeşleşmiştir?", "a": ["Japonya", "Çin", "Hindistan", "İtalya"] }, "en": { "q": "The paper-folding art of origami is most associated with which country?", "a": ["Japan", "China", "India", "Italy"] } },
-    { "id": "cul-13", "category": "culture", "correct": 3, "tr": { "q": "Geleneksel resimde hangisi ana renk değildir?", "a": ["Kırmızı", "Sarı", "Mavi", "Yeşil"] }, "en": { "q": "In traditional painting, which of these is not a primary colour?", "a": ["Red", "Yellow", "Blue", "Green"] } },
-    { "id": "cul-14", "category": "culture", "correct": 1, "tr": { "q": "\"Yaprak Dökümü\" romanının yazarı kimdir?", "a": ["Halide Edib Adıvar", "Reşat Nuri Güntekin", "Refik Halit Karay", "Peyami Safa"] }, "en": { "q": "Who wrote the novel \"Yaprak Dökümü\" (Falling Leaves)?", "a": ["Halide Edib Adıvar", "Reşat Nuri Güntekin", "Refik Halit Karay", "Peyami Safa"] } },
-    { "id": "cul-15", "category": "culture", "correct": 1, "tr": { "q": "\"Kaplumbağa Terbiyecisi\" tablosunun ressamı kimdir?", "a": ["Şeker Ahmet Paşa", "Osman Hamdi Bey", "İbrahim Çallı", "Hoca Ali Rıza"] }, "en": { "q": "Who painted \"The Tortoise Trainer\"?", "a": ["Şeker Ahmet Pasha", "Osman Hamdi Bey", "İbrahim Çallı", "Hoca Ali Rıza"] } },
-    { "id": "cul-16", "category": "culture", "correct": 2, "tr": { "q": "Standart bir piyanoda kaç tuş bulunur?", "a": ["76", "82", "88", "96"] }, "en": { "q": "How many keys does a standard piano have?", "a": ["76", "82", "88", "96"] } },
-    { "id": "cul-17", "category": "culture", "correct": 1, "tr": { "q": "\"1984\" romanının yazarı kimdir?", "a": ["Aldous Huxley", "George Orwell", "Ray Bradbury", "H. G. Wells"] }, "en": { "q": "Who wrote the novel \"1984\"?", "a": ["Aldous Huxley", "George Orwell", "Ray Bradbury", "H. G. Wells"] } },
-    { "id": "cul-18", "category": "culture", "correct": 2, "tr": { "q": "\"Carmen\" operasının bestecisi kimdir?", "a": ["Giuseppe Verdi", "Giacomo Puccini", "Georges Bizet", "Richard Wagner"] }, "en": { "q": "Who composed the opera \"Carmen\"?", "a": ["Giuseppe Verdi", "Giacomo Puccini", "Georges Bizet", "Richard Wagner"] } },
-    { "id": "cul-19", "category": "culture", "correct": 0, "tr": { "q": "Mona Lisa hangi müzede sergilenir?", "a": ["Louvre", "British Museum", "Prado", "Uffizi"] }, "en": { "q": "Which museum displays the Mona Lisa?", "a": ["The Louvre", "The British Museum", "The Prado", "The Uffizi"] } },
-    { "id": "cul-20", "category": "culture", "correct": 2, "tr": { "q": "Geleneksel gölge oyununda Karagöz'ün karşısındaki karakter kimdir?", "a": ["Pişekar", "Kavuklu", "Hacivat", "Nasreddin Hoca"] }, "en": { "q": "In traditional Turkish shadow theatre, who is Karagöz's counterpart?", "a": ["Pişekar", "Kavuklu", "Hacivat", "Nasreddin Hodja"] } },
+    {
+      "id": "cul-01",
+      "category": "culture",
+      "correct": 2,
+      "tr": {
+        "q": "Mona Lisa tablosunu kim yaptı?",
+        "a": ["Michelangelo", "Rafael", "Leonardo da Vinci", "Donatello"]
+      },
+      "en": {
+        "q": "Who painted the Mona Lisa?",
+        "a": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"]
+      }
+    },
+    {
+      "id": "cul-02",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"Kürk Mantolu Madonna\" romanının yazarı kimdir?",
+        "a": ["Orhan Pamuk", "Sabahattin Ali", "Yaşar Kemal", "Ahmet Hamdi Tanpınar"]
+      },
+      "en": {
+        "q": "Who wrote the novel \"Madonna in a Fur Coat\"?",
+        "a": ["Orhan Pamuk", "Sabahattin Ali", "Yaşar Kemal", "Ahmet Hamdi Tanpınar"]
+      }
+    },
+    {
+      "id": "cul-03",
+      "category": "culture",
+      "correct": 2,
+      "tr": {
+        "q": "Orhan Pamuk Nobel Edebiyat Ödülü'nü hangi yıl aldı?",
+        "a": ["2001", "2004", "2006", "2009"]
+      },
+      "en": {
+        "q": "In which year did Orhan Pamuk receive the Nobel Prize in Literature?",
+        "a": ["2001", "2004", "2006", "2009"]
+      }
+    },
+    {
+      "id": "cul-04",
+      "category": "culture",
+      "correct": 2,
+      "tr": {
+        "q": "\"Ay Işığı Sonatı\"nın bestecisi kimdir?",
+        "a": ["Mozart", "Bach", "Beethoven", "Chopin"]
+      },
+      "en": {
+        "q": "Who composed the \"Moonlight Sonata\"?",
+        "a": ["Mozart", "Bach", "Beethoven", "Chopin"]
+      }
+    },
+    {
+      "id": "cul-05",
+      "category": "culture",
+      "correct": 0,
+      "tr": {
+        "q": "\"Romeo ve Juliet\"i kim yazdı?",
+        "a": ["William Shakespeare", "Charles Dickens", "Molière", "Goethe"]
+      },
+      "en": {
+        "q": "Who wrote \"Romeo and Juliet\"?",
+        "a": ["William Shakespeare", "Charles Dickens", "Molière", "Goethe"]
+      }
+    },
+    {
+      "id": "cul-06",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "İstiklal Marşı'nın şairi kimdir?",
+        "a": ["Namık Kemal", "Mehmet Akif Ersoy", "Ziya Gökalp", "Tevfik Fikret"]
+      },
+      "en": {
+        "q": "Who wrote the lyrics of the Turkish national anthem?",
+        "a": ["Namık Kemal", "Mehmet Akif Ersoy", "Ziya Gökalp", "Tevfik Fikret"]
+      }
+    },
+    {
+      "id": "cul-07",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"İnce Memed\" romanının yazarı kimdir?",
+        "a": ["Orhan Kemal", "Yaşar Kemal", "Kemal Tahir", "Aziz Nesin"]
+      },
+      "en": {
+        "q": "Who wrote the novel \"Memed, My Hawk\"?",
+        "a": ["Orhan Kemal", "Yaşar Kemal", "Kemal Tahir", "Aziz Nesin"]
+      }
+    },
+    {
+      "id": "cul-08",
+      "category": "culture",
+      "correct": 2,
+      "tr": { "q": "Standart bir klasik gitarda kaç tel bulunur?", "a": ["4", "5", "6", "7"] },
+      "en": {
+        "q": "How many strings does a standard classical guitar have?",
+        "a": ["4", "5", "6", "7"]
+      }
+    },
+    {
+      "id": "cul-09",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "Mimar Sinan'ın \"ustalık eserim\" dediği cami hangisidir?",
+        "a": ["Süleymaniye", "Selimiye", "Şehzade", "Sultanahmet"]
+      },
+      "en": {
+        "q": "Which mosque did Mimar Sinan call his masterpiece?",
+        "a": ["Süleymaniye", "Selimiye", "Şehzade", "Sultan Ahmed"]
+      }
+    },
+    {
+      "id": "cul-10",
+      "category": "culture",
+      "correct": 3,
+      "tr": {
+        "q": "\"Don Kişot\"un yazarı kimdir?",
+        "a": ["Dante", "Goethe", "Victor Hugo", "Cervantes"]
+      },
+      "en": {
+        "q": "Who wrote \"Don Quixote\"?",
+        "a": ["Dante", "Goethe", "Victor Hugo", "Cervantes"]
+      }
+    },
+    {
+      "id": "cul-11",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"Yıldızlı Gece\" tablosu kime aittir?",
+        "a": ["Claude Monet", "Vincent van Gogh", "Pablo Picasso", "Salvador Dalí"]
+      },
+      "en": {
+        "q": "Who painted \"The Starry Night\"?",
+        "a": ["Claude Monet", "Vincent van Gogh", "Pablo Picasso", "Salvador Dalí"]
+      }
+    },
+    {
+      "id": "cul-12",
+      "category": "culture",
+      "correct": 0,
+      "tr": {
+        "q": "Kâğıt katlama sanatı origami hangi ülkeyle özdeşleşmiştir?",
+        "a": ["Japonya", "Çin", "Hindistan", "İtalya"]
+      },
+      "en": {
+        "q": "The paper-folding art of origami is most associated with which country?",
+        "a": ["Japan", "China", "India", "Italy"]
+      }
+    },
+    {
+      "id": "cul-13",
+      "category": "culture",
+      "correct": 3,
+      "tr": {
+        "q": "Geleneksel resimde hangisi ana renk değildir?",
+        "a": ["Kırmızı", "Sarı", "Mavi", "Yeşil"]
+      },
+      "en": {
+        "q": "In traditional painting, which of these is not a primary colour?",
+        "a": ["Red", "Yellow", "Blue", "Green"]
+      }
+    },
+    {
+      "id": "cul-14",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"Yaprak Dökümü\" romanının yazarı kimdir?",
+        "a": ["Halide Edib Adıvar", "Reşat Nuri Güntekin", "Refik Halit Karay", "Peyami Safa"]
+      },
+      "en": {
+        "q": "Who wrote the novel \"Yaprak Dökümü\" (Falling Leaves)?",
+        "a": ["Halide Edib Adıvar", "Reşat Nuri Güntekin", "Refik Halit Karay", "Peyami Safa"]
+      }
+    },
+    {
+      "id": "cul-15",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"Kaplumbağa Terbiyecisi\" tablosunun ressamı kimdir?",
+        "a": ["Şeker Ahmet Paşa", "Osman Hamdi Bey", "İbrahim Çallı", "Hoca Ali Rıza"]
+      },
+      "en": {
+        "q": "Who painted \"The Tortoise Trainer\"?",
+        "a": ["Şeker Ahmet Pasha", "Osman Hamdi Bey", "İbrahim Çallı", "Hoca Ali Rıza"]
+      }
+    },
+    {
+      "id": "cul-16",
+      "category": "culture",
+      "correct": 2,
+      "tr": { "q": "Standart bir piyanoda kaç tuş bulunur?", "a": ["76", "82", "88", "96"] },
+      "en": { "q": "How many keys does a standard piano have?", "a": ["76", "82", "88", "96"] }
+    },
+    {
+      "id": "cul-17",
+      "category": "culture",
+      "correct": 1,
+      "tr": {
+        "q": "\"1984\" romanının yazarı kimdir?",
+        "a": ["Aldous Huxley", "George Orwell", "Ray Bradbury", "H. G. Wells"]
+      },
+      "en": {
+        "q": "Who wrote the novel \"1984\"?",
+        "a": ["Aldous Huxley", "George Orwell", "Ray Bradbury", "H. G. Wells"]
+      }
+    },
+    {
+      "id": "cul-18",
+      "category": "culture",
+      "correct": 2,
+      "tr": {
+        "q": "\"Carmen\" operasının bestecisi kimdir?",
+        "a": ["Giuseppe Verdi", "Giacomo Puccini", "Georges Bizet", "Richard Wagner"]
+      },
+      "en": {
+        "q": "Who composed the opera \"Carmen\"?",
+        "a": ["Giuseppe Verdi", "Giacomo Puccini", "Georges Bizet", "Richard Wagner"]
+      }
+    },
+    {
+      "id": "cul-19",
+      "category": "culture",
+      "correct": 0,
+      "tr": {
+        "q": "Mona Lisa hangi müzede sergilenir?",
+        "a": ["Louvre", "British Museum", "Prado", "Uffizi"]
+      },
+      "en": {
+        "q": "Which museum displays the Mona Lisa?",
+        "a": ["The Louvre", "The British Museum", "The Prado", "The Uffizi"]
+      }
+    },
+    {
+      "id": "cul-20",
+      "category": "culture",
+      "correct": 2,
+      "tr": {
+        "q": "Geleneksel gölge oyununda Karagöz'ün karşısındaki karakter kimdir?",
+        "a": ["Pişekar", "Kavuklu", "Hacivat", "Nasreddin Hoca"]
+      },
+      "en": {
+        "q": "In traditional Turkish shadow theatre, who is Karagöz's counterpart?",
+        "a": ["Pişekar", "Kavuklu", "Hacivat", "Nasreddin Hodja"]
+      }
+    },
 
-    { "id": "tec-01", "category": "technology", "correct": 0, "tr": { "q": "Bilgisayarlarda \"CPU\" kısaltması neyi ifade eder?", "a": ["Central Processing Unit", "Computer Power Unit", "Central Program Utility", "Core Processing Usage"] }, "en": { "q": "What does \"CPU\" stand for?", "a": ["Central Processing Unit", "Computer Power Unit", "Central Program Utility", "Core Processing Usage"] } },
-    { "id": "tec-02", "category": "technology", "correct": 1, "tr": { "q": "Apple'ı Steve Wozniak ile birlikte kim kurdu?", "a": ["Bill Gates", "Steve Jobs", "Larry Page", "Paul Allen"] }, "en": { "q": "Who co-founded Apple with Steve Wozniak?", "a": ["Bill Gates", "Steve Jobs", "Larry Page", "Paul Allen"] } },
-    { "id": "tec-03", "category": "technology", "correct": 0, "tr": { "q": "İkili (binary) sayı sistemi hangi tabandadır?", "a": ["2", "8", "10", "16"] }, "en": { "q": "What base does the binary number system use?", "a": ["2", "8", "10", "16"] } },
-    { "id": "tec-04", "category": "technology", "correct": 2, "tr": { "q": "\"WWW\" kısaltmasının açılımı nedir?", "a": ["World Web Wide", "Wide World Web", "World Wide Web", "Web Wide World"] }, "en": { "q": "What does \"WWW\" stand for?", "a": ["World Web Wide", "Wide World Web", "World Wide Web", "Web Wide World"] } },
-    { "id": "tec-05", "category": "technology", "correct": 1, "tr": { "q": "1 bayt kaç bitten oluşur?", "a": ["4", "8", "16", "32"] }, "en": { "q": "How many bits are in one byte?", "a": ["4", "8", "16", "32"] } },
-    { "id": "tec-06", "category": "technology", "correct": 1, "tr": { "q": "World Wide Web'i kim icat etti?", "a": ["Vint Cerf", "Tim Berners-Lee", "Alan Turing", "Linus Torvalds"] }, "en": { "q": "Who invented the World Wide Web?", "a": ["Vint Cerf", "Tim Berners-Lee", "Alan Turing", "Linus Torvalds"] } },
-    { "id": "tec-07", "category": "technology", "correct": 3, "tr": { "q": "Linux çekirdeğini kim yazmaya başladı?", "a": ["Richard Stallman", "Ken Thompson", "Dennis Ritchie", "Linus Torvalds"] }, "en": { "q": "Who started writing the Linux kernel?", "a": ["Richard Stallman", "Ken Thompson", "Dennis Ritchie", "Linus Torvalds"] } },
-    { "id": "tec-08", "category": "technology", "correct": 2, "tr": { "q": "Android işletim sistemini hangi şirket geliştirir?", "a": ["Apple", "Microsoft", "Google", "Samsung"] }, "en": { "q": "Which company develops the Android operating system?", "a": ["Apple", "Microsoft", "Google", "Samsung"] } },
-    { "id": "tec-09", "category": "technology", "correct": 1, "tr": { "q": "Hangi programlama dili web tarayıcılarında doğrudan çalışır?", "a": ["Python", "JavaScript", "C++", "Ruby"] }, "en": { "q": "Which programming language runs natively in web browsers?", "a": ["Python", "JavaScript", "C++", "Ruby"] } },
-    { "id": "tec-10", "category": "technology", "correct": 0, "tr": { "q": "\"RAM\" kısaltmasının açılımı nedir?", "a": ["Random Access Memory", "Read Access Memory", "Rapid Action Module", "Run Access Mode"] }, "en": { "q": "What does \"RAM\" stand for?", "a": ["Random Access Memory", "Read Access Memory", "Rapid Action Module", "Run Access Mode"] } },
-    { "id": "tec-11", "category": "technology", "correct": 2, "tr": { "q": "PlayStation oyun konsolunu hangi şirket üretir?", "a": ["Nintendo", "Microsoft", "Sony", "Sega"] }, "en": { "q": "Which company makes the PlayStation console?", "a": ["Nintendo", "Microsoft", "Sony", "Sega"] } },
-    { "id": "tec-12", "category": "technology", "correct": 3, "tr": { "q": "İşlemci saat hızı hangi birimle ölçülür?", "a": ["Watt", "Bayt", "Volt", "Hertz"] }, "en": { "q": "Processor clock speed is measured in which unit?", "a": ["Watt", "Byte", "Volt", "Hertz"] } },
-    { "id": "tec-13", "category": "technology", "correct": 1, "tr": { "q": "Windows'ta kopyalama kısayolu hangisidir?", "a": ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+Z"] }, "en": { "q": "Which shortcut copies a selection on Windows?", "a": ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+Z"] } },
-    { "id": "tec-14", "category": "technology", "correct": 1, "tr": { "q": "Wi-Fi veriyi hangi tür dalgalarla taşır?", "a": ["Ses dalgaları", "Radyo dalgaları", "Gama ışınları", "Morötesi ışınlar"] }, "en": { "q": "Wi-Fi carries data using which kind of waves?", "a": ["Sound waves", "Radio waves", "Gamma rays", "Ultraviolet light"] } },
-    { "id": "tec-15", "category": "technology", "correct": 0, "tr": { "q": "Adını taşıyan makine zekâsı testini kim önerdi?", "a": ["Alan Turing", "John von Neumann", "Charles Babbage", "Claude Shannon"] }, "en": { "q": "Who proposed the machine intelligence test that bears his name?", "a": ["Alan Turing", "John von Neumann", "Charles Babbage", "Claude Shannon"] } },
-    { "id": "tec-16", "category": "technology", "correct": 1, "tr": { "q": "Hangisi bir görsel dosya uzantısıdır?", "a": [".mp3", ".png", ".docx", ".exe"] }, "en": { "q": "Which of these is an image file extension?", "a": [".mp3", ".png", ".docx", ".exe"] } },
-    { "id": "tec-17", "category": "technology", "correct": 1, "tr": { "q": "İlk iPhone hangi yıl tanıtıldı?", "a": ["2005", "2007", "2009", "2010"] }, "en": { "q": "In which year was the first iPhone unveiled?", "a": ["2005", "2007", "2009", "2010"] } },
-    { "id": "tec-18", "category": "technology", "correct": 0, "tr": { "q": "Hangisi Microsoft'un arama motorudur?", "a": ["Bing", "DuckDuckGo", "Yandex", "Baidu"] }, "en": { "q": "Which of these is Microsoft's search engine?", "a": ["Bing", "DuckDuckGo", "Yandex", "Baidu"] } },
-    { "id": "tec-19", "category": "technology", "correct": 2, "tr": { "q": "\"USB\" kısaltmasının açılımı nedir?", "a": ["Unified System Bus", "Universal System Board", "Universal Serial Bus", "User Serial Bridge"] }, "en": { "q": "What does \"USB\" stand for?", "a": ["Unified System Bus", "Universal System Board", "Universal Serial Bus", "User Serial Bridge"] } },
-    { "id": "tec-20", "category": "technology", "correct": 1, "tr": { "q": "Bir IPv4 adresi kaç bitten oluşur?", "a": ["16", "32", "64", "128"] }, "en": { "q": "How many bits make up an IPv4 address?", "a": ["16", "32", "64", "128"] } }
+    {
+      "id": "tec-01",
+      "category": "technology",
+      "correct": 0,
+      "tr": {
+        "q": "Bilgisayarlarda \"CPU\" kısaltması neyi ifade eder?",
+        "a": [
+          "Central Processing Unit",
+          "Computer Power Unit",
+          "Central Program Utility",
+          "Core Processing Usage"
+        ]
+      },
+      "en": {
+        "q": "What does \"CPU\" stand for?",
+        "a": [
+          "Central Processing Unit",
+          "Computer Power Unit",
+          "Central Program Utility",
+          "Core Processing Usage"
+        ]
+      }
+    },
+    {
+      "id": "tec-02",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "Apple'ı Steve Wozniak ile birlikte kim kurdu?",
+        "a": ["Bill Gates", "Steve Jobs", "Larry Page", "Paul Allen"]
+      },
+      "en": {
+        "q": "Who co-founded Apple with Steve Wozniak?",
+        "a": ["Bill Gates", "Steve Jobs", "Larry Page", "Paul Allen"]
+      }
+    },
+    {
+      "id": "tec-03",
+      "category": "technology",
+      "correct": 0,
+      "tr": { "q": "İkili (binary) sayı sistemi hangi tabandadır?", "a": ["2", "8", "10", "16"] },
+      "en": { "q": "What base does the binary number system use?", "a": ["2", "8", "10", "16"] }
+    },
+    {
+      "id": "tec-04",
+      "category": "technology",
+      "correct": 2,
+      "tr": {
+        "q": "\"WWW\" kısaltmasının açılımı nedir?",
+        "a": ["World Web Wide", "Wide World Web", "World Wide Web", "Web Wide World"]
+      },
+      "en": {
+        "q": "What does \"WWW\" stand for?",
+        "a": ["World Web Wide", "Wide World Web", "World Wide Web", "Web Wide World"]
+      }
+    },
+    {
+      "id": "tec-05",
+      "category": "technology",
+      "correct": 1,
+      "tr": { "q": "1 bayt kaç bitten oluşur?", "a": ["4", "8", "16", "32"] },
+      "en": { "q": "How many bits are in one byte?", "a": ["4", "8", "16", "32"] }
+    },
+    {
+      "id": "tec-06",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "World Wide Web'i kim icat etti?",
+        "a": ["Vint Cerf", "Tim Berners-Lee", "Alan Turing", "Linus Torvalds"]
+      },
+      "en": {
+        "q": "Who invented the World Wide Web?",
+        "a": ["Vint Cerf", "Tim Berners-Lee", "Alan Turing", "Linus Torvalds"]
+      }
+    },
+    {
+      "id": "tec-07",
+      "category": "technology",
+      "correct": 3,
+      "tr": {
+        "q": "Linux çekirdeğini kim yazmaya başladı?",
+        "a": ["Richard Stallman", "Ken Thompson", "Dennis Ritchie", "Linus Torvalds"]
+      },
+      "en": {
+        "q": "Who started writing the Linux kernel?",
+        "a": ["Richard Stallman", "Ken Thompson", "Dennis Ritchie", "Linus Torvalds"]
+      }
+    },
+    {
+      "id": "tec-08",
+      "category": "technology",
+      "correct": 2,
+      "tr": {
+        "q": "Android işletim sistemini hangi şirket geliştirir?",
+        "a": ["Apple", "Microsoft", "Google", "Samsung"]
+      },
+      "en": {
+        "q": "Which company develops the Android operating system?",
+        "a": ["Apple", "Microsoft", "Google", "Samsung"]
+      }
+    },
+    {
+      "id": "tec-09",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "Hangi programlama dili web tarayıcılarında doğrudan çalışır?",
+        "a": ["Python", "JavaScript", "C++", "Ruby"]
+      },
+      "en": {
+        "q": "Which programming language runs natively in web browsers?",
+        "a": ["Python", "JavaScript", "C++", "Ruby"]
+      }
+    },
+    {
+      "id": "tec-10",
+      "category": "technology",
+      "correct": 0,
+      "tr": {
+        "q": "\"RAM\" kısaltmasının açılımı nedir?",
+        "a": [
+          "Random Access Memory",
+          "Read Access Memory",
+          "Rapid Action Module",
+          "Run Access Mode"
+        ]
+      },
+      "en": {
+        "q": "What does \"RAM\" stand for?",
+        "a": [
+          "Random Access Memory",
+          "Read Access Memory",
+          "Rapid Action Module",
+          "Run Access Mode"
+        ]
+      }
+    },
+    {
+      "id": "tec-11",
+      "category": "technology",
+      "correct": 2,
+      "tr": {
+        "q": "PlayStation oyun konsolunu hangi şirket üretir?",
+        "a": ["Nintendo", "Microsoft", "Sony", "Sega"]
+      },
+      "en": {
+        "q": "Which company makes the PlayStation console?",
+        "a": ["Nintendo", "Microsoft", "Sony", "Sega"]
+      }
+    },
+    {
+      "id": "tec-12",
+      "category": "technology",
+      "correct": 3,
+      "tr": {
+        "q": "İşlemci saat hızı hangi birimle ölçülür?",
+        "a": ["Watt", "Bayt", "Volt", "Hertz"]
+      },
+      "en": {
+        "q": "Processor clock speed is measured in which unit?",
+        "a": ["Watt", "Byte", "Volt", "Hertz"]
+      }
+    },
+    {
+      "id": "tec-13",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "Windows'ta kopyalama kısayolu hangisidir?",
+        "a": ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+Z"]
+      },
+      "en": {
+        "q": "Which shortcut copies a selection on Windows?",
+        "a": ["Ctrl+V", "Ctrl+C", "Ctrl+X", "Ctrl+Z"]
+      }
+    },
+    {
+      "id": "tec-14",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "Wi-Fi veriyi hangi tür dalgalarla taşır?",
+        "a": ["Ses dalgaları", "Radyo dalgaları", "Gama ışınları", "Morötesi ışınlar"]
+      },
+      "en": {
+        "q": "Wi-Fi carries data using which kind of waves?",
+        "a": ["Sound waves", "Radio waves", "Gamma rays", "Ultraviolet light"]
+      }
+    },
+    {
+      "id": "tec-15",
+      "category": "technology",
+      "correct": 0,
+      "tr": {
+        "q": "Adını taşıyan makine zekâsı testini kim önerdi?",
+        "a": ["Alan Turing", "John von Neumann", "Charles Babbage", "Claude Shannon"]
+      },
+      "en": {
+        "q": "Who proposed the machine intelligence test that bears his name?",
+        "a": ["Alan Turing", "John von Neumann", "Charles Babbage", "Claude Shannon"]
+      }
+    },
+    {
+      "id": "tec-16",
+      "category": "technology",
+      "correct": 1,
+      "tr": {
+        "q": "Hangisi bir görsel dosya uzantısıdır?",
+        "a": [".mp3", ".png", ".docx", ".exe"]
+      },
+      "en": {
+        "q": "Which of these is an image file extension?",
+        "a": [".mp3", ".png", ".docx", ".exe"]
+      }
+    },
+    {
+      "id": "tec-17",
+      "category": "technology",
+      "correct": 1,
+      "tr": { "q": "İlk iPhone hangi yıl tanıtıldı?", "a": ["2005", "2007", "2009", "2010"] },
+      "en": {
+        "q": "In which year was the first iPhone unveiled?",
+        "a": ["2005", "2007", "2009", "2010"]
+      }
+    },
+    {
+      "id": "tec-18",
+      "category": "technology",
+      "correct": 0,
+      "tr": {
+        "q": "Hangisi Microsoft'un arama motorudur?",
+        "a": ["Bing", "DuckDuckGo", "Yandex", "Baidu"]
+      },
+      "en": {
+        "q": "Which of these is Microsoft's search engine?",
+        "a": ["Bing", "DuckDuckGo", "Yandex", "Baidu"]
+      }
+    },
+    {
+      "id": "tec-19",
+      "category": "technology",
+      "correct": 2,
+      "tr": {
+        "q": "\"USB\" kısaltmasının açılımı nedir?",
+        "a": [
+          "Unified System Bus",
+          "Universal System Board",
+          "Universal Serial Bus",
+          "User Serial Bridge"
+        ]
+      },
+      "en": {
+        "q": "What does \"USB\" stand for?",
+        "a": [
+          "Unified System Bus",
+          "Universal System Board",
+          "Universal Serial Bus",
+          "User Serial Bridge"
+        ]
+      }
+    },
+    {
+      "id": "tec-20",
+      "category": "technology",
+      "correct": 1,
+      "tr": { "q": "Bir IPv4 adresi kaç bitten oluşur?", "a": ["16", "32", "64", "128"] },
+      "en": { "q": "How many bits make up an IPv4 address?", "a": ["16", "32", "64", "128"] }
+    }
   ]
 }
