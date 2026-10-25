@@ -13,6 +13,7 @@
     "@playnex/design-tokens": "workspace:*",
     "@playnex/game-2048-fusion": "workspace:*",
     "@playnex/game-air-hockey": "workspace:*",
+    "@playnex/game-chess-arena": "workspace:*",
     "@playnex/game-connect-four": "workspace:*",
     "@playnex/game-memory-flip": "workspace:*",
     "@playnex/game-sdk": "workspace:*",

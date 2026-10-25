@@ -193,6 +193,9 @@ importers:
       '@playnex/game-air-hockey':
         specifier: workspace:*
         version: link:../../games/2d/air-hockey
+      '@playnex/game-chess-arena':
+        specifier: workspace:*
+        version: link:../../games/2d/chess-arena
       '@playnex/game-connect-four':
         specifier: workspace:*
         version: link:../../games/2d/connect-four
@@ -285,6 +288,28 @@ importers:
       '@playnex/game-sdk':
         specifier: workspace:*
         version: link:../../../packages/game-sdk
+      phaser:
+        specifier: 4.2.1
+        version: 4.2.1
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../../../packages/config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  games/2d/chess-arena:
+    dependencies:
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../../../packages/game-sdk
+      chess.js:
+        specifier: 1.4.0
+        version: 1.4.0
       phaser:
         specifier: 4.2.1
         version: 4.2.1
@@ -3039,6 +3064,9 @@ packages:
   check-error@2.1.3:
     resolution: {integrity: sha512-PAJdDJusoxnwm1VwW07VWwUN1sl7smmC3OKggvndJFadxxDRyFJBX/ggnu/KE4kQAB7a3Dp8f/YXC1FlUprWmA==}
     engines: {node: '>= 16'}
+
+  chess.js@1.4.0:
+    resolution: {integrity: sha512-BBJgrrtKQOzFLonR0l+k64A98NLemPwNsCskwb+29bRwobUa4iTm51E1kwGPbWXAcfdDa18nad6vpPPKPWarqw==}
 
   class-variance-authority@0.7.1:
     resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
@@ -7030,6 +7058,8 @@ snapshots:
       supports-color: 7.2.0
 
   check-error@2.1.3: {}
+
+  chess.js@1.4.0: {}
 
   class-variance-authority@0.7.1:
     dependencies:

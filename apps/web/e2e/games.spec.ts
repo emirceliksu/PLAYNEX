@@ -9,6 +9,7 @@ const playableGames: { slug: string; mode?: string }[] = [
   { slug: 'tugla-tugla' },
   { slug: 'connect-four', mode: 'Aynı cihazda' },
   { slug: 'air-hockey', mode: 'Tek başına' },
+  { slug: 'chess-arena', mode: 'Aynı cihazda' },
 ];
 
 async function chooseMode(page: Page, mode: string) {

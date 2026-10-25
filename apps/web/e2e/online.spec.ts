@@ -67,3 +67,40 @@ test('connect four is played through an online room', async ({ browser }) => {
   await guest.getByRole('button', { name: 'Odaya dön' }).click();
   await expect(guest.getByTestId('room-code')).toHaveText(code);
 });
+
+async function clickSquare(page: Page, name: string, whiteBottom: boolean) {
+  const box = await page.locator('canvas').boundingBox();
+  if (!box) throw new Error('canvas is not on screen');
+  // Chess scene layout: 720 wide, board at (48, 88) with 78 px squares.
+  const scale = box.width / 720;
+  const file = 'abcdefgh'.indexOf(name[0] ?? 'a');
+  const rank = Number(name[1]) - 1;
+  const col = whiteBottom ? file : 7 - file;
+  const row = whiteBottom ? 7 - rank : rank;
+  await page.mouse.click(
+    box.x + (48 + col * 78 + 39) * scale,
+    box.y + (88 + row * 78 + 39) * scale,
+  );
+}
+
+test('chess moves are relayed and a resignation ends the match', async ({ browser }) => {
+  const host = await openPlayer(browser, '/play/chess-arena');
+  const code = await hostRoom(host, 'Beyaz');
+  const guest = await joinRoom(browser, 'chess-arena', code, 'Siyah');
+  await host.getByTestId('room-start').click();
+  await expect(guest.locator('canvas')).toHaveCount(1, { timeout: 90_000 });
+
+  // Round 0 gives the host white.
+  await host.waitForTimeout(600);
+  await clickSquare(host, 'e2', true);
+  await clickSquare(host, 'e4', true);
+  await guest.waitForTimeout(600);
+  await clickSquare(guest, 'e7', false);
+  await clickSquare(guest, 'e5', false);
+  await guest.waitForTimeout(600);
+
+  await guest.getByRole('button', { name: 'Pes et' }).click();
+  await guest.getByRole('button', { name: /^Emin misin/ }).click();
+  await expect(host.getByTestId('match-result')).toContainText('Kazandın');
+  await expect(guest.getByTestId('match-result')).toContainText('Kaybettin');
+});

@@ -362,7 +362,19 @@
     }
   },
   "gameText": {
-    "connect-four": {}
+    "connect-four": {},
+    "chess-arena": {
+      "cpu": "Bilgisayar",
+      "you": "Sen",
+      "resign": "Pes et",
+      "confirmResign": "Emin misin? Tekrar dokun",
+      "offerDraw": "Beraberlik teklif et",
+      "drawOffered": "{name} beraberlik teklif ediyor",
+      "drawSent": "Beraberlik teklifi gönderildi",
+      "accept": "Kabul et",
+      "decline": "Reddet",
+      "thinking": "Bilgisayar düşünüyor"
+    }
   },
   "errors": {
     "notFound": {

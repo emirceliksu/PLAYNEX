@@ -362,7 +362,19 @@
     }
   },
   "gameText": {
-    "connect-four": {}
+    "connect-four": {},
+    "chess-arena": {
+      "cpu": "Computer",
+      "you": "You",
+      "resign": "Resign",
+      "confirmResign": "Sure? Tap again",
+      "offerDraw": "Offer a draw",
+      "drawOffered": "{name} offers a draw",
+      "drawSent": "Draw offer sent",
+      "accept": "Accept",
+      "decline": "Decline",
+      "thinking": "Computer is thinking"
+    }
   },
   "errors": {
     "notFound": {

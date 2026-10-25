@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-tugla-tugla',
     '@playnex/game-connect-four',
     '@playnex/game-air-hockey',
+    '@playnex/game-chess-arena',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

@@ -1,0 +1,23 @@
+{
+  "name": "@playnex/game-chess-arena",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@playnex/game-sdk": "workspace:*",
+    "chess.js": "1.4.0",
+    "phaser": "4.2.1"
+  },
+  "devDependencies": {
+    "@playnex/config": "workspace:*",
+    "eslint": "9.39.5",
+    "typescript": "5.9.3"
+  }
+}
