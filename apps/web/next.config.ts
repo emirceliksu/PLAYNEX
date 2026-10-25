@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-air-hockey',
     '@playnex/game-chess-arena',
     '@playnex/game-trivia-battle',
+    '@playnex/game-drawing-party',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };
