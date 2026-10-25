@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-memory-flip',
     '@playnex/game-tugla-tugla',
     '@playnex/game-connect-four',
+    '@playnex/game-air-hockey',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

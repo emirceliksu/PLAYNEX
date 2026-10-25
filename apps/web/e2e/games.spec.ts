@@ -8,6 +8,7 @@ const playableGames: { slug: string; mode?: string }[] = [
   { slug: 'memory-flip' },
   { slug: 'tugla-tugla' },
   { slug: 'connect-four', mode: 'Aynı cihazda' },
+  { slug: 'air-hockey', mode: 'Tek başına' },
 ];
 
 async function chooseMode(page: Page, mode: string) {
