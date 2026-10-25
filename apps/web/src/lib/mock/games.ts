@@ -29,6 +29,7 @@ export const games: Game[] = [
       'Her elma +10, kısa süreli bonus +50 puan.',
       'Esc tuşu oyunu duraklatır.',
     ],
+    setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_2048_fusion',
@@ -58,6 +59,7 @@ export const games: Game[] = [
       'Birleşen karoların toplamı puan olarak yazılır.',
       'Hamle kalmayınca oyun biter.',
     ],
+    setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_memory_flip',
@@ -86,6 +88,7 @@ export const games: Game[] = [
       'Yanlış eş kartları geri kapatır ve 25 puan götürür.',
       'Geçen her saniye puandan düşer; hızlı ol.',
     ],
+    setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_tugla_tugla',
@@ -114,6 +117,7 @@ export const games: Game[] = [
       'Dolan satır ve sütunlar aynı anda silinir; çoklu temizlik bonus verir.',
       'Üç parça da yerleşince yenileri gelir; hiçbiri sığmazsa oyun biter.',
     ],
+    setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_connect_four',
@@ -142,6 +146,7 @@ export const games: Game[] = [
       'Bir sütuna tıkla ya da dokun; disk en alta düşer.',
       'Yatay, dikey ya da çapraz dört diski hizalayan kazanır.',
     ],
+    setup: { modes: ['local', 'online'], localPlayers: { min: 2, max: 2 }, options: [] },
   },
   {
     id: 'g_air_hockey',
@@ -165,6 +170,18 @@ export const games: Game[] = [
     scoring: 'wins',
     estimatedMinutes: 5,
     controlsGuide: ['Vurucuyu fare ya da parmakla sürükle.'],
+    setup: {
+      modes: ['solo', 'local', 'online'],
+      localPlayers: { min: 2, max: 2 },
+      options: [
+        {
+          key: 'difficulty',
+          values: ['easy', 'normal', 'hard'],
+          defaultValue: 'normal',
+          modes: ['solo'],
+        },
+      ],
+    },
   },
   {
     id: 'g_chess_arena',
@@ -188,6 +205,24 @@ export const games: Game[] = [
     scoring: 'wins',
     estimatedMinutes: 6,
     controlsGuide: ['Taşı seç, hedef kareye bırak.'],
+    setup: {
+      modes: ['solo', 'local', 'online'],
+      localPlayers: { min: 2, max: 2 },
+      options: [
+        {
+          key: 'minutes',
+          values: ['3', '5'],
+          defaultValue: '5',
+          modes: ['solo', 'local', 'online'],
+        },
+        {
+          key: 'difficulty',
+          values: ['easy', 'normal', 'hard'],
+          defaultValue: 'normal',
+          modes: ['solo'],
+        },
+      ],
+    },
   },
   {
     id: 'g_drawing_party',
@@ -211,6 +246,7 @@ export const games: Game[] = [
     scoring: 'high-score',
     estimatedMinutes: 10,
     controlsGuide: ['Çizmek için sürükle, tahmin için yaz.'],
+    setup: { modes: ['local', 'online'], localPlayers: { min: 3, max: 8 }, options: [] },
   },
   {
     id: 'g_trivia_battle',
@@ -234,6 +270,18 @@ export const games: Game[] = [
     scoring: 'high-score',
     estimatedMinutes: 8,
     controlsGuide: ['Doğru şıkka dokun; hız çarpanı artırır.'],
+    setup: {
+      modes: ['solo', 'local', 'online'],
+      localPlayers: { min: 2, max: 4 },
+      options: [
+        {
+          key: 'category',
+          values: ['mixed', 'geography', 'science', 'history', 'sports', 'culture', 'technology'],
+          defaultValue: 'mixed',
+          modes: ['solo', 'local', 'online'],
+        },
+      ],
+    },
   },
   {
     id: 'g_neon_kart_racing',
@@ -257,6 +305,17 @@ export const games: Game[] = [
     scoring: 'fastest-time',
     estimatedMinutes: 6,
     controlsGuide: ['WASD ya da gamepad ile sür.', 'Boşluk ile drift.'],
+    setup: {
+      modes: ['solo', 'online'],
+      options: [
+        {
+          key: 'difficulty',
+          values: ['easy', 'normal', 'hard'],
+          defaultValue: 'normal',
+          modes: ['solo'],
+        },
+      ],
+    },
   },
 ];
 

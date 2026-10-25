@@ -11,7 +11,7 @@ import { findGame } from '@/lib/mock/games';
 
 interface PlayPageProps {
   params: Promise<{ locale: string; gameSlug: string }>;
-  searchParams: Promise<{ state?: string }>;
+  searchParams: Promise<{ state?: string; room?: string }>;
 }
 
 const previewStates: GamePlayerState[] = [
@@ -52,6 +52,11 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
       ? (query.state as GamePlayerState)
       : undefined;
 
+  const roomCode =
+    typeof query.room === 'string' && /^[A-Za-z0-9]{6}$/.test(query.room)
+      ? query.room.toUpperCase()
+      : undefined;
+
   return (
     <GamePlayer
       game={{
@@ -59,7 +64,10 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
         title: game.title,
         accent: game.accent,
         controlsGuide: game.controlsGuide,
+        scoring: game.scoring,
+        setup: game.setup,
       }}
+      roomCode={roomCode}
       locale={locale}
       preview={preview}
       labels={{

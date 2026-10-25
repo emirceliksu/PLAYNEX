@@ -10,6 +10,7 @@ export default defineGame({
     orientation: 'any',
     controls: ['mouse', 'touch'],
     scoring: 'wins',
+    modes: ['local', 'online'],
   },
   mount(container: HTMLElement, host: GameHost): Promise<GameInstance> {
     return new Promise((resolve, reject) => {

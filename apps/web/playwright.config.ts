@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
+  globalSetup: './e2e/realtime-bridge.ts',
   outputDir: './test-results',
   fullyParallel: true,
   reporter: [['list']],

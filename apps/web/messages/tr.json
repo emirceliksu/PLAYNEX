@@ -249,6 +249,121 @@
       }
     }
   },
+  "lobby": {
+    "title": "Nasıl oynamak istersin?",
+    "back": "Geri",
+    "changeMode": "Modu değiştir",
+    "modes": {
+      "solo": {
+        "title": "Tek başına",
+        "hint": "Bilgisayara ya da saate karşı, kendi hızında."
+      },
+      "local": {
+        "title": "Aynı cihazda",
+        "hint": "Cihazı paylaşın; sırayla ya da yan yana oynayın."
+      },
+      "online": {
+        "title": "Çevrim içi oda",
+        "hint": "Kod paylaş, arkadaşların kendi cihazından katılsın."
+      }
+    },
+    "options": {
+      "minutes": "Süre",
+      "difficulty": "Zorluk",
+      "category": "Kategori"
+    },
+    "optionValues": {
+      "3": "3 dakika",
+      "5": "5 dakika",
+      "easy": "Kolay",
+      "normal": "Orta",
+      "hard": "Zor",
+      "mixed": "Karışık",
+      "geography": "Coğrafya",
+      "science": "Bilim",
+      "history": "Tarih",
+      "sports": "Spor",
+      "culture": "Kültür ve sanat",
+      "technology": "Teknoloji"
+    },
+    "local": {
+      "players": "Oyuncular",
+      "playerName": "{n}. oyuncu",
+      "add": "Oyuncu ekle",
+      "remove": "{n}. oyuncuyu çıkar",
+      "continue": "Devam"
+    },
+    "online": {
+      "nickname": "Takma ad",
+      "nicknameHint": "2–16 karakter; odadaki herkes bunu görür.",
+      "connect": "Bağlan",
+      "joinCode": "{code} odasına katıl",
+      "connecting": "Bağlanıyor",
+      "reconnecting": "Bağlantı koptu, yeniden bağlanılıyor",
+      "closed": "Sunucuya bağlanılamadı. Biraz sonra tekrar dene.",
+      "create": "Oda kur",
+      "or": "ya da",
+      "code": "Oda kodu",
+      "join": "Katıl",
+      "roomCode": "Oda kodu",
+      "invite": "Davet bağlantısını kopyala",
+      "copied": "Kopyalandı",
+      "players": "Oyuncular ({count}/{max})",
+      "host": "Kurucu",
+      "you": "sen",
+      "ready": "Hazır",
+      "notReady": "Bekliyor",
+      "offline": "Bağlantı yok",
+      "setReady": "Hazırım",
+      "unsetReady": "Hazır değilim",
+      "start": "Maçı başlat",
+      "waitingHost": "Herkes hazır olunca kurucu maçı başlatır.",
+      "waitingReady": "Diğer oyuncuların hazır olması bekleniyor.",
+      "needPlayers": "Bu oyun için en az {min} oyuncu gerekli.",
+      "leave": "Odadan çık"
+    },
+    "errors": {
+      "room_not_found": "Bu kodla açık bir oda yok.",
+      "room_full": "Oda dolu.",
+      "room_in_progress": "Bu odada maç sürüyor; bitince tekrar dene.",
+      "room_closed": "Oda uzun süre boş kaldığı için kapandı.",
+      "server_busy": "Sunucu şu an çok yoğun. Biraz sonra tekrar dene.",
+      "invalid_nickname": "Takma ad 2–16 karakter olmalı ve özel karakter içermemeli.",
+      "not_ready": "Herkes hazır olmadan maç başlamaz.",
+      "player_count": "Oyuncu sayısı bu oyun için uygun değil.",
+      "not_host": "Maçı yalnızca kurucu başlatabilir.",
+      "rate_limited": "Çok hızlı mesaj gönderildi.",
+      "generic": "Bir şey ters gitti. Tekrar dene."
+    },
+    "result": {
+      "winner": "{name} kazandı",
+      "draw": "Berabere",
+      "youWon": "Kazandın",
+      "youLost": "Kaybettin",
+      "dnf": "Bitiremedi",
+      "backToRoom": "Odaya dön"
+    },
+    "reasons": {
+      "connect": "Dört disk hizalandı.",
+      "full": "Tahta doldu.",
+      "checkmate": "Şah mat.",
+      "stalemate": "Pat: hamle kalmadı.",
+      "insufficient": "Mat için yeterli taş yok.",
+      "repetition": "Aynı konum üç kez tekrarlandı.",
+      "fiftyMove": "50 hamle kuralı.",
+      "timeout": "Süre bitti.",
+      "timeoutInsufficient": "Süre bitti ama rakibin mat edecek taşı yok.",
+      "resign": "Terk edildi.",
+      "agreement": "Anlaşmalı beraberlik.",
+      "forfeit": "Rakip oyundan ayrıldı.",
+      "score": "Hedef skora ulaşıldı.",
+      "rounds": "Tüm turlar tamamlandı.",
+      "race": "Yarış tamamlandı."
+    }
+  },
+  "gameText": {
+    "connect-four": {}
+  },
   "errors": {
     "notFound": {
       "title": "Burada bir şey yok",

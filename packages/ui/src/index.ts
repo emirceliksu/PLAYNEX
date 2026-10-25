@@ -29,6 +29,8 @@ export { Logo } from './components/logo/logo';
 export { XpBar } from './components/xp-bar/xp-bar';
 export type { XpBarProps } from './components/xp-bar/xp-bar';
 export { SearchInput } from './components/search-input/search-input';
+export { TextField } from './components/text-field/text-field';
+export type { TextFieldProps } from './components/text-field/text-field';
 export type { SearchInputProps } from './components/search-input/search-input';
 export { Sidebar } from './components/sidebar/sidebar';
 export type { NavItem, SidebarProps } from './components/sidebar/sidebar';

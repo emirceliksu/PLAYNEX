@@ -8,6 +8,37 @@ export type GameOrientation = 'any' | 'landscape' | 'portrait';
 export type AgeRating = '3+' | '7+' | '12+';
 export type ControlScheme = 'keyboard' | 'mouse' | 'touch' | 'gamepad';
 
+// How a match is played: alone (or against the computer), several people on one device, or in an online room.
+export type PlayMode = 'solo' | 'local' | 'online';
+export type GameOptionKey = 'minutes' | 'difficulty' | 'category';
+export type GameOptionValue =
+  | '3'
+  | '5'
+  | 'easy'
+  | 'normal'
+  | 'hard'
+  | 'mixed'
+  | 'geography'
+  | 'science'
+  | 'history'
+  | 'sports'
+  | 'culture'
+  | 'technology';
+
+export interface GameOptionSpec {
+  key: GameOptionKey;
+  values: GameOptionValue[];
+  defaultValue: GameOptionValue;
+  modes: PlayMode[];
+}
+
+export interface GameSetup {
+  modes: PlayMode[];
+  // Seats on a shared device; only meaningful when `modes` includes 'local'.
+  localPlayers?: { min: number; max: number };
+  options: GameOptionSpec[];
+}
+
 // Signature color each game carries through its cover, badges and play screen.
 export type AccentName = 'brand' | 'cyan' | 'yellow' | 'pink' | 'mint' | 'coral';
 
@@ -34,6 +65,7 @@ export interface Game {
   estimatedMinutes: number;
   // Short, player-facing control instructions shown on the detail page and the ready screen.
   controlsGuide: string[];
+  setup: GameSetup;
 }
 
 export type PresenceStatus = 'online' | 'in-game' | 'offline';

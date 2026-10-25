@@ -1,16 +1,37 @@
 'use client';
 
-import type { GameInstance, GameResult, GameRuntimeState } from '@playnex/game-sdk';
-import type { AccentName, GamePlayerState } from '@playnex/shared-types';
+import type { GameInstance, GameResult, GameRuntimeState, PlaySession } from '@playnex/game-sdk';
+import type {
+  AccentName,
+  GamePlayerState,
+  GameScoring,
+  GameSetup,
+  PlayMode,
+} from '@playnex/shared-types';
 import { Badge, Button, EmptyState, IconButton, ScoreValue } from '@playnex/ui';
-import { ArrowLeft, Maximize2, Minimize2, Pause, Play, RotateCcw } from 'lucide-react';
+import {
+  ArrowLeft,
+  Maximize2,
+  Minimize2,
+  Pause,
+  Play,
+  RotateCcw,
+  Shuffle,
+  WifiOff,
+} from 'lucide-react';
+import { useMessages, useTranslations } from 'next-intl';
 import { type ReactNode, useCallback, useEffect, useReducer, useRef, useState } from 'react';
 
 import { Link } from '@/i18n/navigation';
 import { formatDuration, localeTag } from '@/lib/format';
 import { buildGamePalette } from '@/lib/games/palette';
 import { loadGameModule } from '@/lib/games/registry';
+import { useRoom } from '@/lib/realtime/use-room';
 
+import { LocalSetup } from './lobby/local-setup';
+import { ModePicker } from './lobby/mode-picker';
+import { OnlineLobby } from './lobby/online-lobby';
+import { ResultSummary } from './result-summary';
 import { useBestScore } from './use-best-score';
 
 export interface GamePlayerLabels {
@@ -42,11 +63,20 @@ export interface GamePlayerLabels {
 }
 
 interface GamePlayerProps {
-  game: { slug: string; title: string; accent: AccentName; controlsGuide: string[] };
+  game: {
+    slug: string;
+    title: string;
+    accent: AccentName;
+    controlsGuide: string[];
+    scoring: GameScoring;
+    setup: GameSetup;
+  };
   locale: 'tr' | 'en';
   labels: GamePlayerLabels;
   // Development-only: forces a shell state so every screen can be reviewed and captured.
   preview?: GamePlayerState;
+  // From an invite link (`?room=CODE`): opens the online lobby with the code filled in.
+  roomCode?: string;
 }
 
 interface PlayerState {
@@ -159,17 +189,52 @@ function Stat({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
+const soloSession: PlaySession = { mode: 'solo', players: [], options: {} };
+const noMessages: Record<string, string> = {};
+
+function needsSetup(setup: GameSetup): boolean {
+  return setup.modes.length > 1 || setup.modes[0] !== 'solo' || setup.options.length > 0;
+}
+
+export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlayerProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [attempt, setAttempt] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [localSession, setLocalSession] = useState<PlaySession | null>(() =>
+    preview || !needsSetup(game.setup) ? soloSession : null,
+  );
+  const [leftMatchId, setLeftMatchId] = useState<number | null>(null);
+  const [mode, setMode] = useState<PlayMode | null>(() => {
+    if (roomCode && game.setup.modes.includes('online')) return 'online';
+    return game.setup.modes.length === 1 ? (game.setup.modes[0] ?? null) : null;
+  });
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const instanceRef = useRef<GameInstance | null>(null);
   const { best, record } = useBestScore(game.slug);
+  const room = useRoom(game.slug, locale);
+  const t = useTranslations('lobby');
+  const messages = useMessages();
   const tag = localeTag(locale);
+  // Online, the room hands out a fresh session on every match.start; leaving the result
+  // screen hides that match until the next one starts.
+  const roomMatch = room.match;
+  const session =
+    mode === 'online'
+      ? roomMatch && roomMatch.id !== leftMatchId
+        ? roomMatch.session
+        : null
+      : localSession;
+  const online = session?.mode === 'online';
+  const solo = session?.mode === 'solo';
+
+  const gameMessages =
+    (messages.gameText as Record<string, Record<string, string> | undefined>)[game.slug] ??
+    noMessages;
 
   useEffect(() => {
+    if (!session) return;
+    dispatch({ type: 'reload' });
     if (preview === 'loading') return;
     if (preview === 'error') {
       dispatch({ type: 'error' });
@@ -194,11 +259,18 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           locale,
           reducedMotion,
           palette,
+          messages: gameMessages,
+          session,
           onScore: (score) => dispatch({ type: 'score', score }),
           onStateChange: (runtime) =>
             dispatch({ type: 'runtime', state: runtime, now: Date.now() }),
           onFinish: (result) =>
-            dispatch({ type: 'finish', result, isRecord: record(result.score) }),
+            dispatch({
+              type: 'finish',
+              result,
+              // Only solo runs count as personal bests; versus scores are not comparable.
+              isRecord: session.mode === 'solo' && record(result.score),
+            }),
           onError: () => dispatch({ type: 'error' }),
         }),
       )
@@ -209,7 +281,8 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
         }
         instance = mounted;
         instanceRef.current = mounted;
-        if (preview === 'playing' || preview === 'paused') {
+        // The room already started the match; there is no ready screen to pass.
+        if (session.mode === 'online' || preview === 'playing' || preview === 'paused') {
           mounted.start();
         }
         if (preview === 'paused') {
@@ -225,7 +298,7 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
       instanceRef.current = null;
       instance?.destroy();
     };
-  }, [game.slug, game.accent, locale, preview, attempt, record]);
+  }, [game.slug, game.accent, locale, preview, attempt, record, session, gameMessages]);
 
   useEffect(() => {
     if (state.status !== 'playing') return;
@@ -241,10 +314,10 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
 
   const togglePause = useCallback(() => {
     const instance = instanceRef.current;
-    if (!instance) return;
+    if (!instance || online) return;
     if (state.status === 'playing') instance.pause();
     else if (state.status === 'paused') instance.resume();
-  }, [state.status]);
+  }, [state.status, online]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -259,6 +332,16 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
 
   const start = () => instanceRef.current?.start();
   const restart = () => instanceRef.current?.restart();
+  // Online this returns to the room (still joined); locally it reopens the mode or setup screen.
+  const leaveMatch = () => {
+    if (online) {
+      setLeftMatchId(roomMatch?.id ?? null);
+      return;
+    }
+    setLocalSession(null);
+    if (game.setup.modes.length > 1) setMode(null);
+  };
+  const canChangeMode = !preview && needsSetup(game.setup);
   const retry = () => {
     dispatch({ type: 'reload' });
     setAttempt((count) => count + 1);
@@ -273,8 +356,9 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
     }
   };
 
-  const canPause = state.status === 'playing' || state.status === 'paused';
-  const canRestart = state.status !== 'loading' && state.status !== 'error';
+  const canPause = !online && (state.status === 'playing' || state.status === 'paused');
+  const canRestart =
+    session !== null && !online && state.status !== 'loading' && state.status !== 'error';
   const overlayClass = 'absolute inset-0 grid place-items-center bg-ink-950/80 p-4 animate-fade-in';
   const panelClass =
     'flex w-full max-w-sm flex-col items-center gap-5 rounded-2xl border-2 border-border-strong bg-surface-overlay p-6 text-center shadow-sticker-lg animate-pop-in';
@@ -298,16 +382,18 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           <Stat label={labels.score}>
             <ScoreValue value={state.score} locale={tag} className="text-title-md" />
           </Stat>
-          <div className="hidden sm:block">
-            <Stat label={labels.best}>
-              <ScoreValue
-                value={Math.max(best, state.score)}
-                locale={tag}
-                animate={false}
-                className="text-title-md text-fg-secondary"
-              />
-            </Stat>
-          </div>
+          {solo ? (
+            <div className="hidden sm:block">
+              <Stat label={labels.best}>
+                <ScoreValue
+                  value={Math.max(best, state.score)}
+                  locale={tag}
+                  animate={false}
+                  className="text-title-md text-fg-secondary"
+                />
+              </Stat>
+            </div>
+          ) : null}
           <Stat label={labels.time}>
             <span className="font-display text-title-md text-fg-secondary tabular-nums">
               {formatDuration(state.elapsedMs)}
@@ -340,7 +426,43 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
       <div className="grain relative min-h-0 flex-1">
         <div ref={containerRef} className="absolute inset-0 overflow-hidden" />
 
-        {state.status === 'loading' ? (
+        {session === null ? (
+          <div className={`${overlayClass} overflow-y-auto`}>
+            <div className={panelClass}>
+              {mode === null ? (
+                <ModePicker modes={game.setup.modes} onPick={setMode} />
+              ) : mode === 'online' ? (
+                <OnlineLobby
+                  setup={game.setup}
+                  room={room}
+                  initialCode={roomCode}
+                  canGoBack={game.setup.modes.length > 1}
+                  onBack={() => setMode(null)}
+                />
+              ) : (
+                <LocalSetup
+                  mode={mode}
+                  setup={game.setup}
+                  canGoBack={game.setup.modes.length > 1}
+                  onBack={() => setMode(null)}
+                  onStart={setLocalSession}
+                />
+              )}
+            </div>
+          </div>
+        ) : null}
+
+        {online && room.status === 'reconnecting' ? (
+          <p
+            role="status"
+            className="absolute inset-x-0 top-0 z-10 flex items-center justify-center gap-2 bg-yellow-soft px-4 py-2 text-body-sm text-yellow-text"
+          >
+            <WifiOff aria-hidden className="size-4" />
+            {t('online.reconnecting')}
+          </p>
+        ) : null}
+
+        {session !== null && state.status === 'loading' ? (
           <div className={overlayClass}>
             <div className={panelClass} role="status">
               <p className="font-display text-title-lg">{labels.loadingTitle}</p>
@@ -354,7 +476,7 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           </div>
         ) : null}
 
-        {state.status === 'ready' ? (
+        {!online && state.status === 'ready' ? (
           <div className={overlayClass}>
             <div className={panelClass}>
               <p className="font-display text-display-sm">{labels.readyTitle}</p>
@@ -372,10 +494,18 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
                   ))}
                 </ul>
               </div>
-              <Button size="lg" onClick={start} className="w-full" autoFocus>
-                <Play aria-hidden className="size-5" />
-                {labels.start}
-              </Button>
+              <div className="flex w-full flex-col gap-2">
+                <Button size="lg" onClick={start} className="w-full" autoFocus>
+                  <Play aria-hidden className="size-5" />
+                  {labels.start}
+                </Button>
+                {canChangeMode ? (
+                  <Button variant="ghost" onClick={leaveMatch}>
+                    <Shuffle aria-hidden className="size-4" />
+                    {t('changeMode')}
+                  </Button>
+                ) : null}
+              </div>
             </div>
           </div>
         ) : null}
@@ -402,7 +532,7 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
           </div>
         ) : null}
 
-        {state.status === 'finished' ? (
+        {session !== null && state.status === 'finished' ? (
           <div className={overlayClass}>
             <div className={panelClass} role="dialog" aria-labelledby="result-title">
               {state.isRecord ? (
@@ -410,38 +540,65 @@ export function GamePlayer({ game, locale, labels, preview }: GamePlayerProps) {
                   {labels.newRecord}
                 </Badge>
               ) : null}
-              <p id="result-title" className="font-display text-title-md text-fg-secondary">
-                {labels.finishedTitle}
-              </p>
-              <ScoreValue
-                value={state.score}
-                locale={tag}
-                className="text-display-xl leading-none"
-              />
-              <dl className="flex w-full justify-center gap-8 text-center">
-                <div>
-                  <dt className="text-label-sm text-fg-muted uppercase">{labels.best}</dt>
-                  <dd className="font-display text-title-md tabular-nums">
-                    {new Intl.NumberFormat(tag).format(Math.max(best, state.score))}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-label-sm text-fg-muted uppercase">{labels.time}</dt>
-                  <dd className="font-display text-title-md tabular-nums">
-                    {formatDuration(state.elapsedMs)}
-                  </dd>
-                </div>
-              </dl>
+              {state.result?.outcome ? (
+                <ResultSummary
+                  outcome={state.result.outcome}
+                  players={session.players}
+                  selfSeat={session.mode === 'online' ? session.seat : null}
+                  scoring={game.scoring}
+                  locale={locale}
+                />
+              ) : (
+                <>
+                  <p id="result-title" className="font-display text-title-md text-fg-secondary">
+                    {labels.finishedTitle}
+                  </p>
+                  <ScoreValue
+                    value={state.score}
+                    locale={tag}
+                    className="text-display-xl leading-none"
+                  />
+                  <dl className="flex w-full justify-center gap-8 text-center">
+                    {solo ? (
+                      <div>
+                        <dt className="text-label-sm text-fg-muted uppercase">{labels.best}</dt>
+                        <dd className="font-display text-title-md tabular-nums">
+                          {new Intl.NumberFormat(tag).format(Math.max(best, state.score))}
+                        </dd>
+                      </div>
+                    ) : null}
+                    <div>
+                      <dt className="text-label-sm text-fg-muted uppercase">{labels.time}</dt>
+                      <dd className="font-display text-title-md tabular-nums">
+                        {formatDuration(state.elapsedMs)}
+                      </dd>
+                    </div>
+                  </dl>
+                </>
+              )}
               <div className="flex w-full flex-col gap-2">
-                <Button size="lg" onClick={restart} autoFocus disabled={preview === 'finished'}>
-                  <RotateCcw aria-hidden className="size-5" />
-                  {labels.playAgain}
-                </Button>
-                <Button asChild variant="secondary">
+                {online ? (
+                  <Button size="lg" onClick={leaveMatch} autoFocus>
+                    <RotateCcw aria-hidden className="size-5" />
+                    {t('result.backToRoom')}
+                  </Button>
+                ) : (
+                  <Button size="lg" onClick={restart} autoFocus disabled={preview === 'finished'}>
+                    <RotateCcw aria-hidden className="size-5" />
+                    {labels.playAgain}
+                  </Button>
+                )}
+                {!online && canChangeMode ? (
+                  <Button variant="secondary" onClick={leaveMatch}>
+                    <Shuffle aria-hidden className="size-4" />
+                    {t('changeMode')}
+                  </Button>
+                ) : null}
+                <Button asChild variant={online || canChangeMode ? 'ghost' : 'secondary'}>
                   <Link href="/games">{labels.backToCatalog}</Link>
                 </Button>
               </div>
-              <p className="text-label-sm text-fg-muted">{labels.localBestNote}</p>
+              {solo ? <p className="text-label-sm text-fg-muted">{labels.localBestNote}</p> : null}
             </div>
           </div>
         ) : null}

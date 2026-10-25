@@ -249,6 +249,121 @@
       }
     }
   },
+  "lobby": {
+    "title": "How do you want to play?",
+    "back": "Back",
+    "changeMode": "Change mode",
+    "modes": {
+      "solo": {
+        "title": "On your own",
+        "hint": "Against the computer or the clock, at your own pace."
+      },
+      "local": {
+        "title": "Same device",
+        "hint": "Share the screen and take turns or play side by side."
+      },
+      "online": {
+        "title": "Online room",
+        "hint": "Share a code and friends join from their own devices."
+      }
+    },
+    "options": {
+      "minutes": "Time",
+      "difficulty": "Difficulty",
+      "category": "Category"
+    },
+    "optionValues": {
+      "3": "3 minutes",
+      "5": "5 minutes",
+      "easy": "Easy",
+      "normal": "Medium",
+      "hard": "Hard",
+      "mixed": "Mixed",
+      "geography": "Geography",
+      "science": "Science",
+      "history": "History",
+      "sports": "Sports",
+      "culture": "Arts and culture",
+      "technology": "Technology"
+    },
+    "local": {
+      "players": "Players",
+      "playerName": "Player {n}",
+      "add": "Add player",
+      "remove": "Remove player {n}",
+      "continue": "Continue"
+    },
+    "online": {
+      "nickname": "Nickname",
+      "nicknameHint": "2–16 characters; everyone in the room sees it.",
+      "connect": "Connect",
+      "joinCode": "Join room {code}",
+      "connecting": "Connecting",
+      "reconnecting": "Connection lost, reconnecting",
+      "closed": "Could not reach the server. Try again in a moment.",
+      "create": "Create room",
+      "or": "or",
+      "code": "Room code",
+      "join": "Join",
+      "roomCode": "Room code",
+      "invite": "Copy invite link",
+      "copied": "Copied",
+      "players": "Players ({count}/{max})",
+      "host": "Host",
+      "you": "you",
+      "ready": "Ready",
+      "notReady": "Waiting",
+      "offline": "Offline",
+      "setReady": "I'm ready",
+      "unsetReady": "Not ready",
+      "start": "Start match",
+      "waitingHost": "The host starts the match once everyone is ready.",
+      "waitingReady": "Waiting for the other players to get ready.",
+      "needPlayers": "This game needs at least {min} players.",
+      "leave": "Leave room"
+    },
+    "errors": {
+      "room_not_found": "No open room with that code.",
+      "room_full": "The room is full.",
+      "room_in_progress": "A match is running in this room; try again when it ends.",
+      "room_closed": "The room closed after being idle for too long.",
+      "server_busy": "The server is very busy right now. Try again shortly.",
+      "invalid_nickname": "Nicknames need 2–16 characters and no special symbols.",
+      "not_ready": "The match cannot start until everyone is ready.",
+      "player_count": "The number of players does not fit this game.",
+      "not_host": "Only the host can start the match.",
+      "rate_limited": "Messages were sent too quickly.",
+      "generic": "Something went wrong. Try again."
+    },
+    "result": {
+      "winner": "{name} wins",
+      "draw": "Draw",
+      "youWon": "You won",
+      "youLost": "You lost",
+      "dnf": "Did not finish",
+      "backToRoom": "Back to room"
+    },
+    "reasons": {
+      "connect": "Four discs in a row.",
+      "full": "The board filled up.",
+      "checkmate": "Checkmate.",
+      "stalemate": "Stalemate: no legal moves left.",
+      "insufficient": "Not enough material to mate.",
+      "repetition": "The same position came up three times.",
+      "fiftyMove": "Fifty-move rule.",
+      "timeout": "Out of time.",
+      "timeoutInsufficient": "Out of time, but the opponent cannot mate.",
+      "resign": "Resigned.",
+      "agreement": "Draw by agreement.",
+      "forfeit": "The opponent left the match.",
+      "score": "Target score reached.",
+      "rounds": "All rounds played.",
+      "race": "Race complete."
+    }
+  },
+  "gameText": {
+    "connect-four": {}
+  },
   "errors": {
     "notFound": {
       "title": "Nothing here",

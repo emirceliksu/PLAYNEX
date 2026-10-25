@@ -197,6 +197,7 @@ services:
     command: node_modules/.bin/playwright test
     environment:
       PLAYWRIGHT_BASE_URL: http://web:3000
+      PLAYWRIGHT_REALTIME_UPSTREAM: realtime:8081
     volumes: *node-volumes
     depends_on:
       web:
