@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-connect-four',
     '@playnex/game-air-hockey',
     '@playnex/game-chess-arena',
+    '@playnex/game-trivia-battle',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

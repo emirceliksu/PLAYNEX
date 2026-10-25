@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 
 // Every playable game must boot its engine and reach the "ready" overlay in the shell.
 // Games with more than one way to play first go through the mode picker and setup.
-const playableGames: { slug: string; mode?: string }[] = [
+const playableGames: { slug: string; mode?: string; dom?: boolean }[] = [
   { slug: 'snake-rush' },
   { slug: '2048-fusion' },
   { slug: 'memory-flip' },
@@ -10,6 +10,7 @@ const playableGames: { slug: string; mode?: string }[] = [
   { slug: 'connect-four', mode: 'Aynı cihazda' },
   { slug: 'air-hockey', mode: 'Tek başına' },
   { slug: 'chess-arena', mode: 'Aynı cihazda' },
+  { slug: 'trivia-battle', mode: 'Tek başına', dom: true },
 ];
 
 async function chooseMode(page: Page, mode: string) {
@@ -17,7 +18,7 @@ async function chooseMode(page: Page, mode: string) {
   await page.getByRole('button', { name: 'Devam', exact: true }).click();
 }
 
-for (const { slug, mode } of playableGames) {
+for (const { slug, mode, dom } of playableGames) {
   test(`${slug} boots and reports ready`, async ({ page }) => {
     const pageErrors: string[] = [];
     page.on('pageerror', (error) => pageErrors.push(error.message));
@@ -27,7 +28,8 @@ for (const { slug, mode } of playableGames) {
     if (mode) await chooseMode(page, mode);
 
     // Cold Turbopack compiles of a game bundle can take a while on the first visit.
-    await expect(page.locator('canvas')).toHaveCount(1, { timeout: 90_000 });
+    // DOM games (Trivia) render no canvas at all.
+    await expect(page.locator('canvas')).toHaveCount(dom ? 0 : 1, { timeout: 90_000 });
     const start = page.getByRole('button', { name: 'Başla', exact: true });
     await expect(start).toBeVisible({ timeout: 30_000 });
     expect(pageErrors).toEqual([]);

@@ -374,6 +374,27 @@
       "accept": "Accept",
       "decline": "Decline",
       "thinking": "Computer is thinking"
+    },
+    "trivia-battle": {
+      "round": "Question {n}/{total}",
+      "getReady": "Get ready",
+      "yourTurn": "Your turn, {name}",
+      "passDevice": "Hand the device to {name}; everyone else, look away.",
+      "ready": "I'm ready",
+      "correct": "Correct! +{points}",
+      "wrong": "Wrong answer",
+      "timeUp": "Time's up",
+      "streak": "Streak ×{n}",
+      "noPoints": "No points",
+      "answered": "Answered",
+      "waitingOthers": "Answer locked in, waiting for the others.",
+      "scoreboard": "Scores",
+      "category_geography": "Geography",
+      "category_science": "Science",
+      "category_history": "History",
+      "category_sports": "Sports",
+      "category_culture": "Arts and culture",
+      "category_technology": "Technology"
     }
   },
   "errors": {

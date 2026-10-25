@@ -104,3 +104,25 @@ test('chess moves are relayed and a resignation ends the match', async ({ browse
   await expect(host.getByTestId('match-result')).toContainText('Kazandın');
   await expect(guest.getByTestId('match-result')).toContainText('Kaybettin');
 });
+
+test('trivia questions reach every player and answers are scored by the server', async ({
+  browser,
+}) => {
+  const host = await openPlayer(browser, '/play/trivia-battle');
+  const code = await hostRoom(host, 'Bilgin');
+  const guest = await joinRoom(browser, 'trivia-battle', code, 'Meraklı');
+  await host.getByTestId('room-start').click();
+
+  // Both players see the same question after the three-second lead-in.
+  const hostHeading = host.getByRole('heading', { level: 2 });
+  await expect(hostHeading).toBeVisible({ timeout: 30_000 });
+  await expect(guest.getByRole('heading', { level: 2 })).toHaveText(
+    (await hostHeading.textContent()) ?? '',
+  );
+
+  await host.keyboard.press('Digit1');
+  await guest.keyboard.press('Digit2');
+  await expect(host.getByText('Cevapladı')).toHaveCount(0, { timeout: 10_000 });
+  await expect(host.getByText(/^(Doğru! \+\d+|Yanlış cevap)/)).toBeVisible();
+  await expect(guest.getByText(/^(Doğru! \+\d+|Yanlış cevap)/)).toBeVisible();
+});

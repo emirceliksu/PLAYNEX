@@ -374,6 +374,27 @@
       "accept": "Kabul et",
       "decline": "Reddet",
       "thinking": "Bilgisayar düşünüyor"
+    },
+    "trivia-battle": {
+      "round": "Soru {n}/{total}",
+      "getReady": "Hazır ol",
+      "yourTurn": "Sıra sende, {name}",
+      "passDevice": "Cihazı {name} alsın; diğerleri ekrana bakmasın.",
+      "ready": "Hazırım",
+      "correct": "Doğru! +{points}",
+      "wrong": "Yanlış cevap",
+      "timeUp": "Süre doldu",
+      "streak": "Seri ×{n}",
+      "noPoints": "Puan yok",
+      "answered": "Cevapladı",
+      "waitingOthers": "Cevabın alındı, diğerleri bekleniyor.",
+      "scoreboard": "Puan durumu",
+      "category_geography": "Coğrafya",
+      "category_science": "Bilim",
+      "category_history": "Tarih",
+      "category_sports": "Spor",
+      "category_culture": "Kültür ve sanat",
+      "category_technology": "Teknoloji"
     }
   },
   "errors": {

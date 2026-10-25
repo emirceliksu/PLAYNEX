@@ -1,4 +1,4 @@
-export type GameEngine = 'phaser' | 'babylon';
+export type GameEngine = 'phaser' | 'babylon' | 'dom';
 export type GameDimension = '2d' | '3d';
 export type GameMode = 'solo' | '1v1' | 'party' | 'co-op';
 export type GameStatus = 'live' | 'beta' | 'coming-soon';

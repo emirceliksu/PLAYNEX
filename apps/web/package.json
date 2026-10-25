@@ -18,6 +18,7 @@
     "@playnex/game-memory-flip": "workspace:*",
     "@playnex/game-sdk": "workspace:*",
     "@playnex/game-snake-rush": "workspace:*",
+    "@playnex/game-trivia-battle": "workspace:*",
     "@playnex/game-tugla-tugla": "workspace:*",
     "@playnex/shared-types": "workspace:*",
     "@playnex/ui": "workspace:*",
