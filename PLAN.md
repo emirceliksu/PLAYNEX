@@ -136,6 +136,8 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 | Mini Football | Babylon.js | 2v2/3v3 | Faz 4 |
 | Puzzle Worlds | Babylon.js | 1–4 | Faz 4 |
 
+**Durum (2026-10-21):** Tablodaki Faz 2 oyunları ve Neon Kart Racing kullanıcı isteğiyle öne çekildi ve yayında; hepsi çevrim içi odalarla, Air Hockey/satranç/Trivia ayrıca bilgisayara karşı ve aynı cihazda oynanır. Kalıcılık, hesap ve eşleştirme hâlâ planlandığı fazda.
+
 **Önemli:** MVP'de tek 1v1 oyun var: sıra tabanlı Connect Four. Hamle doğrulaması basit olduğu için oda/WebSocket altyapısını düşük riskle kanıtlar. Sunucu otoriteli fizik gerektiren Air Hockey, bu altyapı oturduktan sonra Faz 2'de gelir ve Neon Kart Racing'in ağ katmanına da ön çalışma olur.
 
 ### Büyük 3D oyun prototipi: Neon Kart Racing
@@ -385,7 +387,7 @@ playnex/
 - [ ] Rust API, PostgreSQL migration, auth ve profil
 - [x] Game SDK v1, manifest, lazy loader, GamePlayer, HUD
 - [x] Snake Rush, blok bulmacası (Tuğla Tuğla), Memory Flip, 2048 Fusion (istemci tarafı; skor doğrulaması sprint 6)
-- [ ] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
+- [x] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
 - [ ] Skor doğrulama, liderlik tabloları, favoriler, oyun geçmişi
 - [ ] Temel raporlama, admin ve operasyon paneli
 - [ ] E2E, mobil, performans, erişilebilirlik ve güvenlik testleri
@@ -395,19 +397,19 @@ playnex/
 
 ### Faz 2 — Sosyal ve rekabet (5–8 hafta)
 - [ ] Arkadaşlık, engelleme, davet, çevrim içi durum
-- [ ] Özel odalar ve eşleştirme
-- [ ] Air Hockey: sunucu otoriteli fizik, istemci tahmini/interpolasyon
+- [ ] Özel odalar ve eşleştirme (özel odalar kodla hazır, ADR 0009; eşleştirme kuyruğu ve kalıcılık açık)
+- [x] Air Hockey: sunucu otoriteli fizik, istemci tahmini/interpolasyon
 - [ ] XP, seviye, başarımlar, günlük/haftalık görevler
 - [ ] Oyun bazlı MMR/rating ve sezon sıralamaları
 - [ ] Bildirim, moderasyon, analitik ve ölçek testleri
-- [ ] Chess Arena, Drawing Party, Trivia Battle için önceliklendirme
+- [x] Chess Arena, Drawing Party, Trivia Battle için önceliklendirme (üçü de yayında: solo/yerel/çevrim içi)
 - [ ] Herkese açık beta
 
 ### Faz 3 — İlk büyük 3D oyun (10–18+ hafta)
-- [ ] Babylon.js oyun temel projesi ve asset pipeline
-- [ ] Neon Kart Racing tek oyunculu vertical slice
-- [ ] Sunucu otoriteli yarış prototipi ve ağ senkronizasyonu
-- [ ] 2–8 oyuncu, odalar, bitiş sonuçları ve reconnect
+- [ ] Babylon.js oyun temel projesi ve asset pipeline (temel proje hazır, ADR 0010; asset pipeline yok, sahne primitiflerden)
+- [x] Neon Kart Racing tek oyunculu vertical slice
+- [x] Sunucu otoriteli yarış prototipi ve ağ senkronizasyonu
+- [x] 2–8 oyuncu, odalar, bitiş sonuçları ve reconnect
 - [ ] Düşük donanım profilleri, mobil optimizasyon, yük testi
 - [ ] Sınırlı 3D beta ve telemetriyle iyileştirme
 
