@@ -11,7 +11,7 @@ const playableGames: { slug: string; mode?: string; dom?: boolean }[] = [
   { slug: 'air-hockey', mode: 'Tek başına' },
   { slug: 'chess-arena', mode: 'Aynı cihazda' },
   { slug: 'trivia-battle', mode: 'Tek başına', dom: true },
-  { slug: 'drawing-party', mode: 'Aynı cihazda', dom: true },
+  { slug: 'drawing-party', mode: 'Aynı cihazda' },
   { slug: 'neon-kart-racing', mode: 'Tek başına' },
 ];
 
@@ -30,7 +30,7 @@ for (const { slug, mode, dom } of playableGames) {
     if (mode) await chooseMode(page, mode);
 
     // Cold Turbopack compiles of a game bundle can take a while on the first visit.
-    // DOM games (Trivia) render no canvas at all.
+    // Trivia is pure DOM and renders no canvas; Drawing Party's sketch pad is one.
     await expect(page.locator('canvas')).toHaveCount(dom ? 0 : 1, { timeout: 90_000 });
     const start = page.getByRole('button', { name: 'Başla', exact: true });
     await expect(start).toBeVisible({ timeout: 30_000 });
