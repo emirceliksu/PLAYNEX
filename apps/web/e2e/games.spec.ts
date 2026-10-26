@@ -12,6 +12,7 @@ const playableGames: { slug: string; mode?: string; dom?: boolean }[] = [
   { slug: 'chess-arena', mode: 'Aynı cihazda' },
   { slug: 'trivia-battle', mode: 'Tek başına', dom: true },
   { slug: 'drawing-party', mode: 'Aynı cihazda', dom: true },
+  { slug: 'neon-kart-racing', mode: 'Tek başına' },
 ];
 
 async function chooseMode(page: Page, mode: string) {

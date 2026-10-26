@@ -26,6 +26,7 @@ x-node: &node
     - node_modules_game_chess_arena:/workspace/games/2d/chess-arena/node_modules
     - node_modules_game_trivia_battle:/workspace/games/2d/trivia-battle/node_modules
     - node_modules_game_drawing_party:/workspace/games/2d/drawing-party/node_modules
+    - node_modules_game_neon_kart_racing:/workspace/games/3d/neon-kart-racing/node_modules
     - next_cache:/workspace/apps/web/.next
 
 x-rust: &rust
@@ -224,6 +225,7 @@ volumes:
   node_modules_game_chess_arena:
   node_modules_game_trivia_battle:
   node_modules_game_drawing_party:
+  node_modules_game_neon_kart_racing:
   next_cache:
   cargo_registry:
   cargo_target_api:

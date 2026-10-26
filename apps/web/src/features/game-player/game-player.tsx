@@ -227,6 +227,7 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
       : localSession;
   const online = session?.mode === 'online';
   const solo = session?.mode === 'solo';
+  const tracksBest = solo && game.scoring === 'high-score';
 
   const gameMessages =
     (messages.gameText as Record<string, Record<string, string> | undefined>)[game.slug] ??
@@ -268,8 +269,9 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
             dispatch({
               type: 'finish',
               result,
-              // Only solo runs count as personal bests; versus scores are not comparable.
-              isRecord: session.mode === 'solo' && record(result.score),
+              // Only solo high-score runs count as personal bests: versus results and
+              // race times (lower is better) do not fit a single "higher wins" record.
+              isRecord: tracksBest && record(result.score),
             }),
           onError: () => dispatch({ type: 'error' }),
         }),
@@ -298,7 +300,7 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
       instanceRef.current = null;
       instance?.destroy();
     };
-  }, [game.slug, game.accent, locale, preview, attempt, record, session, gameMessages]);
+  }, [game.slug, game.accent, locale, preview, attempt, record, session, gameMessages, tracksBest]);
 
   useEffect(() => {
     if (state.status !== 'playing') return;
@@ -379,10 +381,12 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
           <h1 className="truncate font-display text-title-sm">{game.title}</h1>
         </div>
         <div className="ml-auto flex items-center gap-4 md:gap-6">
-          <Stat label={labels.score}>
-            <ScoreValue value={state.score} locale={tag} className="text-title-md" />
-          </Stat>
-          {solo ? (
+          {game.scoring === 'high-score' ? (
+            <Stat label={labels.score}>
+              <ScoreValue value={state.score} locale={tag} className="text-title-md" />
+            </Stat>
+          ) : null}
+          {tracksBest ? (
             <div className="hidden sm:block">
               <Stat label={labels.best}>
                 <ScoreValue
@@ -543,8 +547,8 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
               {state.result?.outcome ? (
                 <ResultSummary
                   outcome={state.result.outcome}
-                  players={session.players}
-                  selfSeat={session.mode === 'online' ? session.seat : null}
+                  players={state.result.participants ?? session.players}
+                  selfSeat={session.mode === 'online' ? session.seat : solo ? 0 : null}
                   scoring={game.scoring}
                   locale={locale}
                 />
@@ -559,7 +563,7 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
                     className="text-display-xl leading-none"
                   />
                   <dl className="flex w-full justify-center gap-8 text-center">
-                    {solo ? (
+                    {tracksBest ? (
                       <div>
                         <dt className="text-label-sm text-fg-muted uppercase">{labels.best}</dt>
                         <dd className="font-display text-title-md tabular-nums">
@@ -598,7 +602,9 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
                   <Link href="/games">{labels.backToCatalog}</Link>
                 </Button>
               </div>
-              {solo ? <p className="text-label-sm text-fg-muted">{labels.localBestNote}</p> : null}
+              {tracksBest ? (
+                <p className="text-label-sm text-fg-muted">{labels.localBestNote}</p>
+              ) : null}
             </div>
           </div>
         ) : null}

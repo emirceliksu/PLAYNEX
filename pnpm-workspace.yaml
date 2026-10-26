@@ -2,6 +2,7 @@ packages:
   - apps/web
   - packages/*
   - games/2d/*
+  - games/3d/*
 
 # Store lives inside the root node_modules volume so pnpm can hardlink instead of copying
 # across Docker volumes.

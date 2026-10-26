@@ -442,6 +442,21 @@
       "size_2": "Kalın",
       "undo": "Geri al",
       "clear": "Temizle"
+    },
+    "neon-kart-racing": {
+      "you": "Sen",
+      "bot_1": "Nova",
+      "bot_2": "Pistçi",
+      "bot_3": "Volt",
+      "lap": "Tur {n}/{total}",
+      "position": "{n}/{total}. sıra",
+      "go": "Başla!",
+      "finished": "Bitiş",
+      "left": "Sola dön",
+      "right": "Sağa dön",
+      "gas": "Gaz",
+      "brake": "Fren",
+      "drift": "Drift"
     }
   },
   "errors": {

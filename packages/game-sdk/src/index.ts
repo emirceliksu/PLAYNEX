@@ -27,6 +27,8 @@ export interface GameResult {
   durationMs: number;
   stats?: Record<string, number>;
   outcome?: MatchOutcome;
+  // Names for every seat in `outcome` when they are not the session's players (computer opponents).
+  participants?: SessionPlayer[];
 }
 
 // Colors arrive as sRGB hex because canvas engines cannot parse the OKLCH tokens.

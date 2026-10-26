@@ -28,7 +28,7 @@
     "drag": 0.25,
     "offTrackMaxSpeed": 12,
     "offTrackDrag": 2,
-    "steerRate": 2.2,
+    "steerRate": 1.7,
     "fullSteerSpeed": 6,
     "driftTurn": 1.45,
     "driftDrag": 0.35,

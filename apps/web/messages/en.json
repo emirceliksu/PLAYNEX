@@ -442,6 +442,21 @@
       "size_2": "Thick",
       "undo": "Undo",
       "clear": "Clear"
+    },
+    "neon-kart-racing": {
+      "you": "You",
+      "bot_1": "Nova",
+      "bot_2": "Racer",
+      "bot_3": "Volt",
+      "lap": "Lap {n}/{total}",
+      "position": "P{n} of {total}",
+      "go": "Go!",
+      "finished": "Finish",
+      "left": "Steer left",
+      "right": "Steer right",
+      "gas": "Accelerate",
+      "brake": "Brake",
+      "drift": "Drift"
     }
   },
   "errors": {

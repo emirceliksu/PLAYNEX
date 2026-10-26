@@ -11,6 +11,7 @@ const loaders: Record<string, () => Promise<{ default: GameModule }>> = {
   'chess-arena': () => import('@playnex/game-chess-arena'),
   'trivia-battle': () => import('@playnex/game-trivia-battle'),
   'drawing-party': () => import('@playnex/game-drawing-party'),
+  'neon-kart-racing': () => import('@playnex/game-neon-kart-racing'),
 };
 
 export function hasGameModule(slug: string): boolean {

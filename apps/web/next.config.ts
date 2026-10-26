@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-chess-arena',
     '@playnex/game-trivia-battle',
     '@playnex/game-drawing-party',
+    '@playnex/game-neon-kart-racing',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

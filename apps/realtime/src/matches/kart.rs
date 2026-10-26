@@ -258,7 +258,12 @@ impl Progress {
     fn distance(&self, samples: usize) -> usize {
         let quarter = samples / CHECKPOINTS as usize;
         let leg = (self.next_checkpoint as usize - 1) * quarter;
-        let into_leg = (self.index + samples - leg) % samples;
+        // Karts still behind the start of their leg (the grid sits behind the line)
+        // have covered nothing of it yet.
+        let into_leg = match (self.index + samples - leg) % samples {
+            behind if behind > samples / 2 => 0,
+            ahead => ahead,
+        };
         self.lap as usize * samples + leg + into_leg.min(quarter)
     }
 }
@@ -606,6 +611,22 @@ mod tests {
             progress.update(index + 1, samples);
         }
         assert_eq!((progress.lap, progress.next_checkpoint), (1, 1));
+    }
+
+    #[test]
+    fn grid_positions_behind_the_line_count_as_no_progress() {
+        let samples = 224;
+        let on_grid = Progress {
+            lap: 0,
+            next_checkpoint: 1,
+            index: samples - 3,
+        };
+        let away = Progress {
+            lap: 0,
+            next_checkpoint: 1,
+            index: 4,
+        };
+        assert!(away.distance(samples) > on_grid.distance(samples));
     }
 
     #[test]

@@ -17,6 +17,7 @@
     "@playnex/game-connect-four": "workspace:*",
     "@playnex/game-drawing-party": "workspace:*",
     "@playnex/game-memory-flip": "workspace:*",
+    "@playnex/game-neon-kart-racing": "workspace:*",
     "@playnex/game-sdk": "workspace:*",
     "@playnex/game-snake-rush": "workspace:*",
     "@playnex/game-trivia-battle": "workspace:*",
