@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { Chess, type Color, type Move, type PieceSymbol, type Square } from 'chess.js';
 import {
   format,
+  toError,
   type GameHost,
   type MatchOutcome,
   type OnlineMessage,
@@ -125,7 +126,7 @@ export class ChessScene extends Phaser.Scene {
       }
       this.renderAll();
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import type { GameHost } from '@playnex/game-sdk';
+import { toError, type GameHost } from '@playnex/game-sdk';
 import { mixColors, toColorNumbers, type PaletteColors } from './colors';
 import {
   CARD_COUNT,
@@ -70,7 +70,7 @@ export class MemoryScene extends Phaser.Scene {
     try {
       this.buildCards();
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

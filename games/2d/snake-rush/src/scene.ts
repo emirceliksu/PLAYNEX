@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import type { GameHost } from '@playnex/game-sdk';
+import { toError, type GameHost } from '@playnex/game-sdk';
 import { toColorNumbers, type PaletteColors } from './colors';
 import {
   BONUS_EVERY,
@@ -93,7 +93,7 @@ export class SnakeScene extends Phaser.Scene {
       this.drawFood();
       this.bindInput();
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

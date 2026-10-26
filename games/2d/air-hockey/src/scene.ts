@@ -1,5 +1,11 @@
 import Phaser from 'phaser';
-import type { GameHost, MatchOutcome, OnlineMessage, OnlineSession } from '@playnex/game-sdk';
+import {
+  toError,
+  type GameHost,
+  type MatchOutcome,
+  type OnlineMessage,
+  type OnlineSession,
+} from '@playnex/game-sdk';
 import { toColorNumbers, type PaletteColors } from './colors';
 import { Cpu, type Difficulty } from './cpu';
 import {
@@ -116,7 +122,7 @@ export class AirHockeyScene extends Phaser.Scene {
       }
       this.render();
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

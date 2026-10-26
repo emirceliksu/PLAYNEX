@@ -1,5 +1,11 @@
 import Phaser from 'phaser';
-import type { GameHost, MatchOutcome, OnlineMessage, OnlineSession } from '@playnex/game-sdk';
+import {
+  toError,
+  type GameHost,
+  type MatchOutcome,
+  type OnlineMessage,
+  type OnlineSession,
+} from '@playnex/game-sdk';
 import { toColorNumbers, type PaletteColors } from './colors';
 import {
   COLUMNS,
@@ -94,7 +100,7 @@ export class ConnectFourScene extends Phaser.Scene {
         this.unsubscribe = this.online.subscribe((message) => this.onServer(message));
       }
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

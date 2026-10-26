@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { defineGame, type GameHost, type GameInstance } from '@playnex/game-sdk';
+import { defineGame, toError, type GameHost, type GameInstance } from '@playnex/game-sdk';
 import { LOGICAL_HEIGHT, LOGICAL_WIDTH, TuglaScene } from './scene';
 
 export default defineGame({
@@ -52,7 +52,7 @@ export default defineGame({
           scene,
         });
       } catch (error) {
-        const bootError = error instanceof Error ? error : new Error(String(error));
+        const bootError = toError(error);
         host.onError(bootError);
         reject(bootError);
       }

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import type { GameHost } from '@playnex/game-sdk';
+import { toError, type GameHost } from '@playnex/game-sdk';
 import { isBright, mixColors, toColorNumbers, type PaletteColors } from './colors';
 import {
   GRID_SIZE,
@@ -89,7 +89,7 @@ export class FusionScene extends Phaser.Scene {
       this.renderTiles(null, []);
       this.bindInput();
     } catch (error) {
-      this.callbacks.failed(error instanceof Error ? error : new Error(String(error)));
+      this.callbacks.failed(toError(error));
       return;
     }
     this.callbacks.ready();

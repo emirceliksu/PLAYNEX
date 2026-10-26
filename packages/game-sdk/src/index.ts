@@ -108,6 +108,11 @@ export function defineGame(module: GameModule): GameModule {
   return module;
 }
 
+// Engines can throw strings or plain objects, but host.onError only takes an Error.
+export function toError(thrown: unknown): Error {
+  return thrown instanceof Error ? thrown : new Error(String(thrown));
+}
+
 export function hexToColorNumber(hex: string): number {
   return Number.parseInt(hex.replace('#', ''), 16);
 }

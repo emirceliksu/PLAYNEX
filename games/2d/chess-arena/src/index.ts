@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { defineGame, type GameHost, type GameInstance } from '@playnex/game-sdk';
+import { defineGame, toError, type GameHost, type GameInstance } from '@playnex/game-sdk';
 import { bestMove, type Difficulty, type EngineMove } from './engine';
 import { ChessScene, LOGICAL_HEIGHT, LOGICAL_WIDTH, type EngineClient } from './scene';
 import { Toolbar } from './toolbar';
@@ -120,7 +120,7 @@ export default defineGame({
           scene,
         });
       } catch (error) {
-        const bootError = error instanceof Error ? error : new Error(String(error));
+        const bootError = toError(error);
         host.onError(bootError);
         cleanup();
         reject(bootError);
