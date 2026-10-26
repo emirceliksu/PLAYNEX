@@ -67,7 +67,7 @@
   },
   "games": {
     "title": "Games",
-    "subtitle": "{live} playable, {soon} coming soon",
+    "subtitle": "{live} playable{soon, plural, =0 {} other {, # coming soon}}",
     "searchPlaceholder": "Search by name or genre",
     "resultCount": "{count, plural, =0 {No results} =1 {1 game} other {# games}}",
     "clearFilters": "Clear filters",
@@ -122,6 +122,7 @@
     "leaderboard": "Leaderboard",
     "similar": "Similar games",
     "scoringLabel": "Scoring",
+    "playModes": "Ways to play",
     "comingSoonNotice": "This game cannot be played yet. It will show up here when it launches.",
     "scoring": {
       "high-score": "High score",

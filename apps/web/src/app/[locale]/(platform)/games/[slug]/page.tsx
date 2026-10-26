@@ -1,5 +1,15 @@
 import { Avatar, Badge, Button, GameCover, ScoreValue } from '@playnex/ui';
-import { Clock, Gamepad2, Keyboard, MousePointer2, Pointer, Play, Users } from 'lucide-react';
+import {
+  Clock,
+  Gamepad2,
+  Globe,
+  Keyboard,
+  MousePointer2,
+  Pointer,
+  Play,
+  User,
+  Users,
+} from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
@@ -53,7 +63,12 @@ export default async function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  const [t, common] = await Promise.all([getTranslations('game'), getTranslations('common')]);
+  const [t, common, lobby] = await Promise.all([
+    getTranslations('game'),
+    getTranslations('common'),
+    getTranslations('lobby'),
+  ]);
+  const modeIcons = { solo: User, local: Users, online: Globe } as const;
   const live = game.status === 'live';
   const similar = games
     .filter((other) => other.slug !== game.slug && other.category === game.category)
@@ -104,6 +119,22 @@ export default async function GamePage({ params }: GamePageProps) {
             </span>
             {live ? <span>{common('plays', { count: game.playCount })}</span> : null}
           </div>
+          {live ? (
+            <ul aria-label={t('playModes')} className="flex flex-wrap gap-2">
+              {game.setup.modes.map((mode) => {
+                const Icon = modeIcons[mode];
+                return (
+                  <li
+                    key={mode}
+                    className="inline-flex items-center gap-1.5 rounded-full border-2 border-border-subtle bg-surface-raised px-3 py-1 text-label-md text-fg-secondary"
+                  >
+                    <Icon aria-hidden className="size-4" />
+                    {lobby(`modes.${mode}.title`)}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null}
           {live ? (
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg">

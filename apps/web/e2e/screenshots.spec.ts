@@ -12,7 +12,8 @@ const routes = [
   { name: 'games-filtered', path: '/games?category=puzzle&sort=new' },
   { name: 'games-empty', path: '/games?q=zzzz' },
   { name: 'game-detail', path: '/games/snake-rush' },
-  { name: 'game-detail-coming-soon', path: '/games/connect-four' },
+  { name: 'game-detail-modes', path: '/games/chess-arena' },
+  { name: 'play-lobby', path: '/play/chess-arena' },
   { name: 'leaderboard', path: '/leaderboard' },
   { name: 'profile', path: '/profile/emre_k' },
   { name: 'not-found', path: '/games/olmayan-oyun' },
@@ -36,7 +37,16 @@ for (const route of routes) {
   }
 }
 
-for (const slug of ['tugla-tugla', 'connect-four', '2048-fusion', 'memory-flip'] as const) {
+for (const slug of [
+  'tugla-tugla',
+  'connect-four',
+  '2048-fusion',
+  'memory-flip',
+  'air-hockey',
+  'chess-arena',
+  'trivia-battle',
+  'neon-kart-racing',
+] as const) {
   test(`${slug} board at 1280px`, async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto(`/play/${slug}?state=playing`);

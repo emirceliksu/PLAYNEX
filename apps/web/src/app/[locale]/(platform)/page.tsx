@@ -39,7 +39,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <QuickPlayShelf games={liveGames} />
         <PopularGrid games={[...popular, ...comingSoonGames].slice(0, 6)} />
         <RankingList entries={getOverallRanking(6)} />
-        <ComingSoonStrip games={comingSoonGames} />
+        {comingSoonGames.length > 0 ? <ComingSoonStrip games={comingSoonGames} /> : null}
       </div>
       <SidePanel />
     </div>
