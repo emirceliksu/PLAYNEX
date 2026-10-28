@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import { type APIRequestContext, type Page, expect, test } from '@playwright/test';
 
-import { latestCode } from './mailpit';
+import { enterLoginCode, latestCode } from './mailpit';
 
 // compose.yaml promotes this address (ADMIN_EMAILS) once it is verified.
 const adminEmail = 'admin@playnex.localhost';
@@ -34,12 +34,16 @@ async function signInAsAdmin(page: Page, request: APIRequestContext) {
   await page.goto('/login');
   await page.getByLabel('Kullanıcı adı veya e-posta').fill(adminEmail);
   await page.getByLabel('Şifre', { exact: true }).fill(adminPassword);
+  const signInAt = Date.now() - 1_000;
   await page.getByRole('button', { name: 'Giriş yap', exact: true }).click();
   const signedIn = await page
-    .getByRole('link', { name: 'Profilim' })
-    .waitFor({ timeout: 5_000 })
+    .waitForURL(/\/login\/code$/, { timeout: 5_000 })
     .then(() => true)
     .catch(() => false);
+  if (signedIn) {
+    await enterLoginCode(page, request, adminEmail, signInAt);
+    await page.getByRole('link', { name: 'Profilim' }).waitFor();
+  }
   if (!signedIn) {
     await signUp(page, request, {
       username: `e2e_admin_${Date.now().toString(36).slice(-4)}`,
@@ -117,7 +121,9 @@ test('an admin suspends a player and lifts the suspension', async ({ browser, re
   await expect(admin.getByText(`${username} hesabının askısı kaldırıldı.`)).toBeVisible();
 
   await player.getByLabel('Şifre', { exact: true }).fill('oyuncu deneme cumlesi');
+  const signInAt = Date.now() - 1_000;
   await player.getByRole('button', { name: 'Giriş yap', exact: true }).click();
+  await enterLoginCode(player, request, email, signInAt);
   await expect(player.getByRole('link', { name: 'Profilim' })).toBeVisible();
 
   await playerContext.close();

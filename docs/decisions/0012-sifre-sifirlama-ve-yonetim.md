@@ -20,6 +20,6 @@ Hesaplar açıldıktan sonra (ADR 0011) iki eksik kaldı: şifresini unutan oyun
 
 ## Sonuçlar
 
-- PLAN 9'daki "yönetici için MFA zorunlu" maddesi henüz karşılanmadı; yönetici hesapları şimdilik yalnızca şifreyle korunuyor. Passkey veya TOTP eklendiğinde yöneticiler için zorunlu tutulacak.
+- PLAN 9'daki "yönetici için MFA zorunlu" maddesi bu kararda karşılanmadı; her girişte e-posta kodu ADR 0013 ile geldi.
 - Panel şimdilik yalnızca hesap yönetimini kapsıyor; oyun sürümü, rapor ve analitik ekranları ayrı işler.
 - Deneme sınırları API belleğinde olduğundan e2e testleri aynı IP'den art arda çok kayıt açınca sınıra takılabilir; test ortamında API'yi yeniden başlatmak sayaçları sıfırlar.

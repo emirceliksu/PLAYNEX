@@ -50,7 +50,8 @@
     "forgotPassword": "Şifremi unuttum",
     "resetPassword": "Yeni şifre",
     "admin": "Yönetim",
-    "adminUsers": "Oyuncu yönetimi"
+    "adminUsers": "Oyuncu yönetimi",
+    "loginCode": "Giriş kodu"
   },
   "home": {
     "title": "PLAYNEX oyun salonu",
@@ -221,7 +222,9 @@
       "register": "Adım 1 / 2",
       "verify": "Adım 2 / 2",
       "forgot": "Adım 1 / 2",
-      "reset": "Adım 2 / 2"
+      "reset": "Adım 2 / 2",
+      "login": "Adım 1 / 2",
+      "loginCode": "Adım 2 / 2"
     },
     "register": {
       "title": "Hesabını aç",
@@ -326,6 +329,20 @@
       "resent": "Yeni bir kod gönderdik.",
       "wrongEmail": "Adres yanlış mı?",
       "restart": "Başka bir adres yaz"
+    },
+    "loginCode": {
+      "title": "Giriş kodunu gir",
+      "lead": "<b>{email}</b> adresine 6 haneli bir giriş kodu gönderdik. Kod 15 dakika geçerli.",
+      "codeLabel": "Giriş kodu",
+      "codeHint": "Kod gelmediyse spam klasörüne de bak.",
+      "submit": "Girişi tamamla",
+      "submitting": "Kontrol ediliyor",
+      "resend": "Kodu yeniden gönder",
+      "resendIn": "{seconds} sn sonra yeniden gönderebilirsin",
+      "resent": "Yeni bir kod gönderdik.",
+      "expired": "Bu giriş denemesinin süresi doldu. Şifrenle yeniden giriş yap.",
+      "otherAccount": "Başka bir hesapla mı gireceksin?",
+      "restart": "Giriş ekranına dön"
     }
   },
   "player": {

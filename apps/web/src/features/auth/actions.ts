@@ -9,7 +9,9 @@ import {
   endSession,
   type IssuedSession,
   forgetResetEmail,
+  loginChallenge,
   pendingEmail,
+  rememberLoginChallenge,
   rememberPendingEmail,
   rememberResetEmail,
   resetEmail,
@@ -31,6 +33,12 @@ export interface AuthFormState {
 interface SignedIn {
   account: Account;
   session: IssuedSession;
+}
+
+interface CodeSent {
+  challenge: string;
+  email: string;
+  retryAfter: number;
 }
 
 function text(form: FormData, name: string): string {
@@ -112,7 +120,7 @@ export async function resendCode(_: AuthFormState): Promise<AuthFormState> {
 export async function login(_: AuthFormState, form: FormData): Promise<AuthFormState> {
   const locale = await getLocale();
   const values = { login: text(form, 'login') };
-  const result = await callApi<SignedIn>('/v1/auth/login', {
+  const result = await callApi<CodeSent>('/v1/auth/login', {
     method: 'POST',
     body: { ...values, password: text(form, 'password') },
   });
@@ -125,9 +133,52 @@ export async function login(_: AuthFormState, form: FormData): Promise<AuthFormS
     return { error: result.body.error, retryAfter: result.body.retryAfter, values };
   }
 
-  await startSession(result.data.session);
-  redirect({ href: safeNext(text(form, 'next')), locale });
+  await rememberLoginChallenge({
+    challenge: result.data.challenge,
+    email: result.data.email,
+    next: safeNext(text(form, 'next')),
+  });
+  redirect({ href: '/login/code', locale });
   return {};
+}
+
+export async function verifyLogin(_: AuthFormState, form: FormData): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const pending = await loginChallenge();
+  if (!pending) {
+    redirect({ href: '/login', locale });
+    return {};
+  }
+
+  const result = await callApi<SignedIn>('/v1/auth/login/code', {
+    method: 'POST',
+    body: { challenge: pending.challenge, code: text(form, 'code') },
+  });
+  if (!result.ok) {
+    return { error: result.body.error, retryAfter: result.body.retryAfter };
+  }
+
+  await startSession(result.data.session);
+  redirect({ href: pending.next, locale });
+  return {};
+}
+
+export async function resendLoginCode(_: AuthFormState): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const pending = await loginChallenge();
+  if (!pending) {
+    redirect({ href: '/login', locale });
+    return {};
+  }
+
+  const result = await callApi<{ retryAfter: number }>('/v1/auth/login/resend', {
+    method: 'POST',
+    body: { challenge: pending.challenge },
+  });
+  if (!result.ok) {
+    return { error: result.body.error, retryAfter: result.body.retryAfter, sentAt: Date.now() };
+  }
+  return { notice: 'resent', retryAfter: result.data.retryAfter, sentAt: Date.now() };
 }
 
 export async function requestPasswordReset(

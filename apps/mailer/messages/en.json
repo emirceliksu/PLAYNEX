@@ -19,5 +19,13 @@
     "heading": "Set a new password",
     "intro": "A password reset was requested for your account. Enter the code below on the reset screen and choose a new password. Changing it signs you out on your other devices.",
     "ignore": "If you did not ask for this, you can ignore this email; your password stays the same."
+  },
+  "signIn": {
+    "subject": "Your PLAYNEX sign-in code: {code}",
+    "preheader": "Enter this code within {minutes} minutes to finish signing in.",
+    "eyebrow": "Sign-in check",
+    "heading": "Is this you signing in?",
+    "intro": "Someone is signing in to your account with the correct password. Enter the code below on the sign-in screen to finish.",
+    "ignore": "If this was not you, do not share the code and change your password; no session opens without it."
   }
 }

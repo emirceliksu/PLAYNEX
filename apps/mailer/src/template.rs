@@ -5,6 +5,7 @@ use serde::Deserialize;
 pub enum Purpose {
     Verification,
     PasswordReset,
+    SignIn,
 }
 
 #[derive(Deserialize)]
@@ -38,6 +39,7 @@ struct Catalog {
     automated: String,
     verification: PurposeCopy,
     password_reset: PurposeCopy,
+    sign_in: PurposeCopy,
 }
 
 pub struct Rendered {
@@ -94,6 +96,7 @@ impl Templates {
         let copy = match mail.purpose {
             Purpose::Verification => &catalog.verification,
             Purpose::PasswordReset => &catalog.password_reset,
+            Purpose::SignIn => &catalog.sign_in,
         };
         let minutes = mail.valid_minutes.to_string();
         let fill = |text: &str| {
@@ -201,8 +204,11 @@ mod tests {
         let templates = Templates::load().unwrap();
         let verification = templates.render(&mail(Purpose::Verification, "Deniz"));
         let reset = templates.render(&mail(Purpose::PasswordReset, "Deniz"));
+        let sign_in = templates.render(&mail(Purpose::SignIn, "Deniz"));
         assert!(verification.subject.contains("042917"));
         assert_ne!(verification.subject, reset.subject);
+        assert_ne!(sign_in.subject, verification.subject);
+        assert_ne!(sign_in.subject, reset.subject);
         assert!(reset.html.contains(&format!("cid:{MARK_CID}")));
     }
 

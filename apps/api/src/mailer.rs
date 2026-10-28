@@ -7,6 +7,7 @@ use serde::Serialize;
 pub enum MailPurpose {
     Verification,
     PasswordReset,
+    SignIn,
 }
 
 #[derive(Serialize)]
