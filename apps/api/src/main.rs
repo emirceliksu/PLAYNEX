@@ -1,7 +1,6 @@
 mod accounts;
 mod config;
 mod error;
-mod gmail;
 mod mailer;
 mod rate_limit;
 mod sessions;
@@ -11,11 +10,11 @@ mod verification;
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
 use axum::{Json, Router, extract::State, http::StatusCode, routing::get};
+use playnex_service::{init_tracing, shutdown_signal};
 use serde::Serialize;
 use sqlx::{PgPool, postgres::PgPoolOptions};
-use tokio::{net::TcpListener, signal};
+use tokio::net::TcpListener;
 use tracing::info;
-use tracing_subscriber::EnvFilter;
 
 use crate::{config::Config, mailer::Mailer, rate_limit::RateLimiter};
 
@@ -53,13 +52,7 @@ async fn health(State(state): State<AppState>) -> (StatusCode, Json<Health>) {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt()
-        .with_env_filter(
-            EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info")),
-        )
-        .init();
-    // reqwest is built without a bundled crypto provider (aws-lc needs cmake); lettre already uses ring.
-    let _ = rustls::crypto::ring::default_provider().install_default();
+    init_tracing();
 
     let config = Config::from_env()?;
     let pool = PgPoolOptions::new()
@@ -74,7 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let state = AppState {
         pool,
-        mailer: Arc::new(Mailer::new(&config.mail)?),
+        mailer: Arc::new(Mailer::new(&config.mailer_url)?),
         limiter: Arc::new(RateLimiter::default()),
     };
 
@@ -92,32 +85,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     Ok(())
-}
-
-async fn shutdown_signal() {
-    let ctrl_c = async {
-        if signal::ctrl_c().await.is_err() {
-            std::future::pending::<()>().await;
-        }
-    };
-
-    #[cfg(unix)]
-    let terminate = async {
-        match signal::unix::signal(signal::unix::SignalKind::terminate()) {
-            Ok(mut stream) => {
-                stream.recv().await;
-            }
-            Err(_) => std::future::pending::<()>().await,
-        }
-    };
-
-    #[cfg(not(unix))]
-    let terminate = std::future::pending::<()>();
-
-    tokio::select! {
-        () = ctrl_c => {}
-        () = terminate => {}
-    }
-
-    info!("shutdown signal received");
 }

@@ -95,15 +95,12 @@ services:
   api:
     <<: *rust
     command: >-
-      cargo watch --poll -w apps/api -w Cargo.toml -w Cargo.lock
+      cargo watch --poll -w apps/api -w crates -w Cargo.toml -w Cargo.lock
       -w infrastructure/migrations -x "run -p playnex-api"
     environment:
       PORT: 8080
       DATABASE_URL: postgres://${POSTGRES_USER:-playnex}:${POSTGRES_PASSWORD:-playnex}@postgres:5432/${POSTGRES_DB:-playnex}
-      SMTP_HOST: mailpit
-      SMTP_PORT: 1025
-      SMTP_SECURITY: none
-      MAIL_FROM: ${MAIL_FROM:-PLAYNEX <no-reply@playnex.localhost>}
+      MAILER_URL: http://mailer:8082
       CARGO_TARGET_DIR: /cargo-target
       CARGO_BUILD_JOBS: 4
       RUST_LOG: info
@@ -116,16 +113,41 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      mailpit:
+      mailer:
         condition: service_healthy
     healthcheck:
       <<: *rust-healthcheck
       test: ['CMD', 'curl', '-fsS', 'http://localhost:8080/health']
 
+  mailer:
+    <<: *rust
+    command: >-
+      cargo watch --poll -w apps/mailer -w crates -w Cargo.toml -w Cargo.lock
+      -x "run -p playnex-mailer"
+    environment:
+      PORT: 8082
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_SECURITY: none
+      MAIL_FROM: ${MAIL_FROM:-PLAYNEX <no-reply@playnex.localhost>}
+      CARGO_TARGET_DIR: /cargo-target
+      CARGO_BUILD_JOBS: 4
+      RUST_LOG: info
+    volumes:
+      - .:/workspace
+      - cargo_registry:/usr/local/cargo/registry
+      - cargo_target_mailer:/cargo-target
+    depends_on:
+      mailpit:
+        condition: service_healthy
+    healthcheck:
+      <<: *rust-healthcheck
+      test: ['CMD', 'curl', '-fsS', 'http://localhost:8082/health']
+
   realtime:
     <<: *rust
     command: >-
-      cargo watch --poll -w apps/realtime -w Cargo.toml -w Cargo.lock
+      cargo watch --poll -w apps/realtime -w crates -w Cargo.toml -w Cargo.lock
       -w games/2d/air-hockey/data -w games/2d/trivia-battle/data
       -w games/2d/drawing-party/data -w games/3d/neon-kart-racing/data
       -x "run -p playnex-realtime"
@@ -244,6 +266,7 @@ volumes:
   next_cache:
   cargo_registry:
   cargo_target_api:
+  cargo_target_mailer:
   cargo_target_realtime:
   postgres_data:
   valkey_data:

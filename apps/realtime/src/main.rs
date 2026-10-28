@@ -7,10 +7,10 @@ use axum::{
     response::{IntoResponse, Response},
     routing::get,
 };
+use playnex_service::{init_tracing, shutdown_signal};
 use serde::Serialize;
-use tokio::{net::TcpListener, signal};
+use tokio::net::TcpListener;
 use tracing::{info, warn};
-use tracing_subscriber::EnvFilter;
 
 mod connection;
 mod identity;
@@ -72,11 +72,7 @@ async fn upgrade(
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::fmt()
-        .with_env_filter(
-            EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info")),
-        )
-        .init();
+    init_tracing();
 
     let port = std::env::var("PORT")
         .ok()
@@ -120,32 +116,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     Ok(())
-}
-
-async fn shutdown_signal() {
-    let ctrl_c = async {
-        if signal::ctrl_c().await.is_err() {
-            std::future::pending::<()>().await;
-        }
-    };
-
-    #[cfg(unix)]
-    let terminate = async {
-        match signal::unix::signal(signal::unix::SignalKind::terminate()) {
-            Ok(mut stream) => {
-                stream.recv().await;
-            }
-            Err(_) => std::future::pending::<()>().await,
-        }
-    };
-
-    #[cfg(not(unix))]
-    let terminate = std::future::pending::<()>();
-
-    tokio::select! {
-        () = ctrl_c => {}
-        () = terminate => {}
-    }
-
-    info!("shutdown signal received");
 }

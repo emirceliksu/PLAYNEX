@@ -1535,13 +1535,11 @@ version = "0.1.0"
 dependencies = [
  "argon2",
  "axum",
- "base64 0.23.1",
  "hex",
- "jsonwebtoken",
  "lettre",
+ "playnex-service",
  "rand 0.10.3",
  "reqwest",
- "rustls",
  "serde",
  "serde_json",
  "sha2 0.11.1",
@@ -1550,8 +1548,25 @@ dependencies = [
  "time",
  "tokio",
  "tracing",
- "tracing-subscriber",
  "uuid",
+]
+
+[[package]]
+name = "playnex-mailer"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "base64 0.23.1",
+ "jsonwebtoken",
+ "lettre",
+ "playnex-service",
+ "reqwest",
+ "rustls",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "tracing",
 ]
 
 [[package]]
@@ -1562,11 +1577,20 @@ dependencies = [
  "base64 0.23.1",
  "futures-util",
  "hmac 0.13.0",
+ "playnex-service",
  "rand 0.10.3",
  "serde",
  "serde_json",
  "sha2 0.11.1",
  "shakmaty",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
+name = "playnex-service"
+version = "0.1.0"
+dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",

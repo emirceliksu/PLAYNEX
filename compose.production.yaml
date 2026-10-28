@@ -2,8 +2,10 @@
 #
 # Only `edge` is routed by the Coolify proxy; it is the single way in. web, api, realtime and
 # postgres share the `internal` network, which Docker marks internal: no route to the outside
-# world and no published ports. The api additionally joins `egress` so it can reach the Gmail
-# API. Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
+# world and no published ports. Only the mailer has a route out (`egress`, for the Gmail API);
+# the api reaches it over `mail`, a second internal network that web and realtime are not on, so
+# the delivery key never shares a container with the database credentials.
+# Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
 
 x-hardening: &hardening
   restart: unless-stopped
@@ -61,15 +63,12 @@ services:
     environment:
       PORT: 8080
       DATABASE_URL: postgres://${SERVICE_USER_POSTGRES}:${SERVICE_PASSWORD_POSTGRES}@postgres:5432/playnex
-      # Gmail API through a service account with domain-wide delegation for gmail.send;
-      # the From address is the Workspace user it sends as.
-      GMAIL_SERVICE_ACCOUNT: ${GMAIL_SERVICE_ACCOUNT:?GMAIL_SERVICE_ACCOUNT must be set in Coolify}
-      MAIL_FROM: PLAYNEX <playnex@meccode.com>
+      MAILER_URL: http://mailer:8082
       RUST_LOG: info
     read_only: true
     networks:
       - internal
-      - egress
+      - mail
     healthcheck:
       test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:8080/health']
       interval: 15s
@@ -79,6 +78,33 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      mailer:
+        condition: service_healthy
+
+  mailer:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: infrastructure/docker/rust.Dockerfile
+      args:
+        PACKAGE: playnex-mailer
+    environment:
+      PORT: 8082
+      # Gmail API through a service account with domain-wide delegation for gmail.send;
+      # the From address is the Workspace user it sends as.
+      GMAIL_SERVICE_ACCOUNT: ${GMAIL_SERVICE_ACCOUNT:?GMAIL_SERVICE_ACCOUNT must be set in Coolify}
+      MAIL_FROM: PLAYNEX <playnex@meccode.com>
+      RUST_LOG: info
+    read_only: true
+    networks:
+      - mail
+      - egress
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:8082/health']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   realtime:
     <<: *hardening
@@ -124,6 +150,8 @@ services:
 networks:
   public: {}
   internal:
+    internal: true
+  mail:
     internal: true
   egress: {}
 

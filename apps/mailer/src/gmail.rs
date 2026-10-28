@@ -8,7 +8,7 @@ use jsonwebtoken::{Algorithm, EncodingKey, Header};
 use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
 
-use crate::mailer::MailError;
+use crate::mail::MailError;
 
 const SEND_SCOPE: &str = "https://www.googleapis.com/auth/gmail.send";
 const SEND_URL: &str = "https://gmail.googleapis.com/gmail/v1/users/me/messages/send";
