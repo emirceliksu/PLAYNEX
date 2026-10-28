@@ -26,3 +26,7 @@ coverage/
 .DS_Store
 Thumbs.db
 *.log
+
+# Google service account keys live only in the deployment secrets
+*service-account*.json
+playnex-mail-*.json
