@@ -7,9 +7,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { SectionHeader } from '@/components/section-header';
 import { AdminHeader } from '@/features/admin/admin-header';
-import { requireAdmin } from '@/features/admin/admin-session';
+import { adminMetadata, requireAdmin } from '@/features/admin/admin-session';
 import { UserStatus } from '@/features/admin/user-status';
-import { resolveLocale, routing } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';
 import { callApi } from '@/lib/auth/api';
 import { formatNumber, formatRelative } from '@/lib/format';
 
@@ -19,8 +19,7 @@ interface AdminPageProps {
 
 export async function generateMetadata({ params }: AdminPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
-  return { title: t('admin') };
+  return adminMetadata(locale, 'admin');
 }
 
 export default async function AdminPage({ params }: AdminPageProps) {

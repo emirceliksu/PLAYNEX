@@ -7,11 +7,11 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { AdminHeader } from '@/features/admin/admin-header';
-import { requireAdmin } from '@/features/admin/admin-session';
+import { adminMetadata, requireAdmin } from '@/features/admin/admin-session';
 import { UserActions } from '@/features/admin/user-actions';
 import { UserStatus } from '@/features/admin/user-status';
 import { Link } from '@/i18n/navigation';
-import { resolveLocale, routing } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';
 import { callApi } from '@/lib/auth/api';
 import { formatDate, formatRelative } from '@/lib/format';
 
@@ -26,8 +26,7 @@ export async function generateMetadata({
   params,
 }: Pick<AdminUsersPageProps, 'params'>): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
-  return { title: t('adminUsers') };
+  return adminMetadata(locale, 'adminUsers');
 }
 
 function listHref(q: string, filter: AdminUserFilter, page = 1): string {
