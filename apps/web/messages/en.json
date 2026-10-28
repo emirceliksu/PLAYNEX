@@ -577,6 +577,12 @@
     }
   },
   "errors": {
+    "forbidden": {
+      "title": "This page is for admins",
+      "description": "Your account cannot see this section. If you signed in with the wrong account, sign out and try again with an admin account.",
+      "guestDescription": "Only admin accounts can open this section. If you are an admin, sign in.",
+      "action": "Go to the home page"
+    },
     "notFound": {
       "title": "Nothing here",
       "description": "The page you are looking for may have moved or never existed.",

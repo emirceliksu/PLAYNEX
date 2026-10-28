@@ -11,9 +11,7 @@ import { requireAdmin } from '@/features/admin/admin-session';
 import { UserStatus } from '@/features/admin/user-status';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { callApi } from '@/lib/auth/api';
-import { getCurrentAccount } from '@/lib/auth/session';
 import { formatNumber, formatRelative } from '@/lib/format';
-import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface AdminPageProps {
   params: Promise<{ locale: string }>;
@@ -21,8 +19,6 @@ interface AdminPageProps {
 
 export async function generateMetadata({ params }: AdminPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const account = await getCurrentAccount();
-  if (account?.role !== 'admin') return notFoundMetadata(locale);
   const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
   return { title: t('admin') };
 }

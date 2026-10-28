@@ -72,8 +72,9 @@ test('an admin suspends a player and lifts the suspension', async ({ browser, re
     firstName: 'Mert',
   });
 
-  await player.goto('/admin');
-  await expect(player.getByText('Burada bir şey yok')).toBeVisible();
+  const denied = await player.goto('/admin');
+  expect(denied?.status()).toBe(403);
+  await expect(player.getByRole('heading', { level: 1 })).toHaveText('Bu sayfa yöneticilere açık');
 
   const adminContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const admin = await adminContext.newPage();

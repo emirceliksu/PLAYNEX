@@ -577,6 +577,12 @@
     }
   },
   "errors": {
+    "forbidden": {
+      "title": "Bu sayfa yöneticilere açık",
+      "description": "Hesabının bu bölümü görme yetkisi yok. Yanlış hesapla girdiysen çıkış yapıp yönetici hesabıyla tekrar dene.",
+      "guestDescription": "Bu bölüm yalnızca yönetici hesaplarına açık. Yöneticiysen giriş yap.",
+      "action": "Ana sayfaya dön"
+    },
     "notFound": {
       "title": "Burada bir şey yok",
       "description": "Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.",
