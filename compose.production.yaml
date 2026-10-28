@@ -24,9 +24,10 @@ services:
     environment:
       # Coolify routes the domain assigned to this service (https://playnex.meccode.com) to port 8080.
       - SERVICE_URL_EDGE_8080
-    # 3000-3002 are already taken on the deployment host; override with EDGE_PORT if 4310 is too.
+    # Loopback only: the host's own proxy reaches it, the outside world does not. 3000-3002 are
+    # already taken on the deployment host; override with EDGE_PORT if 4310 is too.
     ports:
-      - '${EDGE_PORT:-4310}:8080'
+      - '127.0.0.1:${EDGE_PORT:-4310}:8080'
     read_only: true
     tmpfs:
       - /data
