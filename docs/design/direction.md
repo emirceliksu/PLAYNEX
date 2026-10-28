@@ -27,7 +27,7 @@ Tüm skalalar OKLCH ile yazılır; adımlar algısal olarak eşittir. Marka moru
 
 | Skala    | 500 adımı               | Rol                                                            |
 | -------- | ----------------------- | -------------------------------------------------------------- |
-| `brand`  | `oklch(0.61 0.23 286)`  | Ana eylem, marka, seçili durum                                 |
+| `brand`  | `oklch(0.57 0.23 286)`  | Ana eylem, marka, seçili durum                                 |
 | `cyan`   | `oklch(0.76 0.145 205)` | Çok oyunculu / bağlantı / odak halkası                         |
 | `yellow` | `oklch(0.83 0.175 80)`  | XP, ödül, rekor                                                |
 | `pink`   | `oklch(0.67 0.22 355)`  | Etkinlik, vurgu, canlı yayın                                   |
@@ -51,7 +51,7 @@ Koyu tema semantik yüzeyleri (varsayılan):
 
 Açık tema aynı semantik isimlerle `ink.50` tuval, beyaz kart, `brand.600` eylem rengiyle hazır; ikinci sınıf vatandaş değil ama ürünün varsayılanı koyu.
 
-Kontrast hedefleri (WCAG 2.2 AA): `fg.primary`/canvas ≈ 16:1, `fg.secondary`/canvas ≈ 10:1, `fg.muted`/canvas ≈ 6:1, `fg.on-brand`/`brand.solid` ≥ 4.5:1 (ölçümde 4.5 altına düşerse `brand.500` L değeri 0.58'e çekilir). Her oranı Storybook token sayfası canlı hesaplar; yalnızca renge dayanan durum göstergesi yok (ikon + metin eşlik eder).
+Kontrast hedefleri (WCAG 2.2 AA): `fg.primary`/canvas ≈ 16:1, `fg.secondary`/canvas ≈ 10:1, `fg.muted`/canvas ≈ 6:1, `fg.on-brand`/`brand.solid` ≥ 4.5:1. `brand.500` ilk olarak L 0.61 ile tanımlanmıştı; ölçümde 3.9:1 çıktı, 0.58 de 4.45:1'de kaldığı için L 0.57'ye (4.6:1) çekildi. Her oranı Storybook token sayfası canlı hesaplar; yalnızca renge dayanan durum göstergesi yok (ikon + metin eşlik eder).
 
 ### Tipografi
 
