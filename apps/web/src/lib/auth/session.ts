@@ -7,6 +7,8 @@ import { callApi } from './api';
 const SESSION_COOKIE = 'playnex_session';
 // Carries the address between the sign-up form and the code screen without putting it in the URL.
 const PENDING_EMAIL_COOKIE = 'playnex_pending_email';
+// The password reset screen gets its address the same way, in a cookie of its own.
+const RESET_EMAIL_COOKIE = 'playnex_reset_email';
 const PENDING_EMAIL_MINUTES = 30;
 
 const secure = process.env.NODE_ENV === 'production';
@@ -55,4 +57,22 @@ export async function rememberPendingEmail(email: string): Promise<void> {
 
 export async function pendingEmail(): Promise<string | undefined> {
   return (await cookies()).get(PENDING_EMAIL_COOKIE)?.value;
+}
+
+export async function rememberResetEmail(email: string): Promise<void> {
+  (await cookies()).set(RESET_EMAIL_COOKIE, email, {
+    httpOnly: true,
+    secure,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: PENDING_EMAIL_MINUTES * 60,
+  });
+}
+
+export async function resetEmail(): Promise<string | undefined> {
+  return (await cookies()).get(RESET_EMAIL_COOKIE)?.value;
+}
+
+export async function forgetResetEmail(): Promise<void> {
+  (await cookies()).delete(RESET_EMAIL_COOKIE);
 }

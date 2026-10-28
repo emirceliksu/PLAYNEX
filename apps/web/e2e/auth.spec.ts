@@ -1,28 +1,10 @@
 import path from 'node:path';
 
-import { type APIRequestContext, expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-// Sign-up mails land in Mailpit; the code is read from the subject line.
-const mailpit = process.env.PLAYWRIGHT_MAILPIT_URL ?? 'http://localhost:8025';
+import { latestCode } from './mailpit';
+
 const outputDir = path.resolve(__dirname, '../../../docs/design/screenshots');
-
-async function latestCode(request: APIRequestContext, email: string): Promise<string> {
-  let code = '';
-  await expect
-    .poll(
-      async () => {
-        const response = await request.get(`${mailpit}/api/v1/search`, {
-          params: { query: `to:"${email}"` },
-        });
-        const body = (await response.json()) as { messages: { Subject: string }[] };
-        code = /\d{6}/.exec(body.messages[0]?.Subject ?? '')?.[0] ?? '';
-        return code;
-      },
-      { timeout: 20_000 },
-    )
-    .not.toBe('');
-  return code;
-}
 
 test('a visitor signs up, verifies the email, signs out and signs back in', async ({
   page,
@@ -49,7 +31,7 @@ test('a visitor signs up, verifies the email, signs out and signs back in', asyn
   await page.getByRole('button', { name: 'Doğrula ve başla' }).click();
   await expect(page.getByRole('alert').filter({ hasText: 'Kod eşleşmedi' })).toBeVisible();
 
-  await page.getByLabel('Doğrulama kodu').fill(await latestCode(request, email));
+  await page.getByLabel('Doğrulama kodu').fill(await latestCode(request, email, 'doğrulama'));
   await page.getByRole('button', { name: 'Doğrula ve başla' }).click();
 
   await expect(page).toHaveURL(new RegExp(`/profile/${username}\\?welcome=1$`));

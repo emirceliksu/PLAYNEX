@@ -11,7 +11,7 @@ import { getCurrentAccount } from '@/lib/auth/session';
 
 interface LoginPageProps {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ next?: string; reset?: string }>;
 }
 
 export async function generateMetadata({
@@ -37,7 +37,7 @@ export default async function LoginPage({ params, searchParams }: LoginPageProps
 
   return (
     <AuthFrame title={t('title')} lead={t('lead')}>
-      <LoginForm next={query.next} />
+      <LoginForm next={query.next} resetDone={query.reset === '1'} />
     </AuthFrame>
   );
 }

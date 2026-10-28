@@ -16,6 +16,7 @@ export function useAuthCopy() {
     const messages: Record<string, string> = {
       invalid_input: t('errors.invalid_input'),
       invalid_credentials: t('errors.invalid_credentials'),
+      account_suspended: t('errors.account_suspended'),
       invalid_code: t('errors.invalid_code'),
       code_expired: t('errors.code_expired'),
       too_many_attempts: t('errors.too_many_attempts'),

@@ -26,7 +26,8 @@
     "signIn": "Giriş yap",
     "signUp": "Kayıt ol",
     "signOut": "Çıkış yap",
-    "notificationsEmpty": "Henüz bildirim yok. Arkadaşlık ve rekor bildirimleri burada görünecek."
+    "notificationsEmpty": "Henüz bildirim yok. Arkadaşlık ve rekor bildirimleri burada görünecek.",
+    "admin": "Yönetim"
   },
   "nav": {
     "home": "Keşfet",
@@ -44,7 +45,11 @@
     "play": "{title} oyna",
     "register": "Kayıt ol",
     "login": "Giriş yap",
-    "verify": "E-posta doğrulama"
+    "verify": "E-posta doğrulama",
+    "forgotPassword": "Şifremi unuttum",
+    "resetPassword": "Yeni şifre",
+    "admin": "Yönetim",
+    "adminUsers": "Oyuncu yönetimi"
   },
   "home": {
     "featuredEyebrow": "Haftanın oyunu",
@@ -208,7 +213,9 @@
     },
     "steps": {
       "register": "Adım 1 / 2",
-      "verify": "Adım 2 / 2"
+      "verify": "Adım 2 / 2",
+      "forgot": "Adım 1 / 2",
+      "reset": "Adım 2 / 2"
     },
     "register": {
       "title": "Hesabını aç",
@@ -249,7 +256,9 @@
       "submit": "Giriş yap",
       "submitting": "Giriş yapılıyor",
       "noAccount": "Hesabın yok mu?",
-      "registerLink": "Kayıt ol"
+      "registerLink": "Kayıt ol",
+      "forgot": "Şifremi unuttum",
+      "resetDone": "Şifren güncellendi. Yeni şifrenle giriş yapabilirsin."
     },
     "password": {
       "show": "Şifreyi göster",
@@ -263,7 +272,8 @@
       "too_many_attempts": "Çok fazla yanlış deneme yapıldı. Yeni bir kod iste.",
       "rate_limited": "Çok fazla deneme yapıldı. {seconds} sn sonra tekrar dene.",
       "unavailable": "Şu an sunucuya ulaşamıyoruz. Birazdan tekrar dene.",
-      "internal": "Bir şeyler ters gitti. Tekrar dene."
+      "internal": "Bir şeyler ters gitti. Tekrar dene.",
+      "account_suspended": "Bu hesap askıya alındı. Bir yanlışlık olduğunu düşünüyorsan bizimle iletişime geç."
     },
     "fields": {
       "username": {
@@ -286,6 +296,30 @@
       "password": {
         "length": "Şifre 10–128 karakter olmalı."
       }
+    },
+    "forgot": {
+      "title": "Şifreni sıfırla",
+      "lead": "Hesabının e-posta adresini yaz; yeni şifre belirlemen için 6 haneli bir kod gönderelim.",
+      "email": "E-posta",
+      "submit": "Kodu gönder",
+      "submitting": "Gönderiliyor",
+      "remembered": "Şifreni hatırladın mı?",
+      "loginLink": "Giriş yap"
+    },
+    "reset": {
+      "title": "Yeni şifreni belirle",
+      "lead": "<b>{email}</b> adresinin bir hesabı varsa 6 haneli bir kod gönderdik. Kod 15 dakika geçerli.",
+      "codeLabel": "Sıfırlama kodu",
+      "codeHint": "Kod gelmediyse spam klasörüne de bak.",
+      "password": "Yeni şifre",
+      "passwordHint": "En az 10 karakter. Değişince diğer cihazlardaki oturumların kapanır.",
+      "submit": "Şifreyi güncelle",
+      "submitting": "Güncelleniyor",
+      "resend": "Kodu yeniden gönder",
+      "resendIn": "{seconds} sn sonra yeniden gönderebilirsin",
+      "resent": "Yeni bir kod gönderdik.",
+      "wrongEmail": "Adres yanlış mı?",
+      "restart": "Başka bir adres yaz"
     }
   },
   "player": {
@@ -552,6 +586,99 @@
     "offline": {
       "title": "Bağlantı yok",
       "description": "Skorlar kaydedilemez; bağlantı gelince otomatik gönderilir."
+    }
+  },
+  "admin": {
+    "eyebrow": "Yönetim",
+    "tabs": {
+      "label": "Yönetim bölümleri",
+      "overview": "Genel bakış",
+      "users": "Oyuncular"
+    },
+    "overview": {
+      "title": "Salonun durumu",
+      "lead": "Hesaplar, oturumlar ve yönetici işlemleri tek bakışta.",
+      "totals": {
+        "users": "Toplam hesap",
+        "joinedThisWeek": "Bu hafta katılan",
+        "signedInPlayers": "Oturumu açık oyuncu",
+        "pending": "Doğrulama bekleyen",
+        "suspended": "Askıda",
+        "admins": "Yönetici",
+        "breakdown": "{verified} doğrulanmış · {admins} yönetici"
+      },
+      "recentUsers": "Son katılanlar",
+      "recentActions": "Son işlemler",
+      "viewAll": "Tüm oyuncular",
+      "noActions": "Henüz bir yönetici işlemi yok.",
+      "noUsers": "Henüz kayıtlı oyuncu yok."
+    },
+    "log": {
+      "suspend": "<b>{actor}</b>, <b>{target}</b> hesabını askıya aldı",
+      "unsuspend": "<b>{actor}</b>, <b>{target}</b> hesabının askısını kaldırdı",
+      "grant_admin": "<b>{actor}</b>, <b>{target}</b> hesabını yönetici yaptı",
+      "revoke_admin": "<b>{actor}</b>, <b>{target}</b> hesabının yöneticiliğini aldı",
+      "end_sessions": "<b>{actor}</b>, <b>{target}</b> hesabının oturumlarını kapattı"
+    },
+    "users": {
+      "title": "Oyuncular",
+      "lead": "Hesapları ara, durumlarını gör, gerekirse askıya al.",
+      "searchLabel": "Oyuncu ara",
+      "searchPlaceholder": "Kullanıcı adı, ad ya da e-posta",
+      "searchSubmit": "Ara",
+      "filtersLabel": "Duruma göre süz",
+      "filters": {
+        "all": "Tümü",
+        "verified": "Doğrulanmış",
+        "pending": "Bekleyen",
+        "suspended": "Askıda",
+        "admins": "Yöneticiler"
+      },
+      "count": "{total, plural, =0 {Sonuç yok} one {# hesap} other {# hesap}}",
+      "columns": {
+        "joined": "Katılım",
+        "lastSignIn": "Son giriş",
+        "sessions": "Açık oturum"
+      },
+      "never": "Hiç",
+      "empty": {
+        "title": "Eşleşen hesap yok",
+        "description": "Aramayı ya da süzgeci değiştirip tekrar dene."
+      },
+      "previous": "Önceki sayfa",
+      "next": "Sonraki sayfa",
+      "page": "Sayfa {page} / {pages}"
+    },
+    "status": {
+      "verified": "Doğrulandı",
+      "pending": "Doğrulama bekliyor",
+      "suspended": "Askıda",
+      "admin": "Yönetici",
+      "you": "Sen"
+    },
+    "actions": {
+      "suspend": "Askıya al",
+      "unsuspend": "Askıyı kaldır",
+      "grantAdmin": "Yönetici yap",
+      "revokeAdmin": "Yöneticiliği al",
+      "endSessions": "Oturumları kapat",
+      "confirmSuspendTitle": "{username} askıya alınsın mı?",
+      "confirmSuspendBody": "Hesabın açık oturumları hemen kapanır, giriş yapamaz ve profili gizlenir. Askıyı istediğin zaman kaldırabilirsin.",
+      "confirmGrantTitle": "{username} yönetici olsun mu?",
+      "confirmGrantBody": "Yöneticiler bu paneli görür; oyuncuları askıya alabilir ve başka yöneticiler atayabilir.",
+      "cancel": "Vazgeç",
+      "done": {
+        "suspend": "{username} askıya alındı.",
+        "unsuspend": "{username} hesabının askısı kaldırıldı.",
+        "grantAdmin": "{username} artık yönetici.",
+        "revokeAdmin": "{username} artık yönetici değil.",
+        "endSessions": "{username} hesabının oturumları kapatıldı."
+      },
+      "errors": {
+        "cannot_target_self": "Kendi hesabında bu işlemi yapamazsın.",
+        "not_verified": "E-postası doğrulanmamış hesap yönetici yapılamaz.",
+        "failed": "İşlem tamamlanamadı. Tekrar dene."
+      }
     }
   }
 }

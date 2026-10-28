@@ -26,7 +26,8 @@
     "signIn": "Sign in",
     "signUp": "Sign up",
     "signOut": "Sign out",
-    "notificationsEmpty": "No notifications yet. Friend requests and record alerts will show up here."
+    "notificationsEmpty": "No notifications yet. Friend requests and record alerts will show up here.",
+    "admin": "Admin"
   },
   "nav": {
     "home": "Discover",
@@ -44,7 +45,11 @@
     "play": "Play {title}",
     "register": "Sign up",
     "login": "Sign in",
-    "verify": "Verify email"
+    "verify": "Verify email",
+    "forgotPassword": "Forgot password",
+    "resetPassword": "New password",
+    "admin": "Admin",
+    "adminUsers": "Player management"
   },
   "home": {
     "featuredEyebrow": "Game of the week",
@@ -208,7 +213,9 @@
     },
     "steps": {
       "register": "Step 1 of 2",
-      "verify": "Step 2 of 2"
+      "verify": "Step 2 of 2",
+      "forgot": "Step 1 / 2",
+      "reset": "Step 2 / 2"
     },
     "register": {
       "title": "Create your account",
@@ -249,7 +256,9 @@
       "submit": "Sign in",
       "submitting": "Signing in",
       "noAccount": "No account yet?",
-      "registerLink": "Sign up"
+      "registerLink": "Sign up",
+      "forgot": "Forgot password?",
+      "resetDone": "Your password is updated. Sign in with the new one."
     },
     "password": {
       "show": "Show password",
@@ -263,7 +272,8 @@
       "too_many_attempts": "Too many wrong attempts. Ask for a new code.",
       "rate_limited": "Too many attempts. Try again in {seconds}s.",
       "unavailable": "We cannot reach the server right now. Try again shortly.",
-      "internal": "Something went wrong. Try again."
+      "internal": "Something went wrong. Try again.",
+      "account_suspended": "This account is suspended. If you think this is a mistake, get in touch with us."
     },
     "fields": {
       "username": {
@@ -286,6 +296,30 @@
       "password": {
         "length": "Passwords are 10–128 characters long."
       }
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "lead": "Enter the email on your account and we will send a 6-digit code to set a new password.",
+      "email": "Email",
+      "submit": "Send code",
+      "submitting": "Sending",
+      "remembered": "Remembered it?",
+      "loginLink": "Sign in"
+    },
+    "reset": {
+      "title": "Set a new password",
+      "lead": "If <b>{email}</b> has an account, we sent it a 6-digit code. It is valid for 15 minutes.",
+      "codeLabel": "Reset code",
+      "codeHint": "No code? Check your spam folder too.",
+      "password": "New password",
+      "passwordHint": "At least 10 characters. Changing it signs you out on other devices.",
+      "submit": "Update password",
+      "submitting": "Updating",
+      "resend": "Send the code again",
+      "resendIn": "You can resend in {seconds} s",
+      "resent": "We sent a new code.",
+      "wrongEmail": "Wrong address?",
+      "restart": "Use another address"
     }
   },
   "player": {
@@ -552,6 +586,99 @@
     "offline": {
       "title": "No connection",
       "description": "Scores cannot be saved; they will be sent automatically once you are back online."
+    }
+  },
+  "admin": {
+    "eyebrow": "Admin",
+    "tabs": {
+      "label": "Admin sections",
+      "overview": "Overview",
+      "users": "Players"
+    },
+    "overview": {
+      "title": "State of the arcade",
+      "lead": "Accounts, sessions and admin actions at a glance.",
+      "totals": {
+        "users": "Accounts",
+        "joinedThisWeek": "Joined this week",
+        "signedInPlayers": "Signed-in players",
+        "pending": "Awaiting verification",
+        "suspended": "Suspended",
+        "admins": "Admins",
+        "breakdown": "{verified} verified · {admins} admins"
+      },
+      "recentUsers": "Latest sign-ups",
+      "recentActions": "Latest actions",
+      "viewAll": "All players",
+      "noActions": "No admin actions yet.",
+      "noUsers": "No players have signed up yet."
+    },
+    "log": {
+      "suspend": "<b>{actor}</b> suspended <b>{target}</b>",
+      "unsuspend": "<b>{actor}</b> lifted the suspension on <b>{target}</b>",
+      "grant_admin": "<b>{actor}</b> made <b>{target}</b> an admin",
+      "revoke_admin": "<b>{actor}</b> removed admin from <b>{target}</b>",
+      "end_sessions": "<b>{actor}</b> signed <b>{target}</b> out everywhere"
+    },
+    "users": {
+      "title": "Players",
+      "lead": "Search accounts, check their state and suspend them when needed.",
+      "searchLabel": "Search players",
+      "searchPlaceholder": "Username, name or email",
+      "searchSubmit": "Search",
+      "filtersLabel": "Filter by state",
+      "filters": {
+        "all": "All",
+        "verified": "Verified",
+        "pending": "Pending",
+        "suspended": "Suspended",
+        "admins": "Admins"
+      },
+      "count": "{total, plural, =0 {No results} one {# account} other {# accounts}}",
+      "columns": {
+        "joined": "Joined",
+        "lastSignIn": "Last sign-in",
+        "sessions": "Open sessions"
+      },
+      "never": "Never",
+      "empty": {
+        "title": "No matching accounts",
+        "description": "Change the search or the filter and try again."
+      },
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Page {page} of {pages}"
+    },
+    "status": {
+      "verified": "Verified",
+      "pending": "Awaiting verification",
+      "suspended": "Suspended",
+      "admin": "Admin",
+      "you": "You"
+    },
+    "actions": {
+      "suspend": "Suspend",
+      "unsuspend": "Lift suspension",
+      "grantAdmin": "Make admin",
+      "revokeAdmin": "Remove admin",
+      "endSessions": "Sign out everywhere",
+      "confirmSuspendTitle": "Suspend {username}?",
+      "confirmSuspendBody": "Their open sessions end right away, they cannot sign in and their profile is hidden. You can lift the suspension at any time.",
+      "confirmGrantTitle": "Make {username} an admin?",
+      "confirmGrantBody": "Admins see this panel; they can suspend players and appoint other admins.",
+      "cancel": "Cancel",
+      "done": {
+        "suspend": "{username} is suspended.",
+        "unsuspend": "The suspension on {username} is lifted.",
+        "grantAdmin": "{username} is now an admin.",
+        "revokeAdmin": "{username} is no longer an admin.",
+        "endSessions": "{username} is signed out everywhere."
+      },
+      "errors": {
+        "cannot_target_self": "You cannot do this to your own account.",
+        "not_verified": "An account without a verified email cannot be an admin.",
+        "failed": "That did not go through. Try again."
+      }
     }
   }
 }

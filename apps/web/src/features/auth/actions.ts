@@ -8,8 +8,11 @@ import { callApi } from '@/lib/auth/api';
 import {
   endSession,
   type IssuedSession,
+  forgetResetEmail,
   pendingEmail,
   rememberPendingEmail,
+  rememberResetEmail,
+  resetEmail,
   sessionToken,
   startSession,
 } from '@/lib/auth/session';
@@ -124,6 +127,75 @@ export async function login(_: AuthFormState, form: FormData): Promise<AuthFormS
 
   await startSession(result.data.session);
   redirect({ href: safeNext(text(form, 'next')), locale });
+  return {};
+}
+
+export async function requestPasswordReset(
+  _: AuthFormState,
+  form: FormData,
+): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const values = { email: text(form, 'email') };
+  const result = await callApi<{ retryAfter: number }>('/v1/auth/password/forgot', {
+    method: 'POST',
+    body: values,
+  });
+  if (!result.ok) {
+    return {
+      error: result.body.error,
+      fields: result.body.fields,
+      retryAfter: result.body.retryAfter,
+      values,
+    };
+  }
+
+  await rememberResetEmail(values.email.trim());
+  redirect({ href: '/reset-password', locale });
+  return {};
+}
+
+export async function resendResetCode(_: AuthFormState): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const email = await resetEmail();
+  if (!email) {
+    redirect({ href: '/forgot-password', locale });
+    return {};
+  }
+
+  const result = await callApi<{ retryAfter: number }>('/v1/auth/password/forgot', {
+    method: 'POST',
+    body: { email },
+  });
+  if (!result.ok) {
+    return { error: result.body.error, retryAfter: result.body.retryAfter, sentAt: Date.now() };
+  }
+  return { notice: 'resent', retryAfter: result.data.retryAfter, sentAt: Date.now() };
+}
+
+export async function resetPassword(_: AuthFormState, form: FormData): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const email = await resetEmail();
+  if (!email) {
+    redirect({ href: '/forgot-password', locale });
+    return {};
+  }
+
+  const result = await callApi('/v1/auth/password/reset', {
+    method: 'POST',
+    body: { email, code: text(form, 'code'), password: text(form, 'password') },
+  });
+  if (!result.ok) {
+    return {
+      error: result.body.error,
+      fields: result.body.fields,
+      retryAfter: result.body.retryAfter,
+    };
+  }
+
+  await forgetResetEmail();
+  // The reset ended every session, including one this browser may still hold.
+  await endSession();
+  redirect({ href: '/login?reset=1', locale });
   return {};
 }
 
