@@ -41,7 +41,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <div className="flex min-w-0 flex-col gap-14">
         {/* The featured card already carries the visual headline; the page name is for outline and screen readers. */}
         <h1 className="sr-only">{t('title')}</h1>
-        <section className="animate-rise-in">
+        <section>
           <CatalogGameCard game={featured} variant="featured" eyebrow={t('featuredEyebrow')} />
         </section>
         <QuickPlayShelf games={liveGames} />

@@ -13,6 +13,7 @@ export default async function NotFound() {
       </Link>
       <EmptyState
         titleAs="h1"
+        scene="off-board"
         title={t('title')}
         description={t('description')}
         className="w-full max-w-md bg-surface-raised"

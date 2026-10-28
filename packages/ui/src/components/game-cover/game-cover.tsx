@@ -35,35 +35,42 @@ function SnakeRush() {
   return (
     <>
       <Shadow>
-        {segments.map(([x, y]) => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="12" height="12" rx="3" />
-        ))}
-        <circle cx="118" cy="34" r="7" />
+        <g className="attract attract-lunge">
+          {segments.map(([x, y]) => (
+            <rect key={`${x}-${y}`} x={x} y={y} width="12" height="12" rx="3" />
+          ))}
+        </g>
+        <circle className="attract attract-bob" cx="118" cy="34" r="7" />
       </Shadow>
-      {segments.map(([x, y], index) => (
-        <rect
-          key={`${x}-${y}`}
-          x={x}
-          y={y}
-          width="12"
-          height="12"
-          rx="3"
-          fill={index === segments.length - 1 ? DEEP : ACCENT}
-          {...outline}
+      <g className="attract attract-lunge">
+        {segments.map(([x, y], index) => (
+          <rect
+            key={`${x}-${y}`}
+            x={x}
+            y={y}
+            width="12"
+            height="12"
+            rx="3"
+            fill={index === segments.length - 1 ? DEEP : ACCENT}
+            {...outline}
+          />
+        ))}
+        <circle cx="92" cy="32" r="1.6" fill={PAPER} />
+        <circle cx="96" cy="32" r="1.6" fill={PAPER} />
+      </g>
+      <g className="attract attract-bob">
+        <circle cx="118" cy="34" r="7" fill="var(--pn-coral-400)" {...outline} />
+        <path d="M118 27v-4" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M118 24c3-3 6-2 7 0"
+          stroke="var(--pn-mint-400)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
         />
-      ))}
-      <circle cx="92" cy="32" r="1.6" fill={PAPER} />
-      <circle cx="96" cy="32" r="1.6" fill={PAPER} />
-      <circle cx="118" cy="34" r="7" fill="var(--pn-coral-400)" {...outline} />
-      <path d="M118 27v-4" stroke={INK} strokeWidth="2" strokeLinecap="round" />
+      </g>
       <path
-        d="M118 24c3-3 6-2 7 0"
-        stroke="var(--pn-mint-400)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path
+        className="attract attract-dash"
         d="M22 76h116"
         stroke={INK}
         strokeWidth="2"
@@ -80,19 +87,21 @@ function MemoryFlip() {
     <>
       <Shadow>
         <rect x="24" y="22" width="34" height="46" rx="5" transform="rotate(-6 41 45)" />
-        <rect x="63" y="24" width="34" height="46" rx="5" />
+        <rect className="attract attract-flip" x="63" y="24" width="34" height="46" rx="5" />
         <rect x="102" y="22" width="34" height="46" rx="5" transform="rotate(6 119 45)" />
       </Shadow>
       <g transform="rotate(-6 41 45)">
         <rect x="24" y="22" width="34" height="46" rx="5" fill={DEEP} {...outline} />
         <circle cx="41" cy="45" r="5" fill={ACCENT} {...outline} />
       </g>
-      <rect x="63" y="24" width="34" height="46" rx="5" fill={PAPER} {...outline} />
-      <path
-        d="M80 32l4 8 9 1-6.5 6 2 9-8.5-4.5-8.5 4.5 2-9-6.5-6 9-1z"
-        fill={ACCENT}
-        {...outline}
-      />
+      <g className="attract attract-flip">
+        <rect x="63" y="24" width="34" height="46" rx="5" fill={PAPER} {...outline} />
+        <path
+          d="M80 32l4 8 9 1-6.5 6 2 9-8.5-4.5-8.5 4.5 2-9-6.5-6 9-1z"
+          fill={ACCENT}
+          {...outline}
+        />
+      </g>
       <g transform="rotate(6 119 45)">
         <rect x="102" y="22" width="34" height="46" rx="5" fill={DEEP} {...outline} />
         <circle cx="119" cy="45" r="5" fill={ACCENT} {...outline} />
@@ -113,23 +122,27 @@ function Fusion2048() {
         ))}
       </g>
       <Shadow>
-        <rect x="26" y="26" width="24" height="24" rx="4" />
+        <rect className="attract attract-merge" x="26" y="26" width="24" height="24" rx="4" />
         <rect x="56" y="26" width="24" height="24" rx="4" />
-        <rect x="88" y="44" width="38" height="38" rx="6" />
+        <rect className="attract attract-pop" x="88" y="44" width="38" height="38" rx="6" />
       </Shadow>
-      <rect x="26" y="26" width="24" height="24" rx="4" fill={ACCENT} {...outline} />
-      <rect x="56" y="26" width="24" height="24" rx="4" fill={ACCENT} {...outline} />
-      <rect x="88" y="44" width="38" height="38" rx="6" fill={DEEP} {...outline} />
       <g fill={INK} fontFamily="var(--pn-font-display)" fontWeight="700" textAnchor="middle">
-        <text x="38" y="43" fontSize="14">
-          2
-        </text>
+        <rect x="56" y="26" width="24" height="24" rx="4" fill={ACCENT} {...outline} />
         <text x="68" y="43" fontSize="14">
           2
         </text>
-        <text x="107" y="70" fontSize="20" fill={PAPER}>
-          4
-        </text>
+        <g className="attract attract-merge">
+          <rect x="26" y="26" width="24" height="24" rx="4" fill={ACCENT} {...outline} />
+          <text x="38" y="43" fontSize="14">
+            2
+          </text>
+        </g>
+        <g className="attract attract-pop">
+          <rect x="88" y="44" width="38" height="38" rx="6" fill={DEEP} {...outline} />
+          <text x="107" y="70" fontSize="20" fill={PAPER}>
+            4
+          </text>
+        </g>
       </g>
       <path d="M62 60l18 4" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
       <path d="M58 68l14 8" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
@@ -180,10 +193,12 @@ function TuglaTugla() {
       ))}
       <Shadow>
         <path
+          className="attract attract-drop"
           d={`M${originX + 3 * cell} ${originY} h${cell} v${cell * 3} h${cell} v${cell} h${-cell * 2} z`}
         />
       </Shadow>
       <path
+        className="attract attract-drop"
         d={`M${originX + 3 * cell} ${originY} h${cell} v${cell * 3} h${cell} v${cell} h${-cell * 2} z`}
         fill={PAPER}
         {...outline}
@@ -244,6 +259,8 @@ function ConnectFour() {
         return (
           <circle
             key={index}
+            // The disc that completes the diagonal drops in on every loop.
+            className={col === 3 && row === 1 ? 'attract attract-drop' : undefined}
             cx={originX + col * size + size / 2}
             cy={originY + row * size + size / 2}
             r="5"
@@ -254,6 +271,7 @@ function ConnectFour() {
         );
       })}
       <path
+        className="attract attract-dash"
         d={`M${originX + size / 2} ${originY + 4 * size + size / 2} L${originX + 3 * size + size / 2} ${originY + size + size / 2}`}
         stroke={PAPER}
         strokeWidth="2.5"
@@ -277,8 +295,10 @@ function AirHockey() {
       <circle cx="50" cy="50" r="3" fill={INK} />
       <circle cx="112" cy="40" r="9" fill="var(--pn-pink-400)" {...outline} />
       <circle cx="112" cy="40" r="3" fill={INK} />
-      <circle cx="86" cy="62" r="5" fill={INK} />
-      <path d="M70 70l10-6" stroke={ACCENT} strokeWidth="2.5" strokeLinecap="round" />
+      <g className="attract attract-puck">
+        <circle cx="86" cy="62" r="5" fill={INK} />
+        <path d="M70 70l10-6" stroke={ACCENT} strokeWidth="2.5" strokeLinecap="round" />
+      </g>
     </>
   );
 }
@@ -305,10 +325,12 @@ function ChessArena() {
         })}
       </g>
       <Shadow>
-        <path d={knight} />
+        <path className="attract attract-hop" d={knight} />
       </Shadow>
-      <path d={knight} fill={ACCENT} {...outline} />
-      <circle cx="80" cy="42" r="2" fill={INK} />
+      <g className="attract attract-hop">
+        <path d={knight} fill={ACCENT} {...outline} />
+        <circle cx="80" cy="42" r="2" fill={INK} />
+      </g>
     </>
   );
 }
@@ -324,13 +346,15 @@ function DrawingParty() {
         strokeLinecap="round"
       />
       <Shadow>
-        <path d="M100 26l16 16-30 30-20 4 4-20z" />
+        <path className="attract attract-wobble" d="M100 26l16 16-30 30-20 4 4-20z" />
         <circle cx="38" cy="30" r="8" />
         <circle cx="126" cy="70" r="7" />
       </Shadow>
-      <path d="M100 26l16 16-30 30-20 4 4-20z" fill={PAPER} {...outline} />
-      <path d="M70 72l-4 4" stroke={INK} strokeWidth="2" />
-      <path d="M100 26l16 16-6 6-16-16z" fill={DEEP} {...outline} />
+      <g className="attract attract-wobble">
+        <path d="M100 26l16 16-30 30-20 4 4-20z" fill={PAPER} {...outline} />
+        <path d="M70 72l-4 4" stroke={INK} strokeWidth="2" />
+        <path d="M100 26l16 16-6 6-16-16z" fill={DEEP} {...outline} />
+      </g>
       <circle cx="38" cy="30" r="8" fill="var(--pn-yellow-400)" {...outline} />
       <circle cx="126" cy="70" r="7" fill="var(--pn-cyan-400)" {...outline} />
     </>
@@ -341,20 +365,22 @@ function TriviaBattle() {
   return (
     <>
       <Shadow>
-        <rect x="30" y="18" width="56" height="64" rx="6" />
+        <rect className="attract attract-wobble" x="30" y="18" width="56" height="64" rx="6" />
       </Shadow>
-      <rect x="30" y="18" width="56" height="64" rx="6" fill={ACCENT} {...outline} />
-      <text
-        x="58"
-        y="64"
-        fontSize="40"
-        fontWeight="700"
-        fontFamily="var(--pn-font-display)"
-        textAnchor="middle"
-        fill={INK}
-      >
-        ?
-      </text>
+      <g className="attract attract-wobble">
+        <rect x="30" y="18" width="56" height="64" rx="6" fill={ACCENT} {...outline} />
+        <text
+          x="58"
+          y="64"
+          fontSize="40"
+          fontWeight="700"
+          fontFamily="var(--pn-font-display)"
+          textAnchor="middle"
+          fill={INK}
+        >
+          ?
+        </text>
+      </g>
       {[26, 44, 62].map((y, index) => (
         <g key={y}>
           <rect
@@ -392,16 +418,20 @@ function NeonKartRacing() {
         opacity="0.6"
       />
       <Shadow>
-        <path d="M60 56h36l8 8v6H52v-6z" />
-        <circle cx="62" cy="72" r="6" />
-        <circle cx="96" cy="72" r="6" />
+        <g className="attract attract-lunge">
+          <path d="M60 56h36l8 8v6H52v-6z" />
+          <circle cx="62" cy="72" r="6" />
+          <circle cx="96" cy="72" r="6" />
+        </g>
       </Shadow>
-      <path d="M60 56h36l8 8v6H52v-6z" fill={ACCENT} {...outline} />
-      <path d="M70 56l4-10h14l4 10" fill={PAPER} {...outline} />
-      <circle cx="62" cy="72" r="6" fill={INK} />
-      <circle cx="96" cy="72" r="6" fill={INK} />
-      <circle cx="62" cy="72" r="2" fill={PAPER} />
-      <circle cx="96" cy="72" r="2" fill={PAPER} />
+      <g className="attract attract-lunge">
+        <path d="M60 56h36l8 8v6H52v-6z" fill={ACCENT} {...outline} />
+        <path d="M70 56l4-10h14l4 10" fill={PAPER} {...outline} />
+        <circle cx="62" cy="72" r="6" fill={INK} />
+        <circle cx="96" cy="72" r="6" fill={INK} />
+        <circle cx="62" cy="72" r="2" fill={PAPER} />
+        <circle cx="96" cy="72" r="2" fill={PAPER} />
+      </g>
       <path
         d="M28 58h16M24 64h12M30 70h10"
         stroke={ACCENT}
@@ -443,10 +473,19 @@ export interface GameCoverProps {
   // Accessible name; omit for decorative use next to a visible title.
   title?: string;
   muted?: boolean;
+  // Plays the attract demo twice when the cover appears; otherwise it only runs on card hover/focus.
+  playOnArrival?: boolean;
   className?: string;
 }
 
-export function GameCover({ slug, accent, title, muted = false, className }: GameCoverProps) {
+export function GameCover({
+  slug,
+  accent,
+  title,
+  muted = false,
+  playOnArrival = false,
+  className,
+}: GameCoverProps) {
   const Illustration = illustrations[slug] ?? Fallback;
   const style = {
     '--cover-accent': `var(--pn-${accent}-400)`,
@@ -462,6 +501,7 @@ export function GameCover({ slug, accent, title, muted = false, className }: Gam
       role={title ? 'img' : undefined}
       aria-hidden={title ? undefined : true}
       style={style}
+      data-attract={muted ? 'off' : playOnArrival ? 'once' : undefined}
       className={cn('block h-auto w-full', muted && 'opacity-70 saturate-50', className)}
     >
       {title ? <title>{title}</title> : null}

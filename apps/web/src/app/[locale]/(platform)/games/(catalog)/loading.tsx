@@ -1,4 +1,4 @@
-import { Skeleton, SkeletonGameCard } from '@playnex/ui';
+import { Skeleton, SkeletonCover, SkeletonGameCard, SkeletonText } from '@playnex/ui';
 
 export default function GamesLoading() {
   return (
@@ -22,9 +22,21 @@ export default function GamesLoading() {
           ))}
         </div>
       </div>
-      <Skeleton className="h-4 w-20" />
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        {Array.from({ length: 8 }, (_, index) => (
+      <div className="flex items-baseline justify-between gap-4">
+        <Skeleton className="h-7 w-36" />
+        <Skeleton className="h-4 w-16" />
+      </div>
+      <div className="grid gap-6 rounded-2xl border-2 border-border-subtle bg-surface-raised p-4 md:grid-cols-[3fr_2fr] md:p-6">
+        <SkeletonCover />
+        <div className="flex flex-col justify-center gap-4">
+          <Skeleton className="h-3 w-24" />
+          <Skeleton className="h-9 w-3/4" />
+          <SkeletonText lines={3} />
+          <Skeleton className="h-14 w-44 rounded-md" />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: 6 }, (_, index) => (
           <SkeletonGameCard key={index} />
         ))}
       </div>

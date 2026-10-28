@@ -82,6 +82,7 @@
     "subtitle": "{live} oynanabilir{soon, plural, =0 {} other {, # yakında}}",
     "searchPlaceholder": "Ada veya türe göre ara",
     "allGames": "Tüm oyunlar",
+    "newArrival": "Salona yeni geldi",
     "searchResults": "“{query}” için sonuçlar",
     "categoryGames": "{category} oyunları",
     "filteredGames": "Seçili filtrelere uyan oyunlar",

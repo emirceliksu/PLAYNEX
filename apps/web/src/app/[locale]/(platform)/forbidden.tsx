@@ -20,6 +20,7 @@ export default async function PlatformForbidden() {
   return (
     <EmptyState
       titleAs="h1"
+      scene="locked"
       title={t('title')}
       description={account ? t('description') : t('guestDescription')}
       className="mx-auto mt-10 max-w-lg"

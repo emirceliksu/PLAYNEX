@@ -17,6 +17,7 @@ export default async function PlatformNotFound() {
   return (
     <EmptyState
       titleAs="h1"
+      scene="off-board"
       title={t('errors.notFound.title')}
       description={t('errors.notFound.description')}
       className="mx-auto mt-10 max-w-lg"

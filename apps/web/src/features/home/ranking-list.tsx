@@ -32,6 +32,7 @@ export async function RankingList({ entries, currentUsername }: RankingListProps
       />
       {entries.length === 0 ? (
         <EmptyState
+          scene="podium"
           title={t('home.rankingEmpty.title')}
           description={t('home.rankingEmpty.description')}
         />
