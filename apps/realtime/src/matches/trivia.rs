@@ -332,6 +332,7 @@ mod tests {
             let options = json!({ "category": category });
             let game = Trivia::new(&MatchSetup {
                 seats: 2,
+                players: Vec::new(),
                 round: 0,
                 options,
             })

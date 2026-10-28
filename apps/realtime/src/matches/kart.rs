@@ -633,6 +633,7 @@ mod tests {
     fn race_ranks_finishers_then_progress() {
         let mut race = KartRace::new(&MatchSetup {
             seats: 3,
+            players: Vec::new(),
             round: 0,
             options: Value::Null,
         });
@@ -657,6 +658,7 @@ mod tests {
     fn inputs_only_move_forward_in_sequence() {
         let mut race = KartRace::new(&MatchSetup {
             seats: 2,
+            players: Vec::new(),
             round: 0,
             options: Value::Null,
         });

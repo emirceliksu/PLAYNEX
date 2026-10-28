@@ -433,6 +433,7 @@ mod tests {
     fn match_ends_at_win_score() {
         let mut game = AirHockey::new(&MatchSetup {
             seats: 2,
+            players: Vec::new(),
             round: 0,
             options: Value::Null,
         });
