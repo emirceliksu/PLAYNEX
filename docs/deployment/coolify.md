@@ -55,11 +55,10 @@ Elle girilir:
 | `SMTP_USERNAME` |                                  | Sağlayıcının verdiği kullanıcı                                   |
 | `SMTP_PASSWORD` |                                  | Sağlayıcının verdiği şifre / API anahtarı                        |
 | `MAIL_FROM`     | `PLAYNEX <no-reply@meccode.com>` | Zorunlu; alan adının SPF/DKIM kaydı gönderici sunucuyu kapsamalı |
-| `PUBLIC_ORIGIN` | `https://playnex.meccode.com`    | WebSocket origin kontrolü; varsayılan bu değer                   |
 
-İsteğe bağlı: `POSTGRES_DB` (varsayılan `playnex`), `RUST_LOG` (varsayılan `info`).
+Veritabanı adı (`playnex`), log düzeyi (`info`) ve WebSocket için izin verilen origin (`https://playnex.meccode.com`) `compose.production.yaml` içinde sabittir; alan adı değişirse orada güncellenir.
 
-Kaynak listesinde bu tablolarda olmayan bir değişken görünüyorsa (`POSTGRES_PASSWORD`, `VALKEY_URL`, `STORAGE_*`, `SMTP_HOST=mailpit` gibi) silinir. Bunlar geliştirme ortamının varsayılanlarıdır; üretim stack'i kullanmaz, `SMTP_*` ve `MAIL_FROM` ise yanlış değerle e-posta gönderimini bozar.
+Kaynak listesinde bu tablolarda olmayan bir değişken görünüyorsa (`POSTGRES_USER`, `POSTGRES_PASSWORD`, `REALTIME_TOKEN_SECRET`, `STORAGE_*`, `PUBLIC_ORIGIN` gibi) silinir. Bunlar geliştirme ortamının varsayılanlarıdır; üretim stack'i kullanmaz, `SMTP_*` ve `MAIL_FROM` ise yanlış değerle e-posta gönderimini bozar.
 
 ## Deploy sonrası kontrol
 
