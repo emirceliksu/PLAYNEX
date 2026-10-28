@@ -15,7 +15,15 @@ import { Controls } from './controls';
 import { translator, type Translate } from './dom';
 import { Hud, type Label } from './hud';
 import { BuyMenu, Gate, Scoreboard, VotePanel } from './menus';
-import type { Hand, MatchEvent, PlayerView, RosterEntry, Snapshot } from './protocol';
+import {
+  Decoder,
+  type Hand,
+  type MatchEvent,
+  type PlayerView,
+  type RawSnapshot,
+  type RosterEntry,
+  type Snapshot,
+} from './protocol';
 import { readSettings, type Settings } from './settings';
 import { Sound } from './sound';
 import { type AvatarPose, World } from './world';
@@ -59,6 +67,7 @@ export class SiperGame {
   private readonly mixer: AudioMixer;
   private readonly sound: Sound;
   private readonly announcer: Announcer;
+  private readonly decoder = new Decoder();
   private readonly resizeObserver: ResizeObserver;
   private readonly unsubscribe: (() => void) | null;
   private settings: Settings;
@@ -432,7 +441,7 @@ export class SiperGame {
     const [older, newer, f] = pair;
     const a = older.snap.p[index];
     const b = newer.snap.p[index];
-    if (!a || !b) return null;
+    if (!a?.seen || !b?.seen) return null;
     const turn = Math.atan2(Math.sin(b.yw - a.yw), Math.cos(b.yw - a.yw));
     return {
       x: a.x + (b.x - a.x) * f,
@@ -706,7 +715,7 @@ export class SiperGame {
     // Other players' footsteps: the main way to hear someone round a corner.
     const listener = this.world.camera.position;
     snap.p.forEach((p, i) => {
-      if (i === this.myIndex || !p.a) return;
+      if (i === this.myIndex || !p.a || !p.seen) return;
       const last = this.otherSteps.get(i) ?? { x: p.x, z: p.z, d: 0 };
       const moved = Math.hypot(p.x - last.x, p.z - last.z);
       const running = moved > 0 && moved < 1;
@@ -775,7 +784,7 @@ export class SiperGame {
     const now = performance.now();
     switch (message.kind) {
       case 'snapshot':
-        this.applySnapshot(message.payload as Snapshot, now);
+        this.applySnapshot(this.decoder.decode(message.payload as RawSnapshot), now);
         return;
       case 'event':
         this.applyEvent(message.payload as MatchEvent, now);

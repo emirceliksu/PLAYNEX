@@ -1,11 +1,26 @@
-import type { ModeKey } from '../sim/data';
+import { grenades, type ModeKey, weapons } from '../sim/data';
 
-// Shapes of what `apps/realtime/src/matches/siper/view.rs` and the match events send.
+// Shapes of what `apps/realtime/src/matches/siper/view.rs` and the match events send, and
+// the decoder that turns the compact frames into the views the client works with.
 
 export type Phase = 'freeze' | 'live' | 'roundEnd' | 'vote' | 'done';
 export type Hand = 'primary' | 'secondary' | 'melee' | 'grenade' | 'smoke';
 
+// [x, y, z, yaw, pitch, flags, health, weapon index]
+type PlayerTuple = [number, number, number, number, number, number, number, number];
+// [team, kills, deaths, assists, score, ping, level, alive]
+type BoardTuple = [number, number, number, number, number, number, number, number];
+
+const CROUCHED = 1;
+const ALIVE = 2;
+const CARRIES_BOMB = 4;
+const SCOPED = 8;
+
+const WEAPON_IDS = [...weapons.map((w) => w.id), ...grenades.map((g) => g.id)];
+
 export interface PlayerView {
+  // False when the server held this enemy back because nobody on our side can see them.
+  seen: boolean;
   x: number;
   y: number;
   z: number;
@@ -24,7 +39,6 @@ export interface PlayerView {
   bm: boolean;
   lv: number;
   zm: boolean;
-  $: number | null;
 }
 
 export interface MeView {
@@ -47,11 +61,10 @@ export interface MeView {
   vy: number;
   vz: number;
   gd: boolean;
-  lk: number;
 }
 
 export type BombView =
-  | { s: 'carried'; by: number }
+  | { s: 'carried'; by: number | null }
   | { s: 'dropped' | 'defused' | 'exploded'; at: [number, number, number] }
   | { s: 'planted'; at: [number, number, number]; site: string; tl: number };
 
@@ -66,6 +79,124 @@ export interface Snapshot {
   gr: [number, number, number, number][];
   sm: [number, number, number, number][];
   me: MeView;
+}
+
+interface RawMe {
+  i: number;
+  ack: number;
+  hp: number;
+  ar: number;
+  hel: boolean;
+  $: number;
+  hand: Hand;
+  ammo: number | null;
+  res: number | null;
+  rl: number | null;
+  inv: [string | null, string | null, boolean, boolean, boolean];
+  buy: boolean;
+  use: [string, number] | null;
+  rs: number | null;
+  v: [number, number, number];
+  gd: boolean;
+}
+
+export interface RawSnapshot {
+  t: number;
+  ph: Phase;
+  tl: number;
+  rd: number;
+  sc: [number, number];
+  p: (PlayerTuple | null)[];
+  b?: BoardTuple[];
+  bomb: BombView | null;
+  gr: [number, number, number, number][];
+  sm: [number, number, number, number][];
+  me: RawMe;
+}
+
+// The scoreboard arrives only every few frames; the last one is kept and merged in.
+export class Decoder {
+  private board: BoardTuple[] = [];
+  private last: PlayerView[] = [];
+
+  decode(raw: RawSnapshot): Snapshot {
+    if (raw.b) this.board = raw.b;
+    const players = raw.p.map((tuple, i): PlayerView => {
+      const [tm, k, d, as, sc, pg, lv, alive] = this.board[i] ?? [0, 0, 0, 0, 0, 0, 0, 1];
+      const stats = { tm, k, d, as, sc, pg, lv };
+      if (!tuple) {
+        const previous = this.last[i];
+        return {
+          ...(previous ?? {
+            x: 0,
+            y: 0,
+            z: 0,
+            yw: 0,
+            pt: 0,
+            c: false,
+            hp: 0,
+            w: 'knife',
+            bm: false,
+            zm: false,
+          }),
+          ...stats,
+          a: alive === 1,
+          seen: false,
+        };
+      }
+      const [x, y, z, yw, pt, flags, hp, weapon] = tuple;
+      return {
+        ...stats,
+        seen: true,
+        x,
+        y,
+        z,
+        yw,
+        pt,
+        c: (flags & CROUCHED) !== 0,
+        a: (flags & ALIVE) !== 0,
+        bm: (flags & CARRIES_BOMB) !== 0,
+        zm: (flags & SCOPED) !== 0,
+        hp,
+        w: WEAPON_IDS[weapon] ?? 'knife',
+      };
+    });
+    this.last = players;
+    const me = raw.me;
+    const [p, s, k, g, m] = me.inv;
+    return {
+      t: raw.t,
+      ph: raw.ph,
+      tl: raw.tl,
+      rd: raw.rd,
+      sc: raw.sc,
+      p: players,
+      bomb: raw.bomb,
+      gr: raw.gr,
+      sm: raw.sm,
+      me: {
+        i: me.i,
+        ack: me.ack,
+        hp: me.hp,
+        ar: me.ar,
+        hel: me.hel,
+        $: me.$,
+        hand: me.hand,
+        ammo: me.ammo,
+        res: me.res,
+        rl: me.rl,
+        inv: { p, s, k, g, m },
+        buy: me.buy,
+        use: me.use,
+        rs: me.rs,
+        zm: players[me.i]?.zm ?? false,
+        vx: me.v[0],
+        vy: me.v[1],
+        vz: me.v[2],
+        gd: me.gd,
+      },
+    };
+  }
 }
 
 export interface RosterEntry {

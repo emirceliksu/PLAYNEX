@@ -83,7 +83,8 @@ fn board(game: &SiperMatch) -> Value {
                     p.stats.assists,
                     p.stats.score(),
                     p.ping,
-                    p.level
+                    p.level,
+                    u8::from(p.alive)
                 ])
             })
             .collect(),
