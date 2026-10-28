@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, Button, Logo, MobileNav, Sidebar, Topbar, type NavItem } from '@playnex/ui';
-import { Compass, Gamepad2, ShieldCheck, Trophy, User } from 'lucide-react';
+import { Compass, Gamepad2, LogIn, ShieldCheck, Trophy, User } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { Link, usePathname } from '@/i18n/navigation';
@@ -70,8 +70,9 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
     },
     {
       href: profileHref,
-      label: labels.profile,
-      icon: <User />,
+      // The topbar hides "Sign in" on phones, so for guests this tab is the visible way in.
+      label: user ? labels.profile : labels.signIn,
+      icon: user ? <User /> : <LogIn />,
       active: isActive(pathname, '/profile'),
     },
   ];
