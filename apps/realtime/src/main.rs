@@ -16,10 +16,11 @@ mod connection;
 mod identity;
 mod matches;
 mod protocol;
+mod reports;
 mod rooms;
 
 use connection::AppState;
-use identity::TokenSigner;
+use identity::{TicketVerifier, TokenSigner};
 use rooms::Registry;
 
 const DEFAULT_PORT: u16 = 8081;
@@ -96,10 +97,32 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .filter(|origin| !origin.is_empty())
         .collect();
 
+    let tickets = match std::env::var("REALTIME_ACCOUNT_SECRET") {
+        Ok(secret) if secret.len() >= 32 => Some(TicketVerifier::new(secret.into_bytes())),
+        _ => {
+            warn!("REALTIME_ACCOUNT_SECRET missing or short; signed-in play is disabled");
+            None
+        }
+    };
+    let registry = match (
+        std::env::var("API_INTERNAL_URL"),
+        std::env::var("INTERNAL_API_TOKEN"),
+    ) {
+        (Ok(url), Ok(token)) if !url.is_empty() && token.len() >= 32 => {
+            let endpoint = format!("{}/internal/v1/matches", url.trim_end_matches('/'));
+            Registry::with_reporter(reports::spawn(endpoint, token))
+        }
+        _ => {
+            warn!("API_INTERNAL_URL or INTERNAL_API_TOKEN missing; match results are not kept");
+            Registry::default()
+        }
+    };
+
     let shared = Shared {
         app: Arc::new(AppState {
-            registry: Registry::default(),
+            registry,
             signer,
+            tickets,
         }),
         allowed_origins: Arc::new(allowed_origins),
     };

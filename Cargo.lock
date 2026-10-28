@@ -1552,6 +1552,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "playnex-chat-filter"
+version = "0.1.0"
+
+[[package]]
 name = "playnex-mailer"
 version = "0.1.0"
 dependencies = [
@@ -1577,8 +1581,10 @@ dependencies = [
  "base64 0.23.1",
  "futures-util",
  "hmac 0.13.0",
+ "playnex-chat-filter",
  "playnex-service",
  "rand 0.10.3",
+ "reqwest",
  "serde",
  "serde_json",
  "sha2 0.11.1",

@@ -5,14 +5,15 @@ use std::{
 
 use axum::extract::ws::{Message, Utf8Bytes, WebSocket};
 use futures_util::{SinkExt, StreamExt};
-use serde_json::json;
+use serde_json::{Value, json};
 use tokio::sync::{mpsc, oneshot};
 use tracing::debug;
 
 use crate::{
-    identity::{TokenSigner, new_player_id, normalize_nickname},
+    identity::{AccountClaim, TicketVerifier, TokenSigner, new_player_id, normalize_nickname},
+    matches::GameKind,
     protocol::{ClientMessage, ServerMessage, parse_frame},
-    rooms::{PlayerLink, Registry, RoomCommand, RoomError, RoomHandle},
+    rooms::{PartyMember, PlayerLink, Registry, RoomCommand, RoomError, RoomHandle},
 };
 
 const OUTBOUND_QUEUE: usize = 512;
@@ -26,11 +27,14 @@ const BUCKET_REFILL_PER_SEC: f64 = 90.0;
 pub struct AppState {
     pub registry: Registry,
     pub signer: TokenSigner,
+    pub tickets: Option<TicketVerifier>,
 }
 
 struct Session {
     player_id: String,
     nickname: String,
+    account: Option<AccountClaim>,
+    party: Option<String>,
     room: Option<RoomHandle>,
 }
 
@@ -122,14 +126,29 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
 
         match (&mut session, message) {
             (None, ClientMessage::Hello(hello)) => {
-                let nickname = match normalize_nickname(&hello.nickname) {
+                let now = unix_secs();
+                let account = match hello.ticket.as_deref() {
+                    None => None,
+                    Some(ticket) => {
+                        match state.tickets.as_ref().and_then(|t| t.verify(ticket, now)) {
+                            Some(claim) => Some(claim),
+                            None => {
+                                let _ = tx.try_send(ServerMessage::error("invalid_ticket"));
+                                continue;
+                            }
+                        }
+                    }
+                };
+                let requested = account
+                    .as_ref()
+                    .map_or(hello.nickname.as_str(), |claim| claim.username.as_str());
+                let nickname = match normalize_nickname(requested) {
                     Ok(nickname) => nickname,
                     Err(_) => {
                         let _ = tx.try_send(ServerMessage::error("invalid_nickname"));
                         continue;
                     }
                 };
-                let now = unix_secs();
                 let player_id = hello
                     .resume_token
                     .as_deref()
@@ -138,11 +157,18 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
                 let token = state.signer.issue(&player_id, now);
                 let _ = tx.try_send(ServerMessage::new(
                     "hello",
-                    json!({ "playerId": player_id, "nickname": nickname, "resumeToken": token }),
+                    json!({
+                        "playerId": player_id,
+                        "nickname": nickname,
+                        "resumeToken": token,
+                        "account": account.as_ref().map(|claim| &claim.username),
+                    }),
                 ));
                 session = Some(Session {
                     player_id,
                     nickname,
+                    account,
+                    party: None,
                     room: None,
                 });
             }
@@ -163,6 +189,11 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
                 ));
             }
             (Some(session), ClientMessage::RoomCreate(create)) => {
+                let solo = create.options.get("solo").and_then(Value::as_bool) == Some(true);
+                if create.game == GameKind::Siper.slug() && !solo && session.account.is_none() {
+                    let _ = tx.try_send(ServerMessage::error(RoomError::AccountRequired.code()));
+                    continue;
+                }
                 leave_room(session).await;
                 match state.registry.create(&create.game, create.options) {
                     Ok(handle) => enter_room(session, handle, &tx).await,
@@ -176,6 +207,10 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
                     let _ = tx.try_send(ServerMessage::error(RoomError::NotFound.code()));
                     continue;
                 };
+                if needs_account(&handle) && session.account.is_none() {
+                    let _ = tx.try_send(ServerMessage::error(RoomError::AccountRequired.code()));
+                    continue;
+                }
                 if session
                     .room
                     .as_ref()
@@ -184,6 +219,70 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
                     leave_room(session).await;
                 }
                 enter_room(session, handle, &tx).await;
+            }
+            (Some(_), ClientMessage::RoomList(list)) => {
+                let rooms = state.registry.list(&list.game);
+                let _ = tx.try_send(ServerMessage::new(
+                    "room.list",
+                    json!({ "game": list.game, "rooms": rooms }),
+                ));
+            }
+            (Some(session), ClientMessage::MatchQuick(quick)) => {
+                if session.account.is_none() {
+                    let _ = tx.try_send(ServerMessage::error(RoomError::AccountRequired.code()));
+                    continue;
+                }
+                let leading = session.party.clone().filter(|party| {
+                    state.registry.party_leader(party).as_deref()
+                        == Some(session.player_id.as_str())
+                });
+                let seats = leading
+                    .as_deref()
+                    .map_or(1, |party| state.registry.party_size(party));
+                leave_room(session).await;
+                match state.registry.quick(&quick.game, &quick.mode, seats) {
+                    Ok(handle) => {
+                        let code = handle.code.clone();
+                        enter_room(session, handle, &tx).await;
+                        if let Some(party) = leading {
+                            state
+                                .registry
+                                .party_follow(&party, &session.player_id, &code);
+                        }
+                    }
+                    Err(error) => {
+                        let _ = tx.try_send(ServerMessage::error(error.code()));
+                    }
+                }
+            }
+            (Some(session), ClientMessage::PartyCreate) => {
+                if session.account.is_none() {
+                    let _ = tx.try_send(ServerMessage::error(RoomError::AccountRequired.code()));
+                    continue;
+                }
+                leave_party(&state.registry, session);
+                let code = state.registry.party_create(party_member(session, &tx));
+                session.party = Some(code);
+            }
+            (Some(session), ClientMessage::PartyJoin(join)) => {
+                if session.account.is_none() {
+                    let _ = tx.try_send(ServerMessage::error(RoomError::AccountRequired.code()));
+                    continue;
+                }
+                leave_party(&state.registry, session);
+                match state
+                    .registry
+                    .party_join(&join.code, party_member(session, &tx))
+                {
+                    Ok(code) => session.party = Some(code),
+                    Err(error) => {
+                        let _ = tx.try_send(ServerMessage::error(error.code()));
+                    }
+                }
+            }
+            (Some(session), ClientMessage::PartyLeave) => {
+                leave_party(&state.registry, session);
+                let _ = tx.try_send(ServerMessage::new("party.state", Value::Null));
             }
             (Some(session), ClientMessage::RoomLeave) => {
                 leave_room(session).await;
@@ -202,6 +301,15 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
                     },
                     ClientMessage::MatchStart => RoomCommand::Start { player_id },
                     ClientMessage::Input(payload) => RoomCommand::Input { player_id, payload },
+                    ClientMessage::RoomTeam(pick) => RoomCommand::Team {
+                        player_id,
+                        team: pick.team,
+                    },
+                    ClientMessage::Chat(chat) => RoomCommand::Chat {
+                        player_id,
+                        text: chat.text,
+                        team: chat.team,
+                    },
                     _ => continue,
                 };
                 if room.tx.send(command).await.is_err() {
@@ -212,6 +320,9 @@ pub async fn run(socket: WebSocket, state: Arc<AppState>) {
         }
     }
 
+    if let Some(session) = session.as_mut() {
+        leave_party(&state.registry, session);
+    }
     if let Some(session) = session
         && let Some(room) = session.room
     {
@@ -233,6 +344,8 @@ async fn enter_room(session: &mut Session, handle: RoomHandle, tx: &mpsc::Sender
         id: session.player_id.clone(),
         nickname: session.nickname.clone(),
         tx: tx.clone(),
+        account: session.account.clone(),
+        party: session.party.clone(),
     };
     if handle
         .tx
@@ -262,6 +375,25 @@ async fn leave_room(session: &mut Session) {
                 player_id: session.player_id.clone(),
             })
             .await;
+    }
+}
+
+// Siper is played under account names; only private bot matches are open to guests.
+fn needs_account(handle: &RoomHandle) -> bool {
+    handle.game == GameKind::Siper && !handle.solo
+}
+
+fn party_member(session: &Session, tx: &mpsc::Sender<ServerMessage>) -> PartyMember {
+    PartyMember {
+        id: session.player_id.clone(),
+        nickname: session.nickname.clone(),
+        tx: tx.clone(),
+    }
+}
+
+fn leave_party(registry: &Registry, session: &mut Session) {
+    if let Some(party) = session.party.take() {
+        registry.party_leave(&party, &session.player_id);
     }
 }
 

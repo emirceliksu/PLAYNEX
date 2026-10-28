@@ -27,6 +27,13 @@ pub enum ClientMessage {
     MatchStart,
     Input(Value),
     Ping(Ping),
+    RoomList(RoomList),
+    MatchQuick(MatchQuick),
+    RoomTeam(RoomTeam),
+    Chat(Chat),
+    PartyCreate,
+    PartyJoin(PartyJoin),
+    PartyLeave,
 }
 
 #[derive(Debug, Deserialize)]
@@ -35,6 +42,9 @@ pub struct Hello {
     pub nickname: String,
     #[serde(default)]
     pub resume_token: Option<String>,
+    // Minted by the API for signed-in players; guests leave it out.
+    #[serde(default)]
+    pub ticket: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -57,6 +67,34 @@ pub struct MatchReady {
 #[derive(Debug, Deserialize)]
 pub struct Ping {
     pub t: f64,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct RoomList {
+    pub game: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct MatchQuick {
+    pub game: String,
+    pub mode: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct RoomTeam {
+    pub team: Option<u8>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Chat {
+    pub text: String,
+    #[serde(default)]
+    pub team: bool,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct PartyJoin {
+    pub code: String,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -93,6 +131,13 @@ pub fn parse_frame(text: &str) -> Result<(u64, ClientMessage), FrameError> {
         "match.start" => ClientMessage::MatchStart,
         "input" => ClientMessage::Input(payload),
         "ping" => ClientMessage::Ping(from_payload(payload)?),
+        "room.list" => ClientMessage::RoomList(from_payload(payload)?),
+        "match.quick" => ClientMessage::MatchQuick(from_payload(payload)?),
+        "room.team" => ClientMessage::RoomTeam(from_payload(payload)?),
+        "chat" => ClientMessage::Chat(from_payload(payload)?),
+        "party.create" => ClientMessage::PartyCreate,
+        "party.join" => ClientMessage::PartyJoin(from_payload(payload)?),
+        "party.leave" => ClientMessage::PartyLeave,
         _ => return Err(FrameError::UnknownType),
     };
     Ok((envelope.seq, message))
@@ -155,7 +200,7 @@ mod tests {
             FrameError::UnsupportedVersion
         );
         assert_eq!(
-            parse_frame(r#"{"v":1,"type":"chat","payload":{}}"#).unwrap_err(),
+            parse_frame(r#"{"v":1,"type":"shout","payload":{}}"#).unwrap_err(),
             FrameError::UnknownType
         );
         assert_eq!(

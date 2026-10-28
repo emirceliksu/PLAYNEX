@@ -96,9 +96,11 @@ services:
     <<: *rust
     command: >-
       cargo watch --poll -w apps/api -w crates -w Cargo.toml -w Cargo.lock
-      -w infrastructure/migrations -x "run -p playnex-api"
+      -w infrastructure/migrations -w games/3d/siper/data -x "run -p playnex-api"
     environment:
       PORT: 8080
+      REALTIME_ACCOUNT_SECRET: ${REALTIME_ACCOUNT_SECRET:-}
+      INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:-}
       DATABASE_URL: postgres://${POSTGRES_USER:-playnex}:${POSTGRES_PASSWORD:-playnex}@postgres:5432/${POSTGRES_DB:-playnex}
       MAILER_URL: http://mailer:8082
       ADMIN_EMAILS: ${ADMIN_EMAILS:-}
@@ -151,6 +153,7 @@ services:
       cargo watch --poll -w apps/realtime -w crates -w Cargo.toml -w Cargo.lock
       -w games/2d/air-hockey/data -w games/2d/trivia-battle/data
       -w games/2d/drawing-party/data -w games/3d/neon-kart-racing/data
+      -w games/3d/siper/data
       -x "run -p playnex-realtime"
     environment:
       PORT: 8081
@@ -159,6 +162,9 @@ services:
       RUST_LOG: info
       REALTIME_TOKEN_SECRET: ${REALTIME_TOKEN_SECRET:-}
       REALTIME_ALLOWED_ORIGINS: ${REALTIME_ALLOWED_ORIGINS:-http://localhost:${WEB_PORT:-4310},http://web:3000}
+      REALTIME_ACCOUNT_SECRET: ${REALTIME_ACCOUNT_SECRET:-}
+      API_INTERNAL_URL: http://api:8080
+      INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:-}
     ports:
       - '8081:8081'
     volumes:
