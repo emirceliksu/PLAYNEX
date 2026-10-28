@@ -125,7 +125,7 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
 
       <div className="flex items-baseline justify-between gap-4">
         <h2 className="font-display text-title-lg">{heading}</h2>
-        <p className="font-display text-label-md text-fg-muted" aria-live="polite">
+        <p role="status" className="font-display text-label-md text-fg-muted">
           {t('resultCount', { count: results.length })}
         </p>
       </div>
