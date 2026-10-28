@@ -12,12 +12,14 @@
   },
   "scripts": {
     "build": "tsx scripts/build-css.ts",
+    "brand": "tsx scripts/build-brand.ts",
     "dev": "tsx watch scripts/build-css.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@playnex/config": "workspace:*",
+    "@resvg/resvg-js": "2.6.2",
     "@types/node": "26.6.5",
     "eslint": "9.39.5",
     "tsx": "4.23.15",

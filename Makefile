@@ -1,6 +1,6 @@
 COMPOSE ?= docker compose
 
-.PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens storybook-build screenshots migrate
+.PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots migrate
 
 .env:
 	cp infrastructure/development.env .env
@@ -54,6 +54,10 @@ check-rust:
 
 tokens:
 	$(COMPOSE) exec web pnpm --filter @playnex/design-tokens build
+
+# Favicon, app icon and mail logo from the brand mark; the outputs are committed.
+brand:
+	$(COMPOSE) exec web pnpm --filter @playnex/design-tokens brand
 
 storybook-build:
 	$(COMPOSE) exec web pnpm --filter @playnex/ui build-storybook

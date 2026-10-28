@@ -25,7 +25,7 @@ export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/tabs/tabs
 export { Modal, ModalClose, ModalContent, ModalTrigger } from './components/modal/modal';
 export type { ModalContentProps } from './components/modal/modal';
 export { FilterChip, FilterGroup } from './components/filter-chip/filter-chip';
-export { Logo } from './components/logo/logo';
+export { Logo, LogoMark } from './components/logo/logo';
 export { XpBar } from './components/xp-bar/xp-bar';
 export type { XpBarProps } from './components/xp-bar/xp-bar';
 export { SearchInput } from './components/search-input/search-input';

@@ -1,3 +1,5 @@
+import { brandMark } from '@playnex/design-tokens';
+
 import { cn } from '../../lib/cn';
 
 export interface LogoProps {
@@ -8,6 +10,42 @@ export interface LogoProps {
   className?: string;
 }
 
+export function LogoMark({ className }: { className?: string }) {
+  const { viewBox, shadow, tile, play, pixels } = brandMark;
+  return (
+    <svg aria-hidden viewBox={viewBox} className={cn('size-9 shrink-0 -rotate-3', className)}>
+      <rect
+        x={shadow.x}
+        y={shadow.y}
+        width={shadow.size}
+        height={shadow.size}
+        rx={shadow.radius}
+        className="fill-(--pn-shadow-ink)"
+      />
+      <rect
+        x={tile.x}
+        y={tile.y}
+        width={tile.size}
+        height={tile.size}
+        rx={tile.radius}
+        strokeWidth={tile.stroke}
+        className="fill-brand-solid stroke-(--pn-shadow-ink)"
+      />
+      <path d={play} fillRule="evenodd" className="fill-fg-on-brand" />
+      {pixels.map((pixel) => (
+        <rect
+          key={pixel.x}
+          x={pixel.x}
+          y={pixel.y}
+          width={pixel.size}
+          height={pixel.size}
+          className="fill-yellow-solid"
+        />
+      ))}
+    </svg>
+  );
+}
+
 export function Logo({ compact = false, compactBelowLg = false, className }: LogoProps) {
   return (
     <span
@@ -16,14 +54,7 @@ export function Logo({ compact = false, compactBelowLg = false, className }: Log
         className,
       )}
     >
-      <span
-        aria-hidden
-        className="grid size-8 shrink-0 -rotate-3 place-items-center rounded-sm border-2 border-(--pn-shadow-ink) bg-brand-solid shadow-sticker"
-      >
-        <svg viewBox="0 0 16 16" className="size-4 text-fg-on-brand">
-          <path d="M4.5 2.5v11l9-5.5z" fill="currentColor" />
-        </svg>
-      </span>
+      <LogoMark />
       <span
         className={cn(
           'text-title-md leading-none',

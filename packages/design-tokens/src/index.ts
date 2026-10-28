@@ -14,4 +14,5 @@ export { duration, easing } from './motion';
 export type { DurationToken, EasingToken } from './motion';
 export { breakpoints } from './breakpoints';
 export type { BreakpointToken } from './breakpoints';
+export { brandMark } from './brand';
 export { oklchToHex } from './convert';
