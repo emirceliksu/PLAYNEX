@@ -33,7 +33,7 @@ Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 5.9 · Tailwind v4 
 
 - **Kabuk ve navigasyon:** `apps/web/src/components/platform-shell.tsx` (client; Sidebar/Topbar/MobileNav bağlar, aktif link), `(platform)/layout.tsx` (oturumdaki hesap, misafirde giriş/kayıt düğmeleri), `nav-link.tsx` (ui ↔ next-intl Link adaptörü).
 - **Ana sayfa bölümleri:** `apps/web/src/features/home/*` (quick-play-shelf, popular-grid, ranking-list, coming-soon-strip, side-panel); sayfa `(platform)/(home)/page.tsx`.
-- **Katalog ve filtreler:** `(platform)/games/page.tsx` (URL searchParams ile sunucu tarafı filtre) + `features/catalog/filter-bar.tsx` (client, router.replace).
+- **Katalog ve filtreler:** `(platform)/games/(catalog)/page.tsx` (URL searchParams ile sunucu tarafı filtre) + `features/catalog/filter-bar.tsx` (client, router.replace).
 - **Oyun detay:** `(platform)/games/[slug]/page.tsx`. **Sıralama:** `(platform)/leaderboard/page.tsx` + `features/leaderboard/leaderboard-table.tsx`. **Profil:** `(platform)/profile/[username]/page.tsx`.
 - **Oyun oynama:** `play/[gameSlug]/page.tsx` → `features/game-player/game-player.tsx` (useReducer durum makinesi: loading/ready/playing/paused/finished/error; `?state=` yalnızca development), `use-best-score.ts` (localStorage rekor), `lib/games/registry.ts` (slug → dinamik import), `lib/games/palette.ts` (token → hex).
 - **Lobi ve çevrim içi:** `features/game-player/lobby/` (mode-picker, local-setup, online-lobby, option-chips), `result-summary.tsx`; `lib/realtime/connection.ts` (WebSocket, ping, yeniden bağlanma) ve `use-room.ts` (oda durumu, maç oturumu, mesaj tamponu). Oyun ayarları `Game.setup` (modlar, yerel oyuncu sayısı, seçenekler).
