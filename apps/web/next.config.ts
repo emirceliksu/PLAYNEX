@@ -33,6 +33,7 @@ const nextConfig: NextConfig = {
     '@playnex/game-trivia-battle',
     '@playnex/game-drawing-party',
     '@playnex/game-neon-kart-racing',
+    '@playnex/game-siper',
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

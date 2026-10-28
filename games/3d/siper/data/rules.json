@@ -75,7 +75,14 @@
       "defuseMs": 5000,
       "buy": true
     },
-    "knife": { "teams": true, "roundsToWin": 5, "halftime": 4, "roundMs": 90000, "freezeMs": 3000, "buy": false },
+    "knife": {
+      "teams": true,
+      "roundsToWin": 5,
+      "halftime": 4,
+      "roundMs": 90000,
+      "freezeMs": 3000,
+      "buy": false
+    },
     "ffa": { "teams": false, "respawnMs": 2000, "killLimit": 25, "timeMs": 480000, "buy": true },
     "gungame": {
       "teams": false,

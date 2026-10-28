@@ -442,7 +442,55 @@ function NeonKartRacing() {
   );
 }
 
+function Siper() {
+  const bags: [number, number][] = [
+    [34, 70],
+    [56, 70],
+    [78, 70],
+    [100, 70],
+    [45, 60],
+    [67, 60],
+    [89, 60],
+  ];
+  return (
+    <>
+      <rect x="10" y="80" width="140" height="6" rx="2" fill={DEEP} />
+      <Shadow>
+        <g className="attract attract-bob">
+          <rect x="62" y="34" width="20" height="18" rx="2" />
+        </g>
+        {bags.map(([x, y]) => (
+          <rect key={`${x}-${y}`} x={x} y={y} width="22" height="10" rx="5" />
+        ))}
+      </Shadow>
+      <g className="attract attract-bob">
+        <rect x="62" y="34" width="20" height="18" rx="2" fill={PAPER} {...outline} />
+        <path d="M60 36h24v-4a12 6 0 0 0-24 0z" fill={DEEP} {...outline} />
+        <rect x="68" y="42" width="8" height="3" fill={INK} />
+        <path d="M80 50h34" stroke={INK} strokeWidth="5" strokeLinecap="round" />
+      </g>
+      {bags.map(([x, y]) => (
+        <rect
+          key={`${x}-${y}`}
+          x={x}
+          y={y}
+          width="22"
+          height="10"
+          rx="5"
+          fill={ACCENT}
+          {...outline}
+        />
+      ))}
+      <g className="attract attract-dash">
+        <circle cx="132" cy="34" r="9" fill="none" stroke={PAPER} strokeWidth="2" />
+        <path d="M132 21v7M132 40v7M119 34h7M138 34h7" stroke={PAPER} strokeWidth="2" />
+      </g>
+    </>
+  );
+}
+
 const illustrations: Record<string, () => ReactNode> = {
+  siper: Siper,
   'snake-rush': SnakeRush,
   'memory-flip': MemoryFlip,
   '2048-fusion': Fusion2048,

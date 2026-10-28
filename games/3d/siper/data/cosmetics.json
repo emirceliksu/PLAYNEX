@@ -1,11 +1,16 @@
 {
   "skins": [
-    { "id": "standard", "pattern": "plain", "tone": "ink", "unlock": { "level": 1 } },
+    { "id": "standard", "pattern": "plain", "tone": "fgMuted", "unlock": { "level": 1 } },
     { "id": "kum", "pattern": "stripes", "tone": "reward", "unlock": { "level": 3 } },
-    { "id": "gece", "pattern": "plain", "tone": "fgMuted", "unlock": { "level": 5 } },
+    { "id": "gece", "pattern": "plain", "tone": "ink", "unlock": { "level": 5 } },
     { "id": "kaplan", "pattern": "stripes", "tone": "danger", "unlock": { "level": 8 } },
     { "id": "orman", "pattern": "camo", "tone": "accentSoft", "unlock": { "level": 12 } },
-    { "id": "buz", "pattern": "checker", "tone": "accent", "unlock": { "achievement": "headhunter" } },
+    {
+      "id": "buz",
+      "pattern": "checker",
+      "tone": "accent",
+      "unlock": { "achievement": "headhunter" }
+    },
     { "id": "lale", "pattern": "camo", "tone": "danger", "unlock": { "achievement": "ace" } },
     { "id": "altin", "pattern": "plain", "tone": "reward", "unlock": { "level": 25 } }
   ],
@@ -14,7 +19,12 @@
     { "id": "bere", "accessory": "cap", "tone": "accent", "unlock": { "level": 2 } },
     { "id": "kask", "accessory": "helmet", "tone": "reward", "unlock": { "level": 6 } },
     { "id": "vizor", "accessory": "visor", "tone": "accentSoft", "unlock": { "level": 10 } },
-    { "id": "atki", "accessory": "scarf", "tone": "danger", "unlock": { "achievement": "knife_master" } },
+    {
+      "id": "atki",
+      "accessory": "scarf",
+      "tone": "danger",
+      "unlock": { "achievement": "knife_master" }
+    },
     { "id": "komutan", "accessory": "helmet", "tone": "ink", "unlock": { "level": 20 } }
   ]
 }
