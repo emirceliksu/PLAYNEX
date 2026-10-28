@@ -81,6 +81,7 @@
     "subtitle": "{live} playable{soon, plural, =0 {} other {, # coming soon}}",
     "searchPlaceholder": "Search by name or genre",
     "allGames": "All games",
+    "newArrival": "New in the arcade",
     "searchResults": "Results for “{query}”",
     "categoryGames": "{category} games",
     "filteredGames": "Games matching your filters",

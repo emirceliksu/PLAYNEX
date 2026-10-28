@@ -98,6 +98,19 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
         ? t('filteredGames')
         : t('allGames');
 
+  // The untouched catalog leads with its newest playable game at full width, so the page has
+  // a lead instead of a wall of equal tiles. Any filter or sort turns it back into a plain list.
+  const browsing =
+    !filters.q.trim() &&
+    filters.category === 'all' &&
+    filters.dimension === 'all' &&
+    filters.mode === 'all' &&
+    filters.sort === 'popular';
+  const newest = browsing
+    ? liveGames.reduce((latest, game) => (game.releasedAt > latest.releasedAt ? game : latest))
+    : undefined;
+  const grid = newest ? results.filter((game) => game.slug !== newest.slug) : results;
+
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-1">
@@ -134,11 +147,16 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
         // The filter bar already offers "clear filters" whenever this state can appear.
         <EmptyState title={t('empty.title')} description={t('empty.description')} />
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-          {results.map((game) => (
-            <CatalogGameCard key={game.slug} game={game} />
-          ))}
-        </div>
+        <>
+          {newest ? (
+            <CatalogGameCard game={newest} variant="featured" eyebrow={t('newArrival')} />
+          ) : null}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {grid.map((game) => (
+              <CatalogGameCard key={game.slug} game={game} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
