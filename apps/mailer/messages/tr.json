@@ -19,5 +19,13 @@
     "heading": "Yeni şifreni belirle",
     "intro": "Hesabın için şifre sıfırlama istendi. Aşağıdaki kodu şifre sıfırlama ekranına girip yeni şifreni belirleyebilirsin. Şifren değişince diğer cihazlardaki oturumların kapanır.",
     "ignore": "Bu isteği sen yapmadıysan e-postayı yok sayabilirsin; şifren değişmez."
+  },
+  "signIn": {
+    "subject": "PLAYNEX giriş kodun: {code}",
+    "preheader": "Girişi tamamlamak için {minutes} dakika içinde bu kodu gir.",
+    "eyebrow": "Giriş doğrulama",
+    "heading": "Giriş yapan sen misin?",
+    "intro": "Hesabına doğru şifreyle giriş yapılıyor. Girişi tamamlamak için aşağıdaki kodu giriş ekranına yaz.",
+    "ignore": "Bu girişi sen yapmadıysan kodu kimseyle paylaşma ve şifreni değiştir; kod girilmeden oturum açılmaz."
   }
 }
