@@ -151,7 +151,8 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 - [x] Ses: sentezlenen efekt ve müzik, eSpeak NG ile Türkçe anonslar, öncelikli anons kuyruğu
 - [x] Sosyal: oyun içi ve lobi sohbeti, küfür filtresi, arkadaş listesi, parti, şikâyet ve yönetici kuyruğu
 - [x] Kozmetik (yalnızca görünüş), günlük görevler, başarımlar, ayarlar ve tuş atama
-- [ ] Nişan yardımı tespiti, ikili/delta snapshot, sezonlar
+- [x] Nişan yardımı puanı ve otomatik şikâyet, takımın görmediği rakibin istemciye hiç gitmemesi, kompakt snapshot, aylık sezonlar, radar
+- [ ] İkili (binary) ve delta snapshot
 
 ### Büyük 3D oyun prototipi: Neon Kart Racing
 1. Bir pist, iki araç, kamera, giriş kontrolleri, temel sürüş fiziği.
@@ -412,7 +413,7 @@ playnex/
 - [ ] Özel odalar ve eşleştirme (özel odalar kodla hazır, ADR 0009; eşleştirme kuyruğu ve kalıcılık açık)
 - [x] Air Hockey: sunucu otoriteli fizik, istemci tahmini/interpolasyon
 - [ ] XP, seviye, başarımlar, günlük/haftalık görevler (Siper için XP, seviye, başarımlar ve günlük görevler hazır; haftalık görevler ve diğer oyunlar açık)
-- [ ] Oyun bazlı MMR/rating ve sezon sıralamaları (Siper rütbe puanı ve sıralaması hazır; sezonlar açık)
+- [ ] Oyun bazlı MMR/rating ve sezon sıralamaları (Siper rütbe puanı, sıralaması ve aylık sezonları hazır; diğer oyunlar açık)
 - [ ] Bildirim, moderasyon, analitik ve ölçek testleri
 - [x] Chess Arena, Drawing Party, Trivia Battle için önceliklendirme (üçü de yayında: solo/yerel/çevrim içi)
 - [ ] Herkese açık beta
