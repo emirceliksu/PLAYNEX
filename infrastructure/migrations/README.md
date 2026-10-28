@@ -6,5 +6,3 @@ PostgreSQL migration'ları bu dizinde, `sqlx` formatında tutulur ve `make migra
 - Yeni migration oluşturmak: `docker compose exec api sqlx migrate add -r <kisa_aciklama> --source infrastructure/migrations`
   (`-r` geri alma dosyasını da üretir).
 - Uygulanmış bir migration dosyası değiştirilmez; düzeltme yeni bir migration ile yapılır.
-
-

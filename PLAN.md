@@ -244,7 +244,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 
 ## 9. Kimlik, güvenlik ve moderasyon
 
-- OAuth ve Passkey/WebAuthn; güvenli HttpOnly/Secure/SameSite cookie oturumları. İlk sürüm kullanıcı adı + şifre ve e-posta doğrulama koduyla açıldı (ADR 0011); OAuth ve Passkey sonraki adım.
+- OAuth ve Passkey/WebAuthn; güvenli HttpOnly/Secure/SameSite cookie oturumları. İlk sürüm kullanıcı adı + şifre ve e-posta doğrulama koduyla açıldı (ADR 0011); şifre sıfırlama da e-postaya giden kodla yapılır (ADR 0012). OAuth ve Passkey sonraki adım.
 - Yönetici için zorunlu güçlü MFA, RBAC ve ayrıntılı audit log.
 - CSRF/XSS/CSP, CORS allowlist, input validation, rate limit, abuse koruması.
 - Skor manipülasyonu, bot, spam ve hile tespiti; manuel inceleme yolu.
@@ -300,7 +300,7 @@ playnex/
 │   │       │   ├── (public)/
 │   │       │   ├── (auth)/
 │   │       │   ├── (platform)/
-│   │       │   ├── (admin)/admin/  # rol korumalı yönetim
+│   │       │   ├── (platform)/admin/  # rol korumalı yönetim (ADR 0012)
 │   │       │   └── play/[gameSlug]/
 │   │       ├── components/
 │   │       ├── features/
@@ -388,7 +388,7 @@ playnex/
 - [x] Snake Rush, blok bulmacası (Tuğla Tuğla), Memory Flip, 2048 Fusion (istemci tarafı; skor doğrulaması sprint 6)
 - [x] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
 - [ ] Skor doğrulama, liderlik tabloları, favoriler, oyun geçmişi
-- [ ] Temel raporlama, admin ve operasyon paneli
+- [ ] Temel raporlama, admin ve operasyon paneli (hesap yönetimi hazır: `/admin` genel bakış, oyuncu arama, askıya alma, rol atama, işlem kaydı; ADR 0012. Rapor, analitik ve oyun sürümü ekranları ile yönetici MFA'sı kaldı)
 - [ ] E2E, mobil, performans, erişilebilirlik ve güvenlik testleri
 - [ ] Kapalı beta, geri bildirim ve hata düzeltmeleri
 

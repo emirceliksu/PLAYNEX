@@ -87,6 +87,10 @@ Süreler `PLAN.md` 3'ten: düğme 150 ms, kart 200 ms, sayfa geçişi 250 ms, mo
 - Sayfa geçişi: içerik 8 px yukarı kayarak 250 ms'de belirir; iskelet → içerik geçişinde çapraz solma yok, yerine içerik yerine oturur.
 - Oyun sırasında HUD dışında animasyon yok; düşük performans modunda tümü kapalı.
 
+### Marka işareti
+
+Oynat üçgeninden kurulmuş bir "P": dikey sap, sağa bakan üçgen gövde ve içinde üçgen boşluk. Mor (`brand.500`) karo 2 px mürekkep konturu ve sert ofset gölgeyle sticker gibi durur, sağ üst köşesinde iki sarı (`yellow.400`) skor pikseli var. Arayüzde -3° eğik, favicon ve e-postada düz. Yazı logosu Space Grotesk 700, "PLAY" birincil metin, "NEX" `brand.soft-text`. Geometri `packages/design-tokens/src/brand.ts`; türetilen dosyalar `make brand` ile üretilir.
+
 ### Oyun kapakları
 
 Her oyunun bir **imza rengi** ve mekanikten türeyen **tek bir geometrik motifi** vardır. Kapaklar 16:10, el çizimi SVG; düz renk alanları, 2 px mürekkep kontur, sticker gölgesi; fotoğraf, 3D render ve gradyan yok. Kapak rengi kartın rozetine, oyun ekranının HUD vurgusuna ve sonuç modalına taşınır.

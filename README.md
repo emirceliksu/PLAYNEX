@@ -42,6 +42,7 @@ make typecheck     # tsc
 make check-rust    # cargo fmt --check, clippy, check
 make fmt           # Prettier + cargo fmt
 make tokens        # design-tokens CSS'ini yeniden üretir
+make brand         # marka işaretinden favicon, uygulama ikonu ve e-posta logosunu üretir
 make screenshots   # Playwright container'ı ile docs/design/screenshots/ altına ekran görüntüleri
 make migrate       # sqlx migration'ları (infrastructure/migrations)
 make sh-web        # web container'ında kabuk
@@ -49,7 +50,7 @@ make sh-api        # api container'ında kabuk
 make nuke          # container'lar ve named volume'lar dahil her şeyi siler
 ```
 
-`make screenshots` ve e2e testleri (`e2e/auth.spec.ts` kayıt akışı dahil) Playwright container'ında çalışır.
+`make screenshots` ve e2e testleri (kayıt, şifre sıfırlama ve yönetim akışları dahil) Playwright container'ında çalışır.
 
 Paket eklemek: `docker compose exec web pnpm --filter @playnex/web add <paket>`; lockfile değişikliği commit'e dahil edilir.
 
@@ -61,7 +62,7 @@ Polling yeni `app/` route klasörlerini fark etmez; yeni bir route dizini eklend
 
 ## Üretim
 
-Üretim Coolify üzerinde `compose.production.yaml` ile çalışır; dışarıya yalnızca `edge` (Caddy) açılır, web, API, realtime ve PostgreSQL iç ağdadır; internete yalnızca e-posta gönderen `mailer` çıkar. Kurulum ve ortam değişkenleri: `docs/deployment/coolify.md`, gerekçe: `docs/decisions/0011-hesaplar-ve-uretim-agi.md`.
+Üretim Coolify üzerinde `compose.production.yaml` ile çalışır; dışarıya yalnızca `edge` (Caddy) açılır, web, API, realtime ve PostgreSQL iç ağdadır; internete yalnızca e-posta gönderen `mailer` çıkar. Kurulum ve ortam değişkenleri: `docs/deployment/coolify.md`, gerekçe: `docs/decisions/0011-hesaplar-ve-uretim-agi.md`. İlk yönetici `ADMIN_EMAILS` ile atanır, panel `/admin` adresindedir (ADR 0012).
 
 ## Yapı
 

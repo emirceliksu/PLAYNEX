@@ -46,13 +46,16 @@ Coolify'ın kendisi üretir (elle girilmez):
 | `SERVICE_PASSWORD_POSTGRES`    | `postgres`, `api`                        |
 | `SERVICE_PASSWORD_64_REALTIME` | `realtime` yeniden bağlanma token imzası |
 
-Elle girilen tek değişken:
+Elle girilir:
 
-| Değişken                | İçerik                                                                         |
-| ----------------------- | ------------------------------------------------------------------------------ |
-| `GMAIL_SERVICE_ACCOUNT` | Google servis hesabı anahtar dosyasının base64 hâli (düz JSON da kabul edilir) |
+| Değişken                | İçerik                                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `GMAIL_SERVICE_ACCOUNT` | Zorunlu. Google servis hesabı anahtar dosyasının base64 hâli (düz JSON da kabul edilir)                                        |
+| `ADMIN_EMAILS`          | Virgülle ayrılmış e-posta adresleri. Bu adreslerle açılıp doğrulanan hesaplar yönetici olur; diğer yöneticiler panelden atanır |
 
-Doğrulama e-postaları Gmail API ile `playnex@meccode.com` adına gönderilir. Anahtar dosyası repoya girmez, yalnızca Coolify'da tutulur. Base64 hâli Windows'ta panoya şöyle alınır:
+İlk yönetici için kendi adresini `ADMIN_EMAILS`'e yaz, deploy et, o adresle kayıt olup kodu gir (hesap zaten varsa API açılışta yükseltir). Yönetim paneli `/admin` adresindedir; yönetici olmayanlar bu adreste 404 görür.
+
+Doğrulama ve şifre sıfırlama e-postaları Gmail API ile `playnex@meccode.com` adına gönderilir. Anahtar dosyası repoya girmez, yalnızca Coolify'da tutulur. Base64 hâli Windows'ta panoya şöyle alınır:
 
 ```powershell
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("$HOME\Downloads\<anahtar>.json")) | Set-Clipboard
