@@ -30,6 +30,8 @@ make down
 | Object storage (S3 API / konsol) | http://localhost:9000 / http://localhost:9001 |
 | Mailpit                          | http://localhost:8025                         |
 
+Kayıt olurken gönderilen doğrulama kodları geliştirmede Mailpit'e düşer (http://localhost:8025).
+
 Ortam değişkenleri `.env.example` dosyasında belgelenir; `make up` eksikse `.env` dosyasını oradan kopyalar.
 
 ## Günlük komutlar
@@ -47,6 +49,8 @@ make sh-api        # api container'ında kabuk
 make nuke          # container'lar ve named volume'lar dahil her şeyi siler
 ```
 
+`make screenshots` ve e2e testleri (`e2e/auth.spec.ts` kayıt akışı dahil) Playwright container'ında çalışır.
+
 Paket eklemek: `docker compose exec web pnpm --filter @playnex/web add <paket>`; lockfile değişikliği commit'e dahil edilir.
 
 ## Dosya izleme
@@ -54,6 +58,10 @@ Paket eklemek: `docker compose exec web pnpm --filter @playnex/web add <paket>`;
 Windows ve macOS'ta bind mount dosya olaylarını güvenilir iletmediği için dev sunucular varsayılan olarak polling yapar (`WATCH_POLLING=1`). Linux host'ta veya Docker Desktop "Synchronized file shares" ile `.env` içinde `WATCH_POLLING=0` yapılabilir.
 
 Polling yeni `app/` route klasörlerini fark etmez; yeni bir route dizini eklendiğinde `docker compose restart web` çalıştırın.
+
+## Üretim
+
+Üretim Coolify üzerinde `compose.production.yaml` ile çalışır; dışarıya yalnızca `edge` (Caddy) açılır, web, API, realtime ve PostgreSQL iç ağdadır. Kurulum ve ortam değişkenleri: `docs/deployment/coolify.md`, gerekçe: `docs/decisions/0011-hesaplar-ve-uretim-agi.md`.
 
 ## Yapı
 
@@ -65,7 +73,8 @@ packages/design-tokens Tasarım tokenlarının tek kaynağı; Tailwind teması v
 packages/ui            Radix üzerine PLAYNEX bileşenleri ve Storybook
 packages/shared-types  Web ve bileşenlerin paylaştığı alan tipleri
 packages/config        ESLint, Prettier ve tsconfig tabanları
-infrastructure/docker  Geliştirme Dockerfile'ları
+infrastructure/docker  Geliştirme (`*.dev.Dockerfile`) ve üretim Dockerfile'ları
+infrastructure/edge    Üretimdeki tek giriş noktasının Caddy ayarı
 infrastructure/migrations  PostgreSQL migration'ları (sqlx)
 docs/                  Tasarım yönü, karar kayıtları, ekran görüntüleri
 ```

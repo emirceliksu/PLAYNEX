@@ -244,7 +244,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 
 ## 9. Kimlik, güvenlik ve moderasyon
 
-- OAuth ve Passkey/WebAuthn; güvenli HttpOnly/Secure/SameSite cookie oturumları.
+- OAuth ve Passkey/WebAuthn; güvenli HttpOnly/Secure/SameSite cookie oturumları. İlk sürüm kullanıcı adı + şifre ve e-posta doğrulama koduyla açıldı (ADR 0011); OAuth ve Passkey sonraki adım.
 - Yönetici için zorunlu güçlü MFA, RBAC ve ayrıntılı audit log.
 - CSRF/XSS/CSP, CORS allowlist, input validation, rate limit, abuse koruması.
 - Skor manipülasyonu, bot, spam ve hile tespiti; manuel inceleme yolu.
@@ -282,7 +282,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
   - Ortam değişkenleri `.env.example` üzerinden belgelenir; gerçek `.env` ve secret'lar repoya girmez.
 - Üretim imajları: multi-stage Dockerfile, non-root kullanıcı, healthcheck, sabitlenmiş base image sürümleri.
 - Staging: üretime yakın test ortamı, sentetik oyuncular, load test.
-- Production: ayrı erişim sınırları, reverse proxy/WAF/CDN, izleme ve uyarı.
+- Production: ayrı erişim sınırları, reverse proxy/WAF/CDN, izleme ve uyarı. İlk ortam Coolify üzerinde `playnex.meccode.com`; tek giriş `edge`, diğer servisler iç ağda (`docs/deployment/coolify.md`).
 - CI: lint, typecheck, unit test, Rust test, migration check, build, dependency scan.
 - CD: staging otomatik; production onaylı, kademeli ve geri alınabilir dağıtım.
 - PostgreSQL düzenli yedek ve point-in-time recovery hedefi; geri yükleme tatbikatı.
@@ -384,7 +384,7 @@ playnex/
 ### Faz 1 — Platform MVP (6–10 hafta)
 - [x] Next.js layout, sidebar, mobil nav, tema ve UI kütüphanesi
 - [x] Katalog, arama, filtreler, oyun detay ve loading/error ekranları
-- [ ] Rust API, PostgreSQL migration, auth ve profil
+- [x] Rust API, PostgreSQL migration, auth ve profil (kullanıcı adı + şifre, e-posta kodu ile doğrulama; ADR 0011)
 - [x] Game SDK v1, manifest, lazy loader, GamePlayer, HUD
 - [x] Snake Rush, blok bulmacası (Tuğla Tuğla), Memory Flip, 2048 Fusion (istemci tarafı; skor doğrulaması sprint 6)
 - [x] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
@@ -458,7 +458,7 @@ playnex/
 - [x] Cache/presence: Valkey veya Redis
 
 **Açık kalanlar**
-- [ ] PLAYNEX marka ve domain kullanılabilirliği
+- [ ] PLAYNEX marka kullanılabilirliği (domain: `playnex.meccode.com`)
 - [ ] Blok bulmacasının özgün adı
 - [ ] Başlangıç hedef eşzamanlı oyuncu ve bütçe
 - [ ] Yaş politikası ve hedef ülkeler (öneri: 13+, Türkiye + seçili ülkeler; 13 yaş altı ayrı proje). Mimariyi etkilediği için Faz 0'da kapanmalı.
