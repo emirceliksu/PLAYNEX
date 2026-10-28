@@ -63,29 +63,3 @@ export const Catalog: Story = {
     </div>
   ),
 };
-
-// Hover or focus a tile to run its attract demo; reduced motion keeps every cover still.
-export const AttractOnHover: Story = {
-  render: () => (
-    <div className="grid w-[64rem] max-w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-      {covers.map((cover) => (
-        <button
-          key={cover.slug}
-          type="button"
-          className="group overflow-hidden rounded-lg border-2 border-border-subtle text-left"
-        >
-          <GameCover slug={cover.slug} accent={cover.accent} title={cover.title} />
-        </button>
-      ))}
-    </div>
-  ),
-};
-
-export const PlayOnArrival: Story = {
-  args: { playOnArrival: true },
-  render: (args) => (
-    <div className="w-[32rem] max-w-full overflow-hidden rounded-lg border-2 border-border-strong">
-      <GameCover {...args} />
-    </div>
-  ),
-};

@@ -132,18 +132,18 @@
 }
 
 /*
- * Attract mode. Like an arcade cabinet nobody is playing, a game cover loops a short demo of
- * its mechanic, but only while its card is hovered or focused; the rest of the time it holds
- * its first pose. Every loop starts and ends on that pose, so stopping mid-way never leaves a
- * cover half-drawn. A featured cover may play its demo twice on arrival instead.
+ * Attract mode. Like the cabinets on an arcade floor, every game cover keeps looping a short
+ * demo of its mechanic, wherever it appears and with or without a pointer over it. Each cover
+ * starts at its own offset (--attract-delay, from GameCover) so a grid of them never moves in
+ * lockstep. Every loop starts and ends on the cover's still pose.
  */
 .attract {
   transform-box: fill-box;
   transform-origin: center;
-  animation-duration: 1.6s;
+  animation-duration: 2.4s;
   animation-timing-function: var(--pn-ease-in-out);
   animation-iteration-count: infinite;
-  animation-play-state: paused;
+  animation-delay: var(--attract-delay, 0s);
 }
 
 .attract-lunge {
@@ -178,17 +178,6 @@
 }
 .attract-wobble {
   animation-name: pn-attract-wobble;
-}
-
-.group:hover .attract,
-.group:focus-within .attract {
-  animation-play-state: running;
-}
-
-[data-attract='once'] .attract {
-  animation-play-state: running;
-  animation-iteration-count: 2;
-  animation-delay: var(--pn-duration-page);
 }
 
 /* Coming-soon cabinets stay dark: nothing to demo yet. */

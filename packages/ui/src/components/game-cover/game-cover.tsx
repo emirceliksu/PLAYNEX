@@ -473,19 +473,22 @@ export interface GameCoverProps {
   // Accessible name; omit for decorative use next to a visible title.
   title?: string;
   muted?: boolean;
-  // Plays the attract demo twice when the cover appears; otherwise it only runs on card hover/focus.
-  playOnArrival?: boolean;
   className?: string;
 }
 
-export function GameCover({
-  slug,
-  accent,
-  title,
-  muted = false,
-  playOnArrival = false,
-  className,
-}: GameCoverProps) {
+const ATTRACT_LOOP_MS = 2400;
+
+// A fixed phase per game, so covers side by side loop out of step and a cover keeps the same
+// rhythm wherever it shows up. Negative, so the demo is already under way on first paint.
+function attractDelay(slug: string): string {
+  let hash = 0;
+  for (const char of slug) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+  return `-${hash % ATTRACT_LOOP_MS}ms`;
+}
+
+export function GameCover({ slug, accent, title, muted = false, className }: GameCoverProps) {
   const Illustration = illustrations[slug] ?? Fallback;
   const style = {
     '--cover-accent': `var(--pn-${accent}-400)`,
@@ -493,6 +496,7 @@ export function GameCover({
     '--cover-bg': `var(--pn-${accent}-950)`,
     '--cover-ink': 'var(--pn-shadow-ink)',
     '--cover-paper': 'var(--pn-ink-50)',
+    '--attract-delay': attractDelay(slug),
   } as CSSProperties;
 
   return (
@@ -501,7 +505,7 @@ export function GameCover({
       role={title ? 'img' : undefined}
       aria-hidden={title ? undefined : true}
       style={style}
-      data-attract={muted ? 'off' : playOnArrival ? 'once' : undefined}
+      data-attract={muted ? 'off' : undefined}
       className={cn('block h-auto w-full', muted && 'opacity-70 saturate-50', className)}
     >
       {title ? <title>{title}</title> : null}
