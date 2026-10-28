@@ -5,6 +5,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { LeaderboardTable } from '@/features/leaderboard/leaderboard-table';
+import { SiperBoard, siperOrder } from '@/features/siper/siper-board';
 import { leaderboardWindows, type LeaderboardWindow } from '@/features/leaderboard/windows';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { getCurrentAccount } from '@/lib/auth/session';
@@ -12,7 +13,7 @@ import { liveGames } from '@/lib/catalog/games';
 
 interface LeaderboardPageProps {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ game?: string }>;
+  searchParams: Promise<{ game?: string; siper?: string }>;
 }
 
 export async function generateMetadata({
@@ -49,6 +50,11 @@ export default async function LeaderboardPage({ params, searchParams }: Leaderbo
         <h1 className="font-display text-display-md">{t('title')}</h1>
         <p className="text-body-md text-fg-secondary">{t('subtitle')}</p>
       </header>
+      <SiperBoard
+        by={siperOrder(query.siper)}
+        locale={locale}
+        currentUsername={account?.username}
+      />
       <LeaderboardTable
         games={liveGames.map((game) => ({
           slug: game.slug,
