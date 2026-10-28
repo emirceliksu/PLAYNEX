@@ -1,6 +1,14 @@
 import type { ControlScheme, GameOrientation, GameScoring, PlayMode } from '@playnex/shared-types';
 
 export type { PlayMode };
+export {
+  type AudioBus,
+  AudioMixer,
+  type AudioVolumes,
+  defaultVolumes,
+  readVolumes,
+  storeVolumes,
+} from './audio';
 
 export interface GameManifest {
   slug: string;
@@ -59,7 +67,8 @@ export type OnlineMessage =
   | { kind: 'snapshot'; payload: unknown }
   | { kind: 'event'; payload: unknown }
   | { kind: 'finish'; outcome: MatchOutcome }
-  | { kind: 'rejected'; code: string };
+  | { kind: 'rejected'; code: string }
+  | { kind: 'chat'; from: string; text: string; team: boolean; side: number | null };
 
 // The server owns the match: the game sends inputs and renders what comes back.
 export interface OnlineSession {
@@ -69,6 +78,8 @@ export interface OnlineSession {
   players: SessionPlayer[];
   options: Record<string, string>;
   send(input: unknown): void;
+  // Room chat, for games that show it in their own HUD; filtered and rate-limited by the server.
+  chat?(text: string, team: boolean): void;
   // Messages that arrive before the first subscriber are buffered and replayed to it.
   subscribe(listener: (message: OnlineMessage) => void): () => void;
 }
