@@ -16,6 +16,7 @@ export default async function PlatformLayout({ children }: { children: ReactNode
         games: t('nav.games'),
         leaderboard: t('nav.leaderboard'),
         profile: t('nav.profile'),
+        admin: t('common.admin'),
         searchLabel: t('common.search.label'),
         searchPlaceholder: t('common.search.placeholder'),
         notifications: t('common.notifications'),
@@ -33,6 +34,7 @@ export default async function PlatformLayout({ children }: { children: ReactNode
               username: account.username,
               displayName: `${account.firstName} ${account.lastName}`,
               avatarSeed: account.username,
+              isAdmin: account.role === 'admin',
             }
           : null
       }

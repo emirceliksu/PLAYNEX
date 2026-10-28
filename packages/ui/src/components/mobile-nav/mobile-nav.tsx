@@ -22,7 +22,7 @@ export function MobileNav({ label, items, linkComponent, className }: MobileNavP
         className,
       )}
     >
-      <ul className="grid h-mobile-nav grid-cols-4">
+      <ul className="grid h-mobile-nav auto-cols-fr grid-flow-col">
         {items.map((item) => (
           <li key={item.href} className="flex">
             <Link

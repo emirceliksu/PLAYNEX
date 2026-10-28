@@ -85,7 +85,55 @@ export interface Account {
   firstName: string;
   lastName: string;
   locale: 'tr' | 'en';
+  role: AccountRole;
   createdAt: string;
+}
+
+export type AccountRole = 'player' | 'admin';
+
+export type AdminAction = 'suspend' | 'unsuspend' | 'grant-admin' | 'revoke-admin' | 'end-sessions';
+export type AdminUserFilter = 'all' | 'verified' | 'pending' | 'suspended' | 'admins';
+
+// An account as the admin panel sees it, including state other players never get.
+export interface ManagedUser {
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: AccountRole;
+  verified: boolean;
+  suspendedAt: string | null;
+  createdAt: string;
+  lastSignInAt: string | null;
+  activeSessions: number;
+}
+
+export interface AdminLogEntry {
+  actorUsername: string;
+  targetUsername: string;
+  action: 'suspend' | 'unsuspend' | 'grant_admin' | 'revoke_admin' | 'end_sessions';
+  createdAt: string;
+}
+
+export interface AdminOverview {
+  totals: {
+    users: number;
+    verified: number;
+    pending: number;
+    suspended: number;
+    admins: number;
+    joinedThisWeek: number;
+    signedInPlayers: number;
+  };
+  recentUsers: ManagedUser[];
+  recentActions: AdminLogEntry[];
+}
+
+export interface AdminUserPage {
+  users: ManagedUser[];
+  total: number;
+  page: number;
+  pageSize: number;
 }
 
 export type Trend = 'up' | 'down' | 'same';
