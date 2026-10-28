@@ -16,18 +16,49 @@ export interface RoomMember {
   ready: boolean;
   connected: boolean;
   seat: number | null;
+  team?: number | null;
+  username?: string | null;
 }
 
 export interface RoomState {
   code: string;
   game: string;
-  options: Record<string, string | number>;
+  options: Record<string, string | number | boolean>;
   hostId: string;
   phase: 'lobby' | 'playing';
   minPlayers: number;
   maxPlayers: number;
+  solo?: boolean;
+  quick?: boolean;
   members: RoomMember[];
 }
+
+export interface ListedRoom {
+  code: string;
+  game: string;
+  mode: string | null;
+  map: string | null;
+  players: number;
+  maxPlayers: number;
+  phase: 'lobby' | 'playing';
+  quick: boolean;
+}
+
+export interface ChatLine {
+  id: number;
+  from: string;
+  text: string;
+  team: boolean;
+  side: number | null;
+}
+
+export interface PartyState {
+  code: string;
+  leader: string;
+  members: { id: string; nickname: string }[];
+}
+
+const CHAT_KEEP = 40;
 
 export interface RoomMatch {
   // Changes on every match.start so the player remounts the game.
@@ -46,7 +77,11 @@ interface LiveMatch {
   push(message: OnlineMessage): void;
 }
 
-function createSession(start: MatchStartPayload, send: (input: unknown) => void) {
+function createSession(
+  start: MatchStartPayload,
+  send: (input: unknown) => void,
+  chat: (text: string, team: boolean) => void,
+) {
   const listeners = new Set<(message: OnlineMessage) => void>();
   const buffer: OnlineMessage[] = [];
   const players: SessionPlayer[] = start.players
@@ -63,6 +98,7 @@ function createSession(start: MatchStartPayload, send: (input: unknown) => void)
     players,
     options,
     send,
+    chat,
     subscribe(listener) {
       listeners.add(listener);
       for (const message of buffer.splice(0)) listener(message);
@@ -97,6 +133,11 @@ export function useRoom(slug: string, locale: string) {
   const [room, setRoom] = useState<RoomState | null>(null);
   const [match, setMatch] = useState<RoomMatch | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [rooms, setRooms] = useState<ListedRoom[]>([]);
+  const [chatLog, setChatLog] = useState<ChatLine[]>([]);
+  const [party, setParty] = useState<PartyState | null>(null);
+  const [account, setAccount] = useState<string | null>(null);
+  const chatCounter = useRef(0);
   const connectionRef = useRef<RealtimeConnection | null>(null);
   const liveRef = useRef<LiveMatch | null>(null);
   const roomCodeRef = useRef<string | null>(null);
@@ -124,8 +165,10 @@ export function useRoom(slug: string, locale: string) {
           setMatch(null);
           return;
         case 'match.start': {
-          const { session, live } = createSession(frame.payload as MatchStartPayload, (input) =>
-            send('input', input),
+          const { session, live } = createSession(
+            frame.payload as MatchStartPayload,
+            (input) => send('input', input),
+            (text, team) => send('chat', { text, team }),
           );
           liveRef.current = live;
           matchCounter.current += 1;
@@ -141,6 +184,24 @@ export function useRoom(slug: string, locale: string) {
         case 'match.finish':
           liveRef.current?.push({ kind: 'finish', outcome: frame.payload as MatchOutcome });
           liveRef.current = null;
+          return;
+        case 'room.list':
+          setRooms((frame.payload as { rooms: ListedRoom[] }).rooms);
+          return;
+        case 'chat': {
+          const line = frame.payload as Omit<ChatLine, 'id'>;
+          chatCounter.current += 1;
+          const id = chatCounter.current;
+          setChatLog((log) => [...log.slice(-(CHAT_KEEP - 1)), { ...line, id }]);
+          liveRef.current?.push({ kind: 'chat', ...line });
+          return;
+        }
+        case 'party.state':
+          setParty(frame.payload as PartyState | null);
+          return;
+        case 'party.follow':
+          // The party leader found a quick match; follow them into the same room.
+          send('room.join', { code: (frame.payload as { code: string }).code });
           return;
         case 'error': {
           const { code } = frame.payload as { code: string };
@@ -161,26 +222,33 @@ export function useRoom(slug: string, locale: string) {
   );
 
   const connect = useCallback(
-    (nickname: string, then?: () => void) => {
+    (nickname: string, then?: () => void, ticket?: () => Promise<string | null>) => {
       pendingRef.current = then ?? null;
       if (connectionRef.current) {
         connectionRef.current.close();
       }
       setError(null);
-      const connection = new RealtimeConnection(realtimeUrl(), nickname, {
-        onFrame: handleFrame,
-        onStatus: setStatus,
-        onGreeted: (id) => {
-          setPlayerId(id);
-          // After a reconnect the room has to be re-entered on the new socket.
-          if (roomCodeRef.current) {
-            connection.send('room.join', { code: roomCodeRef.current });
-          }
-          const pending = pendingRef.current;
-          pendingRef.current = null;
-          pending?.();
+      setAccount(null);
+      const connection = new RealtimeConnection(
+        realtimeUrl(),
+        nickname,
+        {
+          onFrame: handleFrame,
+          onStatus: setStatus,
+          onGreeted: (id, signedInAs) => {
+            setAccount(signedInAs);
+            setPlayerId(id);
+            // After a reconnect the room has to be re-entered on the new socket.
+            if (roomCodeRef.current) {
+              connection.send('room.join', { code: roomCodeRef.current });
+            }
+            const pending = pendingRef.current;
+            pendingRef.current = null;
+            pending?.();
+          },
         },
-      });
+        ticket,
+      );
       connectionRef.current = connection;
       connection.open();
     },
@@ -214,6 +282,20 @@ export function useRoom(slug: string, locale: string) {
     leave: () => send('room.leave'),
     setReady: (ready: boolean) => send('match.ready', { ready }),
     start: () => send('match.start'),
+    // Options sent as-is, for lobbies (Siper) that build typed values themselves.
+    createWith: (options: Record<string, string | number | boolean>) =>
+      send('room.create', { game: slug, options: { locale, ...options } }),
+    account,
+    rooms,
+    chatLog,
+    party,
+    listRooms: () => send('room.list', { game: slug }),
+    quickMatch: (mode: string) => send('match.quick', { game: slug, mode }),
+    pickTeam: (team: number | null) => send('room.team', { team }),
+    chat: (text: string, team: boolean) => send('chat', { text, team }),
+    createParty: () => send('party.create'),
+    joinParty: (code: string) => send('party.join', { code: code.trim().toUpperCase() }),
+    leaveParty: () => send('party.leave'),
   };
 }
 

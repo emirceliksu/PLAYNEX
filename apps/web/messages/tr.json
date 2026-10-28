@@ -51,7 +51,9 @@
     "resetPassword": "Yeni şifre",
     "admin": "Yönetim",
     "adminUsers": "Oyuncu yönetimi",
-    "loginCode": "Giriş kodu"
+    "loginCode": "Giriş kodu",
+    "friends": "Arkadaşlar",
+    "adminReports": "Şikâyetler"
   },
   "home": {
     "title": "PLAYNEX oyun salonu",
@@ -210,7 +212,8 @@
       "action": "Oyunlara göz at"
     },
     "welcome": "Hesabın hazır, {name}. Rekorların artık seninle.",
-    "signOut": "Çıkış yap"
+    "signOut": "Çıkış yap",
+    "addFriend": "Arkadaş ekle"
   },
   "auth": {
     "backHome": "Salona dön",
@@ -594,6 +597,138 @@
       "gas": "Gaz",
       "brake": "Fren",
       "drift": "Drift"
+    },
+    "siper": {
+      "weapon_knife": "Bıçak",
+      "weapon_pistol": "Tabanca",
+      "weapon_revolver": "Altıpatlar",
+      "weapon_smg": "Hafif makineli",
+      "weapon_shotgun": "Pompalı",
+      "weapon_carbine": "Karabina",
+      "weapon_rifle": "Piyade tüfeği",
+      "weapon_sniper": "Keskin nişancı",
+      "weapon_grenade": "El bombası",
+      "weapon_smoke": "Sis bombası",
+      "weapon_armor": "Zırh",
+      "weapon_armorHelmet": "Zırh ve kask",
+      "weapon_bomb": "Bomba",
+      "map_liman": "Liman",
+      "map_carsi": "Çarşı",
+      "map_santral": "Santral",
+      "mode_tdm": "Takım Ölüm Maçı",
+      "mode_bomb": "Bomba Kur/Çöz",
+      "mode_knife": "Bıçak Raundu",
+      "mode_ffa": "Herkes Tek",
+      "mode_gungame": "Silah Oyunu",
+      "announce_firstBlood": "İlk Kan!",
+      "announce_double": "Çift Vuruş!",
+      "announce_triple": "Üçleme!",
+      "announce_quad": "Dörtleme!",
+      "announce_massacre": "Katliam!",
+      "announce_heating": "Isınıyor!",
+      "announce_unstoppable": "Durdurulamaz!",
+      "announce_legend": "Efsane!",
+      "announce_godlike": "Tanrısal!",
+      "announce_headshot": "Kafadan!",
+      "announce_knifeKill": "Bıçakla bitirdi!",
+      "announce_streakEnded": "Seriyi bozdu!",
+      "announce_lastRound": "Son raunt!",
+      "announce_bombPlanted": "Bomba kuruldu!",
+      "announce_bombDefused": "Bomba çözüldü!",
+      "announce_attackersWin": "Akıncılar kazandı!",
+      "announce_defendersWin": "Bekçiler kazandı!",
+      "announce_go": "Başla!",
+      "action_forward": "İleri",
+      "action_back": "Geri",
+      "action_left": "Sola",
+      "action_right": "Sağa",
+      "action_jump": "Zıpla",
+      "action_crouch": "Eğil",
+      "action_walk": "Sessiz yürü",
+      "action_reload": "Şarjör değiştir",
+      "action_use": "Bomba kur / çöz",
+      "action_primary": "Ana silah",
+      "action_secondary": "Tabanca",
+      "action_melee": "Bıçak",
+      "action_grenade": "El bombası",
+      "action_smoke": "Sis bombası",
+      "action_lastWeapon": "Önceki silah",
+      "action_buy": "Satın alma menüsü",
+      "action_scoreboard": "Skor tablosu",
+      "action_chatAll": "Genel sohbet",
+      "action_chatTeam": "Takım sohbeti",
+      "quality_low": "Düşük",
+      "quality_medium": "Orta",
+      "quality_high": "Yüksek",
+      "reason_eliminated": "rakip takım temizlendi",
+      "reason_time": "süre doldu",
+      "reason_exploded": "bomba patladı",
+      "reason_defused": "bomba çözüldü",
+      "chatPlaceholder": "Mesajını yaz, Enter ile gönder",
+      "armorValue": "Zırh {n}",
+      "armorHelmetValue": "Zırh {n} · Kask",
+      "moneyValue": "{n} ₺",
+      "buyHint": "B: satın al",
+      "netStats": "Ping {ping} ms · {fps} FPS",
+      "headshotMark": "(kafa)",
+      "teamTag": "[takım]",
+      "chatTeam": "Takım",
+      "chatAll": "Herkes",
+      "scoreboard": "Skor tablosu",
+      "players": "Oyuncular",
+      "teamAttackers": "Akıncılar",
+      "teamDefenders": "Bekçiler",
+      "levelShort": "Sv",
+      "pingShort": "Ping",
+      "botTag": "bot",
+      "buyTitle": "Satın al",
+      "buySecondary": "Tabancalar",
+      "buyPrimary": "Ana silahlar",
+      "buyGear": "Teçhizat",
+      "close": "Kapat",
+      "buyOpen": "Satın alma açık. Doğma bölgesinden ayrılınca ya da süre bitince kapanır.",
+      "buyClosed": "Şu an satın alamazsın: doğma bölgesinde ve raunt başında olmalısın.",
+      "voteTimer": "Oylama {n} sn sonra kapanıyor",
+      "votes": "{n} oy",
+      "desktopOnly": "Siper fare ve klavyeyle oynanır. Bilgisayardan aç.",
+      "clickToPlay": "Oynamak için tıkla",
+      "sensitivity": "Fare hassasiyeti",
+      "fov": "Görüş açısı",
+      "volumeMaster": "Genel ses",
+      "volumeSfx": "Efektler",
+      "volumeMusic": "Müzik",
+      "volumeVoice": "Anons",
+      "quality": "Grafik kalitesi",
+      "qualityHint": "Değişiklik bir sonraki maçta geçerli olur.",
+      "invertY": "Dikey ekseni ters çevir",
+      "controlsTitle": "Tuşlar",
+      "resetControls": "Varsayılana dön",
+      "mouseHint": "Sol tık ateş, sağ tık dürbün. Esc fareyi bırakır.",
+      "pressKey": "Bir tuşa bas…",
+      "connecting": "Sunucuya bağlanılıyor",
+      "modeOnMap": "{mode} · {map}",
+      "ffaScore": "Sen {me} · Lider {best}",
+      "roundShort": "Raunt {n}",
+      "bombPlantedAt": "Bomba {site} bölgesinde",
+      "youCarry": "Bomba sende",
+      "levelLine": "Seviye {n}/{total} · {weapon}",
+      "planting": "Bomba kuruluyor",
+      "defusing": "Bomba çözülüyor",
+      "killedBy": "{name} seni öldürdü ({weapon})",
+      "youDied": "Öldün",
+      "respawnIn": "{n} sn sonra yeniden doğacaksın",
+      "waitRound": "Raunt bitince yeniden doğacaksın",
+      "killcam": "Ölüm kamerası · {name}",
+      "spectating": "İzliyorsun: {name} · Sol tık ile değiştir",
+      "roundN": "Raunt {n}",
+      "attackersRound": "Raundu Akıncılar aldı: {reason}",
+      "defendersRound": "Raundu Bekçiler aldı: {reason}",
+      "halftime": "Devre arası: taraflar değişti",
+      "levelUp": "Yeni silah: {weapon}",
+      "draw": "Berabere",
+      "attackersWinMatch": "Maçı Akıncılar kazandı",
+      "defendersWinMatch": "Maçı Bekçiler kazandı",
+      "playerWins": "Maçı {name} kazandı"
     }
   },
   "errors": {
@@ -624,7 +759,8 @@
     "tabs": {
       "label": "Yönetim bölümleri",
       "overview": "Genel bakış",
-      "users": "Oyuncular"
+      "users": "Oyuncular",
+      "reports": "Şikâyetler"
     },
     "overview": {
       "title": "Salonun durumu",
@@ -710,6 +846,27 @@
         "not_verified": "E-postası doğrulanmamış hesap yönetici yapılamaz.",
         "failed": "İşlem tamamlanamadı. Tekrar dene."
       }
+    },
+    "reports": {
+      "title": "Oyuncu şikâyetleri",
+      "lead": "Açık şikâyetler en yeniden eskiye. Çözülen ya da yersiz bulunan şikâyet listeden düşer.",
+      "empty": {
+        "title": "Açık şikâyet yok",
+        "description": "Yeni şikâyet geldiğinde burada görünür."
+      },
+      "reasons": {
+        "cheating": "Hile",
+        "abuse": "Hakaret ya da taciz",
+        "name": "Uygunsuz kullanıcı adı",
+        "griefing": "Takımını sabote etme",
+        "other": "Diğer"
+      },
+      "repeat": "Toplam {n} şikâyet",
+      "by": "{name} · {when}",
+      "deleted": "silinmiş hesap",
+      "resolve": "Çözüldü",
+      "dismiss": "Yersiz",
+      "failed": "Kaydedilemedi."
     }
   },
   "gameCopy": {
@@ -810,6 +967,344 @@
         "Dokunmatik ekranda alt köşelerdeki düğmeleri kullan.",
         "Pist dışında kart yavaşlar; üç turu ilk bitiren kazanır."
       ]
+    },
+    "siper": {
+      "tagline": "Üç harita, beş mod, tek tetik.",
+      "description": "Tarayıcıda oynanan takım nişancı oyunu. Akıncılar ile Bekçiler eşit takımlarla karşılaşır: Takım Ölüm Maçı, Bomba Kur/Çöz, Silah Oyunu, Herkes Tek ve Bıçak Raundu. Hareket ve atışlar sunucuda hesaplanır, kafadan vuruşlar ağır gelir, seri öldürmeleri Türkçe anonslar duyurur. Botlarla hesapsız oynayabilirsin; çevrim içi maçlar için hesap gerekir.",
+      "controls": [
+        "WASD ile yürü, fareyle nişan al, sol tık ateş, sağ tık dürbün.",
+        "Boşluk zıplar, Ctrl eğilir, Shift sessiz yürür; R şarjör değiştirir.",
+        "1–5 silah seçer, B satın alma menüsünü açar, Tab skor tablosunu gösterir.",
+        "Bomba modunda E basılı tutularak bomba kurulur ya da çözülür.",
+        "Y genel, U takım sohbetini açar. Tuşları oyun içindeki ayarlardan değiştirebilirsin."
+      ]
+    }
+  },
+  "siper": {
+    "lobby": {
+      "title": "Siper",
+      "subtitle": "Botlarla hemen başla ya da çevrim içi bir maça katıl.",
+      "tabBots": "Botlarla oyna",
+      "tabOnline": "Çevrim içi",
+      "mode": "Mod",
+      "map": "Harita",
+      "difficulty": "Bot zorluğu",
+      "teamSize": "Takım büyüklüğü",
+      "playerCount": "Oyuncu sayısı",
+      "perTeam": "{n}v{n}",
+      "bots": "Boş yerlere bot",
+      "modes": {
+        "tdm": "Takım Ölüm Maçı",
+        "bomb": "Bomba Kur/Çöz",
+        "knife": "Bıçak Raundu",
+        "ffa": "Herkes Tek",
+        "gungame": "Silah Oyunu"
+      },
+      "maps": {
+        "liman": "Liman",
+        "carsi": "Çarşı",
+        "santral": "Santral"
+      },
+      "modeHints": {
+        "tdm": "Ölen 3 saniye sonra doğar; 50 öldürmeye ulaşan takım kazanır.",
+        "bomb": "Akıncılar bombayı A ya da B bölgesine kurar, Bekçiler çözer. 7 raunt alan kazanır.",
+        "knife": "Sadece bıçak. Rakip takımı temizleyen raundu alır, 5 raunt kazandırır.",
+        "ffa": "Herkes herkese karşı; 25 öldürmeye ilk ulaşan kazanır.",
+        "gungame": "Her iki öldürmede silahın değişir; son basamak bıçak."
+      },
+      "difficulties": {
+        "easy": "Kolay",
+        "normal": "Normal",
+        "hard": "Zor"
+      },
+      "onlineBots": {
+        "off": "Bot yok",
+        "easy": "Kolay",
+        "normal": "Normal",
+        "hard": "Zor"
+      },
+      "playBots": "Maça başla",
+      "botsNote": "Bot maçları hesapsız oynanır; hesapla oynarsan yarım XP kazanırsın, rütbe puanın değişmez.",
+      "guestName": "Misafir",
+      "startingBots": "Botlar yerini alıyor…",
+      "connecting": "Bağlanılıyor…",
+      "offline": "Sunucuya ulaşılamadı. Sayfayı yenileyip tekrar dene.",
+      "accountTitle": "Çevrim içi maçlar için hesap gerekir",
+      "accountBody": "Rakiplerin kullanıcı adını görür, maç sonuçların profiline ve sıralamaya yazılır.",
+      "signIn": "Giriş yap",
+      "quickMatch": "Hızlı eşleş",
+      "openRooms": "Açık odalar",
+      "refresh": "Listeyi yenile",
+      "noRooms": "Şu an açık oda yok. Hızlı eşleşme yeni bir oda açar.",
+      "join": "Katıl",
+      "createRoom": "Özel oda kur",
+      "create": "Odayı kur",
+      "code": "Oda kodu",
+      "party": "Parti",
+      "partyJoinLabel": "Parti kodu (boş bırakırsan yeni parti kurulur)",
+      "createParty": "Parti kur",
+      "joinParty": "Partiye katıl",
+      "leaveParty": "Partiden çık",
+      "partyCode": "Parti kodu: {code}",
+      "partyHint": "Lider hızlı eşleşmeye girince parti onu izler ve aynı takıma düşer.",
+      "host": "Oda sahibi",
+      "you": "sen",
+      "offlineBadge": "Bağlantı yok",
+      "ready": "Hazır",
+      "notReady": "Bekliyor",
+      "switchHere": "Buraya geç",
+      "teamAttackers": "Akıncılar",
+      "teamDefenders": "Bekçiler",
+      "unassigned": "Takım seçmeyenler (otomatik dağıtılır)",
+      "quickRoom": "Hızlı eşleşme odası",
+      "roomCode": "Oda kodu: {code}",
+      "chat": "Sohbet",
+      "chatEmpty": "Henüz mesaj yok.",
+      "chatLabel": "Mesaj",
+      "send": "Gönder",
+      "quickJoining": "Maça katılıyorsun…",
+      "quickNext": "Sonraki maç birkaç saniye içinde başlıyor.",
+      "start": "Maçı başlat",
+      "setReady": "Hazırım",
+      "unsetReady": "Hazır değilim",
+      "equalTeams": "Bot yokken takımlar eşit olmadan maç başlamaz.",
+      "leave": "Odadan çık",
+      "errors": {
+        "generic": "Bir şeyler ters gitti. Tekrar dene.",
+        "account_required": "Bunun için giriş yapman gerekiyor.",
+        "invalid_ticket": "Oturumun doğrulanamadı. Sayfayı yenile.",
+        "teams_uneven": "Takımlar eşit değil. Biri takım değiştirsin ya da botları aç.",
+        "team_full": "Bu takım dolu.",
+        "room_full": "Oda dolu.",
+        "room_not_found": "Bu kodla bir oda yok.",
+        "room_in_progress": "Maç sürüyor ve boş yer yok.",
+        "not_ready": "Herkes hazır değil.",
+        "chat_too_fast": "Biraz yavaş yaz.",
+        "server_busy": "Sunucu çok yoğun, birazdan dene."
+      }
+    },
+    "report": {
+      "open": "{name} adlı oyuncuyu şikâyet et",
+      "title": "{name} adlı oyuncuyu şikâyet et",
+      "reason": "Neden",
+      "reasons": {
+        "cheating": "Hile",
+        "abuse": "Hakaret ya da taciz",
+        "name": "Uygunsuz kullanıcı adı",
+        "griefing": "Takımını sabote etme",
+        "other": "Diğer"
+      },
+      "note": "Ne oldu? (isteğe bağlı)",
+      "submit": "Şikâyeti gönder",
+      "sending": "Gönderiliyor",
+      "sent": "Teşekkürler. Şikâyetin yönetime ulaştı.",
+      "close": "Kapat",
+      "errors": {
+        "generic": "Gönderilemedi. Tekrar dene.",
+        "rate_limited": "Çok fazla şikâyet gönderdin, biraz bekle.",
+        "cannot_target_self": "Kendini şikâyet edemezsin."
+      }
+    },
+    "profile": {
+      "title": "Siper",
+      "hint": "Seviye, rütbe ve maç istatistikleri",
+      "level": "Seviye {n}",
+      "xpLabel": "Sonraki seviye",
+      "rating": "Rütbe puanı: {n}",
+      "rank": {
+        "bronze": "Bronz",
+        "silver": "Gümüş",
+        "gold": "Altın",
+        "platinum": "Platin",
+        "diamond": "Elmas"
+      },
+      "empty": {
+        "title": "Henüz maç yok",
+        "description": "İlk maçından sonra istatistiklerin burada görünür.",
+        "action": "Siper’i aç"
+      },
+      "stat": {
+        "matches": "Maç",
+        "wins": "Galibiyet",
+        "kd": "Ö/Ö oranı",
+        "kills": "Öldürme",
+        "accuracy": "İsabet",
+        "headshots": "Kafadan",
+        "bestStreak": "En iyi seri",
+        "plants": "Kurma + çözme",
+        "favorite": "Favori silah"
+      },
+      "weapon": {
+        "knife": "Bıçak",
+        "pistol": "Tabanca",
+        "revolver": "Altıpatlar",
+        "smg": "Hafif makineli",
+        "shotgun": "Pompalı",
+        "carbine": "Karabina",
+        "rifle": "Piyade tüfeği",
+        "sniper": "Keskin nişancı",
+        "grenade": "El bombası",
+        "smoke": "Sis bombası",
+        "armor": "Zırh",
+        "armorHelmet": "Zırh ve kask",
+        "bomb": "Bomba"
+      },
+      "mode": {
+        "tdm": "Takım Ölüm Maçı",
+        "bomb": "Bomba Kur/Çöz",
+        "knife": "Bıçak Raundu",
+        "ffa": "Herkes Tek",
+        "gungame": "Silah Oyunu"
+      },
+      "map": {
+        "liman": "Liman",
+        "carsi": "Çarşı",
+        "santral": "Santral"
+      },
+      "quests": "Günlük görevler",
+      "questDone": "Tamamlandı",
+      "quest": {
+        "play3": "3 maç oyna",
+        "win2": "2 maç kazan",
+        "kills15": "15 rakip indir",
+        "headshots5": "5 kafadan vuruş yap",
+        "knife1": "Bıçakla 1 rakip indir",
+        "plant2": "2 bomba kur",
+        "multi1": "Bir çift vuruş yap",
+        "damage1500": "1500 hasar ver"
+      },
+      "achievements": "Başarımlar ({n}/{total})",
+      "achievement": {
+        "first_win": {
+          "name": "İlk zafer",
+          "hint": "Bir maç kazan."
+        },
+        "sharpshooter": {
+          "name": "Keskin göz",
+          "hint": "100 rakip indir."
+        },
+        "headhunter": {
+          "name": "Kafa avcısı",
+          "hint": "50 kafadan vuruş yap."
+        },
+        "knife_master": {
+          "name": "Bıçak ustası",
+          "hint": "Bıçakla 10 rakip indir."
+        },
+        "demolition": {
+          "name": "Yıkım ekibi",
+          "hint": "10 bomba kur."
+        },
+        "defuser": {
+          "name": "Soğukkanlı",
+          "hint": "10 bomba çöz."
+        },
+        "ace": {
+          "name": "Katliam",
+          "hint": "Birkaç saniye içinde beş rakip indir."
+        },
+        "veteran": {
+          "name": "Kıdemli",
+          "hint": "50 maç oyna."
+        },
+        "unstoppable": {
+          "name": "Tanrısal",
+          "hint": "Ölmeden 10 rakip indir."
+        },
+        "level_10": {
+          "name": "Onuncu seviye",
+          "hint": "10. seviyeye ulaş."
+        }
+      },
+      "unlocked": "açıldı",
+      "locked": "kilitli",
+      "recent": "Son maçlar",
+      "match": "Maç",
+      "date": "Tarih",
+      "won": "Galibiyet",
+      "lost": "Yenilgi",
+      "cosmetics": "Görünüm",
+      "skins": "Silah kaplaması",
+      "outfits": "Karakter görünümü",
+      "skin": {
+        "standard": "Standart",
+        "kum": "Kum",
+        "gece": "Gece",
+        "kaplan": "Kaplan",
+        "orman": "Orman",
+        "buz": "Buz",
+        "lale": "Lale",
+        "altin": "Altın"
+      },
+      "outfit": {
+        "saha": "Saha",
+        "bere": "Bere",
+        "kask": "Kask",
+        "vizor": "Vizör",
+        "atki": "Atkı",
+        "komutan": "Komutan"
+      },
+      "equip": "Kaydet",
+      "saving": "Kaydediliyor",
+      "equipped": "Kaydedildi. Bir sonraki maçta görünür.",
+      "equipFailed": "Kaydedilemedi.",
+      "cosmeticsNote": "Görünümler yalnızca görünüştür, güç vermez. Seviye atladıkça ve başarım topladıkça açılır."
+    },
+    "board": {
+      "title": "Siper sıralaması",
+      "subtitle": "Çevrim içi maçlarla değişir; bot maçları rütbeyi etkilemez.",
+      "orderLabel": "Sıralama ölçütü",
+      "order": {
+        "rating": "Rütbe",
+        "level": "Seviye",
+        "kills": "Öldürme"
+      },
+      "player": "Oyuncu",
+      "level": "Seviye",
+      "rank": "Rütbe",
+      "kills": "Öldürme",
+      "ranks": {
+        "bronze": "Bronz",
+        "silver": "Gümüş",
+        "gold": "Altın",
+        "platinum": "Platin",
+        "diamond": "Elmas"
+      },
+      "empty": {
+        "title": "Sıralama henüz boş",
+        "description": "İlk çevrim içi maçı oynayan buraya yazılır."
+      }
+    },
+    "friends": {
+      "title": "Arkadaşlar",
+      "subtitle": "Arkadaşlarını ekle, Siper’de parti kurup birlikte eşleş.",
+      "addLabel": "Kullanıcı adı",
+      "addPlaceholder": "kullanici_adi",
+      "add": "İstek gönder",
+      "sending": "Gönderiliyor",
+      "sent": "İstek gönderildi.",
+      "incoming": "Gelen istekler ({n})",
+      "outgoing": "Gönderdiklerin ({n})",
+      "list": "Arkadaş listesi ({n})",
+      "partyHint": "Siper lobisinde parti kur, kodu arkadaşına ver.",
+      "since": "{date} tarihinden beri",
+      "accept": "Kabul et",
+      "decline": "Reddet",
+      "remove": "Çıkar",
+      "cancel": "Geri çek",
+      "empty": {
+        "title": "Henüz arkadaşın yok",
+        "description": "Bir kullanıcı adı yazıp istek gönder ya da bir profilde “Arkadaş ekle”ye bas."
+      },
+      "errors": {
+        "generic": "Olmadı. Tekrar dene.",
+        "not_found": "Bu kullanıcı adıyla bir oyuncu yok.",
+        "already_friends": "Zaten arkadaşsınız ya da istek bekliyor.",
+        "cannot_target_self": "Kendini ekleyemezsin.",
+        "friend_limit": "Arkadaş sınırına ulaştın.",
+        "rate_limited": "Çok hızlı, biraz bekle.",
+        "unauthorized": "Önce giriş yap."
+      }
     }
   }
 }
