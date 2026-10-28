@@ -89,7 +89,7 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
     <div className="flex min-h-dvh">
       <a
         href="#main"
-        className="sr-only rounded-lg border-2 border-border-strong bg-surface-overlay px-4 py-3 font-display text-label-md text-fg-primary shadow-sticker focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
+        className="sr-only rounded-lg border-2 border-border-strong bg-surface-overlay font-display text-label-md text-fg-primary shadow-sticker focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-50 focus-visible:px-4 focus-visible:py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
       >
         {labels.skipToContent}
       </a>
