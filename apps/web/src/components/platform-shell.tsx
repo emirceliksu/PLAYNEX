@@ -146,7 +146,11 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
           }
         />
         <OfflineBanner title={labels.offlineTitle} description={labels.offlineDescription} />
-        <main id="main" tabIndex={-1} className="mx-auto outline-none w-full max-w-page flex-1 px-4 pt-6 pb-28 md:px-8 md:pt-8 md:pb-12">
+        <main
+          id="main"
+          tabIndex={-1}
+          className="mx-auto w-full max-w-page flex-1 px-4 pt-6 pb-28 outline-none md:px-8 md:pt-8 md:pb-12"
+        >
           {children}
         </main>
       </div>
