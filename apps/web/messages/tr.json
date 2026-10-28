@@ -68,6 +68,7 @@
       "description": "Skorlar sunucuda doğrulanmaya başladığında ilk dereceler burada görünecek."
     },
     "account": {
+      "label": "Hesap özeti",
       "guestTitle": "Rekorların kaybolmasın",
       "guestBody": "Misafir olarak oynayabilirsin. Hesap açarsan skorların profilinde durur ve sıralamaya girer.",
       "greeting": "Selam {name}",

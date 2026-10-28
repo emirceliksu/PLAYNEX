@@ -73,7 +73,7 @@ export default async function AdminUsersPage({ params, searchParams }: AdminUser
       <AdminHeader section="users" title={t('users.title')} lead={t('users.lead')} />
 
       <div className="flex flex-col gap-4 rounded-xl border-2 border-border-subtle bg-surface-raised p-4 md:p-5">
-        <form role="search" className="flex gap-3">
+        <form role="search" aria-label={t('users.searchLabel')} className="flex gap-3">
           {filter !== 'all' ? <input type="hidden" name="filter" value={filter} /> : null}
           <SearchInput
             name="q"

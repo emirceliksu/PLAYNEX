@@ -89,6 +89,7 @@ export function FilterBar({ filters, labels }: FilterBarProps) {
     <div className="flex flex-col gap-5 rounded-xl border-2 border-border-subtle bg-surface-raised p-4 md:p-5">
       <form
         role="search"
+        aria-label={labels.search}
         className="flex gap-3"
         onSubmit={(event) => {
           event.preventDefault();

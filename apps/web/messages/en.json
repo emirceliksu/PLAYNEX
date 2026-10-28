@@ -68,6 +68,7 @@
       "description": "Once scores are verified on the server, the first placings will appear here."
     },
     "account": {
+      "label": "Account summary",
       "guestTitle": "Keep your records",
       "guestBody": "You can play as a guest. With an account, your scores stay on your profile and enter the ranking.",
       "greeting": "Hi {name}",
