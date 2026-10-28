@@ -129,3 +129,208 @@
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+/*
+ * Attract mode. Like an arcade cabinet nobody is playing, a game cover loops a short demo of
+ * its mechanic, but only while its card is hovered or focused; the rest of the time it holds
+ * its first pose. Every loop starts and ends on that pose, so stopping mid-way never leaves a
+ * cover half-drawn. A featured cover may play its demo twice on arrival instead.
+ */
+.attract {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-duration: 1.6s;
+  animation-timing-function: var(--pn-ease-in-out);
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.attract-lunge {
+  animation-name: pn-attract-lunge;
+}
+.attract-bob {
+  animation-name: pn-attract-bob;
+}
+.attract-flip {
+  animation-name: pn-attract-flip;
+}
+.attract-merge {
+  animation-name: pn-attract-merge;
+}
+.attract-pop {
+  animation-name: pn-attract-pop;
+  animation-timing-function: var(--pn-ease-spring);
+}
+.attract-drop {
+  animation-name: pn-attract-drop;
+}
+.attract-dash {
+  animation-name: pn-attract-dash;
+  animation-timing-function: linear;
+}
+.attract-puck {
+  animation-name: pn-attract-puck;
+}
+.attract-hop {
+  animation-name: pn-attract-hop;
+  transform-origin: bottom;
+}
+.attract-wobble {
+  animation-name: pn-attract-wobble;
+}
+
+.group:hover .attract,
+.group:focus-within .attract {
+  animation-play-state: running;
+}
+
+[data-attract='once'] .attract {
+  animation-play-state: running;
+  animation-iteration-count: 2;
+  animation-delay: var(--pn-duration-page);
+}
+
+/* Coming-soon cabinets stay dark: nothing to demo yet. */
+[data-attract='off'] .attract {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .attract {
+    animation: none;
+  }
+}
+
+@keyframes pn-attract-lunge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes pn-attract-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pn-attract-flip {
+  0%,
+  20%,
+  100% {
+    transform: scaleX(1);
+  }
+  40% {
+    transform: scaleX(0.05);
+  }
+  60% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pn-attract-merge {
+  0%,
+  15%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(30px);
+    opacity: 1;
+  }
+  55% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  85% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pn-attract-pop {
+  0%,
+  45%,
+  100% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes pn-attract-drop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-14px);
+  }
+  55% {
+    transform: translateY(0);
+  }
+  62% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pn-attract-dash {
+  to {
+    /* A multiple of every dash period it is used on (10 and 6), so the loop has no seam. */
+    stroke-dashoffset: -60;
+  }
+}
+
+@keyframes pn-attract-puck {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(-22px, -14px);
+  }
+  70% {
+    transform: translate(10px, -22px);
+  }
+}
+
+@keyframes pn-attract-hop {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  30% {
+    transform: translate(4px, -10px) rotate(-6deg);
+  }
+  55% {
+    transform: translate(8px, 0) rotate(0);
+  }
+  80% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+@keyframes pn-attract-wobble {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}

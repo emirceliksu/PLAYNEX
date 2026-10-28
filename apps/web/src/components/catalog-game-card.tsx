@@ -37,7 +37,14 @@ export async function CatalogGameCard({
       description={variant === 'featured' ? copy.description : undefined}
       accent={game.accent}
       status={game.status}
-      cover={<GameCover slug={game.slug} accent={game.accent} muted={!live} />}
+      cover={
+        <GameCover
+          slug={game.slug}
+          accent={game.accent}
+          muted={!live}
+          playOnArrival={variant === 'featured'}
+        />
+      }
       href={`/games/${game.slug}`}
       playHref={live ? `/play/${game.slug}` : undefined}
       playLabel={variant === 'featured' ? common('playNow') : common('play')}
