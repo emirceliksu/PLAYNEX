@@ -1,0 +1,7 @@
+{
+  "verificationSubject": "Your PLAYNEX verification code: {code}",
+  "verificationGreeting": "Hi {name},",
+  "verificationIntro": "Enter this code on the sign-up screen to open your PLAYNEX account:",
+  "verificationExpiry": "The code is valid for {minutes} minutes. If you did not start this sign-up, you can ignore this email; the account stays closed until it is verified.",
+  "verificationSignature": "PLAYNEX"
+}

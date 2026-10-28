@@ -61,6 +61,8 @@ services:
   web:
     <<: *node
     command: pnpm turbo run dev --filter=@playnex/web
+    environment:
+      API_INTERNAL_URL: http://api:8080
     ports:
       - '3000:3000'
     depends_on:
@@ -92,9 +94,16 @@ services:
 
   api:
     <<: *rust
-    command: cargo watch --poll -w apps/api -w Cargo.toml -w Cargo.lock -x "run -p playnex-api"
+    command: >-
+      cargo watch --poll -w apps/api -w Cargo.toml -w Cargo.lock
+      -w infrastructure/migrations -x "run -p playnex-api"
     environment:
       PORT: 8080
+      DATABASE_URL: postgres://${POSTGRES_USER:-playnex}:${POSTGRES_PASSWORD:-playnex}@postgres:5432/${POSTGRES_DB:-playnex}
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_SECURITY: none
+      MAIL_FROM: ${MAIL_FROM:-PLAYNEX <no-reply@playnex.localhost>}
       CARGO_TARGET_DIR: /cargo-target
       CARGO_BUILD_JOBS: 4
       RUST_LOG: info
@@ -104,6 +113,11 @@ services:
       - .:/workspace
       - cargo_registry:/usr/local/cargo/registry
       - cargo_target_api:/cargo-target
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_healthy
     healthcheck:
       <<: *rust-healthcheck
       test: ['CMD', 'curl', '-fsS', 'http://localhost:8080/health']

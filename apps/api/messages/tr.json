@@ -1,0 +1,7 @@
+{
+  "verificationSubject": "PLAYNEX doğrulama kodun: {code}",
+  "verificationGreeting": "Merhaba {name},",
+  "verificationIntro": "PLAYNEX hesabını açmak için bu kodu kayıt ekranına gir:",
+  "verificationExpiry": "Kod {minutes} dakika geçerli. Bu kaydı sen başlatmadıysan e-postayı yok sayabilirsin; hesap doğrulanmadan açılmaz.",
+  "verificationSignature": "PLAYNEX"
+}
