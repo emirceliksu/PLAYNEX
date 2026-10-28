@@ -21,6 +21,8 @@ ENV NODE_ENV=production \
 WORKDIR /app
 COPY --from=build --chown=node:node /repo/apps/web/.next/standalone ./
 COPY --from=build --chown=node:node /repo/apps/web/.next/static ./apps/web/.next/static
+# Standalone output leaves public/ out; the siper announcer lines are served from it.
+COPY --from=build --chown=node:node /repo/apps/web/public ./apps/web/public
 
 USER node
 EXPOSE 3000
