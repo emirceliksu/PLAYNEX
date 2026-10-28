@@ -1,5 +1,5 @@
 import type { Game, GameCategory, GameDimension, GameMode } from '@playnex/shared-types';
-import { Button, EmptyState } from '@playnex/ui';
+import { EmptyState } from '@playnex/ui';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
@@ -7,7 +7,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { CatalogGameCard } from '@/components/catalog-game-card';
 import { FilterBar, type CatalogFilters } from '@/features/catalog/filter-bar';
-import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { getGameCopy } from '@/lib/catalog/game-copy';
 import { comingSoonGames, games, liveGames } from '@/lib/catalog/games';
@@ -90,6 +89,15 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
     t(`mode.${game.mode}`),
   ]);
 
+  // The search term names the result set best, then a lone category; other mixes stay generic.
+  const heading = filters.q.trim()
+    ? t('searchResults', { query: filters.q.trim() })
+    : filters.category !== 'all'
+      ? t('categoryGames', { category: t(`category.${filters.category}`) })
+      : filters.dimension !== 'all' || filters.mode !== 'all'
+        ? t('filteredGames')
+        : t('allGames');
+
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-1">
@@ -116,22 +124,15 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
       />
 
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="font-display text-title-lg">{t('allGames')}</h2>
+        <h2 className="font-display text-title-lg">{heading}</h2>
         <p className="font-display text-label-md text-fg-muted" aria-live="polite">
           {t('resultCount', { count: results.length })}
         </p>
       </div>
 
       {results.length === 0 ? (
-        <EmptyState
-          title={t('empty.title')}
-          description={t('empty.description')}
-          action={
-            <Button asChild variant="secondary">
-              <Link href="/games">{t('empty.action')}</Link>
-            </Button>
-          }
-        />
+        // The filter bar already offers "clear filters" whenever this state can appear.
+        <EmptyState title={t('empty.title')} description={t('empty.description')} />
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {results.map((game) => (

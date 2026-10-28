@@ -81,6 +81,9 @@
     "subtitle": "{live} oynanabilir{soon, plural, =0 {} other {, # yakında}}",
     "searchPlaceholder": "Ada veya türe göre ara",
     "allGames": "Tüm oyunlar",
+    "searchResults": "“{query}” için sonuçlar",
+    "categoryGames": "{category} oyunları",
+    "filteredGames": "Seçili filtrelere uyan oyunlar",
     "resultCount": "{count, plural, =0 {Sonuç yok} =1 {1 oyun} other {# oyun}}",
     "clearFilters": "Filtreleri temizle",
     "filters": {
@@ -116,8 +119,7 @@
     },
     "empty": {
       "title": "Bu filtrelere uyan oyun yok",
-      "description": "Aramayı değiştir ya da filtreleri temizleyip tüm kataloğa dön.",
-      "action": "Filtreleri temizle"
+      "description": "Aramayı değiştir ya da filtreleri temizleyip tüm kataloğa dön."
     }
   },
   "game": {
