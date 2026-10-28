@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, GameCover, ScoreValue } from '@playnex/ui';
+import { Badge, Button, EmptyState, GameCover } from '@playnex/ui';
 import {
   Clock,
   Gamepad2,
@@ -20,9 +20,8 @@ import { CatalogGameCard } from '@/components/catalog-game-card';
 import { SectionHeader } from '@/components/section-header';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
-import { formatDate, localeTag } from '@/lib/format';
-import { findGame, games } from '@/lib/mock/games';
-import { getLeaderboard } from '@/lib/mock/leaderboard';
+import { findGame, games } from '@/lib/catalog/games';
+import { formatDate } from '@/lib/format';
 
 interface GamePageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -63,17 +62,17 @@ export default async function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  const [t, common, lobby] = await Promise.all([
+  const [t, common, lobby, board] = await Promise.all([
     getTranslations('game'),
     getTranslations('common'),
     getTranslations('lobby'),
+    getTranslations('leaderboard'),
   ]);
   const modeIcons = { solo: User, local: Users, online: Globe } as const;
   const live = game.status === 'live';
   const similar = games
     .filter((other) => other.slug !== game.slug && other.category === game.category)
     .slice(0, 4);
-  const topScores = live ? getLeaderboard(game.slug, 'weekly').slice(0, 5) : [];
 
   const facts: { label: string; value: string }[] = [
     {
@@ -117,7 +116,6 @@ export default async function GamePage({ params }: GamePageProps) {
               <Clock aria-hidden className="size-4" />
               {common('minutes', { count: game.estimatedMinutes })}
             </span>
-            {live ? <span>{common('plays', { count: game.playCount })}</span> : null}
           </div>
           {live ? (
             <ul aria-label={t('playModes')} className="flex flex-wrap gap-2">
@@ -204,29 +202,7 @@ export default async function GamePage({ params }: GamePageProps) {
               href="/leaderboard"
               linkLabel={common('viewAll')}
             />
-            <ol className="divide-y-2 divide-border-subtle rounded-xl border-2 border-border-subtle bg-surface-raised">
-              {topScores.map((entry) => (
-                <li key={entry.player.id} className="flex items-center gap-3 px-4 py-2.5">
-                  <span className="w-5 font-display text-title-sm text-fg-muted tabular-nums">
-                    {entry.rank}
-                  </span>
-                  <Avatar
-                    name={entry.player.displayName}
-                    seed={entry.player.avatarSeed}
-                    size="sm"
-                  />
-                  <span className="min-w-0 flex-1 truncate font-display text-label-md">
-                    {entry.player.displayName}
-                  </span>
-                  <ScoreValue
-                    value={entry.score}
-                    locale={localeTag(locale)}
-                    animate={false}
-                    className="text-title-sm"
-                  />
-                </li>
-              ))}
-            </ol>
+            <EmptyState title={board('empty.title')} description={board('empty.description')} />
           </section>
         ) : null}
       </div>

@@ -9,7 +9,7 @@ import { CatalogGameCard } from '@/components/catalog-game-card';
 import { FilterBar, type CatalogFilters } from '@/features/catalog/filter-bar';
 import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
-import { comingSoonGames, games, liveGames } from '@/lib/mock/games';
+import { comingSoonGames, games, liveGames } from '@/lib/catalog/games';
 
 interface GamesPageProps {
   params: Promise<{ locale: string }>;
@@ -51,7 +51,8 @@ function filterGames(filters: CatalogFilters): Game[] {
     // Playable games first in every ordering; nobody wants "coming soon" at the top of "popular".
     if (a.status !== b.status) return a.status === 'live' ? -1 : 1;
     if (filters.sort === 'new') return b.releasedAt.localeCompare(a.releasedAt);
-    return b.playCount - a.playCount;
+    // Featured keeps the curated catalog order; there is no play-count data to rank by yet.
+    return 0;
   });
 }
 

@@ -5,15 +5,10 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { LeaderboardTable } from '@/features/leaderboard/leaderboard-table';
+import { leaderboardWindows, type LeaderboardWindow } from '@/features/leaderboard/windows';
 import { resolveLocale, routing } from '@/i18n/routing';
-import { liveGames } from '@/lib/mock/games';
-import {
-  getLeaderboard,
-  leaderboardGeneratedAt,
-  leaderboardWindows,
-  type LeaderboardWindow,
-} from '@/lib/mock/leaderboard';
-import { currentPlayer } from '@/lib/mock/players';
+import { getCurrentAccount } from '@/lib/auth/session';
+import { liveGames } from '@/lib/catalog/games';
 
 interface LeaderboardPageProps {
   params: Promise<{ locale: string }>;
@@ -34,13 +29,13 @@ export default async function LeaderboardPage({ params, searchParams }: Leaderbo
     notFound();
   }
   setRequestLocale(locale);
-  const t = await getTranslations('leaderboard');
+  const [t, account] = await Promise.all([getTranslations('leaderboard'), getCurrentAccount()]);
 
   const boards: Record<string, Record<LeaderboardWindow, LeaderboardEntry[]>> = Object.fromEntries(
     liveGames.map((game) => [
       game.slug,
       Object.fromEntries(
-        leaderboardWindows.map((window) => [window, getLeaderboard(game.slug, window)]),
+        leaderboardWindows.map((window) => [window, [] as LeaderboardEntry[]]),
       ) as Record<LeaderboardWindow, LeaderboardEntry[]>,
     ]),
   );
@@ -62,8 +57,8 @@ export default async function LeaderboardPage({ params, searchParams }: Leaderbo
         }))}
         boards={boards}
         initialGame={initialGame ?? ''}
-        currentPlayerId={currentPlayer.id}
-        generatedAt={leaderboardGeneratedAt}
+        currentUsername={account?.username}
+        generatedAt={new Date().toISOString()}
         locale={locale}
         labels={{
           chooseGame: t('chooseGame'),

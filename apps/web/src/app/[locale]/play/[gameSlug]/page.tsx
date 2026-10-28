@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { hasGameModule } from '@/lib/games/registry';
-import { findGame } from '@/lib/mock/games';
+import { findGame } from '@/lib/catalog/games';
 
 interface PlayPageProps {
   params: Promise<{ locale: string; gameSlug: string }>;

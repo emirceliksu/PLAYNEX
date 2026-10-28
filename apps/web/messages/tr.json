@@ -14,15 +14,7 @@
     "close": "Kapat",
     "viewAll": "Tümünü gör",
     "you": "sen",
-    "plays": "{count, plural, =0 {Henüz oynanmadı} other {# oynama}}",
     "minutes": "{count} dk",
-    "level": "Seviye {level}",
-    "levelShort": "Sv {level}",
-    "status": {
-      "online": "Çevrim içi",
-      "in-game": "Oyunda",
-      "offline": "Çevrimdışı"
-    },
     "search": {
       "label": "Oyun ara",
       "placeholder": "Oyun ara…"
@@ -30,7 +22,11 @@
     "notifications": "Bildirimler",
     "mainNav": "Ana menü",
     "mobileNav": "Alt menü",
-    "myProfile": "Profilim"
+    "myProfile": "Profilim",
+    "signIn": "Giriş yap",
+    "signUp": "Kayıt ol",
+    "signOut": "Çıkış yap",
+    "notificationsEmpty": "Henüz bildirim yok. Arkadaşlık ve rekor bildirimleri burada görünecek."
   },
   "nav": {
     "home": "Keşfet",
@@ -45,25 +41,32 @@
     "games": "Oyunlar",
     "leaderboard": "Sıralama",
     "profile": "{name} profili",
-    "play": "{title} oyna"
+    "play": "{title} oyna",
+    "register": "Kayıt ol",
+    "login": "Giriş yap",
+    "verify": "E-posta doğrulama"
   },
   "home": {
     "featuredEyebrow": "Haftanın oyunu",
     "quickPlay": "Hemen oyna",
     "quickPlayHint": "Kayıt yok, bekleme yok.",
-    "popular": "Popüler",
-    "popularHint": "Son 7 günün en çok oynananları",
+    "popular": "Salonda",
+    "popularHint": "Şu an oynanabilir oyunlar",
     "ranking": "Haftalık sıralama",
     "rankingHint": "Tüm oyunlardan en iyi dereceler",
     "comingSoon": "Yakında",
     "comingSoonHint": "Sırada ne var",
-    "friends": "Arkadaşlar",
-    "friendsOnline": "{count} çevrim içi",
-    "quest": "Günün görevi",
-    "questTitle": "Üç farklı oyun oyna",
-    "questProgress": "{done}/{total} tamamlandı",
-    "questReward": "+{xp} XP",
-    "yourRank": "Senin yerin"
+    "rankingEmpty": {
+      "title": "Sıralama henüz boş",
+      "description": "Skorlar sunucuda doğrulanmaya başladığında ilk dereceler burada görünecek."
+    },
+    "account": {
+      "guestTitle": "Rekorların kaybolmasın",
+      "guestBody": "Misafir olarak oynayabilirsin. Hesap açarsan skorların profilinde durur ve sıralamaya girer.",
+      "greeting": "Selam {name}",
+      "memberSince": "{date} tarihinden beri burada",
+      "viewProfile": "Profiline git"
+    }
   },
   "games": {
     "title": "Oyunlar",
@@ -99,7 +102,7 @@
       "co-op": "Ortak"
     },
     "sort": {
-      "popular": "Popüler",
+      "popular": "Öne çıkan",
       "new": "Yeni"
     },
     "empty": {
@@ -184,30 +187,105 @@
   },
   "profile": {
     "joined": "{date} tarihinden beri",
-    "xp": "{xp} / {max} XP",
-    "stats": {
-      "games": "Oyun",
-      "minutes": "Süre",
-      "achievements": "Başarım",
-      "best": "En iyi"
-    },
     "history": "Oyun geçmişi",
     "historyHint": "Son oturumlar",
-    "achievements": "Başarımlar",
-    "achievementsHint": "{unlocked}/{total} açıldı",
     "bestScores": "Kişisel rekorlar",
     "personalBest": "Rekor",
-    "locked": "Kilitli",
-    "points": "{points} puan",
-    "verification": {
-      "verified": "Doğrulandı",
-      "pending": "Bekliyor",
-      "rejected": "Reddedildi"
-    },
     "emptyHistory": {
       "title": "Henüz oyun geçmişi yok",
       "description": "İlk oyunu bitirdiğinde skorlar burada listelenir.",
       "action": "Oyunlara göz at"
+    },
+    "welcome": "Hesabın hazır, {name}. Rekorların artık seninle.",
+    "signOut": "Çıkış yap"
+  },
+  "auth": {
+    "backHome": "Salona dön",
+    "brand": {
+      "eyebrow": "PLAYNEX hesabı",
+      "title": "Skorun artık adınla yazılsın.",
+      "body": "Tek hesapla bütün oyunlar: rekorların profilinde birikir, sıralamada yerini alırsın, çevrim içi odalarda adınla görünürsün."
+    },
+    "steps": {
+      "register": "Adım 1 / 2",
+      "verify": "Adım 2 / 2"
+    },
+    "register": {
+      "title": "Hesabını aç",
+      "lead": "Bir dakika sürer. Sonra e-postana gelen 6 haneli kodla hesabını doğrularsın.",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "username": "Kullanıcı adı",
+      "usernameHint": "3–20 karakter; harf, rakam, alt çizgi ve nokta.",
+      "email": "E-posta",
+      "emailHint": "Doğrulama kodu bu adrese gelir.",
+      "password": "Şifre",
+      "passwordHint": "En az 10 karakter. Uzun bir cümle iyi bir şifredir.",
+      "privacy": "Diğer oyuncular yalnızca kullanıcı adını, adını ve soyadının baş harfini görür.",
+      "submit": "Kayıt ol",
+      "submitting": "Hesap açılıyor",
+      "haveAccount": "Zaten hesabın var mı?",
+      "loginLink": "Giriş yap"
+    },
+    "verify": {
+      "title": "E-postanı doğrula",
+      "lead": "<b>{email}</b> adresine 6 haneli bir kod gönderdik. Kod 15 dakika geçerli.",
+      "codeLabel": "Doğrulama kodu",
+      "codeHint": "Kod gelmediyse spam klasörüne de bak.",
+      "submit": "Doğrula ve başla",
+      "submitting": "Doğrulanıyor",
+      "resend": "Kodu yeniden gönder",
+      "resendIn": "{seconds} sn sonra yeniden gönderebilirsin",
+      "resent": "Yeni bir kod gönderdik.",
+      "mailFailed": "Kodu şu an gönderemedik. Birazdan yeniden göndermeyi dene.",
+      "wrongEmail": "Adres yanlış mı?",
+      "restart": "Baştan kaydol"
+    },
+    "login": {
+      "title": "Tekrar hoş geldin",
+      "lead": "Kullanıcı adın ya da e-postanla giriş yap.",
+      "login": "Kullanıcı adı veya e-posta",
+      "password": "Şifre",
+      "submit": "Giriş yap",
+      "submitting": "Giriş yapılıyor",
+      "noAccount": "Hesabın yok mu?",
+      "registerLink": "Kayıt ol"
+    },
+    "password": {
+      "show": "Şifreyi göster",
+      "hide": "Şifreyi gizle"
+    },
+    "errors": {
+      "invalid_input": "İşaretli alanları düzeltip tekrar dene.",
+      "invalid_credentials": "Kullanıcı adı, e-posta ya da şifre hatalı.",
+      "invalid_code": "Kod eşleşmedi. Rakamları kontrol edip tekrar dene.",
+      "code_expired": "Kodun süresi doldu. Yeni bir kod iste.",
+      "too_many_attempts": "Çok fazla yanlış deneme yapıldı. Yeni bir kod iste.",
+      "rate_limited": "Çok fazla deneme yapıldı. {seconds} sn sonra tekrar dene.",
+      "unavailable": "Şu an sunucuya ulaşamıyoruz. Birazdan tekrar dene.",
+      "internal": "Bir şeyler ters gitti. Tekrar dene."
+    },
+    "fields": {
+      "username": {
+        "length": "Kullanıcı adı 3–20 karakter olmalı.",
+        "format": "Harf ya da rakamla başlamalı; yalnızca harf, rakam, _ ve . kullanılabilir.",
+        "taken": "Bu kullanıcı adı alınmış."
+      },
+      "email": {
+        "format": "Geçerli bir e-posta adresi yaz.",
+        "taken": "Bu e-postayla açılmış bir hesap var."
+      },
+      "firstName": {
+        "length": "Adını yaz (en fazla 50 karakter).",
+        "format": "Ad geçersiz karakter içeriyor."
+      },
+      "lastName": {
+        "length": "Soyadını yaz (en fazla 50 karakter).",
+        "format": "Soyad geçersiz karakter içeriyor."
+      },
+      "password": {
+        "length": "Şifre 10–128 karakter olmalı."
+      }
     }
   },
   "player": {

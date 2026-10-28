@@ -57,7 +57,6 @@ export interface Game {
   players: { min: number; max: number };
   version: string;
   releasedAt: string;
-  playCount: number;
   controls: ControlScheme[];
   ageRating: AgeRating;
   orientation: GameOrientation;
@@ -70,23 +69,30 @@ export interface Game {
 
 export type PresenceStatus = 'online' | 'in-game' | 'offline';
 
+// What other visitors see: first name plus last-name initial, never the email or full name.
 export interface Player {
-  id: string;
   username: string;
   displayName: string;
   avatarSeed: string;
-  level: number;
-  xp: number;
-  xpToNextLevel: number;
-  status: PresenceStatus;
   joinedAt: string;
+}
+
+// The signed-in visitor's own record, as the API returns it.
+export interface Account {
+  id: string;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  locale: 'tr' | 'en';
+  createdAt: string;
 }
 
 export type Trend = 'up' | 'down' | 'same';
 
 export interface LeaderboardEntry {
   rank: number;
-  player: Pick<Player, 'id' | 'username' | 'displayName' | 'avatarSeed' | 'level'>;
+  player: Pick<Player, 'username' | 'displayName' | 'avatarSeed'>;
   gameSlug: string;
   score: number;
   achievedAt: string;

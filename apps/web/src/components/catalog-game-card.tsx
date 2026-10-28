@@ -49,7 +49,11 @@ export async function CatalogGameCard({
           </>
         )
       }
-      meta={live ? common('plays', { count: game.playCount }) : formatDate(game.releasedAt, locale)}
+      meta={
+        live
+          ? common('minutes', { count: game.estimatedMinutes })
+          : formatDate(game.releasedAt, locale)
+      }
       linkComponent={NavLink}
       className={className}
     />

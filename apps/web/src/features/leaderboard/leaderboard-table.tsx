@@ -19,13 +19,13 @@ import { useState } from 'react';
 
 import { Link } from '@/i18n/navigation';
 import { formatRelative, localeTag } from '@/lib/format';
-import { leaderboardWindows, type LeaderboardWindow } from '@/lib/mock/leaderboard';
+import { leaderboardWindows, type LeaderboardWindow } from './windows';
 
 interface LeaderboardTableProps {
   games: { slug: string; title: string; accent: AccentName }[];
   boards: Record<string, Record<LeaderboardWindow, LeaderboardEntry[]>>;
   initialGame: string;
-  currentPlayerId: string;
+  currentUsername?: string;
   generatedAt: string;
   locale: string;
   labels: {
@@ -57,7 +57,7 @@ export function LeaderboardTable({
   games,
   boards,
   initialGame,
-  currentPlayerId,
+  currentUsername,
   generatedAt,
   locale,
   labels,
@@ -120,11 +120,11 @@ export function LeaderboardTable({
                     </thead>
                     <tbody className="divide-y-2 divide-border-subtle">
                       {entries.map((entry) => {
-                        const isYou = entry.player.id === currentPlayerId;
+                        const isYou = entry.player.username === currentUsername;
                         const medal = podium[entry.rank - 1];
                         return (
                           <tr
-                            key={entry.player.id}
+                            key={entry.player.username}
                             className={isYou ? 'bg-brand-soft/40' : undefined}
                           >
                             <td className="px-3 py-2.5 md:px-4">
