@@ -9,6 +9,7 @@ import { CatalogGameCard } from '@/components/catalog-game-card';
 import { FilterBar, type CatalogFilters } from '@/features/catalog/filter-bar';
 import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
+import { getGameCopy } from '@/lib/catalog/game-copy';
 import { comingSoonGames, games, liveGames } from '@/lib/catalog/games';
 
 interface GamesPageProps {
@@ -31,20 +32,23 @@ function pick<T extends string>(
   return allowed.includes(single as T) ? (single as T) : 'all';
 }
 
-function normalize(text: string): string {
-  return text.toLocaleLowerCase('tr').normalize('NFD').replace(/[̀-ͯ]/g, '');
+// Case folding follows the active locale: Turkish maps I to ı, English maps it to i.
+function normalize(text: string, locale: string): string {
+  return text.toLocaleLowerCase(locale).normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
-function filterGames(filters: CatalogFilters): Game[] {
-  const query = normalize(filters.q.trim());
+function filterGames(
+  filters: CatalogFilters,
+  locale: string,
+  searchableText: (game: Game) => string[],
+): Game[] {
+  const query = normalize(filters.q.trim(), locale);
   const matched = games.filter((game) => {
     if (filters.category !== 'all' && game.category !== filters.category) return false;
     if (filters.dimension !== 'all' && game.dimension !== filters.dimension) return false;
     if (filters.mode !== 'all' && game.mode !== filters.mode) return false;
     if (!query) return true;
-    return [game.title, game.tagline, game.category, game.mode].some((field) =>
-      normalize(field).includes(query),
-    );
+    return searchableText(game).some((field) => normalize(field, locale).includes(query));
   });
 
   return matched.sort((a, b) => {
@@ -70,7 +74,7 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
     notFound();
   }
   setRequestLocale(locale);
-  const t = await getTranslations('games');
+  const [t, copyOf] = await Promise.all([getTranslations('games'), getGameCopy(locale)]);
 
   const filters: CatalogFilters = {
     q: (Array.isArray(query.q) ? query.q[0] : query.q) ?? '',
@@ -79,7 +83,12 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
     mode: pick(query.mode, modes),
     sort: pick(query.sort, ['popular', 'new'] as const) === 'new' ? 'new' : 'popular',
   };
-  const results = filterGames(filters);
+  const results = filterGames(filters, locale, (game) => [
+    game.title,
+    copyOf(game.slug).tagline,
+    t(`category.${game.category}`),
+    t(`mode.${game.mode}`),
+  ]);
 
   return (
     <div className="flex flex-col gap-8">

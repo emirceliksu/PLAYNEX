@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { hasGameModule } from '@/lib/games/registry';
+import { getGameCopy } from '@/lib/catalog/game-copy';
 import { findGame } from '@/lib/catalog/games';
 import { notFoundMetadata } from '@/lib/not-found-metadata';
 
@@ -64,7 +65,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
         slug: game.slug,
         title: game.title,
         accent: game.accent,
-        controlsGuide: game.controlsGuide,
+        controlsGuide: (await getGameCopy(locale))(game.slug).controls,
         scoring: game.scoring,
         setup: game.setup,
       }}
