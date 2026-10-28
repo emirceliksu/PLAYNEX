@@ -52,6 +52,7 @@
     "adminUsers": "Oyuncu yönetimi"
   },
   "home": {
+    "title": "PLAYNEX oyun salonu",
     "featuredEyebrow": "Haftanın oyunu",
     "quickPlay": "Hemen oyna",
     "quickPlayHint": "Kayıt yok, bekleme yok.",

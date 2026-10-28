@@ -52,6 +52,7 @@
     "adminUsers": "Player management"
   },
   "home": {
+    "title": "PLAYNEX arcade",
     "featuredEyebrow": "Game of the week",
     "quickPlay": "Play now",
     "quickPlayHint": "No sign-up, no waiting.",

@@ -32,6 +32,8 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_17.5rem] xl:gap-10">
       <div className="flex min-w-0 flex-col gap-14">
+        {/* The featured card already carries the visual headline; the page name is for outline and screen readers. */}
+        <h1 className="sr-only">{t('title')}</h1>
         <section className="animate-rise-in">
           <CatalogGameCard game={featured} variant="featured" eyebrow={t('featuredEyebrow')} />
         </section>
