@@ -2,8 +2,8 @@
 #
 # Only `edge` is routed by the Coolify proxy; it is the single way in. web, api, realtime and
 # postgres share the `internal` network, which Docker marks internal: no route to the outside
-# world and no published ports. The api additionally joins `egress` so it can reach the SMTP
-# relay. Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
+# world and no published ports. The api additionally joins `egress` so it can reach the Gmail
+# API. Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
 
 x-hardening: &hardening
   restart: unless-stopped
@@ -61,12 +61,10 @@ services:
     environment:
       PORT: 8080
       DATABASE_URL: postgres://${SERVICE_USER_POSTGRES}:${SERVICE_PASSWORD_POSTGRES}@postgres:5432/playnex
-      SMTP_HOST: ${SMTP_HOST:?SMTP_HOST must be set in Coolify}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_SECURITY: ${SMTP_SECURITY:-starttls}
-      SMTP_USERNAME: ${SMTP_USERNAME:-}
-      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
-      MAIL_FROM: ${MAIL_FROM:?MAIL_FROM must be set in Coolify}
+      # Gmail API through a service account with domain-wide delegation for gmail.send;
+      # the From address is the Workspace user it sends as.
+      GMAIL_SERVICE_ACCOUNT: ${GMAIL_SERVICE_ACCOUNT:?GMAIL_SERVICE_ACCOUNT must be set in Coolify}
+      MAIL_FROM: PLAYNEX <playnex@meccode.com>
       RUST_LOG: info
     read_only: true
     networks:

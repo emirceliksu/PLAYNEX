@@ -1,6 +1,7 @@
 mod accounts;
 mod config;
 mod error;
+mod gmail;
 mod mailer;
 mod rate_limit;
 mod sessions;
@@ -57,6 +58,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info")),
         )
         .init();
+    // reqwest is built without a bundled crypto provider (aws-lc needs cmake); lettre already uses ring.
+    let _ = rustls::crypto::ring::default_provider().install_default();
 
     let config = Config::from_env()?;
     let pool = PgPoolOptions::new()
@@ -71,7 +74,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let state = AppState {
         pool,
-        mailer: Arc::new(Mailer::new(&config.smtp)?),
+        mailer: Arc::new(Mailer::new(&config.mail)?),
         limiter: Arc::new(RateLimiter::default()),
     };
 

@@ -5,7 +5,10 @@ use lettre::{
 };
 use serde::Deserialize;
 
-use crate::config::{SmtpConfig, SmtpSecurity};
+use crate::{
+    config::{MailConfig, MailTransport, SmtpConfig, SmtpSecurity},
+    gmail::GmailTransport,
+};
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -17,8 +20,13 @@ struct VerificationCopy {
     verification_signature: String,
 }
 
+enum Transport {
+    Smtp(AsyncSmtpTransport<Tokio1Executor>),
+    Gmail(GmailTransport),
+}
+
 pub struct Mailer {
-    transport: AsyncSmtpTransport<Tokio1Executor>,
+    transport: Transport,
     from: Mailbox,
     tr: VerificationCopy,
     en: VerificationCopy,
@@ -42,6 +50,14 @@ pub enum MailError {
     Smtp(#[from] lettre::transport::smtp::Error),
     #[error("message catalog: {0}")]
     Catalog(#[from] serde_json::Error),
+    #[error("service account key: {0}")]
+    ServiceAccount(String),
+    #[error("signing token request: {0}")]
+    Jwt(#[from] jsonwebtoken::errors::Error),
+    #[error("http: {0}")]
+    Http(#[from] reqwest::Error),
+    #[error("gmail api returned {status}: {body}")]
+    Gmail { status: u16, body: String },
 }
 
 fn escape_html(text: &str) -> String {
@@ -51,28 +67,39 @@ fn escape_html(text: &str) -> String {
         .replace('"', "&quot;")
 }
 
-impl Mailer {
-    pub fn new(config: &SmtpConfig) -> Result<Self, MailError> {
-        let builder = match config.security {
-            SmtpSecurity::None => {
-                AsyncSmtpTransport::<Tokio1Executor>::builder_dangerous(&config.host)
-            }
-            SmtpSecurity::StartTls => {
-                AsyncSmtpTransport::<Tokio1Executor>::starttls_relay(&config.host)?
-            }
-            SmtpSecurity::Tls => AsyncSmtpTransport::<Tokio1Executor>::relay(&config.host)?,
+fn smtp_transport(config: &SmtpConfig) -> Result<AsyncSmtpTransport<Tokio1Executor>, MailError> {
+    let builder = match config.security {
+        SmtpSecurity::None => AsyncSmtpTransport::<Tokio1Executor>::builder_dangerous(&config.host),
+        SmtpSecurity::StartTls => {
+            AsyncSmtpTransport::<Tokio1Executor>::starttls_relay(&config.host)?
         }
-        .port(config.port);
-        let builder = match (&config.username, &config.password) {
-            (Some(username), Some(password)) => {
-                builder.credentials(Credentials::new(username.clone(), password.clone()))
-            }
-            _ => builder,
+        SmtpSecurity::Tls => AsyncSmtpTransport::<Tokio1Executor>::relay(&config.host)?,
+    }
+    .port(config.port);
+    let builder = match (&config.username, &config.password) {
+        (Some(username), Some(password)) => {
+            builder.credentials(Credentials::new(username.clone(), password.clone()))
+        }
+        _ => builder,
+    };
+    Ok(builder.build())
+}
+
+impl Mailer {
+    pub fn new(config: &MailConfig) -> Result<Self, MailError> {
+        let from: Mailbox = config.from.parse()?;
+        let transport = match &config.transport {
+            MailTransport::Smtp(smtp) => Transport::Smtp(smtp_transport(smtp)?),
+            // The delegated Workspace user is the From address; Gmail rejects any other sender.
+            MailTransport::Gmail { service_account } => Transport::Gmail(GmailTransport::new(
+                service_account,
+                from.email.to_string(),
+            )?),
         };
 
         Ok(Self {
-            transport: builder.build(),
-            from: config.from.parse()?,
+            transport,
+            from,
             tr: serde_json::from_str(include_str!("../messages/tr.json"))?,
             en: serde_json::from_str(include_str!("../messages/en.json"))?,
         })
@@ -126,7 +153,12 @@ impl Mailer {
             .to(mail.to.parse()?)
             .subject(subject)
             .multipart(MultiPart::alternative_plain_html(text, html))?;
-        self.transport.send(message).await?;
+        match &self.transport {
+            Transport::Smtp(smtp) => {
+                smtp.send(message).await?;
+            }
+            Transport::Gmail(gmail) => gmail.send(&message.formatted()).await?,
+        }
         Ok(())
     }
 }

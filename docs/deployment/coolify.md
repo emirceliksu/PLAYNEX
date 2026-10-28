@@ -8,7 +8,7 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
 İnternet ──443──▶ Coolify proxy (Traefik, TLS) ──▶ edge:8080 (Caddy)
                                                     ├── /ws ─▶ realtime:8081
                                                     └── /*  ─▶ web:3000 ──▶ api:8080 ──▶ postgres:5432
-                                                                              └── egress ─▶ SMTP sunucusu
+                                                                              └── egress ─▶ Gmail API
 ```
 
 | Servis     | Ağlar                | Dışarıdan erişim                                        |
@@ -21,7 +21,7 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
 
 - `internal` ağı `internal: true` ile tanımlıdır: bu ağdaki container'ların dış dünyaya rotası yoktur ve hiçbir serviste `ports:` yoktur.
 - Tarayıcı API ile hiç konuşmaz. Kayıt, giriş ve profil istekleri Next.js server action'ları üzerinden `web` container'ından `api:8080`'e gider; oturum `HttpOnly`, `Secure`, `SameSite=Lax` çerezinde taşınır.
-- `api` dışarı yalnızca doğrulama e-postası göndermek için çıkar (`egress` ağı).
+- `api` dışarı yalnızca doğrulama e-postasını Gmail API ile göndermek için çıkar (`egress` ağı).
 - Ziyaretçi IP'si `edge` tarafından `X-Real-IP` başlığına yazılır, `web` bunu `api`'ye iletir; API'deki deneme sınırları bu adresle sayılır.
 
 ## Coolify'da kaynak oluşturma
@@ -45,20 +45,29 @@ Coolify'ın kendisi üretir (elle girilmez):
 | `SERVICE_PASSWORD_POSTGRES`    | `postgres`, `api`                        |
 | `SERVICE_PASSWORD_64_REALTIME` | `realtime` yeniden bağlanma token imzası |
 
-Elle girilir:
+Elle girilen tek değişken:
 
-| Değişken        | Örnek                            | Not                                                              |
-| --------------- | -------------------------------- | ---------------------------------------------------------------- |
-| `SMTP_HOST`     | `smtp.example.com`               | Zorunlu                                                          |
-| `SMTP_PORT`     | `587`                            | Varsayılan 587                                                   |
-| `SMTP_SECURITY` | `starttls`                       | `starttls`, `tls` (465) veya `none`                              |
-| `SMTP_USERNAME` |                                  | Sağlayıcının verdiği kullanıcı                                   |
-| `SMTP_PASSWORD` |                                  | Sağlayıcının verdiği şifre / API anahtarı                        |
-| `MAIL_FROM`     | `PLAYNEX <no-reply@meccode.com>` | Zorunlu; alan adının SPF/DKIM kaydı gönderici sunucuyu kapsamalı |
+| Değişken                | İçerik                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| `GMAIL_SERVICE_ACCOUNT` | Google servis hesabı anahtar dosyasının base64 hâli (düz JSON da kabul edilir) |
 
-Veritabanı adı (`playnex`), log düzeyi (`info`) ve WebSocket için izin verilen origin (`https://playnex.meccode.com`) `compose.production.yaml` içinde sabittir; alan adı değişirse orada güncellenir.
+Doğrulama e-postaları Gmail API ile `playnex@meccode.com` adına gönderilir. Anahtar dosyası repoya girmez, yalnızca Coolify'da tutulur. Base64 hâli Windows'ta panoya şöyle alınır:
 
-Kaynak listesinde bu tablolarda olmayan bir değişken görünüyorsa (`POSTGRES_USER`, `POSTGRES_PASSWORD`, `REALTIME_TOKEN_SECRET`, `STORAGE_*`, `PUBLIC_ORIGIN` gibi) silinir. Bunlar geliştirme ortamının varsayılanlarıdır; üretim stack'i kullanmaz, `SMTP_*` ve `MAIL_FROM` ise yanlış değerle e-posta gönderimini bozar.
+```powershell
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("$HOME\Downloads\<anahtar>.json")) | Set-Clipboard
+```
+
+Google tarafında gerekenler:
+
+1. Servis hesabının Google Cloud projesinde **Gmail API** etkin.
+2. Google Workspace yönetici konsolu → **Güvenlik → Erişim ve veri kontrolü → API denetimleri → Alan genelinde yetki** → **Yeni ekle**: servis hesabının **Client ID**'si, kapsam `https://www.googleapis.com/auth/gmail.send`.
+3. `playnex@meccode.com` gerçek bir Workspace kullanıcısı (takma ad değil).
+
+Yetki eksikse API loglarında `gmail api returned 401: unauthorized_client` görünür. Yeni eklenen yetkinin etkinleşmesi birkaç dakika sürebilir.
+
+Gönderen adresi (`PLAYNEX <playnex@meccode.com>`), veritabanı adı (`playnex`), log düzeyi (`info`) ve WebSocket için izin verilen origin (`https://playnex.meccode.com`) `compose.production.yaml` içinde sabittir; alan adı değişirse orada güncellenir.
+
+Kaynak listesinde bu tablolarda olmayan bir değişken görünüyorsa (`POSTGRES_USER`, `POSTGRES_PASSWORD`, `REALTIME_TOKEN_SECRET`, `STORAGE_*`, `SMTP_*`, `MAIL_FROM`, `PUBLIC_ORIGIN` gibi) silinir; üretim stack'i bunları kullanmaz.
 
 ## Deploy sonrası kontrol
 
