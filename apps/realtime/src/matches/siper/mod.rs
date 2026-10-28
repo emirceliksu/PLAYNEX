@@ -1356,6 +1356,7 @@ impl Match for SiperMatch {
             "rounds": self.round,
             "scores": self.scores,
             "humans": self.players.iter().filter(|p| p.bot.is_none()).count(),
+            "draw": winner.is_none(),
             "players": self.players.iter().enumerate().map(|(i, p)| json!({
                 "seat": i,
                 "bot": p.bot.is_some(),

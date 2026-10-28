@@ -126,6 +126,8 @@ struct MatchReport {
     #[serde(default)]
     scores: [i32; 2],
     humans: i32,
+    #[serde(default)]
+    draw: bool,
     players: Vec<ReportPlayer>,
     accounts: Vec<ReportAccount>,
 }
@@ -202,7 +204,7 @@ async fn record_match(
     if inserted == 0 {
         return Ok(StatusCode::OK);
     }
-    let draw = report.players.iter().all(|p| p.placement == 1);
+    let draw = report.draw;
     for account in &report.accounts {
         let Some(player) = report.players.iter().find(|p| p.seat == account.seat) else {
             continue;
