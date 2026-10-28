@@ -11,16 +11,16 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
                                                                               └── mail ─▶ mailer:8082 ──egress──▶ Gmail API
 ```
 
-| Servis     | Ağlar                | Dışarıdan erişim                                        |
-| ---------- | -------------------- | ------------------------------------------------------- |
-| `edge`     | `public`, `internal` | Yalnızca Coolify proxy'si üzerinden, atanan alan adıyla |
-| `web`      | `internal`           | Yok; yalnızca `edge` ulaşır                             |
-| `realtime` | `internal`           | Yok; `/ws` yolu `edge` üzerinden                        |
-| `api`      | `internal`, `mail`   | Yok; yalnızca `web` sunucu tarafında çağırır            |
-| `mailer`   | `mail`, `egress`     | Yok; yalnızca `api` ulaşır                              |
-| `postgres` | `internal`           | Yok                                                     |
+| Servis     | Ağlar                | Dışarıdan erişim                                                                     |
+| ---------- | -------------------- | ------------------------------------------------------------------------------------ |
+| `edge`     | `public`, `internal` | Coolify proxy'si üzerinden alan adıyla; ayrıca host'ta `EDGE_PORT` (varsayılan 4310) |
+| `web`      | `internal`           | Yok; yalnızca `edge` ulaşır                                                          |
+| `realtime` | `internal`           | Yok; `/ws` yolu `edge` üzerinden                                                     |
+| `api`      | `internal`, `mail`   | Yok; yalnızca `web` sunucu tarafında çağırır                                         |
+| `mailer`   | `mail`, `egress`     | Yok; yalnızca `api` ulaşır                                                           |
+| `postgres` | `internal`           | Yok                                                                                  |
 
-- `internal` ve `mail` ağları `internal: true` ile tanımlıdır: bu ağlardaki container'ların dış dünyaya rotası yoktur ve hiçbir serviste `ports:` yoktur.
+- `internal` ve `mail` ağları `internal: true` ile tanımlıdır: bu ağlardaki container'ların dış dünyaya rotası yoktur ve bu servislerde `ports:` yoktur. Host'a port açan tek servis `edge`: `${EDGE_PORT:-4310}:8080`. Sunucuda 3000-3002 dolu olduğu için varsayılan 4310; o da doluysa Coolify'da `EDGE_PORT` tanımlanır.
 - Tarayıcı API ile hiç konuşmaz. Kayıt, giriş ve profil istekleri Next.js server action'ları üzerinden `web` container'ından `api:8080`'e gider; oturum `HttpOnly`, `Secure`, `SameSite=Lax` çerezinde taşınır.
 - Dışarı çıkabilen tek container `mailer`: doğrulama e-postasını Gmail API ile gönderir (`egress` ağı). `api` ona yalnızca `mail` ağı üzerinden ulaşır; `web` ve `realtime` bu ağda olmadığı için `mailer`'a erişemez. Gmail anahtarı yalnızca `mailer`'da, veritabanı şifresi yalnızca `api` ve `postgres`'te bulunur.
 - Ziyaretçi IP'si `edge` tarafından `X-Real-IP` başlığına yazılır, `web` bunu `api`'ye iletir; API'deki deneme sınırları bu adresle sayılır.
@@ -52,6 +52,7 @@ Elle girilir:
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `GMAIL_SERVICE_ACCOUNT` | Zorunlu. Google servis hesabı anahtar dosyasının base64 hâli (düz JSON da kabul edilir)                                        |
 | `ADMIN_EMAILS`          | Virgülle ayrılmış e-posta adresleri. Bu adreslerle açılıp doğrulanan hesaplar yönetici olur; diğer yöneticiler panelden atanır |
+| `EDGE_PORT`             | İsteğe bağlı. `edge`'in host'ta açılacağı port, varsayılan `4310`                                                              |
 
 İlk yönetici için kendi adresini `ADMIN_EMAILS`'e yaz, deploy et, o adresle kayıt olup kodu gir (hesap zaten varsa API açılışta yükseltir). Yönetim paneli `/admin` adresindedir; yönetici olmayanlar bu adreste 404 görür.
 

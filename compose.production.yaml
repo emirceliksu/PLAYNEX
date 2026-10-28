@@ -2,9 +2,10 @@
 #
 # Only `edge` is routed by the Coolify proxy; it is the single way in. web, api, realtime and
 # postgres share the `internal` network, which Docker marks internal: no route to the outside
-# world and no published ports. Only the mailer has a route out (`egress`, for the Gmail API);
-# the api reaches it over `mail`, a second internal network that web and realtime are not on, so
-# the delivery key never shares a container with the database credentials.
+# world and no published ports; edge alone publishes EDGE_PORT on the host. Only the mailer has
+# a route out (`egress`, for the Gmail API); the api reaches it over `mail`, a second internal
+# network that web and realtime are not on, so the delivery key never shares a container with
+# the database credentials.
 # Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
 
 x-hardening: &hardening
@@ -23,6 +24,9 @@ services:
     environment:
       # Coolify routes the domain assigned to this service (https://playnex.meccode.com) to port 8080.
       - SERVICE_URL_EDGE_8080
+    # 3000-3002 are already taken on the deployment host; override with EDGE_PORT if 4310 is too.
+    ports:
+      - '${EDGE_PORT:-4310}:8080'
     read_only: true
     tmpfs:
       - /data
