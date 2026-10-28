@@ -534,11 +534,14 @@ impl SiperMatch {
         if self.players[index].money >= 500 && rng.random::<bool>() {
             self.buy(index, "grenade", now);
         }
-        let player = &mut self.players[index];
-        player.loadout.fallback();
-        if player.loadout.primary.is_some() {
-            player.loadout.hand = Hand::Primary;
-        }
+        let loadout = &mut self.players[index].loadout;
+        loadout.hand = if loadout.primary.is_some() {
+            Hand::Primary
+        } else if loadout.secondary.is_some() {
+            Hand::Secondary
+        } else {
+            Hand::Melee
+        };
     }
 
     fn start_respawn_mode(&mut self, now: Instant) {
