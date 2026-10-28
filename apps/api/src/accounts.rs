@@ -156,10 +156,6 @@ async fn register(
     ClientAddress(client): ClientAddress,
     Json(request): Json<RegisterRequest>,
 ) -> Result<impl IntoResponse, ApiError> {
-    state
-        .limiter
-        .check("register", &client, 5, Duration::from_secs(600))?;
-
     let username = validation::normalize_username(&request.username);
     let email = validation::normalize_email(&request.email);
     let first_name = validation::normalize_name(&request.first_name);
@@ -178,6 +174,11 @@ async fn register(
     if !errors.is_empty() {
         return Err(ApiError::InvalidInput(errors));
     }
+    // Counted after validation: typos should not lock a real visitor out, while every
+    // request that reaches the password hash and the mailer does count.
+    state
+        .limiter
+        .check("register", &client, 5, Duration::from_secs(600))?;
 
     let password_hash = hash_password(request.password).await?;
     let user_id = Uuid::now_v7();
