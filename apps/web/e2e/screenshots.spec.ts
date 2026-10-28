@@ -17,6 +17,7 @@ const routes = [
   { name: 'leaderboard', path: '/leaderboard' },
   { name: 'register', path: '/register' },
   { name: 'login', path: '/login' },
+  { name: 'forgot-password', path: '/forgot-password' },
   { name: 'not-found', path: '/games/olmayan-oyun' },
 ] as const;
 
@@ -79,5 +80,20 @@ for (const width of widths) {
     await page.goto('/verify');
     await page.waitForLoadState('networkidle');
     await page.screenshot({ path: path.join(outputDir, 'verify', `${width}.png`), fullPage: true });
+  });
+}
+
+for (const width of widths) {
+  test(`reset-password at ${width}px`, async ({ page, context, baseURL }) => {
+    await context.addCookies([
+      { name: 'playnex_reset_email', value: 'oyuncu@example.com', url: baseURL ?? '' },
+    ]);
+    await page.setViewportSize({ width, height: width < 768 ? 812 : 900 });
+    await page.goto('/reset-password');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({
+      path: path.join(outputDir, 'reset-password', `${width}.png`),
+      fullPage: true,
+    });
   });
 }
