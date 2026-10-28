@@ -79,6 +79,7 @@
     "title": "Oyunlar",
     "subtitle": "{live} oynanabilir{soon, plural, =0 {} other {, # yakında}}",
     "searchPlaceholder": "Ada veya türe göre ara",
+    "allGames": "Tüm oyunlar",
     "resultCount": "{count, plural, =0 {Sonuç yok} =1 {1 oyun} other {# oyun}}",
     "clearFilters": "Filtreleri temizle",
     "filters": {

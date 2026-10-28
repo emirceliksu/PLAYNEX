@@ -106,9 +106,12 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
         }}
       />
 
-      <h2 className="font-display text-label-md text-fg-muted" aria-live="polite">
-        {t('resultCount', { count: results.length })}
-      </h2>
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="font-display text-title-lg">{t('allGames')}</h2>
+        <p className="font-display text-label-md text-fg-muted" aria-live="polite">
+          {t('resultCount', { count: results.length })}
+        </p>
+      </div>
 
       {results.length === 0 ? (
         <EmptyState
