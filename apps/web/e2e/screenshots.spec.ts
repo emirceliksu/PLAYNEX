@@ -15,7 +15,8 @@ const routes = [
   { name: 'game-detail-modes', path: '/games/chess-arena' },
   { name: 'play-lobby', path: '/play/chess-arena' },
   { name: 'leaderboard', path: '/leaderboard' },
-  { name: 'profile', path: '/profile/emre_k' },
+  { name: 'register', path: '/register' },
+  { name: 'login', path: '/login' },
   { name: 'not-found', path: '/games/olmayan-oyun' },
 ] as const;
 
@@ -67,4 +68,16 @@ for (const state of playerStates) {
       await page.screenshot({ path: path.join(outputDir, 'player', `${state}-${width}.png`) });
     });
   }
+}
+
+for (const width of widths) {
+  test(`verify at ${width}px`, async ({ page, context, baseURL }) => {
+    await context.addCookies([
+      { name: 'playnex_pending_email', value: 'oyuncu@example.com', url: baseURL ?? '' },
+    ]);
+    await page.setViewportSize({ width, height: width < 768 ? 812 : 900 });
+    await page.goto('/verify');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({ path: path.join(outputDir, 'verify', `${width}.png`), fullPage: true });
+  });
 }
