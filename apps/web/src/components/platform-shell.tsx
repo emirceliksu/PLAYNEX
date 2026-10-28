@@ -86,12 +86,12 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
   }
 
   return (
-    // The skip link sits in the flow above the shell: when focused it pushes the topbar down
-    // instead of floating over the search field on narrow screens.
+    // On phones the skip link sits in the flow and pushes the topbar down, because floating it
+    // would cover the search field. From md the sidebar owns the top-left corner, so it floats there.
     <div className="flex min-h-dvh flex-col">
       <a
         href="#main"
-        className="sr-only self-start rounded-lg border-2 border-border-strong bg-surface-overlay font-display text-label-md text-fg-primary shadow-sticker focus-visible:not-sr-only focus-visible:mx-4 focus-visible:my-3 focus-visible:px-4 focus-visible:py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
+        className="sr-only self-start rounded-lg border-2 border-border-strong bg-surface-overlay font-display text-label-md text-fg-primary shadow-sticker focus-visible:not-sr-only focus-visible:mx-4 focus-visible:my-3 focus-visible:px-4 focus-visible:py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus md:focus-visible:fixed md:focus-visible:top-3 md:focus-visible:left-3 md:focus-visible:z-50 md:focus-visible:m-0"
       >
         {labels.skipToContent}
       </a>
@@ -129,7 +129,7 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
                   />
                   <Link
                     href={profileHref}
-                    className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
+                    className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus md:focus-visible:fixed md:focus-visible:top-3 md:focus-visible:left-3 md:focus-visible:z-50 md:focus-visible:m-0"
                   >
                     {/* Initials are decoration; an aria-label over them fails WCAG 2.5.3 (label in name). */}
                     <span aria-hidden className="block">
