@@ -236,6 +236,12 @@ fn hurt(
     }
     target.damage_from.push((attacker, applied));
     let killed = target.health <= 0;
+    if zone == Zone::Head && weapon != "knife" && weapon != "grenade" {
+        let source = &game.players[attacker];
+        let target = &game.players[victim];
+        let distance = (source.body.x - target.body.x).hypot(source.body.z - target.body.z);
+        game.players[attacker].integrity.on_head_hit(distance);
+    }
     game.players[attacker].stats.damage += i64::from(applied);
     game.event(
         Audience::Seat(attacker),

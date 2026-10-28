@@ -7,6 +7,7 @@ use super::{
     bots::Bot,
     combat::Pose,
     data::{Slot, WeaponSpec, arsenal, rules},
+    integrity::Integrity,
     movement::{Body, MoveInput},
 };
 
@@ -203,6 +204,7 @@ pub struct Player {
     pub spawned_at: Option<Instant>,
     pub stats: Stats,
     pub tally: Tally,
+    pub integrity: Integrity,
     pub damage_from: Vec<(usize, i32)>,
     pub level: usize,
     pub level_kills: u32,
@@ -236,6 +238,7 @@ impl Player {
             spawned_at: None,
             stats: Stats::default(),
             tally: Tally::default(),
+            integrity: Integrity::default(),
             damage_from: Vec::new(),
             level: 0,
             level_kills: 0,

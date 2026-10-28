@@ -3,12 +3,14 @@ mod bots;
 mod combat;
 mod data;
 mod grid;
+mod integrity;
 mod movement;
 mod nav;
 mod player;
 mod round;
 mod shooting;
 mod view;
+mod visibility;
 
 use std::{
     collections::{BTreeMap, VecDeque},
@@ -212,6 +214,8 @@ pub struct SiperMatch {
     next_map: Option<String>,
     outcome: Option<Outcome>,
     hunt_goals: Vec<(Instant, Cell)>,
+    // Who sees whom this tick; see `visibility::compute`.
+    sight: Vec<Vec<bool>>,
 }
 
 impl SiperMatch {
@@ -297,6 +301,7 @@ impl SiperMatch {
             next_map: None,
             outcome: None,
             hunt_goals: Vec::new(),
+            sight: Vec::new(),
         })
     }
 
@@ -1103,6 +1108,38 @@ impl SiperMatch {
         }
     }
 
+    // Refreshes who sees whom, then lets every human's aim be checked against the enemies
+    // they cannot see.
+    fn watch(&mut self, now: Instant) {
+        let smokes: Vec<[f64; 3]> = self.smokes.iter().map(|s| s.pos).collect();
+        let teams = self.mode().spec().teams;
+        self.sight = visibility::compute(&self.players, self.grid(), &smokes, teams, now);
+        if !self.live() {
+            return;
+        }
+        for i in 0..self.players.len() {
+            let player = &self.players[i];
+            if player.bot.is_some() || !player.alive {
+                continue;
+            }
+            let eye = player.eye();
+            let aim = movement::direction(player.input.yaw, player.input.pitch);
+            let hidden: Vec<(f64, f64)> = (0..self.players.len())
+                .filter(|j| self.enemies(i, *j) && self.players[*j].alive && !self.sight[i][*j])
+                .map(|j| {
+                    let chest = self.players[j].pose().chest();
+                    let to = [chest[0] - eye[0], chest[1] - eye[1], chest[2] - eye[2]];
+                    let length = (to[0] * to[0] + to[1] * to[1] + to[2] * to[2])
+                        .sqrt()
+                        .max(1e-9);
+                    let cos = (to[0] * aim[0] + to[1] * aim[1] + to[2] * aim[2]) / length;
+                    (length, cos.clamp(-1.0, 1.0).acos())
+                })
+                .collect();
+            self.players[i].integrity.sample(&hidden);
+        }
+    }
+
     fn leader(&self) -> Option<u8> {
         if self.mode().spec().teams {
             return match self.scores[0].cmp(&self.scores[1]) {
@@ -1160,7 +1197,7 @@ impl Match for SiperMatch {
         }
         let mut deliveries = vec![Delivery::event(Audience::All, self.roster())];
         deliveries.append(&mut self.pending);
-        deliveries.extend(view::snapshots(self, now));
+        deliveries.extend(view::snapshots(self, now, true));
         deliveries
     }
 
@@ -1182,6 +1219,7 @@ impl Match for SiperMatch {
                 let player = &mut self.players[seat];
                 // Out-of-order packets are dropped; the latest input wins.
                 if input.seq >= player.input.seq {
+                    player.integrity.on_view(input.yaw, input.pitch);
                     player.input = input;
                     player.ping = pg.min(999);
                 }
@@ -1252,6 +1290,7 @@ impl Match for SiperMatch {
             shooting::fire(self, index, yaw, pitch, None, now);
         }
         self.respawns(now);
+        self.watch(now);
 
         self.tick += 1;
         if self.history.len() == HISTORY {
@@ -1260,7 +1299,11 @@ impl Match for SiperMatch {
         self.history.push_back((self.tick, self.poses()));
 
         let mut deliveries = std::mem::take(&mut self.pending);
-        deliveries.extend(view::snapshots(self, now));
+        deliveries.extend(view::snapshots(
+            self,
+            now,
+            self.tick.is_multiple_of(view::BOARD_EVERY),
+        ));
         deliveries
     }
 
@@ -1271,7 +1314,7 @@ impl Match for SiperMatch {
     fn sync(&self, seat: usize, now: Instant) -> Vec<Delivery> {
         let mut deliveries = vec![Delivery::event(Audience::Seat(seat), self.roster())];
         deliveries.extend(
-            view::snapshots(self, now)
+            view::snapshots(self, now, true)
                 .into_iter()
                 .filter(|delivery| delivery.audience == Audience::Seat(seat)),
         );
@@ -1332,6 +1375,7 @@ impl Match for SiperMatch {
         player.name = nickname.to_owned();
         player.stats = player::Stats::default();
         player.tally = announcer::Tally::default();
+        player.integrity = integrity::Integrity::default();
         Some((index, vec![Delivery::event(Audience::All, self.roster())]))
     }
 
@@ -1357,7 +1401,12 @@ impl Match for SiperMatch {
             "scores": self.scores,
             "humans": self.players.iter().filter(|p| p.bot.is_none()).count(),
             "draw": winner.is_none(),
-            "players": self.players.iter().enumerate().map(|(i, p)| json!({
+            "players": self.players.iter().enumerate().map(|(i, p)| {
+                let verdict = p.integrity.verdict(&p.stats);
+                let (suspicion, flags) = if p.bot.is_some() { (0, Vec::new()) } else { (verdict.score, verdict.flags) };
+                json!({
+                "suspicion": suspicion,
+                "flags": flags,
                 "seat": i,
                 "bot": p.bot.is_some(),
                 "team": p.team,
@@ -1376,7 +1425,8 @@ impl Match for SiperMatch {
                 "bestStreak": p.tally.best_streak,
                 "bestMulti": p.tally.best_multi,
                 "weaponKills": p.stats.weapon_kills,
-            })).collect::<Vec<_>>(),
+            })
+            }).collect::<Vec<_>>(),
         }))
     }
 

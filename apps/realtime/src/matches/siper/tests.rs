@@ -239,3 +239,62 @@ fn the_vote_picks_the_next_map() {
     let report = game.report().unwrap();
     assert_eq!(report["players"].as_array().unwrap().len(), 2);
 }
+
+#[test]
+fn enemies_behind_walls_are_left_out_and_frames_stay_small() {
+    let mut game = SiperMatch::new(&setup(
+        1,
+        &[Some(0)],
+        json!({ "mode": "tdm", "map": "liman", "bots": "normal", "size": 5 }),
+    ))
+    .unwrap();
+    let start = Instant::now();
+    game.start(start);
+    let now = start + Duration::from_secs(4);
+    game.tick(now);
+    // The left lane and the middle lane are split by a solid block at this depth.
+    let enemy = game.players.iter().position(|p| p.team == 1).unwrap();
+    for (index, x) in [(0usize, 6.0), (enemy, 32.0)] {
+        let body = &mut game.players[index].body;
+        body.x = x;
+        body.z = 30.0;
+        body.y = 0.0;
+    }
+    game.players[enemy].last_shot = None;
+    // Teammates share what they see, so only these two are left standing.
+    for (index, player) in game.players.iter_mut().enumerate() {
+        player.alive = index == 0 || index == enemy;
+    }
+    game.watch(now);
+    let frames = view::snapshots(&game, now, true);
+    let mine = &frames[0].payload;
+    assert!(
+        mine["p"][enemy].is_null(),
+        "an enemy behind the block is not sent"
+    );
+    assert!(!mine["p"][0].is_null());
+    let size = serde_json::to_string(mine).unwrap().len();
+    assert!(
+        size < 1_600,
+        "ten players with the scoreboard fit in {size} bytes"
+    );
+    let lean = serde_json::to_string(&view::snapshots(&game, now, false)[0].payload)
+        .unwrap()
+        .len();
+    assert!(lean < size, "frames without the scoreboard are smaller");
+}
+
+#[test]
+fn reports_carry_a_suspicion_score_for_humans_only() {
+    let mut game =
+        SiperMatch::new(&setup(1, &[Some(0)], json!({ "mode": "tdm", "size": 2 }))).unwrap();
+    let start = Instant::now();
+    game.start(start);
+    game.finish(Some(0), start);
+    run(&mut game, start, 20);
+    let report = game.report().unwrap();
+    for player in report["players"].as_array().unwrap() {
+        assert_eq!(player["suspicion"], 0);
+        assert!(player["flags"].as_array().unwrap().is_empty());
+    }
+}
