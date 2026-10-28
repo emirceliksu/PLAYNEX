@@ -72,8 +72,9 @@ test('an admin suspends a player and lifts the suspension', async ({ browser, re
     firstName: 'Mert',
   });
 
-  await player.goto('/admin');
-  await expect(player.getByText('Burada bir şey yok')).toBeVisible();
+  const denied = await player.goto('/admin');
+  expect(denied?.status()).toBe(403);
+  await expect(player.getByRole('heading', { level: 1 })).toHaveText('Bu sayfa yöneticilere açık');
 
   const adminContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const admin = await adminContext.newPage();
@@ -85,7 +86,7 @@ test('an admin suspends a player and lifts the suspension', async ({ browser, re
   await captureWidths(admin, 'admin');
 
   await admin.getByRole('link', { name: 'Oyuncular', exact: true }).click();
-  await admin.getByLabel('Oyuncu ara').fill(username);
+  await admin.getByRole('searchbox', { name: 'Oyuncu ara' }).fill(username);
   await admin.getByRole('button', { name: 'Ara' }).click();
   await expect(admin.getByText('1 hesap')).toBeVisible();
   const row = admin.getByRole('listitem').filter({ hasText: `@${username}` });

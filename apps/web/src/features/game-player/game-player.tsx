@@ -427,7 +427,7 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
         </div>
       </header>
 
-      <div className="grain relative min-h-0 flex-1">
+      <main className="grain relative min-h-0 flex-1">
         <div ref={containerRef} className="absolute inset-0 overflow-hidden" />
 
         {session === null ? (
@@ -627,7 +627,7 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
             />
           </div>
         ) : null}
-      </div>
+      </main>
     </div>
   );
 }

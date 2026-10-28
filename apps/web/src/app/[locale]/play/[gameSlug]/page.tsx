@@ -7,7 +7,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { hasGameModule } from '@/lib/games/registry';
+import { getGameCopy } from '@/lib/catalog/game-copy';
 import { findGame } from '@/lib/catalog/games';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface PlayPageProps {
   params: Promise<{ locale: string; gameSlug: string }>;
@@ -28,7 +30,7 @@ export async function generateMetadata({
 }: Pick<PlayPageProps, 'params'>): Promise<Metadata> {
   const { locale, gameSlug } = await params;
   const game = findGame(gameSlug);
-  if (!game) return {};
+  if (game?.status !== 'live' || !hasGameModule(game.slug)) return notFoundMetadata(locale);
   const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
   return { title: t('play', { title: game.title }) };
 }
@@ -63,7 +65,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
         slug: game.slug,
         title: game.title,
         accent: game.accent,
-        controlsGuide: game.controlsGuide,
+        controlsGuide: (await getGameCopy(locale))(game.slug).controls,
         scoring: game.scoring,
         setup: game.setup,
       }}

@@ -42,12 +42,12 @@ export interface GameSetup {
 // Signature color each game carries through its cover, badges and play screen.
 export type AccentName = 'brand' | 'cyan' | 'yellow' | 'pink' | 'mint' | 'coral';
 
+// Player-facing copy (tagline, description, controls) is translated, so it lives in the web
+// app's message files under gameCopy.<slug> rather than on this record.
 export interface Game {
   id: string;
   slug: string;
   title: string;
-  tagline: string;
-  description: string;
   engine: GameEngine;
   dimension: GameDimension;
   mode: GameMode;
@@ -62,8 +62,6 @@ export interface Game {
   orientation: GameOrientation;
   scoring: GameScoring;
   estimatedMinutes: number;
-  // Short, player-facing control instructions shown on the detail page and the ready screen.
-  controlsGuide: string[];
   setup: GameSetup;
 }
 

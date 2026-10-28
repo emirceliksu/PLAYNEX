@@ -23,6 +23,7 @@
     "mainNav": "Main menu",
     "mobileNav": "Bottom menu",
     "myProfile": "My profile",
+    "skipToContent": "Skip to content",
     "signIn": "Sign in",
     "signUp": "Sign up",
     "signOut": "Sign out",
@@ -52,6 +53,7 @@
     "adminUsers": "Player management"
   },
   "home": {
+    "title": "PLAYNEX arcade",
     "featuredEyebrow": "Game of the week",
     "quickPlay": "Play now",
     "quickPlayHint": "No sign-up, no waiting.",
@@ -66,6 +68,7 @@
       "description": "Once scores are verified on the server, the first placings will appear here."
     },
     "account": {
+      "label": "Account summary",
       "guestTitle": "Keep your records",
       "guestBody": "You can play as a guest. With an account, your scores stay on your profile and enter the ranking.",
       "greeting": "Hi {name}",
@@ -77,6 +80,10 @@
     "title": "Games",
     "subtitle": "{live} playable{soon, plural, =0 {} other {, # coming soon}}",
     "searchPlaceholder": "Search by name or genre",
+    "allGames": "All games",
+    "searchResults": "Results for “{query}”",
+    "categoryGames": "{category} games",
+    "filteredGames": "Games matching your filters",
     "resultCount": "{count, plural, =0 {No results} =1 {1 game} other {# games}}",
     "clearFilters": "Clear filters",
     "filters": {
@@ -112,8 +119,7 @@
     },
     "empty": {
       "title": "No games match these filters",
-      "description": "Change the search or clear the filters to see the whole catalog.",
-      "action": "Clear filters"
+      "description": "Change the search or clear the filters to see the whole catalog."
     }
   },
   "game": {
@@ -573,10 +579,17 @@
     }
   },
   "errors": {
+    "forbidden": {
+      "title": "This page is for admins",
+      "description": "Your account cannot see this section. If you signed in with the wrong account, sign out and try again with an admin account.",
+      "guestDescription": "Only admin accounts can open this section. If you are an admin, sign in.",
+      "action": "Go to the home page"
+    },
     "notFound": {
       "title": "Nothing here",
       "description": "The page you are looking for may have moved or never existed.",
-      "action": "Go to the home page"
+      "action": "Go to the home page",
+      "browse": "Browse games"
     },
     "generic": {
       "title": "Something went wrong",
@@ -679,6 +692,106 @@
         "not_verified": "An account without a verified email cannot be an admin.",
         "failed": "That did not go through. Try again."
       }
+    }
+  },
+  "gameCopy": {
+    "snake-rush": {
+      "tagline": "Grow the snake, miss the walls, keep the pace.",
+      "description": "Classic snake, only faster and meaner. The tempo climbs every five apples, and short-lived bonuses decide the leaderboard. One wrong turn on one tile ends the run.",
+      "controls": [
+        "Turn with the arrow keys or WASD.",
+        "On a touch screen, swipe the way you want to go.",
+        "Each apple is worth 10 points, a short-lived bonus 50.",
+        "Esc pauses the game."
+      ]
+    },
+    "2048-fusion": {
+      "tagline": "Slide the tiles, merge the pairs, reach 2048.",
+      "description": "Four rows, four columns, one goal. Stack matching numbers to grow them; the game ends when the board fills up. You can keep going past 2048, the leaderboard has no ceiling.",
+      "controls": [
+        "Slide every tile one way with the arrow keys or WASD.",
+        "On a touch screen, swipe to play.",
+        "The sum of each merge is added to your score.",
+        "The game ends when no moves are left."
+      ]
+    },
+    "memory-flip": {
+      "tagline": "Flip the cards, remember the pairs, beat the clock.",
+      "description": "Sixteen cards, eight pairs. The fewer moves and the faster you finish, the higher your score. Ideal for a short break, tough when you chase a record.",
+      "controls": [
+        "Click or tap a card, then find its pair.",
+        "A wrong pair flips back and costs 25 points.",
+        "Every second counts against your score, so be quick."
+      ]
+    },
+    "tugla-tugla": {
+      "tagline": "Place the pieces, clear the lines.",
+      "description": "Pick one of three pieces, drop it on the grid and clear full rows and columns. The game ends when nothing fits. Looks calm, gets sweaty by minute ten.",
+      "controls": [
+        "Drag one of the pieces below onto the grid.",
+        "Full rows and columns clear together; clearing several at once earns a bonus.",
+        "New pieces arrive once all three are placed; if none fits, the game ends."
+      ]
+    },
+    "connect-four": {
+      "tagline": "Line up four discs, lock out your opponent.",
+      "description": "Turn-based 1v1. Drop discs into the columns; the first to make a row of four across, down or diagonally wins. Two players on one device for now; online rooms and server validation come next.",
+      "controls": [
+        "Two players take turns on one device; the disc at the top shows whose turn it is.",
+        "Click or tap a column and the disc drops to the bottom.",
+        "Line up four discs across, down or diagonally to win."
+      ]
+    },
+    "air-hockey": {
+      "tagline": "First to seven goals takes it.",
+      "description": "Your half of the table and theirs. Bank the puck off the walls, cover your goal, catch the opening. Play the bot on three difficulty levels, two people on one screen or in an online room; online matches run the physics on the server.",
+      "controls": [
+        "Drag your mallet with the mouse or a finger; it stays in your half.",
+        "On a keyboard the arrow keys move the bottom mallet and WASD the top one on a shared device.",
+        "A puck through the gap in the goal line scores; seven goals end the match.",
+        "Whoever concedes serves next from their own half."
+      ]
+    },
+    "chess-arena": {
+      "tagline": "Three or five minutes, fast chess with the full rules.",
+      "description": "Castling, en passant, promotion, stalemate and threefold repetition, all of it. Play the bot on three levels, on one device or in an online room; online matches validate moves and the clock on the server.",
+      "controls": [
+        "Tap a piece, then tap one of the highlighted squares.",
+        "When a pawn reaches the last rank, pick its promotion in the picker that opens.",
+        "The clock runs for the player to move; whoever runs out of time loses.",
+        "Use the buttons below to resign or offer a draw."
+      ]
+    },
+    "drawing-party": {
+      "tagline": "Draw, guess, laugh at your friends.",
+      "description": "Everyone takes a turn drawing a word while the others try to guess it. Play with a crowd around one screen or type guesses in an online room; early guesses score more, and the artist gets a share of every correct one.",
+      "controls": [
+        "On your turn, peek at the word in secret, then draw with a finger or the mouse.",
+        "Colour, brush size, undo and clear sit below the canvas.",
+        "Online, type your guess; only you see your wrong guesses.",
+        "On a shared screen, guesses are said out loud and the artist marks who got it first."
+      ]
+    },
+    "trivia-battle": {
+      "tagline": "Ten questions, fifteen seconds, up to twelve players.",
+      "description": "120 questions across six categories, in Turkish and English. Faster answers score more, and correct answers in a row unlock a streak bonus. Chase a record alone, take turns on one device or have everyone answer at once in an online room.",
+      "controls": [
+        "Tap the right option or press one of the keys 1 to 4.",
+        "A correct answer is worth 100 points, plus up to 100 more for the time left.",
+        "Each correct answer in a row raises the streak bonus by 20 points.",
+        "On a shared device, each player answers in turn while the others look away."
+      ]
+    },
+    "neon-kart-racing": {
+      "tagline": "Three laps, eight karts, one finish line.",
+      "description": "The first 3D game on PLAYNEX. Lap a winding track against three bots or race up to eight people in an online room. Online races run the driving model on the server; your own kart responds without delay and rivals catch up smoothly.",
+      "controls": [
+        "W or the up arrow accelerates, S or the down arrow brakes and reverses.",
+        "Steer with A/D or the left/right arrows; space drifts through sharp turns.",
+        "Gamepad: left stick steers, RT accelerates, LT brakes, A drifts.",
+        "On a touch screen, use the buttons in the bottom corners.",
+        "Karts slow down off the track; the first to finish three laps wins."
+      ]
     }
   }
 }

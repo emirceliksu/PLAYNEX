@@ -20,8 +20,10 @@ import { CatalogGameCard } from '@/components/catalog-game-card';
 import { SectionHeader } from '@/components/section-header';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
+import { getGameCopy } from '@/lib/catalog/game-copy';
 import { findGame, games } from '@/lib/catalog/games';
 import { formatDate } from '@/lib/format';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface GamePageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -39,14 +41,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: GamePageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const game = findGame(slug);
-  if (!game) return {};
+  if (!game) return notFoundMetadata(locale);
+  const { tagline } = (await getGameCopy(locale))(game.slug);
   return {
     title: game.title,
-    description: game.tagline,
+    description: tagline,
     alternates: { canonical: `/games/${game.slug}` },
-    openGraph: { title: game.title, description: game.tagline, type: 'website' },
+    openGraph: { title: game.title, description: tagline, type: 'website' },
   };
 }
 
@@ -62,12 +65,14 @@ export default async function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  const [t, common, lobby, board] = await Promise.all([
+  const [t, common, lobby, board, copyOf] = await Promise.all([
     getTranslations('game'),
     getTranslations('common'),
     getTranslations('lobby'),
     getTranslations('leaderboard'),
+    getGameCopy(locale),
   ]);
+  const copy = copyOf(game.slug);
   const modeIcons = { solo: User, local: Users, online: Globe } as const;
   const live = game.status === 'live';
   const similar = games
@@ -105,7 +110,7 @@ export default async function GamePage({ params }: GamePageProps) {
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="font-display text-display-lg md:text-display-xl">{game.title}</h1>
-            <p className="text-title-sm text-fg-secondary">{game.tagline}</p>
+            <p className="text-title-sm text-fg-secondary">{copy.tagline}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-label-md text-fg-muted">
             <span className="inline-flex items-center gap-1.5">
@@ -157,7 +162,7 @@ export default async function GamePage({ params }: GamePageProps) {
         <div className="flex flex-col gap-12">
           <section className="flex flex-col gap-4">
             <SectionHeader title={t('about')} />
-            <p className="max-w-[64ch] text-body-lg text-fg-secondary">{game.description}</p>
+            <p className="max-w-[64ch] text-body-lg text-fg-secondary">{copy.description}</p>
           </section>
 
           <section className="flex flex-col gap-4">
@@ -171,7 +176,7 @@ export default async function GamePage({ params }: GamePageProps) {
               ))}
             </div>
             <ol className="flex flex-col gap-2">
-              {game.controlsGuide.map((line, index) => (
+              {copy.controls.map((line, index) => (
                 <li key={line} className="flex gap-3 text-body-md text-fg-secondary">
                   <span className="w-5 shrink-0 font-display text-fg-muted tabular-nums">
                     {index + 1}.

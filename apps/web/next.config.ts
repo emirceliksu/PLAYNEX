@@ -10,6 +10,8 @@ const usePolling = process.env.WATCH_POLLING !== '0';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Enables forbidden() so the admin panel can answer non-admins with a 403 and its own screen.
+  experimental: { authInterrupts: true },
   // The production image ships only the traced server; tracing starts at the monorepo root
   // so workspace packages and game data end up in it.
   output: 'standalone',

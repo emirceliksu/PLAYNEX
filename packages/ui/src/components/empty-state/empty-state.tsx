@@ -46,6 +46,8 @@ function ShelfIllustration({ className }: { className?: string }) {
 
 export interface EmptyStateProps extends VariantProps<typeof emptyStateVariants> {
   title: string;
+  // Pages that are nothing but this state (404, no access) need it to be their h1.
+  titleAs?: 'p' | 'h1' | 'h2';
   description?: string;
   illustration?: ReactNode;
   action?: ReactNode;
@@ -54,6 +56,7 @@ export interface EmptyStateProps extends VariantProps<typeof emptyStateVariants>
 
 export function EmptyState({
   title,
+  titleAs: Title = 'p',
   description,
   illustration,
   action,
@@ -69,7 +72,7 @@ export function EmptyState({
     >
       <div className={iconTones[resolvedTone]}>{illustration ?? <ShelfIllustration />}</div>
       <div className="flex max-w-[36ch] flex-col gap-1">
-        <p className="font-display text-title-md text-fg-primary">{title}</p>
+        <Title className="font-display text-title-md text-fg-primary">{title}</Title>
         {description ? <p className="text-body-sm text-fg-secondary">{description}</p> : null}
       </div>
       {action ? <div className="mt-2">{action}</div> : null}

@@ -49,7 +49,7 @@ export default async function ResetPasswordPage({ params }: ResetPasswordPagePro
         {t('reset.wrongEmail')}{' '}
         <Link
           href="/forgot-password"
-          className="font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="py-3 font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('reset.restart')}
         </Link>

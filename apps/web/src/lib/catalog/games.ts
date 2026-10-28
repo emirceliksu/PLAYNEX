@@ -5,9 +5,6 @@ export const games: Game[] = [
     id: 'g_snake_rush',
     slug: 'snake-rush',
     title: 'Snake Rush',
-    tagline: 'Yılanı büyüt, duvara çarpma, hız kesme.',
-    description:
-      'Klasik yılan, daha hızlı ve daha sinirli. Her beş elmada tempo artar, kısa süreliğine beliren bonuslar sıralamada fark yaratır. Bir karede yanlış dönüş her şeyi bitirir.',
     engine: 'phaser',
     dimension: '2d',
     mode: 'solo',
@@ -22,21 +19,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 3,
-    controlsGuide: [
-      'Yön tuşları ya da WASD ile dön.',
-      'Dokunmatik ekranda gitmek istediğin yöne kaydır.',
-      'Her elma +10, kısa süreli bonus +50 puan.',
-      'Esc tuşu oyunu duraklatır.',
-    ],
     setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_2048_fusion',
     slug: '2048-fusion',
     title: '2048 Fusion',
-    tagline: 'Karoları kaydır, eşleri birleştir, 2048’e ulaş.',
-    description:
-      'Dört satır, dört sütun, tek hedef. Aynı sayıları üst üste getirip büyüt; tahta dolduğunda oyun biter. 2048’e ulaştıktan sonra da devam edebilirsin, rekor tablosu sınır tanımıyor.',
     engine: 'phaser',
     dimension: '2d',
     mode: 'solo',
@@ -51,21 +39,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 6,
-    controlsGuide: [
-      'Yön tuşları ya da WASD ile tüm karoları bir yöne kaydır.',
-      'Dokunmatik ekranda kaydırarak oyna.',
-      'Birleşen karoların toplamı puan olarak yazılır.',
-      'Hamle kalmayınca oyun biter.',
-    ],
     setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_memory_flip',
     slug: 'memory-flip',
     title: 'Memory Flip',
-    tagline: 'Kartları çevir, eşleri hatırla, süreyi yen.',
-    description:
-      'On altı kart, sekiz eş. Ne kadar az hamlede ve ne kadar hızlı tamamlarsan puanın o kadar yüksek. Kısa molalar için ideal, rekor kovalamak için çetin.',
     engine: 'phaser',
     dimension: '2d',
     mode: 'solo',
@@ -80,20 +59,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 2,
-    controlsGuide: [
-      'Bir karta tıkla ya da dokun, sonra eşini bul.',
-      'Yanlış eş kartları geri kapatır ve 25 puan götürür.',
-      'Geçen her saniye puandan düşer; hızlı ol.',
-    ],
     setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_tugla_tugla',
     slug: 'tugla-tugla',
     title: 'Tuğla Tuğla',
-    tagline: 'Parçaları yerleştir, satırları temizle.',
-    description:
-      'Üç parçadan birini seç, ızgaraya yerleştir, dolan satır ve sütunları sil. Parça sığmayınca oyun biter. Sakin görünür, onuncu dakikada terletir.',
     engine: 'phaser',
     dimension: '2d',
     mode: 'solo',
@@ -108,20 +79,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 8,
-    controlsGuide: [
-      'Alttaki parçalardan birini sürükleyip ızgaraya bırak.',
-      'Dolan satır ve sütunlar aynı anda silinir; çoklu temizlik bonus verir.',
-      'Üç parça da yerleşince yenileri gelir; hiçbiri sığmazsa oyun biter.',
-    ],
     setup: { modes: ['solo'], options: [] },
   },
   {
     id: 'g_connect_four',
     slug: 'connect-four',
     title: 'Connect Four',
-    tagline: 'Dört diski hizala, rakibini kilitle.',
-    description:
-      'Sıra tabanlı 1v1. Diskleri sütunlara bırak, yatay, dikey ya da çapraz dörtlüyü ilk kuran kazanır. Şimdilik aynı cihazda iki kişi; çevrim içi odalar ve sunucu doğrulaması sırada.',
     engine: 'phaser',
     dimension: '2d',
     mode: '1v1',
@@ -136,20 +99,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'wins',
     estimatedMinutes: 4,
-    controlsGuide: [
-      'Aynı cihazda iki oyuncu sırayla oynar; üstteki disk sıranın kimde olduğunu gösterir.',
-      'Bir sütuna tıkla ya da dokun; disk en alta düşer.',
-      'Yatay, dikey ya da çapraz dört diski hizalayan kazanır.',
-    ],
     setup: { modes: ['local', 'online'], localPlayers: { min: 2, max: 2 }, options: [] },
   },
   {
     id: 'g_air_hockey',
     slug: 'air-hockey',
     title: 'Air Hockey',
-    tagline: 'Yedi gole ilk ulaşan alır.',
-    description:
-      'Masa senin yarın ve onun yarı. Pakı duvardan sektir, kaleyi kapat, açığı yakala. Bilgisayara karşı üç zorlukta, aynı ekranda iki kişi ya da çevrim içi odada oyna; çevrim içi maçta fizik sunucuda döner.',
     engine: 'phaser',
     dimension: '2d',
     mode: '1v1',
@@ -164,12 +119,6 @@ export const games: Game[] = [
     orientation: 'portrait',
     scoring: 'wins',
     estimatedMinutes: 5,
-    controlsGuide: [
-      'Vurucuyu fare ya da parmakla sürükle; yalnızca kendi yarında hareket eder.',
-      'Klavyede yön tuşları alttaki, aynı cihazda WASD üstteki vurucuyu yönetir.',
-      'Pak orta çizgideki boşluktan kaleye girerse gol; yedi gol maçı bitirir.',
-      'Gol yiyen taraf bir sonraki servisi kendi yarısında alır.',
-    ],
     setup: {
       modes: ['solo', 'local', 'online'],
       localPlayers: { min: 2, max: 2 },
@@ -187,9 +136,6 @@ export const games: Game[] = [
     id: 'g_chess_arena',
     slug: 'chess-arena',
     title: 'Chess Arena',
-    tagline: 'Üç ya da beş dakika, tam kurallarla hızlı satranç.',
-    description:
-      'Rok, geçerken alma, terfi, pat ve üç tekrar dahil tüm kurallar. Bilgisayara karşı üç seviyede, aynı cihazda ya da çevrim içi odada oyna; çevrim içi maçta hamleler ve saat sunucuda doğrulanır.',
     engine: 'phaser',
     dimension: '2d',
     mode: '1v1',
@@ -204,12 +150,6 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'wins',
     estimatedMinutes: 8,
-    controlsGuide: [
-      'Taşa dokun, ardından vurgulanan karelerden birine dokun.',
-      'Piyon son sıraya ulaşınca açılan seçicide terfi taşını seç.',
-      'Sıradaki oyuncunun saati işler; süresi biten kaybeder.',
-      'Alttaki düğmelerle pes edebilir ya da beraberlik teklif edebilirsin.',
-    ],
     setup: {
       modes: ['solo', 'local', 'online'],
       localPlayers: { min: 2, max: 2 },
@@ -233,9 +173,6 @@ export const games: Game[] = [
     id: 'g_drawing_party',
     slug: 'drawing-party',
     title: 'Drawing Party',
-    tagline: 'Çiz, tahmin et, arkadaşlarına gül.',
-    description:
-      'Herkes sırayla bir kelimeyi çizer, diğerleri bilmeye çalışır. Aynı ekranda kalabalıkla oyna ya da çevrim içi odada tahminleri yaz; erken bilen daha çok puan alır, çizen de her doğru tahminden pay kapar.',
     engine: 'dom',
     dimension: '2d',
     mode: 'party',
@@ -250,21 +187,12 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 10,
-    controlsGuide: [
-      'Çizme sırası sendeyse kelimeyi gizlice gör, sonra parmağınla ya da fareyle çiz.',
-      'Renk, kalınlık, geri al ve temizle düğmeleri tuvalin altında.',
-      'Çevrim içinde tahminini yaz; yanlış tahminleri yalnızca sen görürsün.',
-      'Aynı ekranda tahminler sesli söylenir, çizen ilk bileni işaretler.',
-    ],
     setup: { modes: ['local', 'online'], localPlayers: { min: 3, max: 8 }, options: [] },
   },
   {
     id: 'g_trivia_battle',
     slug: 'trivia-battle',
     title: 'Trivia Battle',
-    tagline: 'On soru, on beş saniye, on iki kişiye kadar.',
-    description:
-      'Altı kategoriden 120 soru, Türkçe ve İngilizce. Hızlı cevap daha çok puan getirir, üst üste doğrular seri bonusu açar. Tek başına rekor kovala, aynı cihazda sırayla yarış ya da çevrim içi odada herkes aynı anda cevaplasın.',
     engine: 'dom',
     dimension: '2d',
     mode: 'party',
@@ -279,12 +207,6 @@ export const games: Game[] = [
     orientation: 'any',
     scoring: 'high-score',
     estimatedMinutes: 5,
-    controlsGuide: [
-      'Doğru şıkka dokun ya da 1–4 tuşlarından birine bas.',
-      'Doğru cevap 100 puan, kalan süre 100 puana kadar ek getirir.',
-      'Üst üste her doğru cevap seri bonusunu 20 puan artırır.',
-      'Aynı cihazda her oyuncu soruyu sırayla, diğerleri bakmadan cevaplar.',
-    ],
     setup: {
       modes: ['solo', 'local', 'online'],
       localPlayers: { min: 2, max: 4 },
@@ -302,9 +224,6 @@ export const games: Game[] = [
     id: 'g_neon_kart_racing',
     slug: 'neon-kart-racing',
     title: 'Neon Kart Racing',
-    tagline: 'Üç tur, sekiz kart, tek bitiş çizgisi.',
-    description:
-      'PLAYNEX’in ilk 3D oyunu. Kıvrımlı pistte üç bota karşı tur at ya da çevrim içi odada sekiz kişiye kadar yarış. Çevrim içi yarışta sürüş modeli sunucuda döner; kendi kartın gecikmesiz tepki verir, rakipler pürüzsüzce yetişir.',
     engine: 'babylon',
     dimension: '3d',
     mode: 'party',
@@ -319,13 +238,6 @@ export const games: Game[] = [
     orientation: 'landscape',
     scoring: 'fastest-time',
     estimatedMinutes: 4,
-    controlsGuide: [
-      'W ya da yukarı ok gaz, S ya da aşağı ok fren ve geri vites.',
-      'A/D ya da sol/sağ ok ile dön; boşluk tuşu drift ile keskin döner.',
-      'Gamepad: sol çubuk direksiyon, RT gaz, LT fren, A drift.',
-      'Dokunmatik ekranda alt köşelerdeki düğmeleri kullan.',
-      'Pist dışında kart yavaşlar; üç turu ilk bitiren kazanır.',
-    ],
     setup: {
       modes: ['solo', 'online'],
       options: [

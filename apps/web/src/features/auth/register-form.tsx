@@ -2,7 +2,7 @@
 
 import { Button, TextField } from '@playnex/ui';
 import { useTranslations } from 'next-intl';
-import { useActionState } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 
 import { Link } from '@/i18n/navigation';
 
@@ -16,12 +16,26 @@ export function RegisterForm() {
   const [state, action, pending] = useActionState(register, {} satisfies AuthFormState);
   const { errorText, fieldText } = useAuthCopy();
   const values = state.values ?? {};
-  // Field-level problems already sit next to their inputs; the banner covers everything else.
-  const banner = state.error && state.error !== 'invalid_input' ? errorText(state) : undefined;
+  // For invalid_input the banner is only a summary; each message sits next to its field.
+  const banner = errorText(state);
+  const formRef = useRef<HTMLFormElement>(null);
+  const alertRef = useRef<HTMLParagraphElement>(null);
+
+  // Field errors get the focus so the visitor lands on what to fix; anything else has no
+  // field to point at, so the summary takes it.
+  useEffect(() => {
+    if (!state.error) return;
+    const firstInvalid = formRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+    (firstInvalid ?? alertRef.current)?.focus();
+  }, [state]);
 
   return (
-    <form action={action} className="flex flex-col gap-5">
-      {banner ? <FormAlert tone="error">{banner}</FormAlert> : null}
+    <form ref={formRef} action={action} className="flex flex-col gap-5">
+      {banner ? (
+        <FormAlert tone="error" ref={alertRef}>
+          {banner}
+        </FormAlert>
+      ) : null}
       <div className="grid gap-5 sm:grid-cols-2">
         <TextField
           name="firstName"
@@ -85,7 +99,7 @@ export function RegisterForm() {
         {t('haveAccount')}{' '}
         <Link
           href="/login"
-          className="font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="py-3 font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('loginLink')}
         </Link>

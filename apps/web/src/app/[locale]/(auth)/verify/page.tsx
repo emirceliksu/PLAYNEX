@@ -52,7 +52,7 @@ export default async function VerifyPage({ params, searchParams }: VerifyPagePro
         {t('verify.wrongEmail')}{' '}
         <Link
           href="/register"
-          className="font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="py-3 font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('verify.restart')}
         </Link>

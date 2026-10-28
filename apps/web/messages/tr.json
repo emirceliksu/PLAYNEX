@@ -23,6 +23,7 @@
     "mainNav": "Ana menü",
     "mobileNav": "Alt menü",
     "myProfile": "Profilim",
+    "skipToContent": "İçeriğe geç",
     "signIn": "Giriş yap",
     "signUp": "Kayıt ol",
     "signOut": "Çıkış yap",
@@ -52,6 +53,7 @@
     "adminUsers": "Oyuncu yönetimi"
   },
   "home": {
+    "title": "PLAYNEX oyun salonu",
     "featuredEyebrow": "Haftanın oyunu",
     "quickPlay": "Hemen oyna",
     "quickPlayHint": "Kayıt yok, bekleme yok.",
@@ -66,6 +68,7 @@
       "description": "Skorlar sunucuda doğrulanmaya başladığında ilk dereceler burada görünecek."
     },
     "account": {
+      "label": "Hesap özeti",
       "guestTitle": "Rekorların kaybolmasın",
       "guestBody": "Misafir olarak oynayabilirsin. Hesap açarsan skorların profilinde durur ve sıralamaya girer.",
       "greeting": "Selam {name}",
@@ -77,6 +80,10 @@
     "title": "Oyunlar",
     "subtitle": "{live} oynanabilir{soon, plural, =0 {} other {, # yakında}}",
     "searchPlaceholder": "Ada veya türe göre ara",
+    "allGames": "Tüm oyunlar",
+    "searchResults": "“{query}” için sonuçlar",
+    "categoryGames": "{category} oyunları",
+    "filteredGames": "Seçili filtrelere uyan oyunlar",
     "resultCount": "{count, plural, =0 {Sonuç yok} =1 {1 oyun} other {# oyun}}",
     "clearFilters": "Filtreleri temizle",
     "filters": {
@@ -112,8 +119,7 @@
     },
     "empty": {
       "title": "Bu filtrelere uyan oyun yok",
-      "description": "Aramayı değiştir ya da filtreleri temizleyip tüm kataloğa dön.",
-      "action": "Filtreleri temizle"
+      "description": "Aramayı değiştir ya da filtreleri temizleyip tüm kataloğa dön."
     }
   },
   "game": {
@@ -573,10 +579,17 @@
     }
   },
   "errors": {
+    "forbidden": {
+      "title": "Bu sayfa yöneticilere açık",
+      "description": "Hesabının bu bölümü görme yetkisi yok. Yanlış hesapla girdiysen çıkış yapıp yönetici hesabıyla tekrar dene.",
+      "guestDescription": "Bu bölüm yalnızca yönetici hesaplarına açık. Yöneticiysen giriş yap.",
+      "action": "Ana sayfaya dön"
+    },
     "notFound": {
       "title": "Burada bir şey yok",
       "description": "Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.",
-      "action": "Ana sayfaya dön"
+      "action": "Ana sayfaya dön",
+      "browse": "Oyunlara göz at"
     },
     "generic": {
       "title": "Bir şeyler ters gitti",
@@ -679,6 +692,106 @@
         "not_verified": "E-postası doğrulanmamış hesap yönetici yapılamaz.",
         "failed": "İşlem tamamlanamadı. Tekrar dene."
       }
+    }
+  },
+  "gameCopy": {
+    "snake-rush": {
+      "tagline": "Yılanı büyüt, duvara çarpma, hız kesme.",
+      "description": "Klasik yılan, daha hızlı ve daha sinirli. Her beş elmada tempo artar, kısa süreliğine beliren bonuslar sıralamada fark yaratır. Bir karede yanlış dönüş her şeyi bitirir.",
+      "controls": [
+        "Yön tuşları ya da WASD ile dön.",
+        "Dokunmatik ekranda gitmek istediğin yöne kaydır.",
+        "Her elma +10, kısa süreli bonus +50 puan.",
+        "Esc tuşu oyunu duraklatır."
+      ]
+    },
+    "2048-fusion": {
+      "tagline": "Karoları kaydır, eşleri birleştir, 2048’e ulaş.",
+      "description": "Dört satır, dört sütun, tek hedef. Aynı sayıları üst üste getirip büyüt; tahta dolduğunda oyun biter. 2048’e ulaştıktan sonra da devam edebilirsin, rekor tablosu sınır tanımıyor.",
+      "controls": [
+        "Yön tuşları ya da WASD ile tüm karoları bir yöne kaydır.",
+        "Dokunmatik ekranda kaydırarak oyna.",
+        "Birleşen karoların toplamı puan olarak yazılır.",
+        "Hamle kalmayınca oyun biter."
+      ]
+    },
+    "memory-flip": {
+      "tagline": "Kartları çevir, eşleri hatırla, süreyi yen.",
+      "description": "On altı kart, sekiz eş. Ne kadar az hamlede ve ne kadar hızlı tamamlarsan puanın o kadar yüksek. Kısa molalar için ideal, rekor kovalamak için çetin.",
+      "controls": [
+        "Bir karta tıkla ya da dokun, sonra eşini bul.",
+        "Yanlış eş kartları geri kapatır ve 25 puan götürür.",
+        "Geçen her saniye puandan düşer; hızlı ol."
+      ]
+    },
+    "tugla-tugla": {
+      "tagline": "Parçaları yerleştir, satırları temizle.",
+      "description": "Üç parçadan birini seç, ızgaraya yerleştir, dolan satır ve sütunları sil. Parça sığmayınca oyun biter. Sakin görünür, onuncu dakikada terletir.",
+      "controls": [
+        "Alttaki parçalardan birini sürükleyip ızgaraya bırak.",
+        "Dolan satır ve sütunlar aynı anda silinir; çoklu temizlik bonus verir.",
+        "Üç parça da yerleşince yenileri gelir; hiçbiri sığmazsa oyun biter."
+      ]
+    },
+    "connect-four": {
+      "tagline": "Dört diski hizala, rakibini kilitle.",
+      "description": "Sıra tabanlı 1v1. Diskleri sütunlara bırak, yatay, dikey ya da çapraz dörtlüyü ilk kuran kazanır. Şimdilik aynı cihazda iki kişi; çevrim içi odalar ve sunucu doğrulaması sırada.",
+      "controls": [
+        "Aynı cihazda iki oyuncu sırayla oynar; üstteki disk sıranın kimde olduğunu gösterir.",
+        "Bir sütuna tıkla ya da dokun; disk en alta düşer.",
+        "Yatay, dikey ya da çapraz dört diski hizalayan kazanır."
+      ]
+    },
+    "air-hockey": {
+      "tagline": "Yedi gole ilk ulaşan alır.",
+      "description": "Masa senin yarın ve onun yarı. Pakı duvardan sektir, kaleyi kapat, açığı yakala. Bilgisayara karşı üç zorlukta, aynı ekranda iki kişi ya da çevrim içi odada oyna; çevrim içi maçta fizik sunucuda döner.",
+      "controls": [
+        "Vurucuyu fare ya da parmakla sürükle; yalnızca kendi yarında hareket eder.",
+        "Klavyede yön tuşları alttaki, aynı cihazda WASD üstteki vurucuyu yönetir.",
+        "Pak orta çizgideki boşluktan kaleye girerse gol; yedi gol maçı bitirir.",
+        "Gol yiyen taraf bir sonraki servisi kendi yarısında alır."
+      ]
+    },
+    "chess-arena": {
+      "tagline": "Üç ya da beş dakika, tam kurallarla hızlı satranç.",
+      "description": "Rok, geçerken alma, terfi, pat ve üç tekrar dahil tüm kurallar. Bilgisayara karşı üç seviyede, aynı cihazda ya da çevrim içi odada oyna; çevrim içi maçta hamleler ve saat sunucuda doğrulanır.",
+      "controls": [
+        "Taşa dokun, ardından vurgulanan karelerden birine dokun.",
+        "Piyon son sıraya ulaşınca açılan seçicide terfi taşını seç.",
+        "Sıradaki oyuncunun saati işler; süresi biten kaybeder.",
+        "Alttaki düğmelerle pes edebilir ya da beraberlik teklif edebilirsin."
+      ]
+    },
+    "drawing-party": {
+      "tagline": "Çiz, tahmin et, arkadaşlarına gül.",
+      "description": "Herkes sırayla bir kelimeyi çizer, diğerleri bilmeye çalışır. Aynı ekranda kalabalıkla oyna ya da çevrim içi odada tahminleri yaz; erken bilen daha çok puan alır, çizen de her doğru tahminden pay kapar.",
+      "controls": [
+        "Çizme sırası sendeyse kelimeyi gizlice gör, sonra parmağınla ya da fareyle çiz.",
+        "Renk, kalınlık, geri al ve temizle düğmeleri tuvalin altında.",
+        "Çevrim içinde tahminini yaz; yanlış tahminleri yalnızca sen görürsün.",
+        "Aynı ekranda tahminler sesli söylenir, çizen ilk bileni işaretler."
+      ]
+    },
+    "trivia-battle": {
+      "tagline": "On soru, on beş saniye, on iki kişiye kadar.",
+      "description": "Altı kategoriden 120 soru, Türkçe ve İngilizce. Hızlı cevap daha çok puan getirir, üst üste doğrular seri bonusu açar. Tek başına rekor kovala, aynı cihazda sırayla yarış ya da çevrim içi odada herkes aynı anda cevaplasın.",
+      "controls": [
+        "Doğru şıkka dokun ya da 1–4 tuşlarından birine bas.",
+        "Doğru cevap 100 puan, kalan süre 100 puana kadar ek getirir.",
+        "Üst üste her doğru cevap seri bonusunu 20 puan artırır.",
+        "Aynı cihazda her oyuncu soruyu sırayla, diğerleri bakmadan cevaplar."
+      ]
+    },
+    "neon-kart-racing": {
+      "tagline": "Üç tur, sekiz kart, tek bitiş çizgisi.",
+      "description": "PLAYNEX’in ilk 3D oyunu. Kıvrımlı pistte üç bota karşı tur at ya da çevrim içi odada sekiz kişiye kadar yarış. Çevrim içi yarışta sürüş modeli sunucuda döner; kendi kartın gecikmesiz tepki verir, rakipler pürüzsüzce yetişir.",
+      "controls": [
+        "W ya da yukarı ok gaz, S ya da aşağı ok fren ve geri vites.",
+        "A/D ya da sol/sağ ok ile dön; boşluk tuşu drift ile keskin döner.",
+        "Gamepad: sol çubuk direksiyon, RT gaz, LT fren, A drift.",
+        "Dokunmatik ekranda alt köşelerdeki düğmeleri kullan.",
+        "Pist dışında kart yavaşlar; üç turu ilk bitiren kazanır."
+      ]
     }
   }
 }

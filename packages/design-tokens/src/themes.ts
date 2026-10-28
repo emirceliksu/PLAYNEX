@@ -69,8 +69,8 @@ export const dark: SemanticTheme = {
   },
   brand: {
     solid: brand[500],
-    solidHover: brand[400],
-    solidActive: brand[600],
+    solidHover: brand[600],
+    solidActive: brand[700],
     soft: brand[950],
     softText: brand[200],
   },

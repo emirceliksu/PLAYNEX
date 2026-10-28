@@ -10,7 +10,10 @@ export async function SidePanel({ account }: { account: Account | null }) {
 
   if (!account) {
     return (
-      <aside className="flex flex-col gap-6 xl:sticky xl:top-20 xl:self-start">
+      <aside
+        aria-label={t('home.account.label')}
+        className="flex flex-col gap-6 xl:sticky xl:top-20 xl:self-start"
+      >
         <section className="grain flex flex-col gap-4 rounded-xl border-2 border-border-subtle bg-brand-soft p-5">
           <Badge tone="yellow" sticker size="sm" className="self-start">
             {t('auth.brand.eyebrow')}
@@ -31,7 +34,10 @@ export async function SidePanel({ account }: { account: Account | null }) {
   }
 
   return (
-    <aside className="flex flex-col gap-6 xl:sticky xl:top-20 xl:self-start">
+    <aside
+      aria-label={t('home.account.label')}
+      className="flex flex-col gap-6 xl:sticky xl:top-20 xl:self-start"
+    >
       <section className="flex flex-col gap-4 rounded-xl border-2 border-border-subtle bg-surface-raised p-5">
         <div className="flex items-center gap-3">
           <Avatar

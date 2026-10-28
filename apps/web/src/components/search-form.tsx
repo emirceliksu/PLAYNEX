@@ -19,6 +19,7 @@ export function SearchForm({ label, placeholder, defaultValue = '', className }:
   return (
     <form
       role="search"
+      aria-label={label}
       className={className}
       onSubmit={(event) => {
         event.preventDefault();

@@ -23,7 +23,7 @@ export default function GamesLoading() {
         </div>
       </div>
       <Skeleton className="h-4 w-20" />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {Array.from({ length: 8 }, (_, index) => (
           <SkeletonGameCard key={index} />
         ))}
