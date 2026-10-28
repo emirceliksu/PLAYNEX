@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, useId } from 'react';
+import { type ComponentPropsWithRef, type ReactNode, useId } from 'react';
 
 import { cn } from '../../lib/cn';
 
@@ -7,6 +7,8 @@ export interface TextFieldProps extends ComponentPropsWithRef<'input'> {
   hint?: string;
   error?: string;
   hideLabel?: boolean;
+  // Control placed inside the right edge of the input, such as a show-password toggle.
+  trailing?: ReactNode;
 }
 
 export function TextField({
@@ -14,6 +16,7 @@ export function TextField({
   hint,
   error,
   hideLabel = false,
+  trailing,
   className,
   id,
   ...props
@@ -30,20 +33,26 @@ export function TextField({
       >
         {label}
       </label>
-      <input
-        id={inputId}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-        className={cn(
-          'h-12 w-full rounded-lg border-2 border-border-subtle bg-surface-sunken px-4 text-body-md text-fg-primary',
-          'placeholder:text-fg-muted',
-          'transition-[border-color] duration-(--pn-duration-fast) ease-out',
-          'hover:border-border-strong focus-visible:border-border-focus focus-visible:outline-none',
-          'aria-invalid:border-coral-solid',
-          'disabled:opacity-50',
-        )}
-        {...props}
-      />
+      <div className="relative">
+        <input
+          id={inputId}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={describedBy}
+          className={cn(
+            'h-12 w-full rounded-lg border-2 border-border-subtle bg-surface-sunken px-4 text-body-md text-fg-primary',
+            'placeholder:text-fg-muted',
+            'transition-[border-color] duration-(--pn-duration-fast) ease-out',
+            'hover:border-border-strong focus-visible:border-border-focus focus-visible:outline-none',
+            'aria-invalid:border-coral-solid',
+            'disabled:opacity-50',
+            trailing && 'pr-14',
+          )}
+          {...props}
+        />
+        {trailing ? (
+          <div className="absolute inset-y-0 right-0 flex items-center">{trailing}</div>
+        ) : null}
+      </div>
       {error ? (
         <p id={`${inputId}-error`} className="text-body-sm text-coral-text">
           {error}

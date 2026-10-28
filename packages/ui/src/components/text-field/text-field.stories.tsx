@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { Eye } from 'lucide-react';
+
+import { IconButton } from '../icon-button/icon-button';
+
 import { TextField } from './text-field';
 
 const meta = {
@@ -32,4 +36,18 @@ export const Disabled: Story = {
 
 export const HiddenLabel: Story = {
   args: { label: 'Oda kodu', hideLabel: true, placeholder: 'ABC123' },
+};
+
+export const WithTrailingControl: Story = {
+  args: {
+    label: 'Şifre',
+    type: 'password',
+    defaultValue: 'uzun bir cümle',
+    hint: 'En az 10 karakter.',
+    trailing: (
+      <IconButton label="Şifreyi göster" variant="ghost">
+        <Eye />
+      </IconButton>
+    ),
+  },
 };
