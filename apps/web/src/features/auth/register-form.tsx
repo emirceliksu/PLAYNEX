@@ -85,7 +85,7 @@ export function RegisterForm() {
         {t('haveAccount')}{' '}
         <Link
           href="/login"
-          className="font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="py-3 font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('loginLink')}
         </Link>

@@ -31,7 +31,7 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
         required
         defaultValue={state.values?.login}
       />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col">
         <PasswordField
           name="password"
           label={t('password')}
@@ -40,7 +40,7 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
         />
         <Link
           href="/forgot-password"
-          className="self-end text-body-sm font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="inline-flex min-h-11 items-center self-end text-body-sm font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('forgot')}
         </Link>
@@ -52,7 +52,7 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
         {t('noAccount')}{' '}
         <Link
           href="/register"
-          className="font-semibold text-brand-soft-text underline-offset-4 hover:underline"
+          className="py-3 font-semibold text-brand-soft-text underline-offset-4 hover:underline"
         >
           {t('registerLink')}
         </Link>

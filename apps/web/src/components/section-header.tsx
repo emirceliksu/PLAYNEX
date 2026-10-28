@@ -35,7 +35,7 @@ export function SectionHeader({
       {href && linkLabel ? (
         <Link
           href={href}
-          className="inline-flex items-center gap-1 rounded-sm font-display text-label-md text-fg-secondary hover:text-fg-primary"
+          className="-my-2.5 inline-flex min-h-11 items-center gap-1 rounded-sm font-display text-label-md text-fg-secondary hover:text-fg-primary"
         >
           {linkLabel}
           <ArrowRight aria-hidden className="size-4" />
