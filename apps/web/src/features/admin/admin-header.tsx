@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 
 interface AdminHeaderProps {
-  section: 'overview' | 'users';
+  section: 'overview' | 'users' | 'reports';
   title: string;
   lead: string;
 }
@@ -12,6 +12,7 @@ interface AdminHeaderProps {
 const sections = [
   { key: 'overview', href: '/admin' },
   { key: 'users', href: '/admin/users' },
+  { key: 'reports', href: '/admin/reports' },
 ] as const;
 
 export async function AdminHeader({ section, title, lead }: AdminHeaderProps) {

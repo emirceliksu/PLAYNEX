@@ -250,6 +250,26 @@ export const games: Game[] = [
       ],
     },
   },
+  {
+    id: 'g_siper',
+    slug: 'siper',
+    title: 'Siper',
+    engine: 'babylon',
+    dimension: '3d',
+    mode: 'party',
+    category: 'action',
+    status: 'live',
+    accent: 'coral',
+    players: { min: 1, max: 10 },
+    version: '0.1.0',
+    releasedAt: '2026-10-29T09:00:00+03:00',
+    controls: ['keyboard', 'mouse'],
+    ageRating: '12+',
+    orientation: 'landscape',
+    scoring: 'high-score',
+    estimatedMinutes: 12,
+    setup: { modes: ['online'], options: [] },
+  },
 ];
 
 export const liveGames = games.filter((game) => game.status === 'live');

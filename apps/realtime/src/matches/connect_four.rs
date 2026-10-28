@@ -172,6 +172,7 @@ mod tests {
     fn game() -> ConnectFour {
         ConnectFour::new(&MatchSetup {
             seats: 2,
+            players: Vec::new(),
             round: 0,
             options: Value::Null,
         })
@@ -231,6 +232,7 @@ mod tests {
     fn rematch_alternates_starter_and_forfeit_awards_opponent() {
         let mut game = ConnectFour::new(&MatchSetup {
             seats: 2,
+            players: Vec::new(),
             round: 1,
             options: Value::Null,
         });

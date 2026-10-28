@@ -301,6 +301,7 @@ mod tests {
     fn game(round: u32) -> ChessMatch {
         let mut game = ChessMatch::new(&MatchSetup {
             seats: 2,
+            players: Vec::new(),
             round,
             options: json!({ "minutes": 3 }),
         })

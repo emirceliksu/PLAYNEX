@@ -8,6 +8,7 @@ pub mod chess;
 pub mod connect_four;
 pub mod drawing;
 pub mod kart;
+pub mod siper;
 pub mod trivia;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -18,6 +19,7 @@ pub enum GameKind {
     TriviaBattle,
     DrawingParty,
     NeonKartRacing,
+    Siper,
 }
 
 impl GameKind {
@@ -29,6 +31,7 @@ impl GameKind {
             "trivia-battle" => GameKind::TriviaBattle,
             "drawing-party" => GameKind::DrawingParty,
             "neon-kart-racing" => GameKind::NeonKartRacing,
+            "siper" => GameKind::Siper,
             _ => return None,
         })
     }
@@ -41,6 +44,7 @@ impl GameKind {
             GameKind::TriviaBattle => "trivia-battle",
             GameKind::DrawingParty => "drawing-party",
             GameKind::NeonKartRacing => "neon-kart-racing",
+            GameKind::Siper => "siper",
         }
     }
 
@@ -50,12 +54,15 @@ impl GameKind {
             GameKind::TriviaBattle => (2, 12),
             GameKind::DrawingParty => (3, 8),
             GameKind::NeonKartRacing => (2, 8),
+            GameKind::Siper => (1, 10),
         }
     }
 }
 
 pub struct MatchSetup {
     pub seats: usize,
+    // One entry per seat, in seat order.
+    pub players: Vec<SeatInfo>,
     // Increments on every rematch in the same room; used to alternate who opens.
     pub round: u32,
     pub options: Value,
@@ -100,6 +107,7 @@ pub enum Reject {
     IllegalMove,
     NotNow,
     InvalidOptions,
+    TeamsUneven,
 }
 
 impl Reject {
@@ -110,6 +118,7 @@ impl Reject {
             Reject::IllegalMove => "illegal_move",
             Reject::NotNow => "not_now",
             Reject::InvalidOptions => "invalid_options",
+            Reject::TeamsUneven => "teams_uneven",
         }
     }
 }
@@ -169,6 +178,26 @@ pub trait Match: Send {
     // The seat is gone for good (left or reconnect grace ran out).
     fn forfeit(&mut self, seat: usize, now: Instant) -> Vec<Delivery>;
     fn outcome(&self) -> Option<Outcome>;
+    // Games with drop-in seats hand a newcomer one (usually a bot's) while the match runs.
+    fn admit(
+        &mut self,
+        _nickname: &str,
+        _team: Option<u8>,
+        _now: Instant,
+    ) -> Option<(usize, Vec<Delivery>)> {
+        None
+    }
+    fn team_of(&self, _seat: usize) -> Option<u8> {
+        None
+    }
+    // Per-player statistics kept after the match, once there is an outcome.
+    fn report(&self) -> Option<Value> {
+        None
+    }
+    // Room options for the next match when the players voted for a change.
+    fn next_options(&self, _current: &Value) -> Option<Value> {
+        None
+    }
 }
 
 pub fn create(kind: GameKind, setup: &MatchSetup) -> Result<Box<dyn Match>, Reject> {
@@ -179,6 +208,7 @@ pub fn create(kind: GameKind, setup: &MatchSetup) -> Result<Box<dyn Match>, Reje
         GameKind::TriviaBattle => Box::new(trivia::Trivia::new(setup)?),
         GameKind::DrawingParty => Box::new(drawing::Drawing::new(setup)?),
         GameKind::NeonKartRacing => Box::new(kart::KartRace::new(setup)),
+        GameKind::Siper => Box::new(siper::SiperMatch::new(setup)?),
     })
 }
 
@@ -187,8 +217,17 @@ pub fn validate_options(kind: GameKind, options: &Value) -> Result<(), Reject> {
         GameKind::ChessArena => chess::parse_options(options).map(|_| ()),
         GameKind::TriviaBattle => trivia::parse_options(options).map(|_| ()),
         GameKind::DrawingParty => drawing::parse_options(options).map(|_| ()),
+        GameKind::Siper => siper::parse_options(options).map(|_| ()),
         _ => Ok(()),
     }
+}
+
+#[derive(Debug, Clone, Default)]
+pub struct SeatInfo {
+    pub nickname: String,
+    pub team: Option<u8>,
+    pub skin: Option<String>,
+    pub outfit: Option<String>,
 }
 
 pub fn parse_input<T: for<'de> serde::Deserialize<'de>>(payload: Value) -> Result<T, Reject> {

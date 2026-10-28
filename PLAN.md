@@ -131,6 +131,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 | Trivia Battle | React/Phaser | 2–12 | Faz 2 |
 | Pixel Survivors | Phaser | Solo/Co-op | Faz 3 |
 | Neon Kart Racing | Babylon.js | 2–8 | Faz 3 |
+| Siper (takım nişancı) | Babylon.js | 1–10, takımlı ve serbest, botlu | Faz 3 (öne çekildi) |
 | Party Parkour | Babylon.js | 2–12 | Faz 4 |
 | Battle Arena | Babylon.js | 4–12 | Faz 4 |
 | Mini Football | Babylon.js | 2v2/3v3 | Faz 4 |
@@ -138,7 +139,20 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 
 **Durum (2026-10-21):** Tablodaki Faz 2 oyunları ve Neon Kart Racing kullanıcı isteğiyle öne çekildi ve yayında; hepsi çevrim içi odalarla, Air Hockey/satranç/Trivia ayrıca bilgisayara karşı ve aynı cihazda oynanır. Kalıcılık, hesap ve eşleştirme hâlâ planlandığı fazda.
 
+**Durum (2026-10-29):** Siper yayında: beş mod, üç harita, sunucu otoriteli atış, botlar, hesapla hızlı eşleşme ve oda listesi, parti, sohbet, ekonomi ve Türkçe anonslar; XP, seviye, rütbe, günlük görevler, başarımlar, kozmetikler, Siper sıralaması, arkadaşlar ve oyuncu şikâyetleri. Ayrıntı ADR 0014'te.
+
 **Önemli:** MVP'de tek 1v1 oyun var: sıra tabanlı Connect Four. Hamle doğrulaması basit olduğu için oda/WebSocket altyapısını düşük riskle kanıtlar. Sunucu otoriteli fizik gerektiren Air Hockey, bu altyapı oturduktan sonra Faz 2'de gelir ve Neon Kart Racing'in ağ katmanına da ön çalışma olur.
+
+### Siper — takım nişancı (ADR 0014)
+- [x] Prototip: yükseklik alanı haritalar, hareket aynası, iki silah ve bıçak, Takım Ölüm Maçı, sunucuda botlar
+- [x] Hesaplı çevrim içi: API bileti, oda listesi, hızlı eşleşme, takım seçimi ve dengeleme, maç ortası katılım, ping
+- [x] İlerleme: maç kaydı, XP ve seviye, Bronz → Elmas rütbe, profil istatistikleri, Siper sıralaması
+- [x] İçerik: Liman, Çarşı, Santral; 8 silah, el ve sis bombası, zırh; ekonomi ve satın alma; Bomba Kur/Çöz, Silah Oyunu, Herkes Tek, Bıçak Raundu; ölüm kamerası, izleyici modu, harita oylaması
+- [x] Ses: sentezlenen efekt ve müzik, eSpeak NG ile Türkçe anonslar, öncelikli anons kuyruğu
+- [x] Sosyal: oyun içi ve lobi sohbeti, küfür filtresi, arkadaş listesi, parti, şikâyet ve yönetici kuyruğu
+- [x] Kozmetik (yalnızca görünüş), günlük görevler, başarımlar, ayarlar ve tuş atama
+- [x] Nişan yardımı puanı ve otomatik şikâyet, takımın görmediği rakibin istemciye hiç gitmemesi, kompakt snapshot, aylık sezonlar, radar
+- [ ] İkili (binary) ve delta snapshot
 
 ### Büyük 3D oyun prototipi: Neon Kart Racing
 1. Bir pist, iki araç, kamera, giriş kontrolleri, temel sürüş fiziği.
@@ -395,11 +409,11 @@ playnex/
 **Çıkış kriteri:** 5 oyun başlatılır; güvenli oturum, doğrulanmış skor, mobil uyum ve yedek geri yükleme testi çalışır.
 
 ### Faz 2 — Sosyal ve rekabet (5–8 hafta)
-- [ ] Arkadaşlık, engelleme, davet, çevrim içi durum
+- [ ] Arkadaşlık, engelleme, davet, çevrim içi durum (arkadaşlık istekleri ve Siper partisi hazır; engelleme ve çevrim içi durum açık)
 - [ ] Özel odalar ve eşleştirme (özel odalar kodla hazır, ADR 0009; eşleştirme kuyruğu ve kalıcılık açık)
 - [x] Air Hockey: sunucu otoriteli fizik, istemci tahmini/interpolasyon
-- [ ] XP, seviye, başarımlar, günlük/haftalık görevler
-- [ ] Oyun bazlı MMR/rating ve sezon sıralamaları
+- [ ] XP, seviye, başarımlar, günlük/haftalık görevler (Siper için XP, seviye, başarımlar ve günlük görevler hazır; haftalık görevler ve diğer oyunlar açık)
+- [ ] Oyun bazlı MMR/rating ve sezon sıralamaları (Siper rütbe puanı, sıralaması ve aylık sezonları hazır; diğer oyunlar açık)
 - [ ] Bildirim, moderasyon, analitik ve ölçek testleri
 - [x] Chess Arena, Drawing Party, Trivia Battle için önceliklendirme (üçü de yayında: solo/yerel/çevrim içi)
 - [ ] Herkese açık beta

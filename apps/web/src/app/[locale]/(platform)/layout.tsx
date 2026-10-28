@@ -15,6 +15,7 @@ export default async function PlatformLayout({ children }: { children: ReactNode
         home: t('nav.home'),
         games: t('nav.games'),
         leaderboard: t('nav.leaderboard'),
+        friends: t('nav.friends'),
         profile: t('nav.profile'),
         admin: t('common.admin'),
         searchLabel: t('common.search.label'),

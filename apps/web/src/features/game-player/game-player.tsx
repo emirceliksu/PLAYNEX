@@ -31,6 +31,7 @@ import { useRoom } from '@/lib/realtime/use-room';
 import { LocalSetup } from './lobby/local-setup';
 import { ModePicker } from './lobby/mode-picker';
 import { OnlineLobby } from './lobby/online-lobby';
+import { SiperLobby } from './lobby/siper-lobby';
 import { ResultSummary } from './result-summary';
 import { useBestScore } from './use-best-score';
 
@@ -77,6 +78,8 @@ interface GamePlayerProps {
   preview?: GamePlayerState;
   // From an invite link (`?room=CODE`): opens the online lobby with the code filled in.
   roomCode?: string;
+  // Username of the signed-in visitor; games that need an account read it.
+  viewer?: string | null;
 }
 
 interface PlayerState {
@@ -196,7 +199,14 @@ function needsSetup(setup: GameSetup): boolean {
   return setup.modes.length > 1 || setup.modes[0] !== 'solo' || setup.options.length > 0;
 }
 
-export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlayerProps) {
+export function GamePlayer({
+  game,
+  locale,
+  labels,
+  preview,
+  roomCode,
+  viewer = null,
+}: GamePlayerProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [attempt, setAttempt] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -432,9 +442,15 @@ export function GamePlayer({ game, locale, labels, preview, roomCode }: GamePlay
 
         {session === null ? (
           <div className={`${overlayClass} overflow-y-auto`}>
-            <div className={panelClass}>
+            <div
+              className={
+                game.slug === 'siper' ? panelClass.replace('max-w-sm', 'max-w-xl') : panelClass
+              }
+            >
               {mode === null ? (
                 <ModePicker modes={game.setup.modes} onPick={setMode} />
+              ) : mode === 'online' && game.slug === 'siper' ? (
+                <SiperLobby room={room} viewer={viewer} initialCode={roomCode} />
               ) : mode === 'online' ? (
                 <OnlineLobby
                   setup={game.setup}

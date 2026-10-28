@@ -9,8 +9,12 @@ import { SectionHeader } from '@/components/section-header';
 import { logout } from '@/features/auth/actions';
 import { FormAlert } from '@/features/auth/form-alert';
 import { loadProfile } from '@/features/profile/load-profile';
+import { FriendButton } from '@/features/siper/friend-button';
+import { ReportButton } from '@/features/siper/report-button';
+import { SiperProfile } from '@/features/siper/siper-profile';
 import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
+import { getCurrentAccount, sessionToken } from '@/lib/auth/session';
 import { liveGames } from '@/lib/catalog/games';
 import { formatDate } from '@/lib/format';
 import { notFoundMetadata } from '@/lib/not-found-metadata';
@@ -42,7 +46,11 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
     notFound();
   }
 
-  const t = await getTranslations('profile');
+  const [t, viewer, token] = await Promise.all([
+    getTranslations('profile'),
+    getCurrentAccount(),
+    sessionToken(),
+  ]);
   const welcome = profile.own && query.welcome === '1';
 
   return (
@@ -75,9 +83,20 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
                 {t('signOut')}
               </Button>
             </form>
+          ) : viewer ? (
+            <div className="flex shrink-0 items-center gap-2">
+              <FriendButton username={profile.username} intent="request" label={t('addFriend')} />
+              <ReportButton username={profile.username} />
+            </div>
           ) : null}
         </div>
       </header>
+
+      <SiperProfile
+        username={profile.username}
+        locale={locale}
+        token={profile.own ? (token ?? null) : null}
+      />
 
       <section className="flex flex-col gap-5">
         <SectionHeader title={t('bestScores')} />

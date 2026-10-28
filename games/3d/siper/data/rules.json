@@ -1,0 +1,108 @@
+{
+  "tickRate": 30,
+  "cellSize": 2,
+  "cells": {
+    ".": { "height": 0 },
+    "a": { "height": 0, "spawn": 0 },
+    "b": { "height": 0, "spawn": 1 },
+    "A": { "height": 0, "site": "A" },
+    "B": { "height": 0, "site": "B" },
+    "1": { "height": 0.5 },
+    "2": { "height": 1.0 },
+    "3": { "height": 1.5 },
+    "4": { "height": 2.0 },
+    "c": { "height": 1.0 },
+    "w": { "height": 1.2 },
+    "C": { "height": 2.2 },
+    "H": { "height": 3.2 },
+    "#": { "height": 6.0 }
+  },
+  "player": {
+    "radius": 0.34,
+    "height": 1.8,
+    "crouchHeight": 1.25,
+    "eye": 1.62,
+    "crouchEye": 1.08,
+    "health": 100,
+    "headRadius": 0.2,
+    "legsTop": 0.75
+  },
+  "movement": {
+    "runSpeed": 5.4,
+    "walkSpeed": 2.7,
+    "crouchSpeed": 1.9,
+    "groundAccel": 11,
+    "airAccel": 1.8,
+    "gravity": 17,
+    "jumpSpeed": 6.2,
+    "stepHeight": 0.55
+  },
+  "combat": {
+    "legMultiplier": 0.75,
+    "assistDamage": 40,
+    "lagCompensationMs": 200,
+    "multiKillWindowMs": 4000,
+    "grenadeFuseMs": 1700,
+    "grenadeSpeed": 15,
+    "grenadeRadius": 7,
+    "smokeMs": 15000,
+    "smokeRadius": 4.5
+  },
+  "economy": {
+    "startMoney": 800,
+    "respawnModeMoney": 4000,
+    "maxMoney": 16000,
+    "roundWin": 3250,
+    "bombWin": 3500,
+    "lossBase": 1400,
+    "lossStep": 500,
+    "lossMax": 3400,
+    "plantBonus": 300,
+    "buyWindowMs": 15000,
+    "armor": 650,
+    "armorHelmet": 1000
+  },
+  "modes": {
+    "tdm": { "teams": true, "respawnMs": 3000, "killLimit": 50, "timeMs": 600000, "buy": true },
+    "bomb": {
+      "teams": true,
+      "roundsToWin": 7,
+      "halftime": 6,
+      "roundMs": 115000,
+      "freezeMs": 8000,
+      "bombMs": 40000,
+      "plantMs": 3200,
+      "defuseMs": 5000,
+      "buy": true
+    },
+    "knife": {
+      "teams": true,
+      "roundsToWin": 5,
+      "halftime": 4,
+      "roundMs": 90000,
+      "freezeMs": 3000,
+      "buy": false
+    },
+    "ffa": { "teams": false, "respawnMs": 2000, "killLimit": 25, "timeMs": 480000, "buy": true },
+    "gungame": {
+      "teams": false,
+      "respawnMs": 2000,
+      "timeMs": 600000,
+      "killsPerLevel": 2,
+      "ladder": ["pistol", "revolver", "smg", "shotgun", "carbine", "rifle", "sniper", "knife"],
+      "buy": false
+    }
+  },
+  "announcer": {
+    "multi": ["double", "triple", "quad", "massacre"],
+    "streaks": [
+      { "kills": 3, "key": "heating" },
+      { "kills": 5, "key": "unstoppable" },
+      { "kills": 8, "key": "legend" },
+      { "kills": 10, "key": "godlike" }
+    ],
+    "streakBreak": 3
+  },
+  "maps": ["liman", "carsi", "santral"],
+  "voteMs": 12000
+}

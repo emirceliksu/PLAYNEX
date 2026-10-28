@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
+import { getCurrentAccount } from '@/lib/auth/session';
 import { hasGameModule } from '@/lib/games/registry';
 import { getGameCopy } from '@/lib/catalog/game-copy';
 import { findGame } from '@/lib/catalog/games';
@@ -47,7 +48,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
     notFound();
   }
 
-  const t = await getTranslations('player');
+  const [t, account] = await Promise.all([getTranslations('player'), getCurrentAccount()]);
   // Shell-state preview is a development aid for design review; production ignores it.
   const preview =
     process.env.NODE_ENV === 'development' && previewStates.includes(query.state as GamePlayerState)
@@ -70,6 +71,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
         setup: game.setup,
       }}
       roomCode={roomCode}
+      viewer={account?.username ?? null}
       locale={locale}
       preview={preview}
       labels={{

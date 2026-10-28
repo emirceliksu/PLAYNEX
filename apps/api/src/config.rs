@@ -20,6 +20,10 @@ pub struct Config {
     /// Verified accounts with these addresses are promoted to admin; nobody else can grant
     /// the first admin role.
     pub admin_emails: Vec<String>,
+    /// Signs realtime play tickets; shared with the realtime service.
+    pub realtime_account_secret: Option<String>,
+    /// Lets the realtime service post match results to the internal endpoints.
+    pub internal_token: Option<String>,
 }
 
 fn required(name: &'static str) -> Result<String, ConfigError> {
@@ -56,6 +60,8 @@ impl Config {
                         .collect()
                 })
                 .unwrap_or_default(),
+            realtime_account_secret: optional("REALTIME_ACCOUNT_SECRET").filter(|s| s.len() >= 32),
+            internal_token: optional("INTERNAL_API_TOKEN").filter(|s| s.len() >= 32),
         })
     }
 }

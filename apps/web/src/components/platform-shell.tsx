@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, Button, Logo, MobileNav, Sidebar, Topbar, type NavItem } from '@playnex/ui';
-import { Compass, Gamepad2, LogIn, ShieldCheck, Trophy, User } from 'lucide-react';
+import { Compass, Gamepad2, LogIn, ShieldCheck, Trophy, User, Users } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { Link, usePathname } from '@/i18n/navigation';
@@ -17,6 +17,7 @@ export interface PlatformShellLabels {
   home: string;
   games: string;
   leaderboard: string;
+  friends: string;
   profile: string;
   admin: string;
   searchLabel: string;
@@ -76,6 +77,14 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
       active: isActive(pathname, '/profile'),
     },
   ];
+  if (user) {
+    items.splice(3, 0, {
+      href: '/friends',
+      label: labels.friends,
+      icon: <Users />,
+      active: isActive(pathname, '/friends'),
+    });
+  }
   if (user?.isAdmin) {
     items.push({
       href: '/admin',

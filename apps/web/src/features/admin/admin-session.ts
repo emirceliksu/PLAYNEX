@@ -20,7 +20,7 @@ export async function requireAdmin(): Promise<{ account: Account; token: string 
 // and replaces that title in the browser, so the admin pages pick the no-access title too.
 export async function adminMetadata(
   locale: string,
-  page: 'admin' | 'adminUsers',
+  page: 'admin' | 'adminUsers' | 'adminReports',
 ): Promise<Metadata> {
   const account = await getCurrentAccount();
   if (account?.role !== 'admin') {

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["apps/api", "apps/mailer", "apps/realtime", "crates/service"]
+members = ["apps/api", "apps/mailer", "apps/realtime", "crates/chat-filter", "crates/service"]
 
 [workspace.package]
 version = "0.1.0"

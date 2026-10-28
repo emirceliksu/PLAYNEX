@@ -1,6 +1,7 @@
 use base64::{Engine, engine::general_purpose::URL_SAFE_NO_PAD};
 use hmac::{Hmac, KeyInit, Mac};
 use rand::{Rng, RngExt};
+use serde::Deserialize;
 use sha2::Sha256;
 
 const TOKEN_TTL_SECS: u64 = 12 * 60 * 60;
@@ -63,6 +64,53 @@ impl TokenSigner {
     }
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Deserialize)]
+pub struct AccountClaim {
+    #[serde(rename = "uid")]
+    pub id: String,
+    #[serde(rename = "name")]
+    pub username: String,
+    #[serde(default)]
+    pub skin: Option<String>,
+    #[serde(default)]
+    pub outfit: Option<String>,
+    exp: u64,
+}
+
+// Short-lived tickets minted by the API for a signed-in player. Only the API and this
+// service hold the key, so a valid ticket proves the account behind the socket.
+pub struct TicketVerifier {
+    key: Vec<u8>,
+}
+
+impl TicketVerifier {
+    pub fn new(key: Vec<u8>) -> Self {
+        Self { key }
+    }
+
+    pub fn verify(&self, ticket: &str, now_secs: u64) -> Option<AccountClaim> {
+        let (body, tag) = ticket.split_once('.')?;
+        let body = URL_SAFE_NO_PAD.decode(body).ok()?;
+        let tag = URL_SAFE_NO_PAD.decode(tag).ok()?;
+        let mut mac = HmacSha256::new_from_slice(&self.key).ok()?;
+        mac.update(&body);
+        mac.verify_slice(&tag).ok()?;
+        let claim: AccountClaim = serde_json::from_slice(&body).ok()?;
+        (claim.exp > now_secs).then_some(claim)
+    }
+
+    #[cfg(test)]
+    pub fn sign(&self, body: &str) -> String {
+        let mut mac = HmacSha256::new_from_slice(&self.key).expect("hmac key");
+        mac.update(body.as_bytes());
+        format!(
+            "{}.{}",
+            URL_SAFE_NO_PAD.encode(body),
+            URL_SAFE_NO_PAD.encode(mac.finalize().into_bytes())
+        )
+    }
+}
+
 pub fn new_player_id() -> String {
     let bytes: [u8; 8] = rand::rng().random();
     bytes.iter().map(|byte| format!("{byte:02x}")).collect()
@@ -116,6 +164,18 @@ mod tests {
         let forged_body = URL_SAFE_NO_PAD.encode("ffffffffffffffff.99999999999");
         let tag = token.split_once('.').unwrap().1;
         assert_eq!(signer.verify(&format!("{forged_body}.{tag}"), 1_001), None);
+    }
+
+    #[test]
+    fn tickets_carry_the_account_until_they_expire() {
+        let verifier = TicketVerifier::new(b"ticket-key".to_vec());
+        let ticket = verifier.sign(r#"{"uid":"u-1","name":"ece","exp":2000,"skin":"tiger"}"#);
+        let claim = verifier.verify(&ticket, 1_000).unwrap();
+        assert_eq!(claim.username, "ece");
+        assert_eq!(claim.skin.as_deref(), Some("tiger"));
+        assert_eq!(verifier.verify(&ticket, 2_001), None);
+        let other = TicketVerifier::new(b"other".to_vec());
+        assert_eq!(other.verify(&ticket, 1_000), None);
     }
 
     #[test]

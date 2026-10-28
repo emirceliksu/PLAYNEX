@@ -15,7 +15,7 @@ interface ConnectionEvents {
   onFrame(frame: ServerFrame): void;
   onStatus(status: ConnectionStatus): void;
   // Fired after every successful hello, including the ones that follow a reconnect.
-  onGreeted(playerId: string): void;
+  onGreeted(playerId: string, account: string | null): void;
 }
 
 export function realtimeUrl(): string {
@@ -56,6 +56,8 @@ export class RealtimeConnection {
     private readonly url: string,
     private readonly nickname: string,
     private readonly events: ConnectionEvents,
+    // Signed-in players present a fresh ticket on every (re)connect; tickets live a minute.
+    private readonly ticket?: () => Promise<string | null>,
   ) {}
 
   open() {
@@ -65,20 +67,24 @@ export class RealtimeConnection {
     this.socket = socket;
 
     socket.addEventListener('open', () => {
-      this.write('hello', { nickname: this.nickname, resumeToken: readResumeToken() });
+      void this.greet();
     });
     socket.addEventListener('message', (event: MessageEvent<string>) => {
       const frame = this.parse(event.data);
       if (!frame) return;
       if (frame.type === 'hello') {
-        const hello = frame.payload as { playerId: string; resumeToken: string };
+        const hello = frame.payload as {
+          playerId: string;
+          resumeToken: string;
+          account?: string | null;
+        };
         storeResumeToken(hello.resumeToken);
         this.greeted = true;
         this.retries = 0;
         this.lostAt = null;
         this.startPing();
         this.events.onStatus('open');
-        this.events.onGreeted(hello.playerId);
+        this.events.onGreeted(hello.playerId, hello.account ?? null);
         return;
       }
       if (frame.type !== 'pong') {
@@ -86,6 +92,15 @@ export class RealtimeConnection {
       }
     });
     socket.addEventListener('close', () => this.handleClose(socket));
+  }
+
+  private async greet() {
+    const ticket = this.ticket ? await this.ticket() : null;
+    this.write('hello', {
+      nickname: this.nickname,
+      resumeToken: readResumeToken(),
+      ...(ticket ? { ticket } : {}),
+    });
   }
 
   send(type: string, payload?: unknown) {
