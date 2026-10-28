@@ -94,7 +94,7 @@ export default async function GamePage({ params }: GamePageProps) {
   return (
     <div className="flex flex-col gap-14">
       <section className="grid gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:items-center md:gap-10">
-        <div className="animate-rise-in overflow-hidden rounded-2xl border-2 border-border-strong shadow-sticker-lg">
+        <div className="overflow-hidden rounded-2xl border-2 border-border-strong shadow-sticker-lg">
           <GameCover slug={game.slug} accent={game.accent} title={game.title} muted={!live} />
         </div>
         <div className="flex flex-col gap-5">
