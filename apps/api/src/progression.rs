@@ -1,7 +1,7 @@
 use std::sync::LazyLock;
 
 use serde::{Deserialize, Serialize};
-use time::Date;
+use time::{Date, Month};
 
 // Shared with the game client, which draws the same skins and outfits.
 const COSMETICS_JSON: &str = include_str!("../../../games/3d/siper/data/cosmetics.json");
@@ -83,6 +83,30 @@ pub fn level_for(xp: i64) -> Level {
         left -= need;
         level += 1;
     }
+}
+
+pub fn rank_order(rank: &str) -> u8 {
+    match rank {
+        "silver" => 1,
+        "gold" => 2,
+        "platinum" => 3,
+        "diamond" => 4,
+        _ => 0,
+    }
+}
+
+// Seasons run by calendar month in Turkish time; the id is "YYYY-MM".
+pub fn season_of(day: Date) -> String {
+    format!("{:04}-{:02}", day.year(), u8::from(day.month()))
+}
+
+pub fn season_end(day: Date) -> Date {
+    let (year, month) = if day.month() == Month::December {
+        (day.year() + 1, Month::January)
+    } else {
+        (day.year(), day.month().next())
+    };
+    Date::from_calendar_date(year, month, 1).unwrap_or(day)
 }
 
 pub fn rank(rating: i32) -> &'static str {
@@ -243,6 +267,9 @@ pub struct Unlock {
     pub level: Option<i64>,
     #[serde(default)]
     pub achievement: Option<String>,
+    // Best rank reached in any season.
+    #[serde(default, rename = "seasonRank")]
+    pub season_rank: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -260,8 +287,21 @@ pub struct Cosmetics {
 pub static COSMETICS: LazyLock<Cosmetics> =
     LazyLock::new(|| serde_json::from_str(COSMETICS_JSON).expect("cosmetics.json is valid"));
 
-pub fn unlocked(item: &Cosmetic, level: i64, achievements: &[String]) -> bool {
+pub struct Owner<'a> {
+    pub level: i64,
+    pub achievements: &'a [String],
+    pub best_season_rating: i32,
+}
+
+pub fn unlocked(item: &Cosmetic, owner: &Owner) -> bool {
+    let level = owner.level;
+    let achievements = owner.achievements;
     item.unlock.level.is_none_or(|needed| level >= needed)
+        && item
+            .unlock
+            .season_rank
+            .as_deref()
+            .is_none_or(|needed| rank_order(rank(owner.best_season_rating)) >= rank_order(needed))
         && item
             .unlock
             .achievement
@@ -317,6 +357,25 @@ mod tests {
     }
 
     #[test]
+    fn seasons_follow_the_month() {
+        let day = Date::from_calendar_date(2026, Month::December, 14).unwrap();
+        assert_eq!(season_of(day), "2026-12");
+        assert_eq!(
+            season_end(day),
+            Date::from_calendar_date(2027, Month::January, 1).unwrap()
+        );
+        let gold = COSMETICS.skins.iter().find(|s| s.id == "sezon").unwrap();
+        let mut owner = Owner {
+            level: 1,
+            achievements: &[],
+            best_season_rating: 1240,
+        };
+        assert!(!unlocked(gold, &owner));
+        owner.best_season_rating = 1250;
+        assert!(unlocked(gold, &owner));
+    }
+
+    #[test]
     fn ranks_by_rating() {
         assert_eq!(rank(start_rating()), "bronze");
         assert_eq!(rank(1100), "silver");
@@ -345,10 +404,15 @@ mod tests {
         };
         assert_eq!(earned(&totals), ["first_win", "ace"]);
         let owned = vec!["ace".to_owned()];
+        let owner = Owner {
+            level: 4,
+            achievements: &owned,
+            best_season_rating: 1000,
+        };
         let skins = &COSMETICS.skins;
         let open: Vec<&str> = skins
             .iter()
-            .filter(|s| unlocked(s, 4, &owned))
+            .filter(|s| unlocked(s, &owner))
             .map(|s| s.id.as_str())
             .collect();
         assert_eq!(open, ["standard", "kum", "lale"]);

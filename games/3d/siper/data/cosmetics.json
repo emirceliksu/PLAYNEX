@@ -12,7 +12,8 @@
       "unlock": { "achievement": "headhunter" }
     },
     { "id": "lale", "pattern": "camo", "tone": "danger", "unlock": { "achievement": "ace" } },
-    { "id": "altin", "pattern": "plain", "tone": "reward", "unlock": { "level": 25 } }
+    { "id": "altin", "pattern": "plain", "tone": "reward", "unlock": { "level": 25 } },
+    { "id": "sezon", "pattern": "checker", "tone": "reward", "unlock": { "seasonRank": "gold" } }
   ],
   "outfits": [
     { "id": "saha", "accessory": "none", "tone": "fg", "unlock": { "level": 1 } },

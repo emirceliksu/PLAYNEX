@@ -80,6 +80,7 @@ struct ReportRow {
     reason: String,
     note: String,
     status: String,
+    automatic: bool,
     #[serde(with = "time::serde::rfc3339")]
     created_at: OffsetDateTime,
     target_reports: i64,
@@ -96,7 +97,7 @@ async fn list(
         .filter(|status| matches!(*status, "resolved" | "dismissed"))
         .unwrap_or("open");
     let rows = sqlx::query_as::<_, ReportRow>(
-        "select r.id, ru.username as reporter, tu.username as target, r.reason, r.note, r.status,
+        "select r.id, ru.username as reporter, tu.username as target, r.reason, r.note, r.status, r.automatic,
                 r.created_at,
                 (select count(*) from player_reports o where o.target_id = r.target_id) as target_reports
          from player_reports r

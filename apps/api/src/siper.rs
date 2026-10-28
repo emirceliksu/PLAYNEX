@@ -26,6 +26,7 @@ use crate::{
 const TICKET_SECS: i64 = 60;
 const LEADERBOARD_SIZE: i64 = 50;
 const RECENT_MATCHES: i64 = 8;
+const PAST_SEASONS: i64 = 6;
 // Daily quests roll over at midnight in Turkey, where most players are.
 const QUEST_OFFSET_HOURS: i8 = 3;
 
@@ -153,7 +154,14 @@ struct ReportPlayer {
     best_multi: i32,
     #[serde(default)]
     weapon_kills: BTreeMap<String, i32>,
+    #[serde(default)]
+    suspicion: i32,
+    #[serde(default)]
+    flags: Vec<String>,
 }
+
+// From this score on, a moderator gets an automatic report about the match.
+const AUTO_REPORT_SUSPICION: i32 = 60;
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -326,8 +334,9 @@ async fn record_player(
     sqlx::query(
         "insert into siper_participants (match_id, user_id, team, won, placement, kills, deaths,
              assists, headshots, shots, hits, damage, plants, defuses, knife_kills, best_streak,
-             best_multi, xp, rating_change)
-         values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)",
+             best_multi, xp, rating_change, suspicion, flags)
+         values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18,
+                 $19, $20, $21)",
     )
     .bind(match_id)
     .bind(user_id)
@@ -348,6 +357,49 @@ async fn record_player(
     .bind(player.best_multi)
     .bind(i32::try_from(xp).unwrap_or(i32::MAX))
     .bind(rating_change)
+    .bind(player.suspicion.clamp(0, 100) as i16)
+    .bind(&player.flags)
+    .execute(&mut **tx)
+    .await?;
+
+    if player.suspicion >= AUTO_REPORT_SUSPICION {
+        sqlx::query(
+            "insert into player_reports (id, target_id, reason, note, automatic, match_id)
+             values ($1, $2, 'cheating', $3, true, $4)
+             on conflict (target_id, match_id) where automatic do nothing",
+        )
+        .bind(Uuid::now_v7())
+        .bind(user_id)
+        .bind(format!(
+            "{} · {}",
+            player.suspicion,
+            player.flags.join(", ")
+        ))
+        .bind(match_id)
+        .execute(&mut **tx)
+        .await?;
+    }
+
+    let season = progression::season_of(day);
+    sqlx::query(
+        "insert into siper_season_progress (user_id, season, rating, peak_rating, matches, wins,
+             kills, deaths)
+         values ($1, $2, greatest(0, 1000 + $3), greatest(1000, 1000 + $3), 1, $4, $5, $6)
+         on conflict (user_id, season) do update set
+             rating = greatest(0, siper_season_progress.rating + $3),
+             peak_rating = greatest(siper_season_progress.peak_rating,
+                                    siper_season_progress.rating + $3),
+             matches = siper_season_progress.matches + 1,
+             wins = siper_season_progress.wins + $4,
+             kills = siper_season_progress.kills + $5,
+             deaths = siper_season_progress.deaths + $6",
+    )
+    .bind(user_id)
+    .bind(&season)
+    .bind(rating_change)
+    .bind(i32::from(c.won))
+    .bind(player.kills)
+    .bind(player.deaths)
     .execute(&mut **tx)
     .await?;
 
@@ -458,6 +510,29 @@ struct PlayerStats {
     equipped_outfit: Option<String>,
     achievements: Vec<Unlocked>,
     recent: Vec<RecentMatch>,
+    season: SeasonView,
+    past_seasons: Vec<PastSeason>,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SeasonView {
+    id: String,
+    ends_on: String,
+    rating: i32,
+    peak_rating: i32,
+    rank: &'static str,
+    matches: i32,
+    wins: i32,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct PastSeason {
+    season: String,
+    peak_rating: i32,
+    peak_rank: &'static str,
+    matches: i32,
 }
 
 fn ratio(a: i32, b: i32) -> f64 {
@@ -527,6 +602,36 @@ async fn player_stats(
     .bind(RECENT_MATCHES)
     .fetch_all(&state.pool)
     .await?;
+    let day = today();
+    let current = progression::season_of(day);
+    let seasons: Vec<(String, i32, i32, i32, i32)> = sqlx::query_as(
+        "select season, rating, peak_rating, matches, wins from siper_season_progress
+         where user_id = $1 order by season desc limit $2",
+    )
+    .bind(id)
+    .bind(PAST_SEASONS + 1)
+    .fetch_all(&state.pool)
+    .await?;
+    let this = seasons.iter().find(|(season, ..)| *season == current);
+    let season = SeasonView {
+        id: current.clone(),
+        ends_on: progression::season_end(day).to_string(),
+        rating: this.map_or(progression::start_rating(), |s| s.1),
+        peak_rating: this.map_or(progression::start_rating(), |s| s.2),
+        rank: progression::rank(this.map_or(progression::start_rating(), |s| s.1)),
+        matches: this.map_or(0, |s| s.3),
+        wins: this.map_or(0, |s| s.4),
+    };
+    let past_seasons = seasons
+        .iter()
+        .filter(|(season, ..)| *season != current)
+        .map(|(season, _, peak, matches, _)| PastSeason {
+            season: season.clone(),
+            peak_rating: *peak,
+            peak_rank: progression::rank(*peak),
+            matches: *matches,
+        })
+        .collect();
     Ok(Json(PlayerStats {
         username,
         level: progression::level_for(row.xp),
@@ -552,6 +657,8 @@ async fn player_stats(
         equipped_outfit: row.equipped_outfit,
         achievements,
         recent,
+        season,
+        past_seasons,
     }))
 }
 
@@ -591,6 +698,7 @@ struct BoardEntry {
 #[serde(rename_all = "camelCase")]
 struct Board {
     by: &'static str,
+    season: String,
     entries: Vec<BoardEntry>,
 }
 
@@ -614,20 +722,32 @@ async fn leaderboard(
              where u.suspended_at is null and p.matches > 0
              order by p.xp desc, u.username limit $1",
         ),
-        _ => (
+        Some("rating") => (
             "rating",
             "select u.username, p.xp, p.rating, p.matches, p.wins, p.kills, p.deaths
              from siper_progress p join users u on u.id = p.user_id
              where u.suspended_at is null and p.matches > 0
              order by p.rating desc, p.wins desc, u.username limit $1",
         ),
+        _ => (
+            "season",
+            "select u.username, p.xp, s.rating, s.matches, s.wins, s.kills, s.deaths
+             from siper_season_progress s
+             join users u on u.id = s.user_id
+             join siper_progress p on p.user_id = s.user_id
+             where u.suspended_at is null and s.matches > 0 and s.season = $2
+             order by s.rating desc, s.wins desc, u.username limit $1",
+        ),
     };
-    let rows = sqlx::query_as::<_, BoardRow>(sql)
-        .bind(LEADERBOARD_SIZE)
-        .fetch_all(&state.pool)
-        .await?;
+    let season = progression::season_of(today());
+    let mut board = sqlx::query_as::<_, BoardRow>(sql).bind(LEADERBOARD_SIZE);
+    if by == "season" {
+        board = board.bind(&season);
+    }
+    let rows = board.fetch_all(&state.pool).await?;
     Ok(Json(Board {
         by,
+        season,
         entries: rows
             .into_iter()
             .enumerate()
@@ -674,7 +794,24 @@ struct MyProgress {
     equipped_outfit: Option<String>,
 }
 
-async fn owned(state: &AppState, user_id: Uuid) -> Result<(i64, Vec<String>, StatsRow), ApiError> {
+struct Owned {
+    level: i64,
+    achievements: Vec<String>,
+    best_season_rating: i32,
+    row: StatsRow,
+}
+
+impl Owned {
+    fn owner(&self) -> progression::Owner<'_> {
+        progression::Owner {
+            level: self.level,
+            achievements: &self.achievements,
+            best_season_rating: self.best_season_rating,
+        }
+    }
+}
+
+async fn owned(state: &AppState, user_id: Uuid) -> Result<Owned, ApiError> {
     let row: StatsRow = sqlx::query_as(
         "select xp, rating, matches, wins, kills, deaths, assists, headshots, shots, hits, damage,
                 plants, defuses, best_streak, best_multi, equipped_skin, equipped_outfit
@@ -689,15 +826,27 @@ async fn owned(state: &AppState, user_id: Uuid) -> Result<(i64, Vec<String>, Sta
             .bind(user_id)
             .fetch_all(&state.pool)
             .await?;
-    let level = progression::level_for(row.xp).level;
-    Ok((level, achievements.into_iter().map(|(a,)| a).collect(), row))
+    let (best_season_rating,): (i32,) = sqlx::query_as(
+        "select coalesce(max(peak_rating), 0) from siper_season_progress where user_id = $1",
+    )
+    .bind(user_id)
+    .fetch_one(&state.pool)
+    .await?;
+    Ok(Owned {
+        level: progression::level_for(row.xp).level,
+        achievements: achievements.into_iter().map(|(a,)| a).collect(),
+        best_season_rating,
+        row,
+    })
 }
 
 async fn my_progress(
     CurrentUser(account): CurrentUser,
     State(state): State<AppState>,
 ) -> Result<Json<MyProgress>, ApiError> {
-    let (level, achievements, row) = owned(&state, account.id).await?;
+    let owned = owned(&state, account.id).await?;
+    let owner = owned.owner();
+    let row = &owned.row;
     let day = today();
     let progress: Vec<(String, i32, Option<OffsetDateTime>)> = sqlx::query_as(
         "select quest, progress, completed_at from siper_quest_progress
@@ -725,7 +874,7 @@ async fn my_progress(
             .iter()
             .map(|item| CosmeticView {
                 id: item.id.clone(),
-                unlocked: progression::unlocked(item, level, &achievements),
+                unlocked: progression::unlocked(item, &owner),
             })
             .collect()
     };
@@ -734,8 +883,8 @@ async fn my_progress(
         quests,
         skins: view(&COSMETICS.skins),
         outfits: view(&COSMETICS.outfits),
-        equipped_skin: row.equipped_skin,
-        equipped_outfit: row.equipped_outfit,
+        equipped_skin: row.equipped_skin.clone(),
+        equipped_outfit: row.equipped_outfit.clone(),
     }))
 }
 
@@ -750,12 +899,13 @@ async fn set_loadout(
     State(state): State<AppState>,
     Json(body): Json<LoadoutBody>,
 ) -> Result<StatusCode, ApiError> {
-    let (level, achievements, _) = owned(&state, account.id).await?;
+    let owned = owned(&state, account.id).await?;
+    let owner = owned.owner();
     let check = |items: &[progression::Cosmetic], id: &Option<String>, field: &'static str| match id
     {
         None => Ok(()),
         Some(id) => match items.iter().find(|item| &item.id == id) {
-            Some(item) if progression::unlocked(item, level, &achievements) => Ok(()),
+            Some(item) if progression::unlocked(item, &owner) => Ok(()),
             Some(_) => Err(ApiError::Conflict("cosmetic_locked")),
             None => Err(ApiError::field(field, "unknown")),
         },
