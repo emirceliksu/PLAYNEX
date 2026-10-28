@@ -21,7 +21,7 @@ make down
 
 | Servis                           | Adres                                         |
 | -------------------------------- | --------------------------------------------- |
-| Web (Next.js)                    | http://localhost:3000                         |
+| Web (Next.js)                    | http://localhost:4310                         |
 | Storybook                        | http://localhost:6006                         |
 | API healthcheck                  | http://localhost:8080/health                  |
 | Realtime healthcheck             | http://localhost:8081/health                  |

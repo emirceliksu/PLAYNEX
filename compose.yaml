@@ -64,7 +64,7 @@ services:
     environment:
       API_INTERNAL_URL: http://api:8080
     ports:
-      - '3000:3000'
+      - '${WEB_PORT:-4310}:3000'
     depends_on:
       deps:
         condition: service_completed_successfully
@@ -158,7 +158,7 @@ services:
       CARGO_BUILD_JOBS: 4
       RUST_LOG: info
       REALTIME_TOKEN_SECRET: ${REALTIME_TOKEN_SECRET:-}
-      REALTIME_ALLOWED_ORIGINS: ${REALTIME_ALLOWED_ORIGINS:-http://localhost:3000,http://web:3000}
+      REALTIME_ALLOWED_ORIGINS: ${REALTIME_ALLOWED_ORIGINS:-http://localhost:${WEB_PORT:-4310},http://web:3000}
     ports:
       - '8081:8081'
     volumes:
