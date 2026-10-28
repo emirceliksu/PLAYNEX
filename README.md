@@ -17,7 +17,7 @@ make logs        # S=web gibi bir servis adıyla daraltılabilir
 make down
 ```
 
-İlk `make up` sırasında Rust servisleri derlenir; `api` ve `realtime` birkaç dakika sonra `healthy` olur.
+İlk `make up` sırasında Rust servisleri derlenir; `api`, `mailer` ve `realtime` birkaç dakika sonra `healthy` olur.
 
 | Servis                           | Adres                                         |
 | -------------------------------- | --------------------------------------------- |
@@ -61,14 +61,16 @@ Polling yeni `app/` route klasörlerini fark etmez; yeni bir route dizini eklend
 
 ## Üretim
 
-Üretim Coolify üzerinde `compose.production.yaml` ile çalışır; dışarıya yalnızca `edge` (Caddy) açılır, web, API, realtime ve PostgreSQL iç ağdadır. Kurulum ve ortam değişkenleri: `docs/deployment/coolify.md`, gerekçe: `docs/decisions/0011-hesaplar-ve-uretim-agi.md`.
+Üretim Coolify üzerinde `compose.production.yaml` ile çalışır; dışarıya yalnızca `edge` (Caddy) açılır, web, API, realtime ve PostgreSQL iç ağdadır; internete yalnızca e-posta gönderen `mailer` çıkar. Kurulum ve ortam değişkenleri: `docs/deployment/coolify.md`, gerekçe: `docs/decisions/0011-hesaplar-ve-uretim-agi.md`.
 
 ## Yapı
 
 ```text
 apps/web               Next.js (App Router), next-intl ile TR + EN
 apps/api               Rust / Axum HTTP API
+apps/mailer            Rust / Axum doğrulama e-postası servisi (yalnızca iç ağ)
 apps/realtime          Rust / Axum WebSocket çalışma zamanı
+crates/service         Rust servislerinin ortak süreç kodu
 packages/design-tokens Tasarım tokenlarının tek kaynağı; Tailwind teması ve CSS değişkenleri buradan üretilir
 packages/ui            Radix üzerine PLAYNEX bileşenleri ve Storybook
 packages/shared-types  Web ve bileşenlerin paylaştığı alan tipleri

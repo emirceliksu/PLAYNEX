@@ -8,7 +8,7 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
 İnternet ──443──▶ Coolify proxy (Traefik, TLS) ──▶ edge:8080 (Caddy)
                                                     ├── /ws ─▶ realtime:8081
                                                     └── /*  ─▶ web:3000 ──▶ api:8080 ──▶ postgres:5432
-                                                                              └── egress ─▶ Gmail API
+                                                                              └── mail ─▶ mailer:8082 ──egress──▶ Gmail API
 ```
 
 | Servis     | Ağlar                | Dışarıdan erişim                                        |
@@ -16,12 +16,13 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
 | `edge`     | `public`, `internal` | Yalnızca Coolify proxy'si üzerinden, atanan alan adıyla |
 | `web`      | `internal`           | Yok; yalnızca `edge` ulaşır                             |
 | `realtime` | `internal`           | Yok; `/ws` yolu `edge` üzerinden                        |
-| `api`      | `internal`, `egress` | Yok; yalnızca `web` sunucu tarafında çağırır            |
+| `api`      | `internal`, `mail`   | Yok; yalnızca `web` sunucu tarafında çağırır            |
+| `mailer`   | `mail`, `egress`     | Yok; yalnızca `api` ulaşır                              |
 | `postgres` | `internal`           | Yok                                                     |
 
-- `internal` ağı `internal: true` ile tanımlıdır: bu ağdaki container'ların dış dünyaya rotası yoktur ve hiçbir serviste `ports:` yoktur.
+- `internal` ve `mail` ağları `internal: true` ile tanımlıdır: bu ağlardaki container'ların dış dünyaya rotası yoktur ve hiçbir serviste `ports:` yoktur.
 - Tarayıcı API ile hiç konuşmaz. Kayıt, giriş ve profil istekleri Next.js server action'ları üzerinden `web` container'ından `api:8080`'e gider; oturum `HttpOnly`, `Secure`, `SameSite=Lax` çerezinde taşınır.
-- `api` dışarı yalnızca doğrulama e-postasını Gmail API ile göndermek için çıkar (`egress` ağı).
+- Dışarı çıkabilen tek container `mailer`: doğrulama e-postasını Gmail API ile gönderir (`egress` ağı). `api` ona yalnızca `mail` ağı üzerinden ulaşır; `web` ve `realtime` bu ağda olmadığı için `mailer`'a erişemez. Gmail anahtarı yalnızca `mailer`'da, veritabanı şifresi yalnızca `api` ve `postgres`'te bulunur.
 - Ziyaretçi IP'si `edge` tarafından `X-Real-IP` başlığına yazılır, `web` bunu `api`'ye iletir; API'deki deneme sınırları bu adresle sayılır.
 
 ## Coolify'da kaynak oluşturma
@@ -79,12 +80,12 @@ curl -s -o /dev/null -w '%{http_code}\n' https://playnex.meccode.com/v1/me   # 4
 Coolify sunucusunda ağ izolasyonunu doğrula:
 
 ```bash
-docker ps --format '{{.Names}}' | grep -E 'postgres|api|web|realtime'
+docker ps --format '{{.Names}}' | grep -E 'postgres|api|mailer|web|realtime'
 docker exec <postgres-container> wget -q -T 5 -O- https://example.com || echo "dış ağ kapalı"
 docker inspect <postgres-container> --format '{{json .NetworkSettings.Networks}}'
 ```
 
-Coolify, compose kaynaklarına kendi proxy ağını da bağlayabilir. `docker inspect` çıktısında `postgres`, `web`, `realtime` veya `api` için `internal` (ve `api` için `egress`) dışında bir ağ görünüyorsa, kaynağın **Connect To Predefined Network** ayarının kapalı olduğunu kontrol et ve yeniden deploy et.
+Coolify, compose kaynaklarına kendi proxy ağını da bağlayabilir. `docker inspect` çıktısında `postgres`, `web`, `realtime`, `api` veya `mailer` için yukarıdaki tabloda olmayan bir ağ görünüyorsa, kaynağın **Connect To Predefined Network** ayarının kapalı olduğunu kontrol et ve yeniden deploy et.
 
 ## Yedekleme
 
