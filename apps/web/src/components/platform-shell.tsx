@@ -154,7 +154,7 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
           <main
             id="main"
             tabIndex={-1}
-            className="mx-auto w-full max-w-page flex-1 px-4 pt-6 pb-28 outline-none md:px-8 md:pt-8 md:pb-12"
+            className="mx-auto w-full max-w-page flex-1 scroll-mt-topbar px-4 pt-6 pb-28 outline-none md:px-8 md:pt-8 md:pb-12"
           >
             {children}
           </main>
