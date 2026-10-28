@@ -24,6 +24,7 @@ import {
   type RosterEntry,
   type Snapshot,
 } from './protocol';
+import { type Blip, Radar } from './radar';
 import { readSettings, type Settings } from './settings';
 import { Sound } from './sound';
 import { type AvatarPose, World } from './world';
@@ -67,6 +68,7 @@ export class SiperGame {
   private readonly mixer: AudioMixer;
   private readonly sound: Sound;
   private readonly announcer: Announcer;
+  private readonly radar: Radar;
   private readonly decoder = new Decoder();
   private readonly resizeObserver: ResizeObserver;
   private readonly unsubscribe: (() => void) | null;
@@ -122,6 +124,8 @@ export class SiperGame {
     this.sound = new Sound(this.mixer);
     this.hud = new Hud(container, this.t);
     this.announcer = new Announcer(this.sound, (call) => this.showCall(call));
+    this.radar = new Radar(this.grid, host.palette, this.t('radar'));
+    this.hud.root.append(this.radar.element);
     this.board = new Scoreboard(this.hud.root, this.t);
     this.buyMenu = new BuyMenu(
       this.hud.root,
@@ -551,6 +555,24 @@ export class SiperGame {
       });
     }
     this.hud.setLabels(labels);
+    this.drawRadar(snap, viewer, cameraAt);
+  }
+
+  private drawRadar(snap: Snapshot, viewer: number | null, cameraAt: number): void {
+    const myTeam = snap.p[this.myIndex]?.tm;
+    const blips: Blip[] = [];
+    snap.p.forEach((p, i) => {
+      if (i === viewer || (i === this.myIndex && this.alive) || !p.a || !p.seen) return;
+      const pose = this.poseAt(i, cameraAt);
+      if (!pose) return;
+      blips.push({ x: pose.x, z: pose.z, kind: this.teams && p.tm === myTeam ? 'mate' : 'enemy' });
+    });
+    const bomb = snap.bomb;
+    if (bomb && bomb.s !== 'carried' && bomb.s !== 'exploded') {
+      blips.push({ x: bomb.at[0], z: bomb.at[2], kind: 'bomb' });
+    }
+    const camera = this.world.camera.position;
+    this.radar.draw(camera.x, camera.z, this.world.camera.rotation.y, blips);
   }
 
   private renderHud(snap: Snapshot, now: number): void {

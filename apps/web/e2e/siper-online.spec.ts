@@ -43,7 +43,9 @@ test('two signed-in players meet in a quick match under their usernames', async 
     await player.page.goto('/play/siper');
     await player.page.getByRole('radio', { name: 'Herkes Tek' }).click({ timeout: 90_000 });
     await player.page.getByRole('button', { name: 'Hızlı eşleş' }).click({ timeout: 30_000 });
-    await expect(player.page.locator('canvas')).toHaveCount(1, { timeout: 90_000 });
+    await expect(player.page.locator('canvas:not([role="img"])')).toHaveCount(1, {
+      timeout: 90_000,
+    });
   }
 
   await host.page.keyboard.down('Tab');

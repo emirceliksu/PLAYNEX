@@ -12,7 +12,8 @@ test('a guest plays siper against bots on the server', async ({ page }) => {
   await page.screenshot({ path: `${SHOTS}/siper-lobby-1440.png` });
   await page.getByRole('button', { name: 'Maça başla' }).click();
 
-  await expect(page.locator('canvas')).toHaveCount(1, { timeout: 90_000 });
+  await expect(page.locator('canvas:not([role="img"])')).toHaveCount(1, { timeout: 90_000 });
+  await expect(page.getByRole('img', { name: /^Radar/ })).toBeVisible();
   // The mouse is not captured yet, so the play gate with the settings is up.
   await expect(page.getByRole('button', { name: 'Oynamak için tıkla' })).toBeVisible({
     timeout: 30_000,

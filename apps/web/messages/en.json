@@ -723,6 +723,7 @@
       "roundN": "Round {n}",
       "attackersRound": "Raiders take the round: {reason}",
       "defendersRound": "Wardens take the round: {reason}",
+      "radar": "Radar: nearby teammates and spotted enemies",
       "halftime": "Half time: sides have switched",
       "levelUp": "New weapon: {weapon}",
       "draw": "Draw",

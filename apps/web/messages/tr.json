@@ -723,6 +723,7 @@
       "roundN": "Raunt {n}",
       "attackersRound": "Raundu Akıncılar aldı: {reason}",
       "defendersRound": "Raundu Bekçiler aldı: {reason}",
+      "radar": "Radar: yakındaki takım arkadaşları ve görülen rakipler",
       "halftime": "Devre arası: taraflar değişti",
       "levelUp": "Yeni silah: {weapon}",
       "draw": "Berabere",
