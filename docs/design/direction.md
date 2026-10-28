@@ -86,6 +86,7 @@ Süreler `PLAN.md` 3'ten: düğme 150 ms, kart 200 ms, sayfa geçişi 250 ms, mo
 - Skor sayaçları: hedef değere `out` eğrisiyle 550 ms sayarak gelir; reduced-motion'da anında.
 - Sayfa geçişi: içerik 8 px yukarı kayarak 250 ms'de belirir; iskelet → içerik geçişinde çapraz solma yok, yerine içerik yerine oturur.
 - Oyun sırasında HUD dışında animasyon yok; düşük performans modunda tümü kapalı.
+- **Attract mode (kapak demosu):** Salondaki boş bir makine gibi, kapak kartı hover ya da odak aldığında kendi mekaniğini 1,6 s'lik bir döngüyle oynar: yılan elmaya atılır, iki 2 birleşip 4 olur, ortadaki kart döner, blok satırına düşer, kazanan disk iner, pak seker, at zıplar, kalem ve soru kartı sallanır, kart hızlanır. Döngü kapağın duruk pozunda başlar ve biter; "yakında" kapakları oynamaz; reduced-motion'da tamamen kapalı. Sayfanın öne çıkan kapağı (ana sayfa ve katalogdaki öncü kart) açılışta demosunu iki kez oynatır; sayfa başına tek orkestra anı budur, bölümler ayrıca kayarak girmez. Uygulama `packages/ui/src/styles/app.css` (`.attract-*`).
 
 ### Marka işareti
 
@@ -111,7 +112,7 @@ Her oyunun bir **imza rengi** ve mekanikten türeyen **tek bir geometrik motifi*
 ### Durumlar
 
 - **Yükleniyor:** İçerik şekilli iskelet (kapak oranı, başlık uzunluğu, liste satır sayısı gerçek içerikle aynı). Shimmer yok; 1,2 s'lik nazik opaklık nabzı. Reduced-motion'da sabit.
-- **Boş:** Küçük bir çizgi illüstrasyon (ilgili oyun motifinden), bir cümlelik açıklama, tek bir eylem ("Katalogu aç", "İlk oyununu oyna"). Gri kutu değil.
+- **Boş:** Küçük bir çizgi illüstrasyon (ilgili oyun motifinden), bir cümlelik açıklama, tek bir eylem ("Katalogu aç", "İlk oyununu oyna"). Gri kutu değil. Sahneler `EmptyState` `scene` özelliğinde: `no-match` (eşleşmeyen iki Memory Flip kartı, sonuçsuz arama), `off-board` (tahtadan çıkan yılan, 404), `podium` (boş kürsü, sıralamalar), `locked` (kilitli makine, yetkisiz erişim); diğerleri için `shelf`.
 - **Hata:** `coral.soft` zemin, ikon + başlık + ne yapılacağı; "Tekrar dene" birincil düğme. Teknik mesaj yalnızca genişletilebilir ayrıntıda.
 - **Çevrimdışı:** Üstte `yellow.soft` şerit: "Bağlantı yok. Skorun kaydedilemez, bağlanınca gönderilir." Oyun ekranında HUD'a küçük rozet olarak iner.
 - **Oyun oynama kabuğu:** `loading` (kapak rengiyle ilerleme çubuğu), `ready` (büyük Oyna düğmesi + kontrol ipuçları), `playing` (yalın HUD), `paused` (koyu örtü, devam/çık), `finished` (sonuç modalı; skor sayarak gelir, rekorsa `yellow` sticker ve kısa konfeti), `error` (coral kart, yeniden başlat).
