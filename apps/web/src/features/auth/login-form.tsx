@@ -2,7 +2,7 @@
 
 import { Button, TextField } from '@playnex/ui';
 import { useTranslations } from 'next-intl';
-import { useActionState } from 'react';
+import { useActionState, useEffect, useId, useRef } from 'react';
 
 import { Link } from '@/i18n/navigation';
 
@@ -16,10 +16,22 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
   const [state, action, pending] = useActionState(login, {} satisfies AuthFormState);
   const { errorText } = useAuthCopy();
   const banner = errorText(state);
+  const credentialsRejected = state.error === 'invalid_credentials';
+  const alertId = useId();
+  const alertRef = useRef<HTMLParagraphElement>(null);
+
+  // The action re-renders the form without moving focus, which leaves it on <body>.
+  useEffect(() => {
+    if (state.error) alertRef.current?.focus();
+  }, [state]);
 
   return (
     <form action={action} className="flex flex-col gap-5">
-      {banner ? <FormAlert tone="error">{banner}</FormAlert> : null}
+      {banner ? (
+        <FormAlert tone="error" id={alertId} ref={alertRef}>
+          {banner}
+        </FormAlert>
+      ) : null}
       {!banner && resetDone ? <FormAlert tone="success">{t('resetDone')}</FormAlert> : null}
       {next ? <input type="hidden" name="next" value={next} /> : null}
       <TextField
@@ -30,6 +42,8 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
         spellCheck={false}
         required
         defaultValue={state.values?.login}
+        aria-invalid={credentialsRejected || undefined}
+        aria-describedby={credentialsRejected ? alertId : undefined}
       />
       <div className="flex flex-col">
         <PasswordField
@@ -37,6 +51,8 @@ export function LoginForm({ next, resetDone }: { next?: string; resetDone: boole
           label={t('password')}
           autoComplete="current-password"
           required
+          aria-invalid={credentialsRejected || undefined}
+          aria-describedby={credentialsRejected ? alertId : undefined}
         />
         <Link
           href="/forgot-password"
