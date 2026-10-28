@@ -3,10 +3,14 @@ mod admin;
 mod config;
 mod email_codes;
 mod error;
+mod friends;
 mod mailer;
 mod password_reset;
+mod progression;
 mod rate_limit;
+mod reports;
 mod sessions;
+mod siper;
 mod validation;
 
 use std::{net::SocketAddr, sync::Arc, time::Duration};
@@ -26,6 +30,8 @@ pub struct AppState {
     pub mailer: Arc<Mailer>,
     pub limiter: Arc<RateLimiter>,
     pub admin_emails: Arc<[String]>,
+    pub ticket_key: Option<Arc<[u8]>>,
+    pub internal_token: Option<Arc<str>>,
 }
 
 #[derive(Serialize)]
@@ -74,6 +80,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         mailer: Arc::new(Mailer::new(&config.mailer_url)?),
         limiter: Arc::new(RateLimiter::default()),
         admin_emails: config.admin_emails.into(),
+        ticket_key: config
+            .realtime_account_secret
+            .map(|secret| Arc::from(secret.into_bytes())),
+        internal_token: config.internal_token.map(Arc::from),
     };
 
     let app = Router::new()
@@ -81,6 +91,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .merge(accounts::router())
         .merge(password_reset::router())
         .merge(admin::router())
+        .merge(siper::router())
+        .merge(friends::router())
+        .merge(reports::router())
         .with_state(state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
