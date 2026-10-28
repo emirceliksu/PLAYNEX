@@ -425,14 +425,115 @@ async fn login(
         });
     }
 
+    // The password alone no longer opens a session: a code goes to the mailbox and the
+    // browser gets a challenge that the code must be presented with. Inside the resend
+    // cooldown no new mail goes out and the code already sent stays valid.
+    if let Some(code) = email_codes::refresh(&state.pool, credentials.id, Purpose::Login).await? {
+        send_code(
+            &state,
+            MailPurpose::SignIn,
+            &credentials.email,
+            &credentials.first_name,
+            &credentials.locale,
+            &code,
+        )
+        .await;
+    }
+    let challenge = email_codes::issue_challenge(&state.pool, credentials.id).await?;
+    Ok((
+        StatusCode::ACCEPTED,
+        Json(CodeSent {
+            challenge,
+            email: credentials.email,
+            retry_after: email_codes::RESEND_COOLDOWN_SECS,
+        }),
+    ))
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct CodeSent {
+    challenge: String,
+    email: String,
+    retry_after: i64,
+}
+
+#[derive(Deserialize)]
+struct LoginCodeRequest {
+    challenge: String,
+    code: String,
+}
+
+async fn login_code(
+    State(state): State<AppState>,
+    ClientAddress(client): ClientAddress,
+    Json(request): Json<LoginCodeRequest>,
+) -> Result<impl IntoResponse, ApiError> {
+    state
+        .limiter
+        .check("login-code", &client, 20, Duration::from_secs(600))?;
+
+    let user_id = email_codes::challenge_owner(&state.pool, &request.challenge)
+        .await?
+        .ok_or(ApiError::CodeExpired)?;
+    let code: String = request.code.chars().filter(char::is_ascii_digit).collect();
+    email_codes::consume(&state.pool, user_id, Purpose::Login, &code).await?;
+
     let account = sqlx::query_as::<_, Account>(AssertSqlSafe(format!(
-        "select {ACCOUNT_COLUMNS} from users where id = $1"
+        "select {ACCOUNT_COLUMNS} from users where id = $1 and suspended_at is null"
     )))
-    .bind(credentials.id)
-    .fetch_one(&state.pool)
-    .await?;
+    .bind(user_id)
+    .fetch_optional(&state.pool)
+    .await?
+    .ok_or(ApiError::AccountSuspended)?;
+    email_codes::discard(&state.pool, user_id, Purpose::Login).await?;
     let session = sessions::issue(&state.pool, account.id).await?;
     Ok(SignedIn::new(account, session))
+}
+
+#[derive(Deserialize)]
+struct LoginResendRequest {
+    challenge: String,
+}
+
+async fn login_resend(
+    State(state): State<AppState>,
+    ClientAddress(client): ClientAddress,
+    Json(request): Json<LoginResendRequest>,
+) -> Result<impl IntoResponse, ApiError> {
+    state
+        .limiter
+        .check("login-resend", &client, 10, Duration::from_secs(600))?;
+
+    let user_id = email_codes::challenge_owner(&state.pool, &request.challenge)
+        .await?
+        .ok_or(ApiError::CodeExpired)?;
+    let recipient = sqlx::query_as::<_, (String, String, String)>(
+        "select email, first_name, locale from users where id = $1 and suspended_at is null",
+    )
+    .bind(user_id)
+    .fetch_optional(&state.pool)
+    .await?
+    .ok_or(ApiError::AccountSuspended)?;
+    if let Some(code) = email_codes::refresh(&state.pool, user_id, Purpose::Login).await? {
+        let (email, first_name, locale) = recipient;
+        send_code(
+            &state,
+            MailPurpose::SignIn,
+            &email,
+            &first_name,
+            &locale,
+            &code,
+        )
+        .await;
+    }
+
+    Ok((
+        StatusCode::ACCEPTED,
+        Json(ResendAccepted {
+            retry_after: email_codes::RESEND_COOLDOWN_SECS,
+        }),
+    ))
 }
 
 async fn logout(State(state): State<AppState>, headers: HeaderMap) -> Result<StatusCode, ApiError> {
@@ -490,6 +591,8 @@ pub fn router() -> Router<AppState> {
         .route("/v1/auth/verify", post(verify))
         .route("/v1/auth/resend", post(resend))
         .route("/v1/auth/login", post(login))
+        .route("/v1/auth/login/code", post(login_code))
+        .route("/v1/auth/login/resend", post(login_resend))
         .route("/v1/auth/logout", post(logout))
         .route("/v1/me", get(me))
         .route("/v1/players/{username}", get(player))

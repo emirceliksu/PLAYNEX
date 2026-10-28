@@ -9,6 +9,7 @@ use crate::error::ApiError;
 pub enum Purpose {
     Verify,
     PasswordReset,
+    Login,
 }
 
 impl Purpose {
@@ -16,6 +17,7 @@ impl Purpose {
         match self {
             Self::Verify => "verify",
             Self::PasswordReset => "password_reset",
+            Self::Login => "login",
         }
     }
 }
@@ -86,6 +88,37 @@ pub async fn refresh(
     .rows_affected();
 
     Ok((replaced == 1).then_some(code))
+}
+
+/// Binds a fresh challenge to the pending sign-in code. A new challenge replaces the previous
+/// one, so only the browser that passed the password step last can finish signing in.
+pub async fn issue_challenge(pool: &PgPool, user_id: Uuid) -> Result<String, ApiError> {
+    let mut raw = [0u8; 32];
+    rand::fill(&mut raw);
+    let challenge = hex::encode(raw);
+    sqlx::query("update email_codes set challenge_hash = $3 where user_id = $1 and purpose = $2")
+        .bind(user_id)
+        .bind(Purpose::Login.as_str())
+        .bind(hash_challenge(&challenge))
+        .execute(pool)
+        .await?;
+    Ok(challenge)
+}
+
+/// The user a sign-in challenge belongs to, while its code has not expired.
+pub async fn challenge_owner(pool: &PgPool, challenge: &str) -> Result<Option<Uuid>, ApiError> {
+    Ok(sqlx::query_scalar(
+        "select user_id from email_codes
+         where purpose = $1 and challenge_hash = $2 and expires_at > now()",
+    )
+    .bind(Purpose::Login.as_str())
+    .bind(hash_challenge(challenge))
+    .fetch_optional(pool)
+    .await?)
+}
+
+fn hash_challenge(challenge: &str) -> Vec<u8> {
+    Sha256::digest(challenge.as_bytes()).to_vec()
 }
 
 #[derive(sqlx::FromRow)]
@@ -161,6 +194,10 @@ mod tests {
         assert_ne!(
             hash_code(user, Purpose::Verify, code),
             hash_code(user, Purpose::PasswordReset, code)
+        );
+        assert_ne!(
+            hash_code(user, Purpose::Login, code),
+            hash_code(user, Purpose::Verify, code)
         );
     }
 }
