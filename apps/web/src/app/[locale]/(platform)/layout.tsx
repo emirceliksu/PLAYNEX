@@ -23,6 +23,7 @@ export default async function PlatformLayout({ children }: { children: ReactNode
         notificationsEmpty: t('common.notificationsEmpty'),
         close: t('common.close'),
         myProfile: t('common.myProfile'),
+        skipToContent: t('common.skipToContent'),
         signIn: t('common.signIn'),
         signUp: t('common.signUp'),
         offlineTitle: t('errors.offline.title'),
