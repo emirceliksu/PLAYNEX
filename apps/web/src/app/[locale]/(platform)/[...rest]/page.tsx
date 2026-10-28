@@ -13,7 +13,7 @@ export async function generateMetadata({
 }
 
 // Unmatched paths would otherwise fall through to Next's root 404, which has no locale,
-// no <html lang> and none of our styling. Routing them here renders [locale]/not-found.
+// no <html lang> and none of our styling. Catching them here shows the 404 inside the shell.
 export default function UnmatchedRoute() {
   notFound();
 }

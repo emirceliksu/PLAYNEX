@@ -580,7 +580,8 @@
     "notFound": {
       "title": "Nothing here",
       "description": "The page you are looking for may have moved or never existed.",
-      "action": "Go to the home page"
+      "action": "Go to the home page",
+      "browse": "Browse games"
     },
     "generic": {
       "title": "Something went wrong",

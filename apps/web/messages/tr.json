@@ -580,7 +580,8 @@
     "notFound": {
       "title": "Burada bir şey yok",
       "description": "Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.",
-      "action": "Ana sayfaya dön"
+      "action": "Ana sayfaya dön",
+      "browse": "Oyunlara göz at"
     },
     "generic": {
       "title": "Bir şeyler ters gitti",

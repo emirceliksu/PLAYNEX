@@ -12,6 +12,7 @@ export default async function NotFound() {
         <Logo />
       </Link>
       <EmptyState
+        titleAs="h1"
         title={t('title')}
         description={t('description')}
         className="w-full max-w-md bg-surface-raised"
