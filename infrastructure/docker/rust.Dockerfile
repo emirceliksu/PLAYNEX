@@ -18,6 +18,8 @@ COPY games/2d/air-hockey/data games/2d/air-hockey/data
 COPY games/2d/drawing-party/data games/2d/drawing-party/data
 COPY games/2d/trivia-battle/data games/2d/trivia-battle/data
 COPY games/3d/neon-kart-racing/data games/3d/neon-kart-racing/data
+# Realtime reads the siper maps, rules and weapons; the api reads the siper cosmetics.
+COPY games/3d/siper/data games/3d/siper/data
 
 # The services build in parallel; locked caches keep them from unpacking crates over each other.
 RUN --mount=type=cache,target=/usr/local/cargo/registry,sharing=locked \
