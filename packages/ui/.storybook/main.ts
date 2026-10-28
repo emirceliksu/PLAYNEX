@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
 
-// Bind mounts on Windows/macOS hosts do not deliver file events; see .env.example.
+// Bind mounts on Windows/macOS hosts do not deliver file events; see infrastructure/development.env.
 const usePolling = process.env.WATCH_POLLING !== '0';
 
 const config: StorybookConfig = {

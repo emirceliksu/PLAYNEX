@@ -11,4 +11,3 @@ target
 docs
 .env
 .env.*
-!.env.example

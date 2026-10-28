@@ -5,7 +5,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
-// Bind mounts on Windows/macOS hosts do not deliver file events; see .env.example.
+// Bind mounts on Windows/macOS hosts do not deliver file events; see infrastructure/development.env.
 const usePolling = process.env.WATCH_POLLING !== '0';
 
 const nextConfig: NextConfig = {

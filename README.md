@@ -32,7 +32,7 @@ make down
 
 Kayıt olurken gönderilen doğrulama kodları geliştirmede Mailpit'e düşer (http://localhost:8025).
 
-Ortam değişkenleri `.env.example` dosyasında belgelenir; `make up` eksikse `.env` dosyasını oradan kopyalar.
+Geliştirme ortam değişkenleri `infrastructure/development.env` dosyasında belgelenir; `make up` eksikse kökteki `.env` dosyasını oradan kopyalar. Dosya bilerek kökte değil: Coolify kökteki `.env.example` değerlerini üretim değişkeni olarak içeri alıyor.
 
 ## Günlük komutlar
 

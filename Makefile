@@ -3,7 +3,7 @@ COMPOSE ?= docker compose
 .PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens storybook-build screenshots migrate
 
 .env:
-	cp .env.example .env
+	cp infrastructure/development.env .env
 
 # First run on a clean machine: builds images, installs JS deps and resolves Cargo lockfile.
 bootstrap: .env

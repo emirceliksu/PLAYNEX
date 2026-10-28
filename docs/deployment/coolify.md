@@ -59,6 +59,8 @@ Elle girilir:
 
 İsteğe bağlı: `POSTGRES_DB` (varsayılan `playnex`), `RUST_LOG` (varsayılan `info`).
 
+Kaynak listesinde bu tablolarda olmayan bir değişken görünüyorsa (`POSTGRES_PASSWORD`, `VALKEY_URL`, `STORAGE_*`, `SMTP_HOST=mailpit` gibi) silinir. Bunlar geliştirme ortamının varsayılanlarıdır; üretim stack'i kullanmaz, `SMTP_*` ve `MAIL_FROM` ise yanlış değerle e-posta gönderimini bozar.
+
 ## Deploy sonrası kontrol
 
 ```bash

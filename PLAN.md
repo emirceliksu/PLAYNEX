@@ -279,7 +279,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
   - Kaynak kod bind mount ile bağlanır, hot reload çalışır; `node_modules`, pnpm store ve Cargo `target` named volume'larda tutulur.
   - Tüm komutlar container içinden: `docker compose exec web pnpm ...`, `docker compose exec api cargo ...`. Kısa yollar kökteki `Makefile` ile.
   - Seed verisi ve migration'lar ayrı bir `docker compose run` adımıyla çalışır.
-  - Ortam değişkenleri `.env.example` üzerinden belgelenir; gerçek `.env` ve secret'lar repoya girmez.
+  - Geliştirme ortam değişkenleri `infrastructure/development.env` üzerinden belgelenir; gerçek `.env` ve secret'lar repoya girmez.
 - Üretim imajları: multi-stage Dockerfile, non-root kullanıcı, healthcheck, sabitlenmiş base image sürümleri.
 - Staging: üretime yakın test ortamı, sentetik oyuncular, load test.
 - Production: ayrı erişim sınırları, reverse proxy/WAF/CDN, izleme ve uyarı. İlk ortam Coolify üzerinde `playnex.meccode.com`; tek giriş `edge`, diğer servisler iç ağda (`docs/deployment/coolify.md`).
@@ -355,7 +355,6 @@ playnex/
 │   └── decisions/
 ├── compose.yaml
 ├── Makefile
-├── .env.example
 ├── pnpm-workspace.yaml
 ├── turbo.json
 ├── Cargo.toml
