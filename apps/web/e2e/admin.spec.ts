@@ -86,7 +86,7 @@ test('an admin suspends a player and lifts the suspension', async ({ browser, re
   await captureWidths(admin, 'admin');
 
   await admin.getByRole('link', { name: 'Oyuncular', exact: true }).click();
-  await admin.getByLabel('Oyuncu ara').fill(username);
+  await admin.getByRole('searchbox', { name: 'Oyuncu ara' }).fill(username);
   await admin.getByRole('button', { name: 'Ara' }).click();
   await expect(admin.getByText('1 hesap')).toBeVisible();
   const row = admin.getByRole('listitem').filter({ hasText: `@${username}` });
