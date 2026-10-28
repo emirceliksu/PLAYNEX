@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
-import { latestCode } from './mailpit';
+import { enterLoginCode, latestCode } from './mailpit';
 
 const outputDir = path.resolve(__dirname, '../../../docs/design/screenshots');
 
@@ -58,7 +58,13 @@ test('a visitor signs up, verifies the email, signs out and signs back in', asyn
   await expect(page.getByRole('alert').filter({ hasText: 'hatalı' })).toBeVisible();
 
   await page.getByLabel('Şifre', { exact: true }).fill(password);
+  const signInAt = Date.now() - 1_000;
   await page.getByRole('button', { name: 'Giriş yap', exact: true }).click();
+  await expect(page).toHaveURL(/\/login\/code$/);
+  await page.getByLabel('Giriş kodu').fill('000000');
+  await page.getByRole('button', { name: 'Girişi tamamla' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'Kod eşleşmedi' })).toBeFocused();
+  await enterLoginCode(page, request, email, signInAt);
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole('link', { name: 'Profilim' })).toBeVisible();
 

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-import { latestCode } from './mailpit';
+import { enterLoginCode, latestCode } from './mailpit';
 
 test('a player resets a forgotten password with a mailed code', async ({ page, request }) => {
   const id = Date.now().toString(36);
@@ -45,6 +45,8 @@ test('a player resets a forgotten password with a mailed code', async ({ page, r
   await expect(page.getByRole('alert').filter({ hasText: 'hatalı' })).toBeVisible();
 
   await page.getByLabel('Şifre', { exact: true }).fill('yeni sifre cumlesi');
+  const signInAt = Date.now() - 1_000;
   await page.getByRole('button', { name: 'Giriş yap', exact: true }).click();
+  await enterLoginCode(page, request, email, signInAt);
   await expect(page.getByRole('link', { name: 'Profilim' })).toBeVisible();
 });

@@ -33,10 +33,10 @@ export default async function LoginPage({ params, searchParams }: LoginPageProps
   if (account) {
     redirect({ href: `/profile/${account.username}`, locale });
   }
-  const t = await getTranslations('auth.login');
+  const t = await getTranslations('auth');
 
   return (
-    <AuthFrame title={t('title')} lead={t('lead')}>
+    <AuthFrame step={t('steps.login')} title={t('login.title')} lead={t('login.lead')}>
       <LoginForm next={query.next} resetDone={query.reset === '1'} />
     </AuthFrame>
   );

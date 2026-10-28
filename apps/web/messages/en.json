@@ -50,7 +50,8 @@
     "forgotPassword": "Forgot password",
     "resetPassword": "New password",
     "admin": "Admin",
-    "adminUsers": "Player management"
+    "adminUsers": "Player management",
+    "loginCode": "Sign-in code"
   },
   "home": {
     "title": "PLAYNEX arcade",
@@ -221,7 +222,9 @@
       "register": "Step 1 of 2",
       "verify": "Step 2 of 2",
       "forgot": "Step 1 / 2",
-      "reset": "Step 2 / 2"
+      "reset": "Step 2 / 2",
+      "login": "Step 1 of 2",
+      "loginCode": "Step 2 of 2"
     },
     "register": {
       "title": "Create your account",
@@ -326,6 +329,20 @@
       "resent": "We sent a new code.",
       "wrongEmail": "Wrong address?",
       "restart": "Use another address"
+    },
+    "loginCode": {
+      "title": "Enter your sign-in code",
+      "lead": "We sent a 6-digit sign-in code to <b>{email}</b>. It is valid for 15 minutes.",
+      "codeLabel": "Sign-in code",
+      "codeHint": "If it has not arrived, check your spam folder too.",
+      "submit": "Finish signing in",
+      "submitting": "Checking",
+      "resend": "Send a new code",
+      "resendIn": "You can resend in {seconds}s",
+      "resent": "We sent you a new code.",
+      "expired": "This sign-in attempt has expired. Sign in with your password again.",
+      "otherAccount": "Signing in with another account?",
+      "restart": "Back to sign-in"
     }
   },
   "player": {
