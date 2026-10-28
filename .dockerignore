@@ -1,0 +1,14 @@
+.git
+.github
+.turbo
+**/node_modules
+**/.next
+**/dist
+**/storybook-static
+**/test-results
+**/playwright-report
+target
+docs
+.env
+.env.*
+!.env.example

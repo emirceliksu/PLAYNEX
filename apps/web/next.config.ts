@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -8,6 +10,10 @@ const usePolling = process.env.WATCH_POLLING !== '0';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // The production image ships only the traced server; tracing starts at the monorepo root
+  // so workspace packages and game data end up in it.
+  output: 'standalone',
+  outputFileTracingRoot: path.join(import.meta.dirname, '../..'),
   // The Playwright container reaches the dev server as http://web:3000.
   allowedDevOrigins: ['web', 'web:3000'],
   transpilePackages: [

@@ -1,0 +1,133 @@
+# Production stack for Coolify (Docker Compose build pack). Local development uses compose.yaml.
+#
+# Only `edge` is routed by the Coolify proxy; it is the single way in. web, api, realtime and
+# postgres share the `internal` network, which Docker marks internal: no route to the outside
+# world and no published ports. The api additionally joins `egress` so it can reach the SMTP
+# relay. Setup and the variables to fill in Coolify: docs/deployment/coolify.md.
+
+x-hardening: &hardening
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+
+services:
+  edge:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: infrastructure/docker/edge.Dockerfile
+    environment:
+      # Coolify routes the domain assigned to this service (https://playnex.meccode.com) to port 8080.
+      - SERVICE_URL_EDGE_8080
+    read_only: true
+    tmpfs:
+      - /data
+      - /config
+    networks:
+      - public
+      - internal
+    depends_on:
+      web:
+        condition: service_healthy
+      realtime:
+        condition: service_healthy
+
+  web:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: infrastructure/docker/web.Dockerfile
+    environment:
+      API_INTERNAL_URL: http://api:8080
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/apps/web/.next/cache
+    networks:
+      - internal
+    depends_on:
+      api:
+        condition: service_healthy
+
+  api:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: infrastructure/docker/rust.Dockerfile
+      args:
+        PACKAGE: playnex-api
+    environment:
+      PORT: 8080
+      DATABASE_URL: postgres://${SERVICE_USER_POSTGRES}:${SERVICE_PASSWORD_POSTGRES}@postgres:5432/${POSTGRES_DB:-playnex}
+      SMTP_HOST: ${SMTP_HOST:?SMTP_HOST must be set in Coolify}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURITY: ${SMTP_SECURITY:-starttls}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:?MAIL_FROM must be set in Coolify}
+      RUST_LOG: ${RUST_LOG:-info}
+    read_only: true
+    networks:
+      - internal
+      - egress
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:8080/health']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  realtime:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: infrastructure/docker/rust.Dockerfile
+      args:
+        PACKAGE: playnex-realtime
+    environment:
+      PORT: 8081
+      REALTIME_TOKEN_SECRET: ${SERVICE_PASSWORD_64_REALTIME}
+      REALTIME_ALLOWED_ORIGINS: ${PUBLIC_ORIGIN:-https://playnex.meccode.com}
+      RUST_LOG: ${RUST_LOG:-info}
+    read_only: true
+    networks:
+      - internal
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:8081/health']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  postgres:
+    image: postgres:18.6-alpine
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      POSTGRES_USER: ${SERVICE_USER_POSTGRES}
+      POSTGRES_PASSWORD: ${SERVICE_PASSWORD_POSTGRES}
+      POSTGRES_DB: ${POSTGRES_DB:-playnex}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    networks:
+      - internal
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 20s
+      retries: 10
+
+networks:
+  public: {}
+  internal:
+    internal: true
+  egress: {}
+
+volumes:
+  postgres-data:

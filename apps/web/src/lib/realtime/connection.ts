@@ -20,8 +20,10 @@ interface ConnectionEvents {
 
 export function realtimeUrl(): string {
   const configured = process.env.NEXT_PUBLIC_REALTIME_URL;
-  const base = configured ?? `ws://${window.location.hostname}:8081`;
-  return `${base.replace(/\/$/, '')}/ws`;
+  if (configured) return `${configured.replace(/\/$/, '')}/ws`;
+  // In production the edge proxy serves /ws on the same origin as the pages.
+  const scheme = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  return `${scheme}://${window.location.host}/ws`;
 }
 
 function readResumeToken(): string | undefined {

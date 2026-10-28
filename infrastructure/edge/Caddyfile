@@ -1,0 +1,39 @@
+# The only service the public proxy can reach. TLS ends at the platform proxy in front
+# of this container; everything behind it talks plain HTTP on the internal network.
+{
+	admin off
+	auto_https off
+	servers {
+		trusted_proxies static private_ranges
+		client_ip_headers X-Forwarded-For X-Real-IP
+	}
+}
+
+:8080 {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+		-Server
+	}
+
+	handle /edge-health {
+		respond "ok" 200
+	}
+
+	handle /ws {
+		reverse_proxy realtime:8081
+	}
+
+	handle {
+		reverse_proxy web:3000 {
+			# The web app forwards this to the API for rate limiting; overwriting it here
+			# keeps a visitor from choosing their own address.
+			header_up X-Real-IP {client_ip}
+		}
+	}
+}
