@@ -1,7 +1,23 @@
 {
-  "verificationSubject": "Your PLAYNEX verification code: {code}",
-  "verificationGreeting": "Hi {name},",
-  "verificationIntro": "Enter this code on the sign-up screen to open your PLAYNEX account:",
-  "verificationExpiry": "The code is valid for {minutes} minutes. If you did not start this sign-up, you can ignore this email; the account stays closed until it is verified.",
-  "verificationSignature": "PLAYNEX"
+  "greeting": "Hi {name},",
+  "codeLabel": "Your code",
+  "expiry": "The code is valid for {minutes} minutes and works once.",
+  "tagline": "An arcade in your browser: one account, scores and leaderboards.",
+  "automated": "This message was sent automatically; there is no need to reply.",
+  "verification": {
+    "subject": "Your PLAYNEX verification code: {code}",
+    "preheader": "Enter this code within {minutes} minutes to open your account.",
+    "eyebrow": "Email verification",
+    "heading": "Welcome to the arcade",
+    "intro": "Enter the code below on the sign-up screen to open your account. Once it is in, your profile is ready and you can start playing.",
+    "ignore": "If you did not start this sign-up, you can ignore this email; the account stays closed until it is verified."
+  },
+  "passwordReset": {
+    "subject": "Your PLAYNEX password reset code: {code}",
+    "preheader": "Enter this code within {minutes} minutes to set a new password.",
+    "eyebrow": "Password reset",
+    "heading": "Set a new password",
+    "intro": "A password reset was requested for your account. Enter the code below on the reset screen and choose a new password. Changing it signs you out on your other devices.",
+    "ignore": "If you did not ask for this, you can ignore this email; your password stays the same."
+  }
 }

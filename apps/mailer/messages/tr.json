@@ -1,7 +1,23 @@
 {
-  "verificationSubject": "PLAYNEX doğrulama kodun: {code}",
-  "verificationGreeting": "Merhaba {name},",
-  "verificationIntro": "PLAYNEX hesabını açmak için bu kodu kayıt ekranına gir:",
-  "verificationExpiry": "Kod {minutes} dakika geçerli. Bu kaydı sen başlatmadıysan e-postayı yok sayabilirsin; hesap doğrulanmadan açılmaz.",
-  "verificationSignature": "PLAYNEX"
+  "greeting": "Merhaba {name},",
+  "codeLabel": "Kodun",
+  "expiry": "Kod {minutes} dakika geçerli ve yalnızca bir kez kullanılabilir.",
+  "tagline": "Tarayıcıda oyun salonu: tek hesap, skorlar ve sıralamalar.",
+  "automated": "Bu e-posta otomatik gönderildi, yanıtlamana gerek yok.",
+  "verification": {
+    "subject": "PLAYNEX doğrulama kodun: {code}",
+    "preheader": "Hesabını açmak için {minutes} dakika içinde bu kodu gir.",
+    "eyebrow": "E-posta doğrulama",
+    "heading": "Salona hoş geldin",
+    "intro": "Hesabını açmak için aşağıdaki kodu kayıt ekranına gir. Kod girildiğinde profilin hazır olur ve oynamaya başlayabilirsin.",
+    "ignore": "Bu kaydı sen başlatmadıysan e-postayı yok sayabilirsin; hesap doğrulanmadan açılmaz."
+  },
+  "passwordReset": {
+    "subject": "PLAYNEX şifre sıfırlama kodun: {code}",
+    "preheader": "Yeni şifreni belirlemek için {minutes} dakika içinde bu kodu gir.",
+    "eyebrow": "Şifre sıfırlama",
+    "heading": "Yeni şifreni belirle",
+    "intro": "Hesabın için şifre sıfırlama istendi. Aşağıdaki kodu şifre sıfırlama ekranına girip yeni şifreni belirleyebilirsin. Şifren değişince diğer cihazlardaki oturumların kapanır.",
+    "ignore": "Bu isteği sen yapmadıysan e-postayı yok sayabilirsin; şifren değişmez."
+  }
 }

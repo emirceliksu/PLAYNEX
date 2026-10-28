@@ -1,6 +1,7 @@
 mod config;
 mod gmail;
 mod mail;
+mod template;
 
 use std::{net::SocketAddr, sync::Arc};
 
@@ -10,10 +11,7 @@ use serde::Serialize;
 use tokio::net::TcpListener;
 use tracing::{info, warn};
 
-use crate::{
-    config::Config,
-    mail::{Mailer, VerificationMail},
-};
+use crate::{config::Config, mail::Mailer, template::CodeMail};
 
 #[derive(Serialize)]
 struct Health {
@@ -32,24 +30,21 @@ async fn health() -> Json<Health> {
 
 // The code goes into the HTML body unescaped and the locale picks the catalog, so both are
 // held to the shape the api produces instead of trusting whoever reaches this port.
-fn is_well_formed(mail: &VerificationMail) -> bool {
+fn is_well_formed(mail: &CodeMail) -> bool {
     (4..=8).contains(&mail.code.len())
         && mail.code.bytes().all(|byte| byte.is_ascii_digit())
         && matches!(mail.locale.as_str(), "tr" | "en")
         && !mail.first_name.trim().is_empty()
 }
 
-async fn send_verification(
-    State(mailer): State<Arc<Mailer>>,
-    Json(mail): Json<VerificationMail>,
-) -> StatusCode {
+async fn send_code(State(mailer): State<Arc<Mailer>>, Json(mail): Json<CodeMail>) -> StatusCode {
     if !is_well_formed(&mail) {
         return StatusCode::UNPROCESSABLE_ENTITY;
     }
-    match mailer.send_verification(&mail).await {
+    match mailer.send(&mail).await {
         Ok(()) => StatusCode::NO_CONTENT,
         Err(error) => {
-            warn!(%error, "verification mail was not delivered");
+            warn!(%error, "code mail was not delivered");
             StatusCode::BAD_GATEWAY
         }
     }
@@ -66,7 +61,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let app = Router::new()
         .route("/health", get(health))
-        .route("/v1/verification-mails", post(send_verification))
+        .route("/v1/code-mails", post(send_code))
         .with_state(mailer);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
@@ -83,9 +78,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::template::Purpose;
 
-    fn mail(code: &str, locale: &str) -> VerificationMail {
-        VerificationMail {
+    fn mail(code: &str, locale: &str) -> CodeMail {
+        CodeMail {
+            purpose: Purpose::Verification,
             to: "oyuncu@example.com".into(),
             first_name: "Deniz".into(),
             code: code.into(),
