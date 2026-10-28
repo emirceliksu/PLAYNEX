@@ -188,7 +188,7 @@ Odak halkası 2 px `cyan.300`, 2 px ofset, her etkileşimli öğede görünür. 
 
 Aynı tipografi, aynı imza renkleri, aynı sticker mantığı; fark **zemin ve ışık**. Tuval sıcak krem (`oklch(0.97 0.02 85)`), kartlar beyaz, konturlar 2 px siyah mürekkep, gölgeler tamamen siyah ve sert. Oyun kapakları daha çok çıkartma/çizgi roman hissi verir; XP ve skorlar siyah üstüne sarı sticker olarak basılır. Koyu tema ikincil, ayar olarak sunulur.
 
-Artıları: gündüz ve mobil okunabilirlik yüksek; "oyuncak kutusu" samimiyeti; AI şablonlarından en uzak görünüm.
+Artıları: gündüz ve mobil okunabilirlik yüksek; "oyuncak kutusu" samimiyeti; hazır arayüz şablonlarından en uzak görünüm.
 Eksileri: `PLAN.md` 3'teki "koyu lacivert-mor yüzeyler" tanımıyla çelişir; oyun ekranında (canvas koyu) kabuk ile oyun arasında ışık sıçraması olur; neon/arcade karakteri zayıflar.
 
 ## Öneri
