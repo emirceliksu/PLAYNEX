@@ -101,6 +101,7 @@ services:
       PORT: 8080
       DATABASE_URL: postgres://${POSTGRES_USER:-playnex}:${POSTGRES_PASSWORD:-playnex}@postgres:5432/${POSTGRES_DB:-playnex}
       MAILER_URL: http://mailer:8082
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
       CARGO_TARGET_DIR: /cargo-target
       CARGO_BUILD_JOBS: 4
       RUST_LOG: info

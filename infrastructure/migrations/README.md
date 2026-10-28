@@ -7,4 +7,4 @@ PostgreSQL migration'ları bu dizinde, `sqlx` formatında tutulur ve `make migra
   (`-r` geri alma dosyasını da üretir).
 - Uygulanmış bir migration dosyası değiştirilmez; düzeltme yeni bir migration ile yapılır.
 
-İlk şema, ilk sprintin 6. adımında (`PLAN.md` 18. bölüm) eklenecek.
+

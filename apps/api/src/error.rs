@@ -14,13 +14,20 @@ pub type FieldErrors = BTreeMap<&'static str, &'static str>;
 pub enum ApiError {
     InvalidInput(FieldErrors),
     InvalidCredentials,
-    EmailNotVerified { email: String },
+    EmailNotVerified {
+        email: String,
+    },
+    AccountSuspended,
     InvalidCode,
     CodeExpired,
     TooManyAttempts,
-    RateLimited { retry_after_secs: u64 },
+    RateLimited {
+        retry_after_secs: u64,
+    },
     Unauthorized,
     NotFound,
+    /// The request is well formed but the current state forbids it; the code names why.
+    Conflict(&'static str),
     Internal(String),
 }
 
@@ -53,12 +60,14 @@ impl IntoResponse for ApiError {
             Self::InvalidInput(_) => (StatusCode::UNPROCESSABLE_ENTITY, "invalid_input"),
             Self::InvalidCredentials => (StatusCode::UNAUTHORIZED, "invalid_credentials"),
             Self::EmailNotVerified { .. } => (StatusCode::FORBIDDEN, "email_not_verified"),
+            Self::AccountSuspended => (StatusCode::FORBIDDEN, "account_suspended"),
             Self::InvalidCode => (StatusCode::UNPROCESSABLE_ENTITY, "invalid_code"),
             Self::CodeExpired => (StatusCode::GONE, "code_expired"),
             Self::TooManyAttempts => (StatusCode::TOO_MANY_REQUESTS, "too_many_attempts"),
             Self::RateLimited { .. } => (StatusCode::TOO_MANY_REQUESTS, "rate_limited"),
             Self::Unauthorized => (StatusCode::UNAUTHORIZED, "unauthorized"),
             Self::NotFound => (StatusCode::NOT_FOUND, "not_found"),
+            Self::Conflict(code) => (StatusCode::CONFLICT, *code),
             Self::Internal(message) => {
                 error!(%message, "request failed");
                 (StatusCode::INTERNAL_SERVER_ERROR, "internal")

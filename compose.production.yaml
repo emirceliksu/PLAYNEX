@@ -64,6 +64,8 @@ services:
       PORT: 8080
       DATABASE_URL: postgres://${SERVICE_USER_POSTGRES}:${SERVICE_PASSWORD_POSTGRES}@postgres:5432/playnex
       MAILER_URL: http://mailer:8082
+      # Comma-separated; verified accounts with these addresses become admins.
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
       RUST_LOG: info
     read_only: true
     networks:

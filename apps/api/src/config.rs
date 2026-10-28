@@ -17,6 +17,9 @@ pub struct Config {
     pub port: u16,
     pub database_url: String,
     pub mailer_url: String,
+    /// Verified accounts with these addresses are promoted to admin; nobody else can grant
+    /// the first admin role.
+    pub admin_emails: Vec<String>,
 }
 
 fn required(name: &'static str) -> Result<String, ConfigError> {
@@ -45,6 +48,14 @@ impl Config {
             port: parse_port("PORT", DEFAULT_PORT)?,
             database_url: required("DATABASE_URL")?,
             mailer_url: required("MAILER_URL")?,
+            admin_emails: optional("ADMIN_EMAILS")
+                .map(|list| {
+                    list.split(',')
+                        .map(|email| email.trim().to_lowercase())
+                        .filter(|email| !email.is_empty())
+                        .collect()
+                })
+                .unwrap_or_default(),
         })
     }
 }

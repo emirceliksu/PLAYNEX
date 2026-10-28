@@ -2,9 +2,17 @@ use std::time::Duration;
 
 use serde::Serialize;
 
+#[derive(Clone, Copy, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum MailPurpose {
+    Verification,
+    PasswordReset,
+}
+
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct VerificationMail<'a> {
+pub struct CodeMail<'a> {
+    pub purpose: MailPurpose,
     pub to: &'a str,
     pub first_name: &'a str,
     pub code: &'a str,
@@ -34,11 +42,11 @@ impl Mailer {
             http: reqwest::Client::builder()
                 .timeout(Duration::from_secs(35))
                 .build()?,
-            endpoint: format!("{}/v1/verification-mails", base_url.trim_end_matches('/')),
+            endpoint: format!("{}/v1/code-mails", base_url.trim_end_matches('/')),
         })
     }
 
-    pub async fn send_verification(&self, mail: VerificationMail<'_>) -> Result<(), MailError> {
+    pub async fn send(&self, mail: CodeMail<'_>) -> Result<(), MailError> {
         let response = self.http.post(&self.endpoint).json(&mail).send().await?;
         if response.status().is_success() {
             Ok(())

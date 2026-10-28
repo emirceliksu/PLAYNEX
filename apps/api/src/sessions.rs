@@ -3,11 +3,15 @@ use axum::{
     http::{HeaderMap, header, request::Parts},
 };
 use sha2::{Digest, Sha256};
-use sqlx::PgPool;
+use sqlx::{AssertSqlSafe, PgExecutor, PgPool};
 use time::{Duration, OffsetDateTime};
 use uuid::Uuid;
 
-use crate::{AppState, accounts::Account, error::ApiError};
+use crate::{
+    AppState,
+    accounts::{ACCOUNT_COLUMNS, Account},
+    error::ApiError,
+};
 
 pub const SESSION_DAYS: i64 = 30;
 
@@ -39,6 +43,16 @@ pub async fn issue(pool: &PgPool, user_id: Uuid) -> Result<IssuedSession, ApiErr
     Ok(IssuedSession { token, expires_at })
 }
 
+pub async fn revoke_all<'e>(executor: impl PgExecutor<'e>, user_id: Uuid) -> Result<u64, ApiError> {
+    Ok(sqlx::query(
+        "update sessions_auth set revoked_at = now() where user_id = $1 and revoked_at is null",
+    )
+    .bind(user_id)
+    .execute(executor)
+    .await?
+    .rows_affected())
+}
+
 pub async fn revoke(pool: &PgPool, token: &str) -> Result<(), ApiError> {
     sqlx::query(
         "update sessions_auth set revoked_at = now() where token_hash = $1 and revoked_at is null",
@@ -65,15 +79,15 @@ impl FromRequestParts<AppState> for CurrentUser {
 
     async fn from_request_parts(parts: &mut Parts, state: &AppState) -> Result<Self, ApiError> {
         let token = bearer_token(&parts.headers).ok_or(ApiError::Unauthorized)?;
-        let account = sqlx::query_as::<_, Account>(
-            "select u.id, u.username, u.email, u.first_name, u.last_name, u.locale, u.created_at
-             from sessions_auth s
-             join users u on u.id = s.user_id
-             where s.token_hash = $1
-               and s.revoked_at is null
-               and s.expires_at > now()
-               and u.email_verified_at is not null",
-        )
+        let account = sqlx::query_as::<_, Account>(AssertSqlSafe(format!(
+            "select {ACCOUNT_COLUMNS} from users
+             where id = (
+                 select user_id from sessions_auth
+                 where token_hash = $1 and revoked_at is null and expires_at > now()
+             )
+               and email_verified_at is not null
+               and suspended_at is null"
+        )))
         .bind(hash_token(token))
         .fetch_optional(&state.pool)
         .await?

@@ -12,16 +12,18 @@ use axum::{
     routing::{get, post},
 };
 use serde::{Deserialize, Serialize};
+use sqlx::AssertSqlSafe;
 use time::OffsetDateTime;
 use tracing::warn;
 use uuid::Uuid;
 
 use crate::{
     AppState,
+    email_codes::{self, Purpose},
     error::{ApiError, FieldErrors},
-    mailer::VerificationMail,
+    mailer::{CodeMail, MailPurpose},
     sessions::{self, CurrentUser, IssuedSession},
-    validation, verification,
+    validation,
 };
 
 // Verifying against this hash when the login is unknown keeps response time the same
@@ -44,9 +46,13 @@ pub struct Account {
     pub first_name: String,
     pub last_name: String,
     pub locale: String,
+    pub role: String,
     #[serde(with = "time::serde::rfc3339")]
     pub created_at: OffsetDateTime,
 }
+
+pub const ACCOUNT_COLUMNS: &str =
+    "id, username, email, first_name, last_name, locale, role, created_at";
 
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -75,7 +81,7 @@ impl SignedIn {
 }
 
 // The web app is the only caller and forwards the visitor address it got from the edge proxy.
-struct ClientAddress(String);
+pub struct ClientAddress(pub String);
 
 impl<S: Send + Sync> FromRequestParts<S> for ClientAddress {
     type Rejection = std::convert::Infallible;
@@ -93,7 +99,7 @@ fn client_address(headers: &HeaderMap) -> String {
         .to_owned()
 }
 
-async fn hash_password(password: String) -> Result<String, ApiError> {
+pub async fn hash_password(password: String) -> Result<String, ApiError> {
     tokio::task::spawn_blocking(move || {
         Argon2::default()
             .hash_password(password.as_bytes())
@@ -115,19 +121,27 @@ async fn password_matches(password: String, stored: String) -> Result<bool, ApiE
     .await?
 }
 
-async fn send_code(state: &AppState, to: &str, first_name: &str, locale: &str, code: &str) -> bool {
+pub async fn send_code(
+    state: &AppState,
+    purpose: MailPurpose,
+    to: &str,
+    first_name: &str,
+    locale: &str,
+    code: &str,
+) -> bool {
     let result = state
         .mailer
-        .send_verification(VerificationMail {
+        .send(CodeMail {
+            purpose,
             to,
             first_name,
             code,
             locale,
-            valid_minutes: verification::CODE_MINUTES,
+            valid_minutes: email_codes::CODE_MINUTES,
         })
         .await;
     if let Err(error) = &result {
-        warn!(%error, "verification mail was not delivered");
+        warn!(%error, "code mail was not delivered");
     }
     result.is_ok()
 }
@@ -223,25 +237,35 @@ async fn register(
         });
     }
 
-    let code = verification::create(&mut *tx, user_id).await?;
+    let code = email_codes::create(&mut *tx, user_id).await?;
     tx.commit().await?;
 
-    let mail_sent = send_code(&state, &email, &first_name, locale, &code).await;
+    let mail_sent = send_code(
+        &state,
+        MailPurpose::Verification,
+        &email,
+        &first_name,
+        locale,
+        &code,
+    )
+    .await;
     Ok((StatusCode::CREATED, Json(Registered { email, mail_sent })))
 }
 
 #[derive(sqlx::FromRow)]
-struct PendingUser {
-    id: Uuid,
-    email: String,
-    first_name: String,
-    locale: String,
-    email_verified_at: Option<OffsetDateTime>,
+pub struct UserByEmail {
+    pub id: Uuid,
+    pub email: String,
+    pub first_name: String,
+    pub locale: String,
+    pub email_verified_at: Option<OffsetDateTime>,
+    pub suspended_at: Option<OffsetDateTime>,
 }
 
-async fn find_by_email(state: &AppState, email: &str) -> Result<Option<PendingUser>, ApiError> {
-    Ok(sqlx::query_as::<_, PendingUser>(
-        "select id, email, first_name, locale, email_verified_at from users where lower(email) = $1",
+pub async fn find_by_email(state: &AppState, email: &str) -> Result<Option<UserByEmail>, ApiError> {
+    Ok(sqlx::query_as::<_, UserByEmail>(
+        "select id, email, first_name, locale, email_verified_at, suspended_at
+         from users where lower(email) = $1",
     )
     .bind(validation::normalize_email(email))
     .fetch_optional(&state.pool)
@@ -269,20 +293,21 @@ async fn verify(
         .filter(|user| user.email_verified_at.is_none())
         .ok_or(ApiError::InvalidCode)?;
 
-    verification::consume(&state.pool, user.id, &code).await?;
+    email_codes::consume(&state.pool, user.id, Purpose::Verify, &code).await?;
 
     let mut tx = state.pool.begin().await?;
-    let account = sqlx::query_as::<_, Account>(
-        "update users set email_verified_at = now() where id = $1
-         returning id, username, email, first_name, last_name, locale, created_at",
-    )
+    let account = sqlx::query_as::<_, Account>(AssertSqlSafe(format!(
+        "update users set
+             email_verified_at = now(),
+             role = case when lower(email) = any($2) then 'admin' else role end
+         where id = $1
+         returning {ACCOUNT_COLUMNS}"
+    )))
     .bind(user.id)
+    .bind(&state.admin_emails[..])
     .fetch_one(&mut *tx)
     .await?;
-    sqlx::query("delete from email_verifications where user_id = $1")
-        .bind(user.id)
-        .execute(&mut *tx)
-        .await?;
+    email_codes::discard(&mut *tx, user.id, Purpose::Verify).await?;
     tx.commit().await?;
 
     let session = sessions::issue(&state.pool, account.id).await?;
@@ -313,15 +338,23 @@ async fn resend(
 
     if let Some(user) = find_by_email(&state, &request.email).await?
         && user.email_verified_at.is_none()
-        && let Some(code) = verification::refresh(&state.pool, user.id).await?
+        && let Some(code) = email_codes::refresh(&state.pool, user.id, Purpose::Verify).await?
     {
-        send_code(&state, &user.email, &user.first_name, &user.locale, &code).await;
+        send_code(
+            &state,
+            MailPurpose::Verification,
+            &user.email,
+            &user.first_name,
+            &user.locale,
+            &code,
+        )
+        .await;
     }
 
     Ok((
         StatusCode::ACCEPTED,
         Json(ResendAccepted {
-            retry_after: verification::RESEND_COOLDOWN_SECS,
+            retry_after: email_codes::RESEND_COOLDOWN_SECS,
         }),
     ))
 }
@@ -340,6 +373,7 @@ struct Credentials {
     locale: String,
     password_hash: String,
     email_verified_at: Option<OffsetDateTime>,
+    suspended_at: Option<OffsetDateTime>,
 }
 
 async fn login(
@@ -353,7 +387,7 @@ async fn login(
 
     let login = request.login.trim().to_lowercase();
     let credentials = sqlx::query_as::<_, Credentials>(
-        "select id, email, first_name, locale, password_hash, email_verified_at
+        "select id, email, first_name, locale, password_hash, email_verified_at, suspended_at
          from users where username = $1 or lower(email) = $1",
     )
     .bind(&login)
@@ -367,11 +401,18 @@ async fn login(
     if !password_matches(request.password, credentials.password_hash).await? {
         return Err(ApiError::InvalidCredentials);
     }
+    // Checked only after the password, so a suspension is not disclosed to someone guessing.
+    if credentials.suspended_at.is_some() {
+        return Err(ApiError::AccountSuspended);
+    }
 
     if credentials.email_verified_at.is_none() {
-        if let Some(code) = verification::refresh(&state.pool, credentials.id).await? {
+        if let Some(code) =
+            email_codes::refresh(&state.pool, credentials.id, Purpose::Verify).await?
+        {
             send_code(
                 &state,
+                MailPurpose::Verification,
                 &credentials.email,
                 &credentials.first_name,
                 &credentials.locale,
@@ -384,9 +425,9 @@ async fn login(
         });
     }
 
-    let account = sqlx::query_as::<_, Account>(
-        "select id, username, email, first_name, last_name, locale, created_at from users where id = $1",
-    )
+    let account = sqlx::query_as::<_, Account>(AssertSqlSafe(format!(
+        "select {ACCOUNT_COLUMNS} from users where id = $1"
+    )))
     .bind(credentials.id)
     .fetch_one(&state.pool)
     .await?;
@@ -433,7 +474,7 @@ async fn player(
 ) -> Result<Json<PublicPlayer>, ApiError> {
     let mut player = sqlx::query_as::<_, PublicPlayer>(
         "select username, first_name, last_name, created_at from users
-         where username = $1 and email_verified_at is not null",
+         where username = $1 and email_verified_at is not null and suspended_at is null",
     )
     .bind(validation::normalize_username(&username))
     .fetch_optional(&state.pool)

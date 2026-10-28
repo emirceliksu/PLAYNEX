@@ -1,11 +1,13 @@
 mod accounts;
+mod admin;
 mod config;
+mod email_codes;
 mod error;
 mod mailer;
+mod password_reset;
 mod rate_limit;
 mod sessions;
 mod validation;
-mod verification;
 
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
@@ -23,6 +25,7 @@ pub struct AppState {
     pub pool: PgPool,
     pub mailer: Arc<Mailer>,
     pub limiter: Arc<RateLimiter>,
+    pub admin_emails: Arc<[String]>,
 }
 
 #[derive(Serialize)]
@@ -64,16 +67,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .run(&pool)
         .await?;
     info!("database migrations applied");
+    admin::promote_configured(&pool, &config.admin_emails).await?;
 
     let state = AppState {
         pool,
         mailer: Arc::new(Mailer::new(&config.mailer_url)?),
         limiter: Arc::new(RateLimiter::default()),
+        admin_emails: config.admin_emails.into(),
     };
 
     let app = Router::new()
         .route("/health", get(health))
         .merge(accounts::router())
+        .merge(password_reset::router())
+        .merge(admin::router())
         .with_state(state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
