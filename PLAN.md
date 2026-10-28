@@ -388,7 +388,7 @@ playnex/
 - [x] Snake Rush, blok bulmacası (Tuğla Tuğla), Memory Flip, 2048 Fusion (istemci tarafı; skor doğrulaması sprint 6)
 - [x] Connect Four (1v1): temel oda ve sunucuda hamle doğrulama
 - [ ] Skor doğrulama, liderlik tabloları, favoriler, oyun geçmişi
-- [ ] Temel raporlama, admin ve operasyon paneli (hesap yönetimi hazır: `/admin` genel bakış, oyuncu arama, askıya alma, rol atama, işlem kaydı; ADR 0012. Rapor, analitik ve oyun sürümü ekranları ile yönetici MFA'sı kaldı)
+- [ ] Temel raporlama, admin ve operasyon paneli (hesap yönetimi hazır: `/admin` genel bakış, oyuncu arama, askıya alma, rol atama, işlem kaydı; ADR 0012. Rapor, analitik ve oyun sürümü ekranları kaldı; her girişte e-posta kodu ADR 0013 ile geldi)
 - [ ] E2E, mobil, performans, erişilebilirlik ve güvenlik testleri
 - [ ] Kapalı beta, geri bildirim ve hata düzeltmeleri
 
