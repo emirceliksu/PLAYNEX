@@ -98,7 +98,11 @@ export function LeaderboardTable({
           return (
             <TabsContent key={window} value={window}>
               {entries.length === 0 ? (
-                <EmptyState title={labels.emptyTitle} description={labels.emptyDescription} />
+                <EmptyState
+                  scene="podium"
+                  title={labels.emptyTitle}
+                  description={labels.emptyDescription}
+                />
               ) : (
                 <div className="overflow-hidden rounded-xl border-2 border-border-subtle bg-surface-raised">
                   <table className="w-full border-collapse">

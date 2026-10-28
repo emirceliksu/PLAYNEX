@@ -56,3 +56,14 @@ export const Offline: Story = {
     </div>
   ),
 };
+
+export const Scenes: Story = {
+  render: () => (
+    <div className="grid w-[56rem] max-w-full gap-4 md:grid-cols-2">
+      <EmptyState scene="no-match" title="Bu filtrelere uyan oyun yok" />
+      <EmptyState scene="off-board" title="Burada bir şey yok" />
+      <EmptyState scene="podium" title="Sıralama henüz boş" />
+      <EmptyState scene="locked" title="Bu sayfa yöneticilere açık" />
+    </div>
+  ),
+};

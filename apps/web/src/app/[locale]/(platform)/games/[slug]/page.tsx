@@ -207,7 +207,11 @@ export default async function GamePage({ params }: GamePageProps) {
               href="/leaderboard"
               linkLabel={common('viewAll')}
             />
-            <EmptyState title={board('empty.title')} description={board('empty.description')} />
+            <EmptyState
+              scene="podium"
+              title={board('empty.title')}
+              description={board('empty.description')}
+            />
           </section>
         ) : null}
       </div>

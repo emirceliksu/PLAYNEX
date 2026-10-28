@@ -21,6 +21,7 @@ export {
 } from './components/skeleton/skeleton';
 export { EmptyState } from './components/empty-state/empty-state';
 export type { EmptyStateProps } from './components/empty-state/empty-state';
+export type { EmptyScene } from './components/empty-state/empty-scenes';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/tabs/tabs';
 export { Modal, ModalClose, ModalContent, ModalTrigger } from './components/modal/modal';
 export type { ModalContentProps } from './components/modal/modal';

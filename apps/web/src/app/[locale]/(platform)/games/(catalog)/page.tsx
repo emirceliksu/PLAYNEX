@@ -145,7 +145,11 @@ export default async function GamesPage({ params, searchParams }: GamesPageProps
 
       {results.length === 0 ? (
         // The filter bar already offers "clear filters" whenever this state can appear.
-        <EmptyState title={t('empty.title')} description={t('empty.description')} />
+        <EmptyState
+          scene="no-match"
+          title={t('empty.title')}
+          description={t('empty.description')}
+        />
       ) : (
         <>
           {newest ? (
