@@ -46,12 +46,12 @@ Koyu tema semantik yüzeyleri (varsayılan):
 | `fg.primary` / `fg.secondary` / `fg.muted` | `ink.50` / `ink.300` / `ink.400`   | Metin hiyerarşisi                                       |
 | `border.subtle` / `border.strong`          | `ink.50 @12%` / `ink.600`          | Ayırıcı / kontur                                        |
 | `border.focus`                             | `cyan.300`                         | Odak halkası mor düğmelerde de görünür kalsın diye cyan |
-| `brand.solid` / `hover` / `active`         | `brand.500` / `400` / `600`        | Birincil düğme                                          |
+| `brand.solid` / `hover` / `active`         | `brand.500` / `600` / `700`        | Birincil düğme                                          |
 | `*.soft` + `*.text`                        | `x.950` + `x.300`                  | Yumuşak rozet zemini + metni                            |
 
 Açık tema aynı semantik isimlerle `ink.50` tuval, beyaz kart, `brand.600` eylem rengiyle hazır; ikinci sınıf vatandaş değil ama ürünün varsayılanı koyu.
 
-Kontrast hedefleri (WCAG 2.2 AA): `fg.primary`/canvas ≈ 16:1, `fg.secondary`/canvas ≈ 10:1, `fg.muted`/canvas ≈ 6:1, `fg.on-brand`/`brand.solid` ≥ 4.5:1. `brand.500` ilk olarak L 0.61 ile tanımlanmıştı; ölçümde 3.9:1 çıktı, 0.58 de 4.45:1'de kaldığı için L 0.57'ye (4.6:1) çekildi. Her oranı Storybook token sayfası canlı hesaplar; yalnızca renge dayanan durum göstergesi yok (ikon + metin eşlik eder).
+Kontrast hedefleri (WCAG 2.2 AA): `fg.primary`/canvas ≈ 16:1, `fg.secondary`/canvas ≈ 10:1, `fg.muted`/canvas ≈ 6:1, `fg.on-brand`/`brand.solid` ≥ 4.5:1. `brand.500` ilk olarak L 0.61 ile tanımlanmıştı; ölçümde 3.9:1 çıktı, 0.58 de 4.45:1'de kaldığı için L 0.57'ye (4.6:1) çekildi. Kural yalnızca varsayılan hal için değil: birincil düğmenin varsayılan, hover, basılı ve odak hallerinde metin/zemin oranı en az 4.5:1 olur. Bu yüzden hover bir adım açılmaz, koyulaşır (koyu tema: varsayılan 4.6, hover 5.5, basılı 7.6; odakta zemin değişmez, halka eklenir). Her oranı Storybook token sayfası canlı hesaplar; yalnızca renge dayanan durum göstergesi yok (ikon + metin eşlik eder).
 
 ### Tipografi
 
