@@ -8,6 +8,7 @@ import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { hasGameModule } from '@/lib/games/registry';
 import { findGame } from '@/lib/catalog/games';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface PlayPageProps {
   params: Promise<{ locale: string; gameSlug: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({
 }: Pick<PlayPageProps, 'params'>): Promise<Metadata> {
   const { locale, gameSlug } = await params;
   const game = findGame(gameSlug);
-  if (!game) return {};
+  if (game?.status !== 'live' || !hasGameModule(game.slug)) return notFoundMetadata(locale);
   const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
   return { title: t('play', { title: game.title }) };
 }

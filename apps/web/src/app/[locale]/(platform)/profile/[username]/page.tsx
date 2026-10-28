@@ -16,6 +16,7 @@ import { callApi } from '@/lib/auth/api';
 import { getCurrentAccount } from '@/lib/auth/session';
 import { liveGames } from '@/lib/catalog/games';
 import { formatDate } from '@/lib/format';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface ProfilePageProps {
   params: Promise<{ locale: string; username: string }>;
@@ -58,7 +59,7 @@ export async function generateMetadata({
 }: Pick<ProfilePageProps, 'params'>): Promise<Metadata> {
   const { locale, username } = await params;
   const profile = await loadProfile(decodeURIComponent(username));
-  if (!profile) return {};
+  if (!profile) return notFoundMetadata(locale);
   const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
   return { title: t('profile', { name: profile.displayName }) };
 }

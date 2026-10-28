@@ -13,7 +13,9 @@ import { UserStatus } from '@/features/admin/user-status';
 import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { callApi } from '@/lib/auth/api';
+import { getCurrentAccount } from '@/lib/auth/session';
 import { formatDate, formatRelative } from '@/lib/format';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 const filters: readonly AdminUserFilter[] = ['all', 'verified', 'pending', 'suspended', 'admins'];
 
@@ -26,6 +28,8 @@ export async function generateMetadata({
   params,
 }: Pick<AdminUsersPageProps, 'params'>): Promise<Metadata> {
   const { locale } = await params;
+  const account = await getCurrentAccount();
+  if (account?.role !== 'admin') return notFoundMetadata(locale);
   const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'meta' });
   return { title: t('adminUsers') };
 }

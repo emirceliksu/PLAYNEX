@@ -22,6 +22,7 @@ import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { findGame, games } from '@/lib/catalog/games';
 import { formatDate } from '@/lib/format';
+import { notFoundMetadata } from '@/lib/not-found-metadata';
 
 interface GamePageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -39,9 +40,9 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: GamePageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const game = findGame(slug);
-  if (!game) return {};
+  if (!game) return notFoundMetadata(locale);
   return {
     title: game.title,
     description: game.tagline,

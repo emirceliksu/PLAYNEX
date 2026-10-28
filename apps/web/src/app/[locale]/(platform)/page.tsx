@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -8,12 +9,18 @@ import { PopularGrid } from '@/features/home/popular-grid';
 import { QuickPlayShelf } from '@/features/home/quick-play-shelf';
 import { RankingList } from '@/features/home/ranking-list';
 import { SidePanel } from '@/features/home/side-panel';
-import { routing } from '@/i18n/routing';
+import { resolveLocale, routing } from '@/i18n/routing';
 import { getCurrentAccount } from '@/lib/auth/session';
 import { comingSoonGames, findGame, liveGames } from '@/lib/catalog/games';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'nav' });
+  return { title: t('home') };
 }
 
 export default async function HomePage({ params }: HomePageProps) {
