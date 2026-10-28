@@ -253,6 +253,16 @@ services:
       web:
         condition: service_healthy
 
+  voice:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/voice.Dockerfile
+    profiles:
+      - tools
+    command: sh tools/voice/render.sh
+    volumes:
+      - .:/workspace
+
 volumes:
   node_modules_root:
   node_modules_web:

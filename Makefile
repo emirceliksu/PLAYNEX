@@ -1,6 +1,6 @@
 COMPOSE ?= docker compose
 
-.PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots migrate
+.PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots voices migrate
 
 .env:
 	cp infrastructure/development.env .env
@@ -64,6 +64,10 @@ storybook-build:
 
 screenshots:
 	$(COMPOSE) --profile tools run --rm playwright
+
+# Re-renders the Siper announcer lines from tools/voice/lines.json.
+voices:
+	$(COMPOSE) --profile tools run --rm --build voice
 
 migrate:
 	$(COMPOSE) exec api sqlx migrate run --source infrastructure/migrations
