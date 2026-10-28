@@ -39,12 +39,16 @@ PLAYNEX üretimde Coolify'ın Docker Compose build pack'iyle `compose.production
 
 Coolify'ın kendisi üretir (elle girilmez):
 
-| Değişken                       | Kullanan                                 |
-| ------------------------------ | ---------------------------------------- |
-| `SERVICE_URL_EDGE_8080`        | Coolify proxy yönlendirmesi              |
-| `SERVICE_USER_POSTGRES`        | `postgres`, `api`                        |
-| `SERVICE_PASSWORD_POSTGRES`    | `postgres`, `api`                        |
-| `SERVICE_PASSWORD_64_REALTIME` | `realtime` yeniden bağlanma token imzası |
+| Değişken                              | Kullanan                                                |
+| ------------------------------------- | ------------------------------------------------------- |
+| `SERVICE_URL_EDGE_8080`               | Coolify proxy yönlendirmesi                             |
+| `SERVICE_USER_POSTGRES`               | `postgres`, `api`                                       |
+| `SERVICE_PASSWORD_POSTGRES`           | `postgres`, `api`                                       |
+| `SERVICE_PASSWORD_64_REALTIME`        | `realtime` yeniden bağlanma token imzası                |
+| `SERVICE_PASSWORD_64_REALTIMEACCOUNT` | `api` ve `realtime`: hesaplı oyuncu bileti imzası       |
+| `SERVICE_PASSWORD_64_INTERNALAPI`     | `api` ve `realtime`: maç sonuçlarının API'ye iletilmesi |
+
+Alan adı yalnızca `edge`'e verilir. `web`'e verilirse site açılır ama `/ws` realtime'a ulaşmaz ve tüm çevrim içi ve botlu maçlar 502 ile düşer; kontrol için `https://playnex.meccode.com/edge-health` adresi `ok` dönmelidir.
 
 Elle girilir:
 

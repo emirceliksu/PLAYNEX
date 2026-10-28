@@ -71,6 +71,8 @@ services:
       MAILER_URL: http://mailer:8082
       # Comma-separated; verified accounts with these addresses become admins.
       ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+      REALTIME_ACCOUNT_SECRET: ${SERVICE_PASSWORD_64_REALTIMEACCOUNT}
+      INTERNAL_API_TOKEN: ${SERVICE_PASSWORD_64_INTERNALAPI}
       RUST_LOG: info
     read_only: true
     networks:
@@ -123,6 +125,10 @@ services:
     environment:
       PORT: 8081
       REALTIME_TOKEN_SECRET: ${SERVICE_PASSWORD_64_REALTIME}
+      # Account tickets from the api and match results back to it; both sides share these two.
+      REALTIME_ACCOUNT_SECRET: ${SERVICE_PASSWORD_64_REALTIMEACCOUNT}
+      API_INTERNAL_URL: http://api:8080
+      INTERNAL_API_TOKEN: ${SERVICE_PASSWORD_64_INTERNALAPI}
       REALTIME_ALLOWED_ORIGINS: https://playnex.meccode.com
       RUST_LOG: info
     read_only: true
