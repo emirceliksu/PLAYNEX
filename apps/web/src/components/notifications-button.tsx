@@ -14,11 +14,17 @@ interface NotificationItem {
 
 interface NotificationsButtonProps {
   label: string;
+  emptyLabel: string;
   closeLabel: string;
   items: NotificationItem[];
 }
 
-export function NotificationsButton({ label, closeLabel, items }: NotificationsButtonProps) {
+export function NotificationsButton({
+  label,
+  emptyLabel,
+  closeLabel,
+  items,
+}: NotificationsButtonProps) {
   const unread = items.filter((item) => item.unread).length;
 
   return (
@@ -35,6 +41,7 @@ export function NotificationsButton({ label, closeLabel, items }: NotificationsB
         </IconButton>
       </ModalTrigger>
       <ModalContent title={label} closeLabel={closeLabel} size="sm">
+        {items.length === 0 ? <p className="text-body-sm text-fg-secondary">{emptyLabel}</p> : null}
         <ul className="-mx-2 flex flex-col">
           {items.map((item) => (
             <li

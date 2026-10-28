@@ -1,0 +1,58 @@
+import type { Account } from '@playnex/shared-types';
+import { cookies } from 'next/headers';
+import { cache } from 'react';
+
+import { callApi } from './api';
+
+const SESSION_COOKIE = 'playnex_session';
+// Carries the address between the sign-up form and the code screen without putting it in the URL.
+const PENDING_EMAIL_COOKIE = 'playnex_pending_email';
+const PENDING_EMAIL_MINUTES = 30;
+
+const secure = process.env.NODE_ENV === 'production';
+
+export interface IssuedSession {
+  token: string;
+  expiresAt: string;
+}
+
+export async function sessionToken(): Promise<string | undefined> {
+  return (await cookies()).get(SESSION_COOKIE)?.value;
+}
+
+export const getCurrentAccount = cache(async (): Promise<Account | null> => {
+  const token = await sessionToken();
+  if (!token) return null;
+  const result = await callApi<Account>('/v1/me', { token });
+  return result.ok ? result.data : null;
+});
+
+export async function startSession(session: IssuedSession): Promise<void> {
+  const jar = await cookies();
+  jar.set(SESSION_COOKIE, session.token, {
+    httpOnly: true,
+    secure,
+    sameSite: 'lax',
+    path: '/',
+    expires: new Date(session.expiresAt),
+  });
+  jar.delete(PENDING_EMAIL_COOKIE);
+}
+
+export async function endSession(): Promise<void> {
+  (await cookies()).delete(SESSION_COOKIE);
+}
+
+export async function rememberPendingEmail(email: string): Promise<void> {
+  (await cookies()).set(PENDING_EMAIL_COOKIE, email, {
+    httpOnly: true,
+    secure,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: PENDING_EMAIL_MINUTES * 60,
+  });
+}
+
+export async function pendingEmail(): Promise<string | undefined> {
+  return (await cookies()).get(PENDING_EMAIL_COOKIE)?.value;
+}

@@ -1,0 +1,138 @@
+'use server';
+
+import type { Account } from '@playnex/shared-types';
+import { getLocale } from 'next-intl/server';
+
+import { redirect } from '@/i18n/navigation';
+import { callApi } from '@/lib/auth/api';
+import {
+  endSession,
+  type IssuedSession,
+  pendingEmail,
+  rememberPendingEmail,
+  sessionToken,
+  startSession,
+} from '@/lib/auth/session';
+
+export interface AuthFormState {
+  error?: string;
+  fields?: Record<string, string>;
+  // Echoed back so the form keeps what the visitor typed; passwords never are.
+  values?: Record<string, string>;
+  retryAfter?: number;
+  notice?: 'resent';
+  // Distinguishes consecutive resend answers so the countdown restarts even when they look alike.
+  sentAt?: number;
+}
+
+interface SignedIn {
+  account: Account;
+  session: IssuedSession;
+}
+
+function text(form: FormData, name: string): string {
+  const value = form.get(name);
+  return typeof value === 'string' ? value : '';
+}
+
+// Only same-site paths are honoured, so a crafted link cannot bounce a fresh session elsewhere.
+function safeNext(raw: string): string {
+  return raw.startsWith('/') && !raw.startsWith('//') && !raw.startsWith('/\\') ? raw : '/';
+}
+
+export async function register(_: AuthFormState, form: FormData): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const values = {
+    username: text(form, 'username'),
+    email: text(form, 'email'),
+    firstName: text(form, 'firstName'),
+    lastName: text(form, 'lastName'),
+  };
+  const result = await callApi<{ email: string; mailSent: boolean }>('/v1/auth/register', {
+    method: 'POST',
+    body: { ...values, password: text(form, 'password'), locale },
+  });
+
+  if (!result.ok) {
+    return {
+      error: result.body.error,
+      fields: result.body.fields,
+      retryAfter: result.body.retryAfter,
+      values,
+    };
+  }
+
+  await rememberPendingEmail(result.data.email);
+  redirect({ href: result.data.mailSent ? '/verify' : '/verify?mail=failed', locale });
+  return {};
+}
+
+export async function verify(_: AuthFormState, form: FormData): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const email = await pendingEmail();
+  if (!email) {
+    redirect({ href: '/register', locale });
+    return {};
+  }
+
+  const result = await callApi<SignedIn>('/v1/auth/verify', {
+    method: 'POST',
+    body: { email, code: text(form, 'code') },
+  });
+  if (!result.ok) {
+    return { error: result.body.error, retryAfter: result.body.retryAfter };
+  }
+
+  await startSession(result.data.session);
+  redirect({ href: `/profile/${result.data.account.username}?welcome=1`, locale });
+  return {};
+}
+
+export async function resendCode(_: AuthFormState): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const email = await pendingEmail();
+  if (!email) {
+    redirect({ href: '/register', locale });
+    return {};
+  }
+
+  const result = await callApi<{ retryAfter: number }>('/v1/auth/resend', {
+    method: 'POST',
+    body: { email },
+  });
+  if (!result.ok) {
+    return { error: result.body.error, retryAfter: result.body.retryAfter, sentAt: Date.now() };
+  }
+  return { notice: 'resent', retryAfter: result.data.retryAfter, sentAt: Date.now() };
+}
+
+export async function login(_: AuthFormState, form: FormData): Promise<AuthFormState> {
+  const locale = await getLocale();
+  const values = { login: text(form, 'login') };
+  const result = await callApi<SignedIn>('/v1/auth/login', {
+    method: 'POST',
+    body: { ...values, password: text(form, 'password') },
+  });
+
+  if (!result.ok) {
+    if (result.body.error === 'email_not_verified' && result.body.email) {
+      await rememberPendingEmail(result.body.email);
+      redirect({ href: '/verify', locale });
+    }
+    return { error: result.body.error, retryAfter: result.body.retryAfter, values };
+  }
+
+  await startSession(result.data.session);
+  redirect({ href: safeNext(text(form, 'next')), locale });
+  return {};
+}
+
+export async function logout(): Promise<void> {
+  const locale = await getLocale();
+  const token = await sessionToken();
+  if (token) {
+    await callApi('/v1/auth/logout', { method: 'POST', token });
+  }
+  await endSession();
+  redirect({ href: '/', locale });
+}

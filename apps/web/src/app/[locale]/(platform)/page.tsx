@@ -9,8 +9,8 @@ import { QuickPlayShelf } from '@/features/home/quick-play-shelf';
 import { RankingList } from '@/features/home/ranking-list';
 import { SidePanel } from '@/features/home/side-panel';
 import { routing } from '@/i18n/routing';
-import { comingSoonGames, findGame, liveGames } from '@/lib/mock/games';
-import { getOverallRanking } from '@/lib/mock/leaderboard';
+import { getCurrentAccount } from '@/lib/auth/session';
+import { comingSoonGames, findGame, liveGames } from '@/lib/catalog/games';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -22,13 +22,12 @@ export default async function HomePage({ params }: HomePageProps) {
     notFound();
   }
   setRequestLocale(locale);
-  const t = await getTranslations('home');
+  const [t, account] = await Promise.all([getTranslations('home'), getCurrentAccount()]);
 
   const featured = findGame('snake-rush');
   if (!featured) {
     notFound();
   }
-  const popular = [...liveGames].sort((a, b) => b.playCount - a.playCount);
 
   return (
     <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_17.5rem] xl:gap-10">
@@ -37,11 +36,11 @@ export default async function HomePage({ params }: HomePageProps) {
           <CatalogGameCard game={featured} variant="featured" eyebrow={t('featuredEyebrow')} />
         </section>
         <QuickPlayShelf games={liveGames} />
-        <PopularGrid games={[...popular, ...comingSoonGames].slice(0, 6)} />
-        <RankingList entries={getOverallRanking(6)} />
+        <PopularGrid games={[...liveGames, ...comingSoonGames].slice(0, 6)} />
+        <RankingList entries={[]} currentUsername={account?.username} />
         {comingSoonGames.length > 0 ? <ComingSoonStrip games={comingSoonGames} /> : null}
       </div>
-      <SidePanel />
+      <SidePanel account={account} />
     </div>
   );
 }

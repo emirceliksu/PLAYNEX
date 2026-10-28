@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Logo, MobileNav, Sidebar, Topbar, type NavItem } from '@playnex/ui';
+import { Avatar, Button, Logo, MobileNav, Sidebar, Topbar, type NavItem } from '@playnex/ui';
 import { Compass, Gamepad2, Trophy, User } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -21,15 +21,18 @@ export interface PlatformShellLabels {
   searchLabel: string;
   searchPlaceholder: string;
   notifications: string;
+  notificationsEmpty: string;
   close: string;
   myProfile: string;
+  signIn: string;
+  signUp: string;
   offlineTitle: string;
   offlineDescription: string;
 }
 
 interface PlatformShellProps {
   labels: PlatformShellLabels;
-  user: { username: string; displayName: string; avatarSeed: string };
+  user: { username: string; displayName: string; avatarSeed: string } | null;
   notifications: {
     id: string;
     actor: string;
@@ -47,7 +50,7 @@ function isActive(pathname: string, href: string): boolean {
 
 export function PlatformShell({ labels, user, notifications, children }: PlatformShellProps) {
   const pathname = usePathname();
-  const profileHref = `/profile/${user.username}`;
+  const profileHref = user ? `/profile/${user.username}` : '/login';
 
   const items: NavItem[] = [
     { href: '/', label: labels.home, icon: <Compass />, active: isActive(pathname, '/') },
@@ -94,20 +97,32 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
           }
           search={<SearchForm label={labels.searchLabel} placeholder={labels.searchPlaceholder} />}
           actions={
-            <>
-              <NotificationsButton
-                label={labels.notifications}
-                closeLabel={labels.close}
-                items={notifications}
-              />
-              <Link
-                href={profileHref}
-                aria-label={labels.myProfile}
-                className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
-              >
-                <Avatar name={user.displayName} seed={user.avatarSeed} size="sm" />
-              </Link>
-            </>
+            user ? (
+              <>
+                <NotificationsButton
+                  label={labels.notifications}
+                  emptyLabel={labels.notificationsEmpty}
+                  closeLabel={labels.close}
+                  items={notifications}
+                />
+                <Link
+                  href={profileHref}
+                  aria-label={labels.myProfile}
+                  className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
+                >
+                  <Avatar name={user.displayName} seed={user.avatarSeed} size="sm" />
+                </Link>
+              </>
+            ) : (
+              <>
+                <Button asChild variant="ghost" size="sm" className="max-sm:hidden">
+                  <Link href="/login">{labels.signIn}</Link>
+                </Button>
+                <Button asChild size="sm">
+                  <Link href="/register">{labels.signUp}</Link>
+                </Button>
+              </>
+            )
           }
         />
         <OfflineBanner title={labels.offlineTitle} description={labels.offlineDescription} />

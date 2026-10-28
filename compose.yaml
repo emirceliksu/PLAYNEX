@@ -217,6 +217,7 @@ services:
     environment:
       PLAYWRIGHT_BASE_URL: http://web:3000
       PLAYWRIGHT_REALTIME_UPSTREAM: realtime:8081
+      PLAYWRIGHT_MAILPIT_URL: http://mailpit:8025
     volumes: *node-volumes
     depends_on:
       web:
