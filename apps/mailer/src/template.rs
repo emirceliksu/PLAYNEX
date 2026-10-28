@@ -58,7 +58,7 @@ const OVERLAY: &str = "#2b2c3e";
 const FG: &str = "#f8f8fc";
 const FG_SECONDARY: &str = "#c2c3cf";
 const FG_MUTED: &str = "#9c9dab";
-const BRAND: &str = "#7f60ff";
+const BRAND: &str = "#7452f5";
 const BRAND_SOFT_TEXT: &str = "#cfccff";
 const YELLOW: &str = "#ffc62d";
 
