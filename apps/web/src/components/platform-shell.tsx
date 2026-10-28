@@ -123,10 +123,13 @@ export function PlatformShell({ labels, user, notifications, children }: Platfor
                 />
                 <Link
                   href={profileHref}
-                  aria-label={labels.myProfile}
                   className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-focus"
                 >
-                  <Avatar name={user.displayName} seed={user.avatarSeed} size="sm" />
+                  {/* Initials are decoration; an aria-label over them fails WCAG 2.5.3 (label in name). */}
+                  <span aria-hidden className="block">
+                    <Avatar name={user.displayName} seed={user.avatarSeed} size="sm" />
+                  </span>
+                  <span className="sr-only">{labels.myProfile}</span>
                 </Link>
               </>
             ) : (
