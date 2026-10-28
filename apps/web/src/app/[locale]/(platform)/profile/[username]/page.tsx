@@ -1,19 +1,16 @@
-import type { Account } from '@playnex/shared-types';
 import { Avatar, Button, EmptyState, GameCover } from '@playnex/ui';
 import { LogOut } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { cache } from 'react';
 
 import { SectionHeader } from '@/components/section-header';
 import { logout } from '@/features/auth/actions';
 import { FormAlert } from '@/features/auth/form-alert';
+import { loadProfile } from '@/features/profile/load-profile';
 import { Link } from '@/i18n/navigation';
 import { resolveLocale, routing } from '@/i18n/routing';
-import { callApi } from '@/lib/auth/api';
-import { getCurrentAccount } from '@/lib/auth/session';
 import { liveGames } from '@/lib/catalog/games';
 import { formatDate } from '@/lib/format';
 import { notFoundMetadata } from '@/lib/not-found-metadata';
@@ -22,37 +19,6 @@ interface ProfilePageProps {
   params: Promise<{ locale: string; username: string }>;
   searchParams: Promise<{ welcome?: string }>;
 }
-
-interface ProfileView {
-  username: string;
-  displayName: string;
-  joinedAt: string;
-  own: Account | null;
-}
-
-// Metadata and the page both need the profile; cache() keeps it to one API call per request.
-const loadProfile = cache(async (username: string): Promise<ProfileView | null> => {
-  const account = await getCurrentAccount();
-  if (account?.username === username.toLowerCase()) {
-    return {
-      username: account.username,
-      displayName: `${account.firstName} ${account.lastName}`,
-      joinedAt: account.createdAt,
-      own: account,
-    };
-  }
-
-  const result = await callApi<{ username: string; displayName: string; createdAt: string }>(
-    `/v1/players/${encodeURIComponent(username)}`,
-  );
-  if (!result.ok) return null;
-  return {
-    username: result.data.username,
-    displayName: result.data.displayName,
-    joinedAt: result.data.createdAt,
-    own: null,
-  };
-});
 
 export async function generateMetadata({
   params,
