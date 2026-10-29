@@ -308,10 +308,10 @@ export class Gate {
     this.root.append(card);
     this.status = el('p', 'font-display text-title-lg');
     card.append(this.status);
+    // A hint rather than a wall: pointer media queries misreport on some
+    // touchscreen laptops, and a mouse may be plugged in after load.
     if (!desktop) {
       card.append(el('p', 'text-body-md text-fg-secondary', t('desktopOnly')));
-      container.append(this.root);
-      return;
     }
     const play = el(
       'button',
