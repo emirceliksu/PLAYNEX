@@ -134,7 +134,8 @@ export class SiperGame {
       () => this.closeBuy(),
     );
     this.vote = new VotePanel(this.hud.root, this.t, rules.maps, (map) => this.castVote(map));
-    const desktop = window.matchMedia('(pointer: fine)').matches;
+    // Touchscreen laptops report a coarse primary pointer even with a mouse attached.
+    const desktop = window.matchMedia('(any-pointer: fine)').matches;
     this.gate = new Gate(
       container,
       this.t,
