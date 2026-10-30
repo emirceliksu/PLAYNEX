@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
     '@playnex/shared-types',
     '@playnex/game-sdk',
     '@playnex/game-audio',
+    '@playnex/game-kit',
     ...gamePackages,
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),

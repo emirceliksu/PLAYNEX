@@ -1,0 +1,31 @@
+{
+  "name": "@playnex/game-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./phaser": "./src/juice/phaser.ts",
+    "./babylon": "./src/juice/babylon.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@playnex/game-sdk": "workspace:*"
+  },
+  "peerDependencies": {
+    "@babylonjs/core": "9.31.0",
+    "phaser": "4.2.1"
+  },
+  "devDependencies": {
+    "@babylonjs/core": "9.31.0",
+    "@playnex/config": "workspace:*",
+    "eslint": "9.39.5",
+    "phaser": "4.2.1",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

@@ -18,6 +18,7 @@ x-node: &node
     - node_modules_config:/workspace/packages/config/node_modules
     - node_modules_game_sdk:/workspace/packages/game-sdk/node_modules
     - node_modules_game_audio:/workspace/packages/game-audio/node_modules
+    - node_modules_game_kit:/workspace/packages/game-kit/node_modules
     - node_modules_games:/workspace/games/node_modules
     - next_cache:/workspace/apps/web/.next
 
@@ -263,6 +264,7 @@ volumes:
   node_modules_config:
   node_modules_game_sdk:
   node_modules_game_audio:
+  node_modules_game_kit:
   node_modules_games:
   next_cache:
   cargo_registry:

@@ -2,3 +2,4 @@
 
 /* Game packages render some of their UI (buttons, questions, guesses) as DOM with token classes. */
 @source '../../../../games';
+@source '../../../../packages/game-kit/src';

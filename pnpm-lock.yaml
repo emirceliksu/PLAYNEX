@@ -284,6 +284,9 @@ importers:
       '@playnex/game-audio':
         specifier: workspace:*
         version: link:../packages/game-audio
+      '@playnex/game-kit':
+        specifier: workspace:*
+        version: link:../packages/game-kit
       '@playnex/game-sdk':
         specifier: workspace:*
         version: link:../packages/game-sdk
@@ -398,6 +401,31 @@ importers:
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 5.0.5
+        version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
+
+  packages/game-kit:
+    dependencies:
+      '@playnex/game-sdk':
+        specifier: workspace:*
+        version: link:../game-sdk
+    devDependencies:
+      '@babylonjs/core':
+        specifier: 9.31.0
+        version: 9.31.0
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      phaser:
+        specifier: 4.2.1
+        version: 4.2.1
       typescript:
         specifier: 5.9.3
         version: 5.9.3
