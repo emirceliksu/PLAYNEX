@@ -1,0 +1,5077 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-30",
+  "count": 200,
+  "games": [
+    {
+      "no": 1,
+      "wave": 1,
+      "slug": "pisti",
+      "title": "Pişti",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Pişti ve eşli pişti; vale ile toplama, pişti bonusu.",
+      "highlights": [
+        "Kart savurma animasyonu",
+        "sayaçlı hızlı mod",
+        "bot hafızası zorluğa göre"
+      ]
+    },
+    {
+      "no": 2,
+      "wave": 1,
+      "slug": "dama-arena",
+      "title": "Dama Arena",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Türk daması ve uluslararası dama; zorunlu alma, dama çıkma.",
+      "highlights": [
+        "Alma zinciri önizleme",
+        "sunucuda kural motoru",
+        "minimax bot",
+        "saatli mod"
+      ]
+    },
+    {
+      "no": 3,
+      "wave": 1,
+      "slug": "ters-yuz",
+      "title": "Ters Yüz",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Reversi; 8x8 ve 10x10 tahta.",
+      "highlights": [
+        "Taş çevirme dalga animasyonu",
+        "geçerli hamle ipucu",
+        "alfa-beta bot"
+      ]
+    },
+    {
+      "no": 4,
+      "wave": 1,
+      "slug": "amiral-batti",
+      "title": "Amiral Battı",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Gemi yerleştir, atış yap, filoyu batır; klasik ve özel silah modu.",
+      "highlights": [
+        "Radar taraması ve torpido gibi yetenekler",
+        "sonar sesi",
+        "olasılık haritalı bot"
+      ]
+    },
+    {
+      "no": 5,
+      "wave": 1,
+      "slug": "kizma-birader",
+      "title": "Kızma Birader",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Dört renk, altıyla çıkış, rakibi eve gönder.",
+      "highlights": [
+        "3D zar",
+        "piyon zıplama animasyonu",
+        "hızlı mod (2 piyon)",
+        "botla doldurma"
+      ]
+    },
+    {
+      "no": 6,
+      "wave": 1,
+      "slug": "ruzgar-kusu",
+      "title": "Rüzgâr Kuşu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Tek dokunuşla uçuş; yerçekimi tersleyen ve hızlanan bölgeler.",
+      "highlights": [
+        "Günlük tohumlu parkur",
+        "kozmetik kuşlar",
+        "hayalet"
+      ]
+    },
+    {
+      "no": 7,
+      "wave": 1,
+      "slug": "kule-insa",
+      "title": "Kule İnşa",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kayan blokları üst üste tam yerine bırak.",
+      "highlights": [
+        "Kusursuz yerleşim kombosu",
+        "dinamik renk ve müzik"
+      ]
+    },
+    {
+      "no": 8,
+      "wave": 1,
+      "slug": "magara-ucusu",
+      "title": "Mağara Uçuşu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Daralan mağarada basılı tut ve uç.",
+      "highlights": [
+        "Prosedürel mağara",
+        "yakıt kapsülleri"
+      ]
+    },
+    {
+      "no": 9,
+      "wave": 1,
+      "slug": "baloncuk-patlat",
+      "title": "Baloncuk Patlat",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Renkli baloncukları eşleştir; 3+ aynı renk patlar.",
+      "highlights": [
+        "Sekme nişanı",
+        "80 bölüm",
+        "sonsuz mod"
+      ]
+    },
+    {
+      "no": 10,
+      "wave": 1,
+      "slug": "ucluk-yarismasi",
+      "title": "Üçlük Yarışması",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "60 saniyede raflardan üçlük at.",
+      "highlights": [
+        "Zamanlama çubuğu",
+        "para topu"
+      ]
+    },
+    {
+      "no": 11,
+      "wave": 1,
+      "slug": "sudoku-salonu",
+      "title": "Sudoku Salonu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sudoku; 4 zorluk, not alma, günlük bulmaca.",
+      "highlights": [
+        "Benzersiz çözümlü üreteç",
+        "akıllı ipucu (teknik adı ile)"
+      ]
+    },
+    {
+      "no": 12,
+      "wave": 1,
+      "slug": "mayin-avcisi",
+      "title": "Mayın Avcısı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Mayın tarlası; tahminsiz (çözülebilir) tahta seçeneği.",
+      "highlights": [
+        "Çözülebilirlik üreteci",
+        "chord tıklama",
+        "mobil uzun bas"
+      ]
+    },
+    {
+      "no": 13,
+      "wave": 1,
+      "slug": "sabir-kartlari",
+      "title": "Sabır Kartları",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Klondike, Örümcek, FreeCell ve 5 sabır oyunu daha.",
+      "highlights": [
+        "Çözülebilir dağıtım",
+        "otomatik tamamlama",
+        "geri al"
+      ]
+    },
+    {
+      "no": 14,
+      "wave": 1,
+      "slug": "harf-avi",
+      "title": "Harf Avı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Beş harfli Türkçe kelimeyi altı denemede bul; günlük kelime.",
+      "highlights": [
+        "Paylaşılabilir sonuç ızgarası",
+        "sınırsız mod"
+      ]
+    },
+    {
+      "no": 15,
+      "wave": 1,
+      "slug": "sandik-ustasi",
+      "title": "Sandık Ustası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sandıkları hedeflere it; 100 bölüm.",
+      "highlights": [
+        "Sınırsız geri al",
+        "çözüm tekrarı",
+        "bölüm paketi JSON"
+      ]
+    },
+    {
+      "no": 16,
+      "wave": 1,
+      "slug": "otopark-cikisi",
+      "title": "Otopark Çıkışı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Araçları kaydırıp kırmızı arabayı çıkar.",
+      "highlights": [
+        "Çözücü ile minimum hamle yıldızı"
+      ]
+    },
+    {
+      "no": 17,
+      "wave": 1,
+      "slug": "renk-akisi",
+      "title": "Renk Akışı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Aynı renkli noktaları kesişmeden birleştir.",
+      "highlights": [
+        "Üreteç",
+        "altıgen ve köprülü tahtalar"
+      ]
+    },
+    {
+      "no": 18,
+      "wave": 1,
+      "slug": "renkli-siseler",
+      "title": "Renkli Şişeler",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sıvıları döküp her şişede tek renk bırak.",
+      "highlights": [
+        "Dökme animasyonu",
+        "çözücü"
+      ]
+    },
+    {
+      "no": 19,
+      "wave": 1,
+      "slug": "kelime-avi",
+      "title": "Kelime Avı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Harf tablosunda gizli kelimeleri bul.",
+      "highlights": [
+        "Tema listeleri",
+        "zaman yarışı"
+      ]
+    },
+    {
+      "no": 20,
+      "wave": 1,
+      "slug": "yilan-merdiven",
+      "title": "Yılanlı Merdiven",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Klasik yılanlı merdiven, özel kare olaylarıyla.",
+      "highlights": [
+        "Olay kartları",
+        "hızlı mod"
+      ]
+    },
+    {
+      "no": 21,
+      "wave": 2,
+      "slug": "okey-salonu",
+      "title": "Okey Salonu",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Klasik okey ve 101; istaka, gösterge, okey taşı, çifte gitme.",
+      "highlights": [
+        "Sürükle-bırak istaka",
+        "otomatik dizme önerisi",
+        "3 zorlukta bot",
+        "masa sohbet emojileri",
+        "el sonu puan tablosu"
+      ]
+    },
+    {
+      "no": 22,
+      "wave": 2,
+      "slug": "tavla-ustasi",
+      "title": "Tavla Ustası",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Tavla; mars, katlama zarı, 3/5/7 puanlık maç.",
+      "highlights": [
+        "Fizikli zar atışı",
+        "hamle geri alma (tur içinde)",
+        "hamle ipucu",
+        "Elo",
+        "bot (açılış kitabı + Monte Carlo)"
+      ]
+    },
+    {
+      "no": 23,
+      "wave": 2,
+      "slug": "batak-masasi",
+      "title": "Batak Masası",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "İhaleli ve eşli batak, koz seçimi.",
+      "highlights": [
+        "İhale animasyonu",
+        "son eli göster",
+        "eş sinyalleri yok (hile önlemi)",
+        "botla doldurma",
+        "puan geçmişi"
+      ]
+    },
+    {
+      "no": 24,
+      "wave": 2,
+      "slug": "duvar-yikan",
+      "title": "Duvar Yıkan",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Tuğla kırıcı; 60 bölüm, boss duvarları, güçlendirmeler.",
+      "highlights": [
+        "Çoklu top",
+        "lazer raket",
+        "bölüm editörü verisi JSON",
+        "parçacık patlamaları"
+      ]
+    },
+    {
+      "no": 25,
+      "wave": 2,
+      "slug": "tombala-gecesi",
+      "title": "Tombala Gecesi",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 30
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Sunucu torbadan çeker, kartlar otomatik işaretlenir; çinko ve tombala.",
+      "highlights": [
+        "Sesli sayı anonsu (eSpeak NG",
+        "Siper hattı)",
+        "çoklu kart",
+        "büyük oda performansı"
+      ]
+    },
+    {
+      "no": 26,
+      "wave": 2,
+      "slug": "mangala",
+      "title": "Mangala",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Geleneksel Türk zeka oyunu; 6 kuyu, hazine.",
+      "highlights": [
+        "Taş dağıtma animasyonu",
+        "kural öğretici",
+        "mükemmel oyun botu (küçük durum uzayı)"
+      ]
+    },
+    {
+      "no": 27,
+      "wave": 2,
+      "slug": "beste-biter",
+      "title": "Beşte Biter",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Gomoku; 15x15'te beşi hizala, renju kuralı seçeneği.",
+      "highlights": [
+        "Tehdit vurgusu",
+        "açılış kuralları",
+        "bot"
+      ]
+    },
+    {
+      "no": 28,
+      "wave": 2,
+      "slug": "zar-beslisi",
+      "title": "Zar Beşlisi",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Beş zar, üç atış, 13 kategori; özgün kurallı zar kombinasyon oyunu.",
+      "highlights": [
+        "Zar tutma animasyonu",
+        "puan önerisi",
+        "solo günlük meydan okuma"
+      ]
+    },
+    {
+      "no": 29,
+      "wave": 2,
+      "slug": "sifre-kirici",
+      "title": "Şifre Kırıcı",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Renk kodunu tahmin et; iki oyuncu aynı anda birbirinin kodunu çözer.",
+      "highlights": [
+        "Bilgi teorisi botu",
+        "solo günlük kod"
+      ]
+    },
+    {
+      "no": 30,
+      "wave": 2,
+      "slug": "domino-kahvesi",
+      "title": "Domino Kahvesi",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Blok ve çekme dominosu; eşli oyun.",
+      "highlights": [
+        "Taş dizilim kamerası",
+        "puan sayımı animasyonu",
+        "bot"
+      ]
+    },
+    {
+      "no": 31,
+      "wave": 2,
+      "slug": "penalti-duellosu",
+      "title": "Penaltı Düellosu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Eşzamanlı seçimle şut çek ve kaleci ol.",
+      "highlights": [
+        "Fiziği gösterilen şut",
+        "psikolojik istatistik",
+        "bot"
+      ]
+    },
+    {
+      "no": 32,
+      "wave": 2,
+      "slug": "dart-gecesi",
+      "title": "Dart Gecesi",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "501, kriket ve saat oyunları.",
+      "highlights": [
+        "Nefes salınımı nişan",
+        "kontrol hatası modeli",
+        "bot"
+      ]
+    },
+    {
+      "no": 33,
+      "wave": 2,
+      "slug": "okcu-duellosu",
+      "title": "Okçu Düellosu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Rüzgârlı sıra tabanlı okçu düellosu.",
+      "highlights": [
+        "Kafa vuruşu",
+        "ok tipleri",
+        "deterministik balistik"
+      ]
+    },
+    {
+      "no": 34,
+      "wave": 2,
+      "slug": "kelime-zinciri",
+      "title": "Kelime Zinciri",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Son harfle başlayan kelimeyi süre bitmeden yaz.",
+      "highlights": [
+        "Sözlük doğrulama",
+        "kullanılmış kelime takibi",
+        "eleme"
+      ]
+    },
+    {
+      "no": 35,
+      "wave": 2,
+      "slug": "klavye-yarisi",
+      "title": "Klavye Yarışı",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "sim",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Türkçe metinleri en hızlı ve hatasız yaz.",
+      "highlights": [
+        "WPM/doğruluk",
+        "hile önleme (yapıştırma engeli",
+        "ritim analizi)",
+        "metin havuzu"
+      ]
+    },
+    {
+      "no": 36,
+      "wave": 2,
+      "slug": "zipzip-kule",
+      "title": "Zıpzıp Kule",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sonsuz yukarı zıplama; kırılan ve hareketli platformlar.",
+      "highlights": [
+        "Jetpack",
+        "yay",
+        "tohumlu günlük kule"
+      ]
+    },
+    {
+      "no": 37,
+      "wave": 2,
+      "slug": "kesik-kesik",
+      "title": "Kesik Kesik",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Fırlayan meyveleri kes, bombalardan kaç.",
+      "highlights": [
+        "Kesim izi",
+        "kombo",
+        "yarım meyve fiziği"
+      ]
+    },
+    {
+      "no": 38,
+      "wave": 2,
+      "slug": "yolu-gec",
+      "title": "Yolu Geç",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Voksel şehirde yolları, nehirleri ve rayları geç.",
+      "highlights": [
+        "Prosedürel şerit üretimi",
+        "toplanabilir karakterler"
+      ]
+    },
+    {
+      "no": 39,
+      "wave": 2,
+      "slug": "fuze-komutani",
+      "title": "Füze Komutanı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Şehirleri gelen füzelere karşı koru.",
+      "highlights": [
+        "Patlama zinciri",
+        "dalga zorluğu"
+      ]
+    },
+    {
+      "no": 40,
+      "wave": 2,
+      "slug": "mahjong-taslari",
+      "title": "Mahjong Taşları",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Taş eşleştirme sabır oyunu; çok katlı düzenler.",
+      "highlights": [
+        "Çözülebilir dizilim",
+        "3D katman gölgeleri"
+      ]
+    },
+    {
+      "no": 41,
+      "wave": 3,
+      "slug": "pikselli-bilmece",
+      "title": "Pikselli Bilmece",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sayı ipuçlarıyla gizli piksel resmi ortaya çıkar.",
+      "highlights": [
+        "Benzersiz çözüm denetimi",
+        "renkli mod"
+      ]
+    },
+    {
+      "no": 42,
+      "wave": 3,
+      "slug": "su-tesisati",
+      "title": "Su Tesisatı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Boruları döndürüp suyu kaynağa ulaştır.",
+      "highlights": [
+        "Akış animasyonu",
+        "zamanlı mod"
+      ]
+    },
+    {
+      "no": 43,
+      "wave": 3,
+      "slug": "isik-yolu",
+      "title": "Işık Yolu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Ayna ve prizmalarla lazeri hedeflere yönlendir.",
+      "highlights": [
+        "Renk karışımı",
+        "ışın izleme"
+      ]
+    },
+    {
+      "no": 44,
+      "wave": 3,
+      "slug": "yedi-parca",
+      "title": "Yedi Parça",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Tangram; silüeti yedi parçayla doldur.",
+      "highlights": [
+        "Esnek yerleşim toleransı",
+        "200 silüet"
+      ]
+    },
+    {
+      "no": 45,
+      "wave": 3,
+      "slug": "mat-bulmacasi",
+      "title": "Mat Bulmacası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Günlük satranç bulmacaları; 1-4 hamlede mat.",
+      "highlights": [
+        "Chess Arena motoru ile doğrulama",
+        "zorluk puanı"
+      ]
+    },
+    {
+      "no": 46,
+      "wave": 3,
+      "slug": "harf-karistir",
+      "title": "Harf Karıştır",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Karışık harflerden olabildiğince çok kelime türet.",
+      "highlights": [
+        "Sözlük",
+        "bonus kelimeler"
+      ]
+    },
+    {
+      "no": 47,
+      "wave": 3,
+      "slug": "hedef-sayi",
+      "title": "Hedef Sayı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Altı sayı ve dört işlemle hedefe ulaş.",
+      "highlights": [
+        "Çözücü ile en yakın çözüm gösterimi"
+      ]
+    },
+    {
+      "no": 48,
+      "wave": 3,
+      "slug": "duvar-zipla",
+      "title": "Duvar Zıpla",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Duvardan duvara sekerek tırman.",
+      "highlights": [
+        "Hassas zıplama",
+        "tuzaklar"
+      ]
+    },
+    {
+      "no": 49,
+      "wave": 3,
+      "slug": "renk-degistir",
+      "title": "Renk Değiştir",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Özgün kartlarla el bitirme oyunu; atla, yön değiştir, +2, joker.",
+      "highlights": [
+        "Ev kuralları seçenekleri (üst üste koyma)",
+        "son kart çağrısı",
+        "botlar"
+      ]
+    },
+    {
+      "no": 50,
+      "wave": 3,
+      "slug": "yilan-arenasi",
+      "title": "Snake Rush: Arena",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 20
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Snake Rush'ın çok oyunculu arenası; diğer yılanları kes, kalıntılarını ye.",
+      "highlights": [
+        "Sunucu otoriteli 20 Hz",
+        "kafa çarpışma kuralları",
+        "güç küreleri",
+        "botlarla dolan odalar"
+      ]
+    },
+    {
+      "no": 51,
+      "wave": 3,
+      "slug": "tank-duellosu",
+      "title": "Tank Düellosu",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Labirentte seken mermilerle tank savaşı; takımlı ve herkes tek.",
+      "highlights": [
+        "Sekme fiziği",
+        "yıkılabilir duvarlar",
+        "güçlendirmeler",
+        "prosedürel labirent"
+      ]
+    },
+    {
+      "no": 52,
+      "wave": 3,
+      "slug": "bilardo-salonu",
+      "title": "Bilardo Salonu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "8 top ve 3 bant; gerçekçi fizik, fırça ve falso.",
+      "highlights": [
+        "Sunucu deterministik fizik simülasyonu",
+        "istaka nişan çizgisi",
+        "replay",
+        "bot"
+      ]
+    },
+    {
+      "no": 53,
+      "wave": 3,
+      "slug": "yildiz-filosu",
+      "title": "Yıldız Filosu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Dikey uzay nişancı; mermi desenleri ve boss'lar.",
+      "highlights": [
+        "Desen editörü verisi",
+        "6 bölüm boss",
+        "silah seviyeleri",
+        "tekrar kaydı ile skor doğrulama"
+      ]
+    },
+    {
+      "no": 54,
+      "wave": 3,
+      "slug": "lokum-diyari",
+      "title": "Lokum Diyarı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Üçlü eşleştirme; 150 bölüm, engeller, güçlendiriciler.",
+      "highlights": [
+        "Bölüm haritası",
+        "özel taş kombinasyonları",
+        "kaskad animasyonu"
+      ]
+    },
+    {
+      "no": 55,
+      "wave": 3,
+      "slug": "kupa-kacirma",
+      "title": "Kupa Kaçırma",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kupaları ve maça kızını almamaya çalış; ayı vurma.",
+      "highlights": [
+        "Kart geçirme turu",
+        "el sonu ceza animasyonu",
+        "bot"
+      ]
+    },
+    {
+      "no": 56,
+      "wave": 3,
+      "slug": "yalanci-zar",
+      "title": "Yalancı Zar",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Bardak altında zarlar; teklif yükselt ya da yalancı de.",
+      "highlights": [
+        "Bardak kaldırma gerilimi",
+        "blöf istatistiği",
+        "olasılık botu"
+      ]
+    },
+    {
+      "no": 57,
+      "wave": 3,
+      "slug": "kose-kapmaca",
+      "title": "Köşe Kapmaca",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Polimino parçaları yalnızca köşeden değdirerek yerleştir.",
+      "highlights": [
+        "Parça döndürme/çevirme",
+        "alan sayımı",
+        "bot"
+      ]
+    },
+    {
+      "no": 58,
+      "wave": 3,
+      "slug": "soyleme",
+      "title": "Söyleme!",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 12
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Takım arkadaşına yasaklı kelimeleri kullanmadan kartı anlat.",
+      "highlights": [
+        "Yasaklı kelime denetimi sunucuda",
+        "takım skorları",
+        "kart destesi TR/EN"
+      ]
+    },
+    {
+      "no": 59,
+      "wave": 3,
+      "slug": "lobut",
+      "title": "Lobut",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 6
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Bowling; falso, ağırlık seçimi.",
+      "highlights": [
+        "Labut fiziği",
+        "strike animasyonu",
+        "puan kartı"
+      ]
+    },
+    {
+      "no": 60,
+      "wave": 3,
+      "slug": "labirent-hirsizi",
+      "title": "Labirent Hırsızı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Labirentte altınları topla; dört farklı kişilikli bekçi.",
+      "highlights": [
+        "Bekçi kişilikleri",
+        "güç iksiri",
+        "labirent üreteci"
+      ]
+    },
+    {
+      "no": 61,
+      "wave": 4,
+      "slug": "spiral-dusus",
+      "title": "Spiral Düşüş",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Dönen kule platformlarından topu düşür.",
+      "highlights": [
+        "Kırma kombosu",
+        "renk bölgeleri"
+      ]
+    },
+    {
+      "no": 62,
+      "wave": 4,
+      "slug": "okyanus-avi",
+      "title": "Okyanus Avı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Küçükleri ye, büyü, büyüklerden kaç.",
+      "highlights": [
+        "Sürü davranışı",
+        "besin zinciri"
+      ]
+    },
+    {
+      "no": 63,
+      "wave": 4,
+      "slug": "bilye-zinciri",
+      "title": "Bilye Zinciri",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yola akan bilye zincirine atış yap, üçlüleri patlat.",
+      "highlights": [
+        "Eğri yollar",
+        "geri çekilme kombosu"
+      ]
+    },
+    {
+      "no": 64,
+      "wave": 4,
+      "slug": "hedef-okculuk",
+      "title": "Hedef Okçuluk",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Rüzgâr ve mesafeyle okçuluk turnuvası.",
+      "highlights": [
+        "Nefes tutma",
+        "balistik"
+      ]
+    },
+    {
+      "no": 65,
+      "wave": 4,
+      "slug": "yapboz-atolyesi",
+      "title": "Yapboz Atölyesi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Prosedürel görüntülerden yapboz; 24-500 parça.",
+      "highlights": [
+        "Parça şekil üreteci",
+        "kenar sıralama"
+      ]
+    },
+    {
+      "no": 66,
+      "wave": 4,
+      "slug": "altigen-birlestir",
+      "title": "Altıgen Birleştir",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Altıgen ızgarada aynı sayıları birleştir.",
+      "highlights": [
+        "Zincir birleşme",
+        "geri al jetonu"
+      ]
+    },
+    {
+      "no": 67,
+      "wave": 4,
+      "slug": "vida-bulmaca",
+      "title": "Vida Bulmaca",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Vidaları doğru sırayla sök, plakaları düşür.",
+      "highlights": [
+        "Katman fiziği"
+      ]
+    },
+    {
+      "no": 68,
+      "wave": 4,
+      "slug": "bulut-ustu",
+      "title": "Bulut Üstü",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Bulutlar arası zıplamalı rahat platform.",
+      "highlights": [
+        "Kozmetikler",
+        "günlük tohum"
+      ]
+    },
+    {
+      "no": 69,
+      "wave": 4,
+      "slug": "ray-dose",
+      "title": "Ray Döşe",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Trenler çarpışmadan istasyonlara varsın diye ray döşe.",
+      "highlights": [
+        "Zamanlı sim",
+        "makas mantığı"
+      ]
+    },
+    {
+      "no": 70,
+      "wave": 4,
+      "slug": "tarih-seridi",
+      "title": "Tarih Şeridi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Olay kartlarını zaman çizelgesinde doğru yere koy.",
+      "highlights": [
+        "Kart havuzu TR/EN",
+        "can sistemi",
+        "günlük deste"
+      ]
+    },
+    {
+      "no": 71,
+      "wave": 4,
+      "slug": "element-birlestir",
+      "title": "Element Birleştir",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Dört temel elementten 300 kavrama ulaş.",
+      "highlights": [
+        "Tarif grafiği",
+        "ipucu"
+      ]
+    },
+    {
+      "no": 72,
+      "wave": 4,
+      "slug": "king",
+      "title": "King",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "20 el, ceza ve koz oyunları; Türk masa klasiği.",
+      "highlights": [
+        "Oyun seçme ekranı",
+        "kural hatırlatıcı",
+        "hile önleyici sunucu dağıtımı",
+        "bot"
+      ]
+    },
+    {
+      "no": 73,
+      "wave": 4,
+      "slug": "kelime-kalesi",
+      "title": "Kelime Kalesi",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Harf taşlarıyla tahtaya Türkçe kelime diz; kelime ve harf katları.",
+      "highlights": [
+        "açık lisanslı Türkçe kelime listesi (lisansı doğrulanmalı)",
+        "kelime doğrulama sunucuda",
+        "en iyi hamle analizi"
+      ]
+    },
+    {
+      "no": 74,
+      "wave": 4,
+      "slug": "vampir-koylu",
+      "title": "Vampir Köylü",
+      "mode": "party",
+      "players": {
+        "min": 6,
+        "max": 16
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Gece/gündüz döngülü sosyal çıkarım; vampir, doktor, gözcü ve fazlası.",
+      "highlights": [
+        "Gizli rol dağıtımı sunucuda",
+        "oylama animasyonu",
+        "anlatıcı sesi",
+        "ölü sohbet kanalı"
+      ]
+    },
+    {
+      "no": 75,
+      "wave": 4,
+      "slug": "harita-avcisi",
+      "title": "Harita Avcısı",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 12
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Haritada yeri tahmin et; ülke, şehir, simge, Türkiye ili modları.",
+      "highlights": [
+        "Mesafeye göre puan",
+        "açık harita verisi (Natural Earth)",
+        "günlük solo tur"
+      ]
+    },
+    {
+      "no": 76,
+      "wave": 4,
+      "slug": "toprak-kapmaca",
+      "title": "Toprak Kapmaca",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 12
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "İz bırakarak alan kapat, rakibin izini kes.",
+      "highlights": [
+        "Poligon alan hesabı sunucuda",
+        "prosedürel arena",
+        "botlar"
+      ]
+    },
+    {
+      "no": 77,
+      "wave": 4,
+      "slug": "fitil",
+      "title": "Fitil",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Labirentte bomba bırak, zincirleme patlat, son ayakta kalan kazanır.",
+      "highlights": [
+        "Zincir patlama kuralları sunucuda",
+        "12 güçlendirme",
+        "harita seçici",
+        "botlar"
+      ]
+    },
+    {
+      "no": 78,
+      "wave": 4,
+      "slug": "pist-ustasi",
+      "title": "Pist Ustası",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kuşbakışı mini araç yarışı; masa, mutfak, bahçe pistleri.",
+      "highlights": [
+        "Kart modelinin 2D aynası",
+        "drift",
+        "güçlendirmeler",
+        "bot pilotlar"
+      ]
+    },
+    {
+      "no": 79,
+      "wave": 4,
+      "slug": "mini-golf-adasi",
+      "title": "Mini Golf Adası",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "18 delikli mini golf; rampalar, döner engeller.",
+      "highlights": [
+        "Deterministik top fiziği",
+        "eşzamanlı vuruş modu",
+        "parkur editörü sonraki sürümde"
+      ]
+    },
+    {
+      "no": 80,
+      "wave": 4,
+      "slug": "pixel-survivors",
+      "title": "Pixel Survivors",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Dalgalarca düşmana karşı otomatik saldırılarla hayatta kal; co-op.",
+      "highlights": [
+        "Yükseltme ağacı",
+        "silah evrimleri",
+        "4 kişilik co-op sunucu sim",
+        "30 dk koşular"
+      ]
+    },
+    {
+      "no": 81,
+      "wave": 5,
+      "slug": "goktasi-avcisi",
+      "title": "Göktaşı Avcısı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Çift çubuklu nişancı; dalga dalga düşman, yükseltmeler.",
+      "highlights": [
+        "Gamepad desteği",
+        "neon partiküller",
+        "sonsuz mod"
+      ]
+    },
+    {
+      "no": 82,
+      "wave": 5,
+      "slug": "kacis-koridoru",
+      "title": "Kaçış Koridoru",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Üç şeritli sonsuz koşu; kay, zıpla, şerit değiştir.",
+      "highlights": [
+        "Bölüm parçası sistemi",
+        "görevler",
+        "karakter kozmetikleri"
+      ]
+    },
+    {
+      "no": 83,
+      "wave": 5,
+      "slug": "ip-ucu",
+      "title": "İp Ucu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "İpleri kes, şekeri canavara ulaştır; fizik bulmacası.",
+      "highlights": [
+        "Verlet ip fiziği",
+        "60 bölüm",
+        "yıldızlar"
+      ]
+    },
+    {
+      "no": 84,
+      "wave": 5,
+      "slug": "golge-kosucu",
+      "title": "Gölge Koşucu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Hassas platform; 60 bölüm, saniye ölçümlü tekrar.",
+      "highlights": [
+        "Coyote time",
+        "girdi tamponu",
+        "bölüm editörü + paylaşım kodu"
+      ]
+    },
+    {
+      "no": 85,
+      "wave": 5,
+      "slug": "simit-fabrikasi",
+      "title": "Simit Fabrikası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Simit tezgahından fabrikaya idle tycoon.",
+      "highlights": [
+        "Çevrimdışı kazanç",
+        "prestij sistemi",
+        "otomasyon"
+      ]
+    },
+    {
+      "no": 86,
+      "wave": 5,
+      "slug": "hex-kopru",
+      "title": "Hex Köprü",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Altıgen tahtada iki kenarı birleştir; berabere yok.",
+      "highlights": [
+        "Swap kuralı",
+        "MCTS bot",
+        "11x11 ve 13x13"
+      ]
+    },
+    {
+      "no": 87,
+      "wave": 5,
+      "slug": "plaj-voleybolu",
+      "title": "Plaj Voleybolu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "2v2 fizikli plaj voleybolu.",
+      "highlights": [
+        "Top fiziği aynası",
+        "smaç zamanlama",
+        "bot"
+      ]
+    },
+    {
+      "no": 88,
+      "wave": 5,
+      "slug": "farki-bul",
+      "title": "Farkı Bul",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Prosedürel sahnelerde farkları ilk sen bul.",
+      "highlights": [
+        "Prosedürel sahne üreteci (asset gerektirmez)",
+        "eşzamanlı yarış"
+      ]
+    },
+    {
+      "no": 89,
+      "wave": 5,
+      "slug": "yercekimi-ters",
+      "title": "Yerçekimi Ters",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yerçekimini tersleyerek ilerle.",
+      "highlights": [
+        "Ritim bölümleri"
+      ]
+    },
+    {
+      "no": 90,
+      "wave": 5,
+      "slug": "kanca-ustasi",
+      "title": "Kanca Ustası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kancayla sallan, momentumu koru.",
+      "highlights": [
+        "Sarkaç fiziği",
+        "hız koşusu"
+      ]
+    },
+    {
+      "no": 91,
+      "wave": 5,
+      "slug": "carsi-birlestir",
+      "title": "Çarşı Birleştir",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Eşyaları birleştirip çarşıyı yeniden kur.",
+      "highlights": [
+        "Sipariş tahtası",
+        "8 ürün zinciri"
+      ]
+    },
+    {
+      "no": 92,
+      "wave": 5,
+      "slug": "olta-basi",
+      "title": "Olta Başı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Balık tut, olta yükselt, nadir balıkları topla.",
+      "highlights": [
+        "Balık davranışı",
+        "koleksiyon defteri"
+      ]
+    },
+    {
+      "no": 93,
+      "wave": 5,
+      "slug": "gizli-kelime",
+      "title": "Gizli Kelime",
+      "mode": "party",
+      "players": {
+        "min": 3,
+        "max": 10
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "turn",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Herkes aynı kelimeyi bilir, biri bilmez; çaktırmadan bul.",
+      "highlights": [
+        "Tur zamanlayıcı",
+        "oylama",
+        "kelime havuzu"
+      ]
+    },
+    {
+      "no": 94,
+      "wave": 5,
+      "slug": "tek-cizgi",
+      "title": "Tek Çizgi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Şekli kalemi kaldırmadan çiz.",
+      "highlights": [
+        "Euler yolu üreteci"
+      ]
+    },
+    {
+      "no": 95,
+      "wave": 5,
+      "slug": "volkan-kacisi",
+      "title": "Volkan Kaçışı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yükselen lavdan dikey kaç.",
+      "highlights": [
+        "Prosedürel kule",
+        "yetenekler"
+      ]
+    },
+    {
+      "no": 96,
+      "wave": 5,
+      "slug": "cizgi-surucu",
+      "title": "Çizgi Sürücü",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Çizdiğin çizgi üstünde kızağı hedefe ulaştır.",
+      "highlights": [
+        "Çizgi fiziği",
+        "mürekkep sınırı"
+      ]
+    },
+    {
+      "no": 97,
+      "wave": 5,
+      "slug": "kahraman-tiklayici",
+      "title": "Kahraman Tıklayıcı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Idle RPG; kahraman topla, zindan geç.",
+      "highlights": [
+        "Prestij",
+        "çevrimdışı ilerleme"
+      ]
+    },
+    {
+      "no": 98,
+      "wave": 5,
+      "slug": "go-tasi",
+      "title": "Go Taşı",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "board",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Go; 9x9, 13x13, 19x19, Japon sayımı.",
+      "highlights": [
+        "Ko kuralı sunucuda",
+        "ölü taş işaretleme",
+        "handikap",
+        "MCTS bot"
+      ]
+    },
+    {
+      "no": 99,
+      "wave": 5,
+      "slug": "fisilti-agi",
+      "title": "Fısıltı Ağı",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 10
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "İki takım, tek kelimelik ipuçlarıyla ajanlarını bul; suikastçıdan kaç.",
+      "highlights": [
+        "Özgün kelime havuzu",
+        "ipucu doğrulama",
+        "zamanlayıcı",
+        "izleyici modu"
+      ]
+    },
+    {
+      "no": 100,
+      "wave": 5,
+      "slug": "fetih-haritasi",
+      "title": "Fetih Haritası",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Bölgelere asker yerleştir, saldır, kıtaları tut; Anadolu ve dünya haritası.",
+      "highlights": [
+        "Zar savaşı animasyonu",
+        "görev kartları",
+        "bot stratejileri",
+        "kaydedilebilir uzun maç"
+      ]
+    },
+    {
+      "no": 101,
+      "wave": 6,
+      "slug": "mevzi",
+      "title": "Mevzi",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Sıra tabanlı topçu düellosu; rüzgâr, parçalanan arazi, silah çantası.",
+      "highlights": [
+        "Piksel tabanlı yıkılabilir arazi",
+        "deterministik mermi fiziği (TS/Rust aynası)",
+        "takım modu"
+      ]
+    },
+    {
+      "no": 102,
+      "wave": 6,
+      "slug": "uzay-kurtlari",
+      "title": "Uzay Kurtları",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Ataletli uzay gemileriyle arena ölüm maçı; asteroit kuşakları.",
+      "highlights": [
+        "Newton fiziği",
+        "ışın ve füze silahları",
+        "takım modu",
+        "botlar"
+      ]
+    },
+    {
+      "no": 103,
+      "wave": 6,
+      "slug": "gures-meydani",
+      "title": "Güreş Meydanı",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "fighting",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Fizik tabanlı yağlı güreş; dengesini boz, sırtını yere getir.",
+      "highlights": [
+        "Aktif ragdoll",
+        "kavrama sistemi",
+        "davul-zurna sentez müziği",
+        "bot"
+      ]
+    },
+    {
+      "no": 104,
+      "wave": 6,
+      "slug": "sumo-robotlari",
+      "title": "Sumo Robotları",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Robotunu yükselt, rakipleri platformdan düşür.",
+      "highlights": [
+        "Fizik itişme sunucuda",
+        "daralan platform",
+        "kozmetik parçalar"
+      ]
+    },
+    {
+      "no": 105,
+      "wave": 6,
+      "slug": "pota-duellosu",
+      "title": "Pota Düellosu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "1v1 ve 2v2 sokak basketbolu.",
+      "highlights": [
+        "Şut zamanlama",
+        "blok/çalma",
+        "sunucu sim",
+        "bot"
+      ]
+    },
+    {
+      "no": 106,
+      "wave": 6,
+      "slug": "langirt",
+      "title": "Langırt",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Çubuklu masa futbolu; çubuk seç, döndür, vur.",
+      "highlights": [
+        "60 Hz masa fiziği (Air Hockey düzeni)",
+        "dokunmatik çubuk kontrolü",
+        "bot"
+      ]
+    },
+    {
+      "no": 107,
+      "wave": 6,
+      "slug": "mikro-parti",
+      "title": "Mikro Parti",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "5 saniyelik 40+ mini oyun art arda; en hızlı refleks kazanır.",
+      "highlights": [
+        "Mini oyun çerçevesi (yeni mikro oyun eklemek kolay)",
+        "hızlanan tempo",
+        "eleme"
+      ]
+    },
+    {
+      "no": 108,
+      "wave": 6,
+      "slug": "pinball-pera",
+      "title": "Pinball Pera",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Beyoğlu temalı fizikli tilt makinesi; görevler ve çoklu top.",
+      "highlights": [
+        "Sürekli çarpışma fiziği",
+        "3 masa",
+        "masa görev sistemi"
+      ]
+    },
+    {
+      "no": 109,
+      "wave": 6,
+      "slug": "cengel-bulmaca",
+      "title": "Çengel Bulmaca",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "word",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Türkçe çapraz bulmaca üreteci; günlük bulmaca.",
+      "highlights": [
+        "Bulmaca üretici",
+        "ipucu veritabanı",
+        "kalem/kurşun kalem modu"
+      ]
+    },
+    {
+      "no": 110,
+      "wave": 6,
+      "slug": "kule-kontrol",
+      "title": "Kule Kontrol",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Hava trafik kontrolü; uçakları pistlere çarpışmadan indir.",
+      "highlights": [
+        "Rota çizme",
+        "hava durumu",
+        "gerçek havalimanı düzenleri (şematik)"
+      ]
+    },
+    {
+      "no": 111,
+      "wave": 6,
+      "slug": "maden-kazisi",
+      "title": "Maden Kazısı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Derinlere kaz, cevher sat, kazıcını yükselt.",
+      "highlights": [
+        "Prosedürel yeraltı",
+        "yakıt/basınç",
+        "yükseltme döngüsü"
+      ]
+    },
+    {
+      "no": 112,
+      "wave": 6,
+      "slug": "yorunge",
+      "title": "Yörünge",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Gezegen çekimiyle sondayı hedefe fırlat.",
+      "highlights": [
+        "N-cisim yerçekimi",
+        "60 bölüm"
+      ]
+    },
+    {
+      "no": 113,
+      "wave": 6,
+      "slug": "dedektif-tablosu",
+      "title": "Dedektif Tablosu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Mantık ızgarası bulmacaları.",
+      "highlights": [
+        "Üreteç",
+        "çelişki vurgusu"
+      ]
+    },
+    {
+      "no": 114,
+      "wave": 6,
+      "slug": "dag-tirmanisi",
+      "title": "Dağ Tırmanışı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Fizik kontrollü zorlu tırmanış.",
+      "highlights": [
+        "Kaydetme noktası yok modu",
+        "anlatıcı"
+      ]
+    },
+    {
+      "no": 115,
+      "wave": 6,
+      "slug": "atlama-kulesi",
+      "title": "Atlama Kulesi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kayakla atlama; rüzgâr ve iniş tekniği.",
+      "highlights": [
+        "Uçuş fiziği"
+      ]
+    },
+    {
+      "no": 116,
+      "wave": 6,
+      "slug": "yarim-ay-bilmece",
+      "title": "Yarım Ay Bilmece",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Simetri ve döndürme bulmacaları.",
+      "highlights": [
+        "Üreteç"
+      ]
+    },
+    {
+      "no": 117,
+      "wave": 6,
+      "slug": "golge-oyunu",
+      "title": "Gölge Oyunu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Işık kaynağını oynatıp gölgeyle köprü kur.",
+      "highlights": [
+        "Gölge poligon hesaplama"
+      ]
+    },
+    {
+      "no": 118,
+      "wave": 6,
+      "slug": "kilic-ustasi",
+      "title": "Kılıç Ustası",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "fighting",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Dayanıklılık, savuşturma ve kombo üzerine kurulu kılıç düellosu.",
+      "highlights": [
+        "Kare doğru hitbox",
+        "rollback benzeri tahmin",
+        "6 karakter",
+        "bot"
+      ]
+    },
+    {
+      "no": 119,
+      "wave": 6,
+      "slug": "kartopu-savasi",
+      "title": "Kartopu Savaşı",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kardan siper kur, kartopu at, bayrağı kap.",
+      "highlights": [
+        "Kar yığma/inşa",
+        "eğimli atış",
+        "sezonluk etkinlik"
+      ]
+    },
+    {
+      "no": 120,
+      "wave": 6,
+      "slug": "pervane",
+      "title": "Pervane",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Yandan görünüm çift kanatlı uçak it dalaşı.",
+      "highlights": [
+        "Stall ve hız fiziği",
+        "bulut örtüsü",
+        "takım modu",
+        "botlar"
+      ]
+    },
+    {
+      "no": 121,
+      "wave": 7,
+      "slug": "pinpon-ustasi",
+      "title": "Pinpon Ustası",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Masa tenisi; kesme, falso, servis çeşitleri.",
+      "highlights": [
+        "Raket açısı fiziği",
+        "gecikme telafisi",
+        "antrenman robotu"
+      ]
+    },
+    {
+      "no": 122,
+      "wave": 7,
+      "slug": "motor-kros",
+      "title": "Motor Kros",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Yandan fizikli motor; ters takla, rampa, hayalet yarış.",
+      "highlights": [
+        "Box2D benzeri fizik",
+        "hayalet replay",
+        "günlük pist",
+        "çevrim içi eşzamanlı yarış"
+      ]
+    },
+    {
+      "no": 123,
+      "wave": 7,
+      "slug": "sur-savunmasi",
+      "title": "Sur Savunması",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kule savunması; arkadaşlarla aynı haritada kule paylaşımı.",
+      "highlights": [
+        "20 kule x 3 dal",
+        "kahraman birimi",
+        "sonsuz mod",
+        "co-op ekonomi"
+      ]
+    },
+    {
+      "no": 124,
+      "wave": 7,
+      "slug": "ritim-yolu",
+      "title": "Ritim Yolu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Prosedürel müzikle ritim oyunu; notaları yakala.",
+      "highlights": [
+        "Sentezlenen parçalar",
+        "zorluk seçimi",
+        "gecikme kalibrasyonu"
+      ]
+    },
+    {
+      "no": 125,
+      "wave": 7,
+      "slug": "mermer-yolu",
+      "title": "Mermer Yolu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "arcade",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Eğimli parkurda bilye yuvarla; zamana karşı.",
+      "highlights": [
+        "Eğim kontrolü (jiroskop desteği)",
+        "40 parkur",
+        "hayalet"
+      ]
+    },
+    {
+      "no": 126,
+      "wave": 7,
+      "slug": "kopru-muhendisi",
+      "title": "Köprü Mühendisi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Bütçeyle köprü kur, yükü geçir.",
+      "highlights": [
+        "Gerilim simülasyonu",
+        "malzeme türleri",
+        "test sürüşü"
+      ]
+    },
+    {
+      "no": 127,
+      "wave": 7,
+      "slug": "kup-dondur",
+      "title": "Küp Döndür",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "2x2-5x5 küp bulmacası; zamanlı çözüm.",
+      "highlights": [
+        "Çözücü ile ipucu",
+        "karıştırma tohumu",
+        "ortalama süre"
+      ]
+    },
+    {
+      "no": 128,
+      "wave": 7,
+      "slug": "cay-bahcesi",
+      "title": "Çay Bahçesi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Zaman yönetimli kafe işletmesi.",
+      "highlights": [
+        "Müşteri sabrı",
+        "menü genişletme",
+        "dekorasyon"
+      ]
+    },
+    {
+      "no": 129,
+      "wave": 7,
+      "slug": "karantina",
+      "title": "Karantina",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kuşbakışı zombi kaçışı; topla, üret, kaç.",
+      "highlights": [
+        "Prosedürel şehir",
+        "gürültü sistemi",
+        "kalıcı yükseltmeler"
+      ]
+    },
+    {
+      "no": 130,
+      "wave": 7,
+      "slug": "mini-football",
+      "title": "Mini Football",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "2v2/3v3 hızlı futbol; şut, pas, kayarak müdahale.",
+      "highlights": [
+        "Sunucu top fiziği",
+        "oyuncu tahmini",
+        "pozisyon alan botlar",
+        "maç sonu özet",
+        "rütbe"
+      ]
+    },
+    {
+      "no": 131,
+      "wave": 7,
+      "slug": "kart-zindani",
+      "title": "Kart Zindanı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Roguelike deste kurma; harita, olaylar, boss'lar.",
+      "highlights": [
+        "150 kart",
+        "3 karakter",
+        "kalıntılar",
+        "günlük tohum",
+        "koşu geçmişi"
+      ]
+    },
+    {
+      "no": 132,
+      "wave": 7,
+      "slug": "sandalye-kapmaca",
+      "title": "Sandalye Kapmaca",
+      "mode": "party",
+      "players": {
+        "min": 3,
+        "max": 12
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Müzik durunca sandalye kap; itiş kakış.",
+      "highlights": [
+        "Prosedürel müzik",
+        "itme fiziği",
+        "eleme turları"
+      ]
+    },
+    {
+      "no": 133,
+      "wave": 7,
+      "slug": "kanyon-ucusu",
+      "title": "Kanyon Uçuşu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kanyonlarda halkalardan geçerek uç.",
+      "highlights": [
+        "Uçuş modeli",
+        "halka zinciri"
+      ]
+    },
+    {
+      "no": 134,
+      "wave": 7,
+      "slug": "ritim-duellosu",
+      "title": "Ritim Düellosu",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Ritim Yolu notalarıyla eşzamanlı düello.",
+      "highlights": [
+        "Aynı tohumlu parça",
+        "gecikme kalibrasyonu"
+      ]
+    },
+    {
+      "no": 135,
+      "wave": 7,
+      "slug": "kum-saati",
+      "title": "Kum Saati",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Kumu yönlendir, kapları doldur.",
+      "highlights": [
+        "Hücresel kum simülasyonu"
+      ]
+    },
+    {
+      "no": 136,
+      "wave": 7,
+      "slug": "pazar-kurulu",
+      "title": "Pazar Kurulu",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 5
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kervan yolları, kaynak üretimi ve takasla İpek Yolu ticaret oyunu.",
+      "highlights": [
+        "Takas teklif ekranı",
+        "rastgele harita",
+        "bot ekonomisi",
+        "uzun maç kaydı"
+      ]
+    },
+    {
+      "no": 137,
+      "wave": 7,
+      "slug": "bric-kulubu",
+      "title": "Briç Kulübü",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kontrat briç; ihale, yer değiştirme, puanlama.",
+      "highlights": [
+        "İhale sistemi rehberi",
+        "el analizi",
+        "bot (basit konvansiyonlar)"
+      ]
+    },
+    {
+      "no": 138,
+      "wave": 7,
+      "slug": "neon-takip",
+      "title": "Neon Takip",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 10
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kuşbakışı takım lazer etiketi; bayrak kap, bölge tut.",
+      "highlights": [
+        "Görüş konisi (Siper görünürlük kuralları)",
+        "yansıyan lazer",
+        "botlar"
+      ]
+    },
+    {
+      "no": 139,
+      "wave": 7,
+      "slug": "saklambac",
+      "title": "Saklambaç",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 12
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Nesneye dönüşüp saklan, avcılardan kaç.",
+      "highlights": [
+        "Nesne kütüphanesi",
+        "avcı tarama yeteneği",
+        "ses ipuçları"
+      ]
+    },
+    {
+      "no": 140,
+      "wave": 7,
+      "slug": "kebap-telasi",
+      "title": "Kebap Telaşı",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kaotik mutfakta siparişleri birlikte yetiştir.",
+      "highlights": [
+        "Değişen mutfak düzenleri",
+        "iş bölümü",
+        "30 bölüm",
+        "yıldız sistemi"
+      ]
+    },
+    {
+      "no": 141,
+      "wave": 8,
+      "slug": "altigen-taktik",
+      "title": "Altıgen Taktik",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Altıgen haritada birlik taktikleri; arazi ve menzil.",
+      "highlights": [
+        "Birlik sınıfları",
+        "sis",
+        "sunucu kural motoru",
+        "bot"
+      ]
+    },
+    {
+      "no": 142,
+      "wave": 8,
+      "slug": "kacis-odasi-konak",
+      "title": "Kaçış Odası: Konak",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Eski bir İstanbul konağından ipuçlarıyla kaç.",
+      "highlights": [
+        "Envanter",
+        "birleştirme",
+        "5 oda",
+        "ipucu kademeleri"
+      ]
+    },
+    {
+      "no": 143,
+      "wave": 8,
+      "slug": "robot-programla",
+      "title": "Robot Programla",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Komut bloklarıyla robotu programla; döngü ve koşullar.",
+      "highlights": [
+        "Görsel programlama",
+        "çözüm uzunluğu yıldızı",
+        "eğitici"
+      ]
+    },
+    {
+      "no": 144,
+      "wave": 8,
+      "slug": "hat-ustasi",
+      "title": "Hat Ustası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Büyüyen şehre metro hatları çiz.",
+      "highlights": [
+        "Yolcu simülasyonu",
+        "haftalık ödüller",
+        "şehir haritaları"
+      ]
+    },
+    {
+      "no": 145,
+      "wave": 8,
+      "slug": "zaman-dongusu",
+      "title": "Zaman Döngüsü",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Geçmiş kopyalarınla birlikte bulmaca çöz.",
+      "highlights": [
+        "Girdi kayıt/oynatma (deterministik)",
+        "40 bölüm"
+      ]
+    },
+    {
+      "no": 146,
+      "wave": 8,
+      "slug": "bozkir-savascisi",
+      "title": "Bozkır Savaşçısı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yandan görünüm hack-and-slash roguelite.",
+      "highlights": [
+        "Kombo sistemi",
+        "silah ağacı",
+        "prosedürel bölümler"
+      ]
+    },
+    {
+      "no": 147,
+      "wave": 8,
+      "slug": "koy-ciftligi",
+      "title": "Köy Çiftliği",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Ek, sula, hasat et, hayvan besle, pazarda sat.",
+      "highlights": [
+        "Mevsimler",
+        "üretim zinciri",
+        "kayıt"
+      ]
+    },
+    {
+      "no": 148,
+      "wave": 8,
+      "slug": "ring-ustasi",
+      "title": "Ring Ustası",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "fighting",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Boks; gard, kafa-gövde kombinasyonları, dayanıklılık.",
+      "highlights": [
+        "Vuruş zamanlaması",
+        "kondisyon sistemi",
+        "kariyer modu botlara karşı"
+      ]
+    },
+    {
+      "no": 149,
+      "wave": 8,
+      "slug": "ejder-yuvasi",
+      "title": "Ejder Yuvası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Ejderhanı yumurtadan yetiştir, eğit, yarıştır.",
+      "highlights": [
+        "Genetik özellikler",
+        "bakım döngüsü",
+        "mini oyunlar"
+      ]
+    },
+    {
+      "no": 150,
+      "wave": 8,
+      "slug": "party-parkour",
+      "title": "Party Parkour",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 12
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Elemeli engel parkuru turnuvası; döner çekiç, düşen zemin.",
+      "highlights": [
+        "Fizik itişme",
+        "tur havuzu (15 parkur)",
+        "izleyici kamerası",
+        "sezon kozmetikleri"
+      ]
+    },
+    {
+      "no": 151,
+      "wave": 8,
+      "slug": "derin-zindan",
+      "title": "Derin Zindan",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Prosedürel zindan keşif roguelite; sınıflar ve ganimet.",
+      "highlights": [
+        "Prosedürel kat üretimi",
+        "4 sınıf",
+        "eşya nadirliği",
+        "boss davranış ağaçları"
+      ]
+    },
+    {
+      "no": 152,
+      "wave": 8,
+      "slug": "hafiza-ustasi",
+      "title": "Hafıza Ustası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sayı, renk ve konum dizilerini hatırla; beyin antrenmanı.",
+      "highlights": [
+        "Adaptif zorluk",
+        "günlük test"
+      ]
+    },
+    {
+      "no": 153,
+      "wave": 8,
+      "slug": "ordu-kur",
+      "title": "Ordu Kur",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "turn",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Otomatik savaş; birlik al, diz, sinerjileri kur.",
+      "highlights": [
+        "Eşzamanlı alım evresi",
+        "sunucu savaş simülasyonu",
+        "40 birlik",
+        "replay"
+      ]
+    },
+    {
+      "no": 154,
+      "wave": 8,
+      "slug": "ariza-var",
+      "title": "Arıza Var!",
+      "mode": "co-op",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Uzay gemisi düşerken herkes farklı paneli görür; komutları bağır.",
+      "highlights": [
+        "Prosedürel panel üretimi",
+        "artan zorluk",
+        "sesli sohbet gerektirmeyen metin çağrıları"
+      ]
+    },
+    {
+      "no": 155,
+      "wave": 8,
+      "slug": "iki-anahtar",
+      "title": "İki Anahtar",
+      "mode": "co-op",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Yalnızca iki oyuncunun birlikte çözebildiği asimetrik bulmaca labirenti.",
+      "highlights": [
+        "Her oyuncu farklı bilgi görür",
+        "40 bölüm",
+        "ping işaretleri"
+      ]
+    },
+    {
+      "no": 156,
+      "wave": 8,
+      "slug": "ikiz-ruhlar",
+      "title": "İkiz Ruhlar",
+      "mode": "co-op",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Ateş ve buz ikiliyle co-op platform bulmacası.",
+      "highlights": [
+        "Sunucu platform fiziği",
+        "yerel ve çevrim içi co-op",
+        "50 bölüm"
+      ]
+    },
+    {
+      "no": 157,
+      "wave": 8,
+      "slug": "drift-krali",
+      "title": "Drift Kralı",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Puanlı drift; zincir çarpanı, tandem drift.",
+      "highlights": [
+        "Arka itiş araç modeli",
+        "drift puanlama",
+        "hayalet ve çevrim içi oturum"
+      ]
+    },
+    {
+      "no": 158,
+      "wave": 8,
+      "slug": "dev-avcisi",
+      "title": "Dev Avcısı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yalnızca boss savaşlarından oluşan aksiyon.",
+      "highlights": [
+        "10 boss",
+        "desen öğrenme",
+        "sıfır hasar ödülü"
+      ]
+    },
+    {
+      "no": 159,
+      "wave": 8,
+      "slug": "golge-hirsiz",
+      "title": "Gölge Hırsız",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Gizlilik; ışık, ses ve devriye rotaları.",
+      "highlights": [
+        "Görüş/işitme modeli",
+        "alternatif yollar"
+      ]
+    },
+    {
+      "no": 160,
+      "wave": 8,
+      "slug": "karinca-yuvasi",
+      "title": "Karınca Yuvası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Koloniyi büyüt; işçi, asker, kraliçe.",
+      "highlights": [
+        "Feromon yol bulma",
+        "sürü simülasyonu"
+      ]
+    },
+    {
+      "no": 161,
+      "wave": 9,
+      "slug": "toz-duman-ralli",
+      "title": "Toz Duman Ralli",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Zamana karşı ralli; çakar notları.",
+      "highlights": [
+        "Zemin türleri",
+        "hasar",
+        "hayalet"
+      ]
+    },
+    {
+      "no": 162,
+      "wave": 9,
+      "slug": "kaykay-parki",
+      "title": "Kaykay Parkı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Rampa ve raylarda figür kombosu.",
+      "highlights": [
+        "Figür sistemi",
+        "kombo çarpanı"
+      ]
+    },
+    {
+      "no": 163,
+      "wave": 9,
+      "slug": "uzay-madencisi",
+      "title": "Uzay Madencisi",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Asteroitlerde birlikte maden kaz, gemiyi koru.",
+      "highlights": [
+        "Ekip rolleri",
+        "kaynak paylaşımı"
+      ]
+    },
+    {
+      "no": 164,
+      "wave": 9,
+      "slug": "kule-yuz",
+      "title": "Kule 100",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yüz katlı kuleyi roguelite tırman.",
+      "highlights": [
+        "Kat üreteci",
+        "büyü sistemi"
+      ]
+    },
+    {
+      "no": 165,
+      "wave": 9,
+      "slug": "akin-arenasi",
+      "title": "Akın Arenası",
+      "mode": "party",
+      "players": {
+        "min": 4,
+        "max": 12
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kahraman tabanlı takım arenası; yetenekler, hedef ele geçirme.",
+      "highlights": [
+        "10 kahraman",
+        "yetenek ağaçları",
+        "Siper altyapısı üstüne",
+        "rütbe ve sezon"
+      ]
+    },
+    {
+      "no": 166,
+      "wave": 9,
+      "slug": "turbo-top",
+      "title": "Turbo Top",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 6
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Roketli arabalarla dev topa vur; 1v1, 2v2, 3v3.",
+      "highlights": [
+        "Araç zıplama/boost fiziği",
+        "top tahmini",
+        "replay kamerası"
+      ]
+    },
+    {
+      "no": 167,
+      "wave": 9,
+      "slug": "golge-dovusu",
+      "title": "Gölge Dövüşü",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "fighting",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Platform dövüşü; rakibi arenadan fırlat.",
+      "highlights": [
+        "Hasar yüzdesi ve fırlatma fiziği",
+        "8 karakter",
+        "rollback benzeri tahmin",
+        "eşya modu"
+      ]
+    },
+    {
+      "no": 168,
+      "wave": 9,
+      "slug": "mercan-resifi",
+      "title": "Mercan Resifi",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Resifini kur, balıkları besle ve çoğalt.",
+      "highlights": [
+        "Ekosistem dengesi",
+        "idle"
+      ]
+    },
+    {
+      "no": 169,
+      "wave": 9,
+      "slug": "rota-yarisi",
+      "title": "Rota Yarışı",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "B",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Oyuncunun çizdiği pistte yarış.",
+      "highlights": [
+        "Pist çizim aracı",
+        "paylaşım kodu"
+      ]
+    },
+    {
+      "no": 170,
+      "wave": 9,
+      "slug": "kale-savaslari",
+      "title": "Kale Savaşları",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Hafif gerçek zamanlı strateji; kaynak, birlik, kuşatma.",
+      "highlights": [
+        "Deterministik lockstep",
+        "sis",
+        "3 hizip",
+        "bot davranışı"
+      ]
+    },
+    {
+      "no": 171,
+      "wave": 9,
+      "slug": "barbaros-ruzgari",
+      "title": "Barbaros Rüzgârı",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Yelkenli gemilerle rüzgâra karşı top düellosu.",
+      "highlights": [
+        "Rüzgâr ve yelken modeli",
+        "borda ateşi",
+        "filo modu"
+      ]
+    },
+    {
+      "no": 172,
+      "wave": 9,
+      "slug": "kasa-soygunu",
+      "title": "Kasa Soygunu",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 5
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "party",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Asimetrik: bir bekçi kameralarla izler, hırsızlar kasayı açar.",
+      "highlights": [
+        "Asimetrik görünürlük sunucuda",
+        "kamera/alarm sistemi",
+        "botlar"
+      ]
+    },
+    {
+      "no": 173,
+      "wave": 9,
+      "slug": "kar-yarisi",
+      "title": "Kar Yarışı",
+      "mode": "party",
+      "players": {
+        "min": 1,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kayak ve snowboard ile dağdan iniş; kapılar ve atlayışlar.",
+      "highlights": [
+        "Eğim fiziği",
+        "figür puanı",
+        "hayalet"
+      ]
+    },
+    {
+      "no": 174,
+      "wave": 9,
+      "slug": "cinayet-masasi",
+      "title": "Cinayet Masası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Delil, ifade ve zaman çizelgesiyle katili bul.",
+      "highlights": [
+        "Dallanan sorgular",
+        "delil panosu",
+        "6 dava"
+      ]
+    },
+    {
+      "no": 175,
+      "wave": 9,
+      "slug": "yorunge-istasyonu",
+      "title": "Yörünge İstasyonu",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Uzay istasyonunu modül modül kur, mürettebatı yaşat.",
+      "highlights": [
+        "Oksijen/enerji ağı",
+        "olaylar"
+      ]
+    },
+    {
+      "no": 176,
+      "wave": 9,
+      "slug": "son-cember",
+      "title": "Son Çember",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 30
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Kuşbakışı battle royale; daralan çember, ganimet, araç.",
+      "highlights": [
+        "Büyük oda için alan bazlı snapshot",
+        "ilgi yönetimi",
+        "botlar",
+        "Siper silah verisi"
+      ]
+    },
+    {
+      "no": 177,
+      "wave": 9,
+      "slug": "efsane-kartlari",
+      "title": "Efsane Kartları",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "card",
+      "netcode": "turn",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Özgün evrenli koleksiyon kart düellosu; deste kur, mana yönet.",
+      "highlights": [
+        "200 kart",
+        "deste kurucu",
+        "sunucu kural motoru",
+        "kozmetik kart kaplamaları (satın alma yok)"
+      ]
+    },
+    {
+      "no": 178,
+      "wave": 9,
+      "slug": "puzzle-worlds",
+      "title": "Puzzle Worlds",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "puzzle",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Küçük adalarda co-op fizik bulmacaları.",
+      "highlights": [
+        "Basınç plakası",
+        "taşınabilir nesneler",
+        "4 dünya",
+        "solo/co-op ölçekleme"
+      ]
+    },
+    {
+      "no": 179,
+      "wave": 9,
+      "slug": "unutulmus-kale",
+      "title": "Unutulmuş Kale",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Keşif odaklı aksiyon platform; yetenekle açılan yollar.",
+      "highlights": [
+        "Birbirine bağlı harita",
+        "8 yetenek",
+        "5 boss",
+        "kayıt sistemi"
+      ]
+    },
+    {
+      "no": 180,
+      "wave": 9,
+      "slug": "taktik-birlik",
+      "title": "Taktik Birlik",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Sıra tabanlı ekip taktikleri; siper, isabet yüzdesi.",
+      "highlights": [
+        "Kampanya",
+        "kalıcı ölüm",
+        "yükseltme üssü"
+      ]
+    },
+    {
+      "no": 181,
+      "wave": 10,
+      "slug": "sehir-hatti",
+      "title": "Şehir Hattı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "İstanbul'da otobüs şoförlüğü; duraklar, trafik.",
+      "highlights": [
+        "Trafik davranışı",
+        "yolcu memnuniyeti",
+        "gece seferi"
+      ]
+    },
+    {
+      "no": 182,
+      "wave": 10,
+      "slug": "mahalle-kur",
+      "title": "Mahalle Kur",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Hafif şehir kurma; imar, ulaşım, mutluluk.",
+      "highlights": [
+        "Hücre tabanlı simülasyon",
+        "bütçe",
+        "afet olayları"
+      ]
+    },
+    {
+      "no": 183,
+      "wave": 10,
+      "slug": "buz-pateni",
+      "title": "Buz Pateni",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "B",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Ritimli artistik patinaj.",
+      "highlights": [
+        "Figür ritmi"
+      ]
+    },
+    {
+      "no": 184,
+      "wave": 10,
+      "slug": "anti-yercekimi",
+      "title": "Anti Yerçekimi",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Neon tünellerde yerçekimsiz araç yarışı.",
+      "highlights": [
+        "Tünel eğrisi pist",
+        "hız pedleri",
+        "silahlar",
+        "kart altyapısı paylaşımı"
+      ]
+    },
+    {
+      "no": 185,
+      "wave": 10,
+      "slug": "imkansiz-yol",
+      "title": "İmkânsız Yol",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "puzzle",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Perspektifle bağlanan imkânsız yapılarda yol bul.",
+      "highlights": [
+        "Ortografik görünüm hilesi",
+        "döndürülebilir yapılar"
+      ]
+    },
+    {
+      "no": 186,
+      "wave": 10,
+      "slug": "tir-rotasi",
+      "title": "Tır Rotası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yük taşı, rota planla, filonu büyüt.",
+      "highlights": [
+        "Yakıt/mola",
+        "sözleşmeler"
+      ]
+    },
+    {
+      "no": 187,
+      "wave": 10,
+      "slug": "yildiz-tuccari",
+      "title": "Yıldız Tüccarı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Yıldızlar arası ticaret ve korsanlar.",
+      "highlights": [
+        "Dinamik fiyatlar",
+        "olaylar"
+      ]
+    },
+    {
+      "no": 188,
+      "wave": 10,
+      "slug": "teknik-direktor",
+      "title": "Teknik Direktör",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "sports",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Futbol menajeri; kadro, taktik, transfer.",
+      "highlights": [
+        "Maç motoru metin+2D",
+        "sezon ve lig",
+        "özgün oyuncu isimleri"
+      ]
+    },
+    {
+      "no": 189,
+      "wave": 10,
+      "slug": "hayalet-avcilari",
+      "title": "Hayalet Avcıları",
+      "mode": "co-op",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Perili konakta fenerlerle hayalet yakala.",
+      "highlights": [
+        "Asimetrik bir oyuncu hayalet modu"
+      ]
+    },
+    {
+      "no": 190,
+      "wave": 10,
+      "slug": "cift-kale",
+      "title": "Çift Kale",
+      "mode": "1v1",
+      "players": {
+        "min": 2,
+        "max": 2
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Mobil tarzı şerit savaşı; kart ile birlik gönder.",
+      "highlights": [
+        "İksir ekonomisi",
+        "sunucu sim"
+      ]
+    },
+    {
+      "no": 191,
+      "wave": 10,
+      "slug": "gok-kartali",
+      "title": "Gök Kartalı",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "shooter",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Arcade jet uçağı görevleri.",
+      "highlights": [
+        "Uçuş modeli",
+        "kilitlenen füzeler",
+        "10 görev"
+      ]
+    },
+    {
+      "no": 192,
+      "wave": 10,
+      "slug": "bogaz-yarisi",
+      "title": "Boğaz Yarışı",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 8
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "racing",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "İstanbul Boğazı'nda sürat teknesi yarışı; dalga ve akıntı.",
+      "highlights": [
+        "Dalga yüzeyi shader'ı",
+        "akıntı alanları",
+        "köprü altları",
+        "gece modu"
+      ]
+    },
+    {
+      "no": 193,
+      "wave": 10,
+      "slug": "son-kale",
+      "title": "Son Kale",
+      "mode": "co-op",
+      "players": {
+        "min": 1,
+        "max": 4
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "shooter",
+      "netcode": "sim",
+      "tier": "S",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Zombi dalgalarına karşı üssü savun, barikat kur.",
+      "highlights": [
+        "Sürü davranışı (sunucu)",
+        "barikat inşası",
+        "silah yükseltme",
+        "3 harita"
+      ]
+    },
+    {
+      "no": 194,
+      "wave": 10,
+      "slug": "mantar-adasi",
+      "title": "Mantar Adası",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "platform",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "3D toplama platformu; açık adalar.",
+      "highlights": [
+        "Kamera sistemi",
+        "5 ada",
+        "toplanabilirler",
+        "hareket seti (çift zıplama",
+        "dalış)"
+      ]
+    },
+    {
+      "no": 195,
+      "wave": 10,
+      "slug": "nebula-gezgini",
+      "title": "Nebula Gezgini",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Prosedürel galakside keşif ve tarama.",
+      "highlights": [
+        "Gezegen üretimi",
+        "yakıt/ticaret",
+        "gemi yükseltme"
+      ]
+    },
+    {
+      "no": 196,
+      "wave": 10,
+      "slug": "gece-nobeti",
+      "title": "Gece Nöbeti",
+      "mode": "co-op",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "action",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Fenerle karanlık ormanda birlikte hayatta kal.",
+      "highlights": [
+        "Işık mekaniği",
+        "ses ipuçları"
+      ]
+    },
+    {
+      "no": 197,
+      "wave": 10,
+      "slug": "ada-fethi",
+      "title": "Ada Fethi",
+      "mode": "party",
+      "players": {
+        "min": 2,
+        "max": 4
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "sim",
+      "tier": "A",
+      "playModes": [
+        "solo",
+        "online"
+      ],
+      "concept": "Gerçek zamanlı ada bölge savaşı; asker akışı.",
+      "highlights": [
+        "Akış birimleri",
+        "bot"
+      ]
+    },
+    {
+      "no": 198,
+      "wave": 10,
+      "slug": "derinlik",
+      "title": "Derinlik",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "simulation",
+      "netcode": "none",
+      "tier": "A",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Denizaltıyla okyanus tabanını keşfet.",
+      "highlights": [
+        "Basınç",
+        "ışık",
+        "ses tabanlı navigasyon"
+      ]
+    },
+    {
+      "no": 199,
+      "wave": 10,
+      "slug": "imparatorluk",
+      "title": "İmparatorluk",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "2d",
+      "engine": "phaser",
+      "category": "strategy",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Hafif 4X: keşfet, genişlet, sömür, yok et.",
+      "highlights": [
+        "Altıgen harita üreteci",
+        "4 rakip lider",
+        "teknoloji ağacı",
+        "kayıt"
+      ]
+    },
+    {
+      "no": 200,
+      "wave": 10,
+      "slug": "ada-hayatta-kal",
+      "title": "Adada Hayatta Kal",
+      "mode": "solo",
+      "players": {
+        "min": 1,
+        "max": 1
+      },
+      "dimension": "3d",
+      "engine": "babylon",
+      "category": "action",
+      "netcode": "none",
+      "tier": "S",
+      "playModes": [
+        "solo"
+      ],
+      "concept": "Issız adada topla, üret, hayatta kal.",
+      "highlights": [
+        "Üretim ağacı",
+        "gece-gündüz",
+        "açlık/su",
+        "inşa"
+      ]
+    }
+  ]
+}
