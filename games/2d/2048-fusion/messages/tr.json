@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Karoları kaydır, eşleri birleştir, 2048’e ulaş.",
+    "description": "Dört satır, dört sütun, tek hedef. Aynı sayıları üst üste getirip büyüt; tahta dolduğunda oyun biter. 2048’e ulaştıktan sonra da devam edebilirsin, rekor tablosu sınır tanımıyor.",
+    "controls": [
+      "Yön tuşları ya da WASD ile tüm karoları bir yöne kaydır.",
+      "Dokunmatik ekranda kaydırarak oyna.",
+      "Birleşen karoların toplamı puan olarak yazılır.",
+      "Hamle kalmayınca oyun biter."
+    ]
+  }
+}

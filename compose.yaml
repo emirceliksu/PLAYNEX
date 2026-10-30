@@ -47,7 +47,7 @@ services:
   # storybook never race each other inside the shared node_modules volumes.
   deps:
     <<: *node
-    command: sh -c "pnpm install && pnpm turbo run build --filter=@playnex/design-tokens"
+    command: sh -c "pnpm install && pnpm gen:games && pnpm install && pnpm turbo run build --filter=@playnex/design-tokens"
 
   web:
     <<: *node

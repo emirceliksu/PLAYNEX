@@ -1,0 +1,36 @@
+{
+  "id": "g_drawing_party",
+  "slug": "drawing-party",
+  "title": "Drawing Party",
+  "engine": "dom",
+  "dimension": "2d",
+  "mode": "party",
+  "category": "party",
+  "status": "live",
+  "accent": "pink",
+  "players": {
+    "min": 3,
+    "max": 8
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "mouse",
+    "touch"
+  ],
+  "ageRating": "7+",
+  "orientation": "any",
+  "scoring": "high-score",
+  "estimatedMinutes": 10,
+  "setup": {
+    "modes": [
+      "local",
+      "online"
+    ],
+    "localPlayers": {
+      "min": 3,
+      "max": 8
+    },
+    "options": []
+  }
+}

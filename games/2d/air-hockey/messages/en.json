@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "First to seven goals takes it.",
+    "description": "Your half of the table and theirs. Bank the puck off the walls, cover your goal, catch the opening. Play the bot on three difficulty levels, two people on one screen or in an online room; online matches run the physics on the server.",
+    "controls": [
+      "Drag your mallet with the mouse or a finger; it stays in your half.",
+      "On a keyboard the arrow keys move the bottom mallet and WASD the top one on a shared device.",
+      "A puck through the gap in the goal line scores; seven goals end the match.",
+      "Whoever concedes serves next from their own half."
+    ]
+  }
+}

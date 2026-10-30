@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import type { NextConfig } from 'next';
@@ -7,6 +8,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 // Bind mounts on Windows/macOS hosts do not deliver file events; see infrastructure/development.env.
 const usePolling = process.env.WATCH_POLLING !== '0';
+
+const gamePackages = JSON.parse(
+  readFileSync(path.join(import.meta.dirname, 'src/lib/games/generated/packages.json'), 'utf8'),
+) as string[];
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -23,17 +28,7 @@ const nextConfig: NextConfig = {
     '@playnex/design-tokens',
     '@playnex/shared-types',
     '@playnex/game-sdk',
-    '@playnex/game-snake-rush',
-    '@playnex/game-2048-fusion',
-    '@playnex/game-memory-flip',
-    '@playnex/game-tugla-tugla',
-    '@playnex/game-connect-four',
-    '@playnex/game-air-hockey',
-    '@playnex/game-chess-arena',
-    '@playnex/game-trivia-battle',
-    '@playnex/game-drawing-party',
-    '@playnex/game-neon-kart-racing',
-    '@playnex/game-siper',
+    ...gamePackages,
   ],
   ...(usePolling ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
 };

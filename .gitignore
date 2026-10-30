@@ -30,3 +30,6 @@ Thumbs.db
 # Google service account keys live only in the deployment secrets
 *service-account*.json
 playnex-mail-*.json
+
+# produced by pnpm gen:games
+apps/web/src/lib/games/generated/

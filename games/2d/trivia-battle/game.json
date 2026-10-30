@@ -1,0 +1,57 @@
+{
+  "id": "g_trivia_battle",
+  "slug": "trivia-battle",
+  "title": "Trivia Battle",
+  "engine": "dom",
+  "dimension": "2d",
+  "mode": "party",
+  "category": "party",
+  "status": "live",
+  "accent": "yellow",
+  "players": {
+    "min": 1,
+    "max": 12
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "mouse",
+    "touch",
+    "keyboard"
+  ],
+  "ageRating": "7+",
+  "orientation": "any",
+  "scoring": "high-score",
+  "estimatedMinutes": 5,
+  "setup": {
+    "modes": [
+      "solo",
+      "local",
+      "online"
+    ],
+    "localPlayers": {
+      "min": 2,
+      "max": 4
+    },
+    "options": [
+      {
+        "key": "category",
+        "values": [
+          "mixed",
+          "geography",
+          "science",
+          "history",
+          "sports",
+          "culture",
+          "technology"
+        ],
+        "defaultValue": "mixed",
+        "modes": [
+          "solo",
+          "local",
+          "online"
+        ]
+      }
+    ]
+  }
+}

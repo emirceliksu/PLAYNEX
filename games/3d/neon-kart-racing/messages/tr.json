@@ -1,0 +1,28 @@
+{
+  "copy": {
+    "tagline": "Üç tur, sekiz kart, tek bitiş çizgisi.",
+    "description": "PLAYNEX’in ilk 3D oyunu. Kıvrımlı pistte üç bota karşı tur at ya da çevrim içi odada sekiz kişiye kadar yarış. Çevrim içi yarışta sürüş modeli sunucuda döner; kendi kartın gecikmesiz tepki verir, rakipler pürüzsüzce yetişir.",
+    "controls": [
+      "W ya da yukarı ok gaz, S ya da aşağı ok fren ve geri vites.",
+      "A/D ya da sol/sağ ok ile dön; boşluk tuşu drift ile keskin döner.",
+      "Gamepad: sol çubuk direksiyon, RT gaz, LT fren, A drift.",
+      "Dokunmatik ekranda alt köşelerdeki düğmeleri kullan.",
+      "Pist dışında kart yavaşlar; üç turu ilk bitiren kazanır."
+    ]
+  },
+  "text": {
+    "you": "Sen",
+    "bot_1": "Nova",
+    "bot_2": "Pistçi",
+    "bot_3": "Volt",
+    "lap": "Tur {n}/{total}",
+    "position": "{n}/{total}. sıra",
+    "go": "Başla!",
+    "finished": "Bitiş",
+    "left": "Sola dön",
+    "right": "Sağa dön",
+    "gas": "Gaz",
+    "brake": "Fren",
+    "drift": "Drift"
+  }
+}

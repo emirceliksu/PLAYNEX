@@ -1,0 +1,11 @@
+{
+  "copy": {
+    "tagline": "Kartları çevir, eşleri hatırla, süreyi yen.",
+    "description": "On altı kart, sekiz eş. Ne kadar az hamlede ve ne kadar hızlı tamamlarsan puanın o kadar yüksek. Kısa molalar için ideal, rekor kovalamak için çetin.",
+    "controls": [
+      "Bir karta tıkla ya da dokun, sonra eşini bul.",
+      "Yanlış eş kartları geri kapatır ve 25 puan götürür.",
+      "Geçen her saniye puandan düşer; hızlı ol."
+    ]
+  }
+}

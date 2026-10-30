@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Grow the snake, miss the walls, keep the pace.",
+    "description": "Classic snake, only faster and meaner. The tempo climbs every five apples, and short-lived bonuses decide the leaderboard. One wrong turn on one tile ends the run.",
+    "controls": [
+      "Turn with the arrow keys or WASD.",
+      "On a touch screen, swipe the way you want to go.",
+      "Each apple is worth 10 points, a short-lived bonus 50.",
+      "Esc pauses the game."
+    ]
+  }
+}

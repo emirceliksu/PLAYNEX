@@ -1,0 +1,33 @@
+{
+  "copy": {
+    "tagline": "Ten questions, fifteen seconds, up to twelve players.",
+    "description": "120 questions across six categories, in Turkish and English. Faster answers score more, and correct answers in a row unlock a streak bonus. Chase a record alone, take turns on one device or have everyone answer at once in an online room.",
+    "controls": [
+      "Tap the right option or press one of the keys 1 to 4.",
+      "A correct answer is worth 100 points, plus up to 100 more for the time left.",
+      "Each correct answer in a row raises the streak bonus by 20 points.",
+      "On a shared device, each player answers in turn while the others look away."
+    ]
+  },
+  "text": {
+    "round": "Question {n}/{total}",
+    "getReady": "Get ready",
+    "yourTurn": "Your turn, {name}",
+    "passDevice": "Hand the device to {name}; everyone else, look away.",
+    "ready": "I'm ready",
+    "correct": "Correct! +{points}",
+    "wrong": "Wrong answer",
+    "timeUp": "Time's up",
+    "streak": "Streak ×{n}",
+    "noPoints": "No points",
+    "answered": "Answered",
+    "waitingOthers": "Answer locked in, waiting for the others.",
+    "scoreboard": "Scores",
+    "category_geography": "Geography",
+    "category_science": "Science",
+    "category_history": "History",
+    "category_sports": "Sports",
+    "category_culture": "Arts and culture",
+    "category_technology": "Technology"
+  }
+}

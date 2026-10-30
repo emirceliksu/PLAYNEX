@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Yılanı büyüt, duvara çarpma, hız kesme.",
+    "description": "Klasik yılan, daha hızlı ve daha sinirli. Her beş elmada tempo artar, kısa süreliğine beliren bonuslar sıralamada fark yaratır. Bir karede yanlış dönüş her şeyi bitirir.",
+    "controls": [
+      "Yön tuşları ya da WASD ile dön.",
+      "Dokunmatik ekranda gitmek istediğin yöne kaydır.",
+      "Her elma +10, kısa süreli bonus +50 puan.",
+      "Esc tuşu oyunu duraklatır."
+    ]
+  }
+}

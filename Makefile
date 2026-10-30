@@ -1,6 +1,6 @@
 COMPOSE ?= docker compose
 
-.PHONY: bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots voices migrate
+.PHONY: new-game bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots voices migrate
 
 .env:
 	cp infrastructure/development.env .env
@@ -51,6 +51,9 @@ check-rust:
 	$(COMPOSE) exec api cargo fmt --all --check
 	$(COMPOSE) exec api cargo clippy --workspace --all-targets -- -D warnings
 	$(COMPOSE) exec api cargo check --workspace
+
+new-game:
+	$(COMPOSE) exec web pnpm new-game $(SLUG)
 
 tokens:
 	$(COMPOSE) exec web pnpm --filter @playnex/design-tokens build

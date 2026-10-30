@@ -1,0 +1,31 @@
+{
+  "id": "g_tugla_tugla",
+  "slug": "tugla-tugla",
+  "title": "Tuğla Tuğla",
+  "engine": "phaser",
+  "dimension": "2d",
+  "mode": "solo",
+  "category": "puzzle",
+  "status": "live",
+  "accent": "cyan",
+  "players": {
+    "min": 1,
+    "max": 1
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "mouse",
+    "touch"
+  ],
+  "ageRating": "3+",
+  "orientation": "any",
+  "scoring": "high-score",
+  "estimatedMinutes": 8,
+  "setup": {
+    "modes": [
+      "solo"
+    ],
+    "options": []
+  }
+}

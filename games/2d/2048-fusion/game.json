@@ -1,0 +1,31 @@
+{
+  "id": "g_2048_fusion",
+  "slug": "2048-fusion",
+  "title": "2048 Fusion",
+  "engine": "phaser",
+  "dimension": "2d",
+  "mode": "solo",
+  "category": "puzzle",
+  "status": "live",
+  "accent": "yellow",
+  "players": {
+    "min": 1,
+    "max": 1
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-20T09:00:00+03:00",
+  "controls": [
+    "keyboard",
+    "touch"
+  ],
+  "ageRating": "3+",
+  "orientation": "any",
+  "scoring": "high-score",
+  "estimatedMinutes": 6,
+  "setup": {
+    "modes": [
+      "solo"
+    ],
+    "options": []
+  }
+}

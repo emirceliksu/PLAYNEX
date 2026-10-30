@@ -1,0 +1,11 @@
+{
+  "copy": {
+    "tagline": "Place the pieces, clear the lines.",
+    "description": "Pick one of three pieces, drop it on the grid and clear full rows and columns. The game ends when nothing fits. Looks calm, gets sweaty by minute ten.",
+    "controls": [
+      "Drag one of the pieces below onto the grid.",
+      "Full rows and columns clear together; clearing several at once earns a bonus.",
+      "New pieces arrive once all three are placed; if none fits, the game ends."
+    ]
+  }
+}

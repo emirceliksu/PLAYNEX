@@ -8,7 +8,7 @@ import { GamePlayer } from '@/features/game-player/game-player';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { getCurrentAccount } from '@/lib/auth/session';
 import { hasGameModule } from '@/lib/games/registry';
-import { getGameCopy } from '@/lib/catalog/game-copy';
+import { getGameCopy, getGameText } from '@/lib/catalog/game-copy';
 import { findGame } from '@/lib/catalog/games';
 import { notFoundMetadata } from '@/lib/not-found-metadata';
 
@@ -67,6 +67,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
         title: game.title,
         accent: game.accent,
         controlsGuide: (await getGameCopy(locale))(game.slug).controls,
+        messages: await getGameText(locale, game.slug),
         scoring: game.scoring,
         setup: game.setup,
       }}

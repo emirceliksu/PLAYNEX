@@ -1,0 +1,36 @@
+{
+  "id": "g_connect_four",
+  "slug": "connect-four",
+  "title": "Connect Four",
+  "engine": "phaser",
+  "dimension": "2d",
+  "mode": "1v1",
+  "category": "strategy",
+  "status": "live",
+  "accent": "coral",
+  "players": {
+    "min": 2,
+    "max": 2
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "mouse",
+    "touch"
+  ],
+  "ageRating": "3+",
+  "orientation": "any",
+  "scoring": "wins",
+  "estimatedMinutes": 4,
+  "setup": {
+    "modes": [
+      "local",
+      "online"
+    ],
+    "localPlayers": {
+      "min": 2,
+      "max": 2
+    },
+    "options": []
+  }
+}

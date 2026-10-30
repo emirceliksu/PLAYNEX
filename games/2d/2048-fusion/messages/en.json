@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Slide the tiles, merge the pairs, reach 2048.",
+    "description": "Four rows, four columns, one goal. Stack matching numbers to grow them; the game ends when the board fills up. You can keep going past 2048, the leaderboard has no ceiling.",
+    "controls": [
+      "Slide every tile one way with the arrow keys or WASD.",
+      "On a touch screen, swipe to play.",
+      "The sum of each merge is added to your score.",
+      "The game ends when no moves are left."
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Yedi gole ilk ulaşan alır.",
+    "description": "Masa senin yarın ve onun yarı. Pakı duvardan sektir, kaleyi kapat, açığı yakala. Bilgisayara karşı üç zorlukta, aynı ekranda iki kişi ya da çevrim içi odada oyna; çevrim içi maçta fizik sunucuda döner.",
+    "controls": [
+      "Vurucuyu fare ya da parmakla sürükle; yalnızca kendi yarında hareket eder.",
+      "Klavyede yön tuşları alttaki, aynı cihazda WASD üstteki vurucuyu yönetir.",
+      "Pak orta çizgideki boşluktan kaleye girerse gol; yedi gol maçı bitirir.",
+      "Gol yiyen taraf bir sonraki servisi kendi yarısında alır."
+    ]
+  }
+}

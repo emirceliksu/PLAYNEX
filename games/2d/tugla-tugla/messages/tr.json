@@ -1,0 +1,11 @@
+{
+  "copy": {
+    "tagline": "Parçaları yerleştir, satırları temizle.",
+    "description": "Üç parçadan birini seç, ızgaraya yerleştir, dolan satır ve sütunları sil. Parça sığmayınca oyun biter. Sakin görünür, onuncu dakikada terletir.",
+    "controls": [
+      "Alttaki parçalardan birini sürükleyip ızgaraya bırak.",
+      "Dolan satır ve sütunlar aynı anda silinir; çoklu temizlik bonus verir.",
+      "Üç parça da yerleşince yenileri gelir; hiçbiri sığmazsa oyun biter."
+    ]
+  }
+}

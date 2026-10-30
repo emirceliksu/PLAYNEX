@@ -1,0 +1,46 @@
+{
+  "id": "g_neon_kart_racing",
+  "slug": "neon-kart-racing",
+  "title": "Neon Kart Racing",
+  "engine": "babylon",
+  "dimension": "3d",
+  "mode": "party",
+  "category": "racing",
+  "status": "live",
+  "accent": "brand",
+  "players": {
+    "min": 1,
+    "max": 8
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "keyboard",
+    "gamepad",
+    "touch"
+  ],
+  "ageRating": "7+",
+  "orientation": "landscape",
+  "scoring": "fastest-time",
+  "estimatedMinutes": 4,
+  "setup": {
+    "modes": [
+      "solo",
+      "online"
+    ],
+    "options": [
+      {
+        "key": "difficulty",
+        "values": [
+          "easy",
+          "normal",
+          "hard"
+        ],
+        "defaultValue": "normal",
+        "modes": [
+          "solo"
+        ]
+      }
+    ]
+  }
+}

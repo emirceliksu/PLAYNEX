@@ -1,8 +1,22 @@
 export type GameEngine = 'phaser' | 'babylon' | 'dom';
 export type GameDimension = '2d' | '3d';
 export type GameMode = 'solo' | '1v1' | 'party' | 'co-op';
-export type GameStatus = 'live' | 'beta' | 'coming-soon';
-export type GameCategory = 'arcade' | 'puzzle' | 'strategy' | 'party' | 'racing' | 'action';
+export type GameStatus = 'draft' | 'live' | 'beta' | 'coming-soon';
+export type GameCategory =
+  | 'arcade'
+  | 'puzzle'
+  | 'strategy'
+  | 'party'
+  | 'racing'
+  | 'action'
+  | 'board'
+  | 'card'
+  | 'shooter'
+  | 'fighting'
+  | 'sports'
+  | 'platform'
+  | 'word'
+  | 'simulation';
 export type GameScoring = 'high-score' | 'fastest-time' | 'wins';
 export type GameOrientation = 'any' | 'landscape' | 'portrait';
 export type AgeRating = '3+' | '7+' | '12+';
@@ -63,6 +77,8 @@ export interface Game {
   scoring: GameScoring;
   estimatedMinutes: number;
   setup: GameSetup;
+  // Needs a mouse and pointer lock; the catalog card says so.
+  desktopOnly?: boolean;
 }
 
 export type PresenceStatus = 'online' | 'in-game' | 'offline';

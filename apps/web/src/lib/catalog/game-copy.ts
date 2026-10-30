@@ -1,10 +1,4 @@
-import { getTranslations } from 'next-intl/server';
-
 import { resolveLocale } from '@/i18n/routing';
-
-import type messages from '../../../messages/tr.json';
-
-type GameSlug = keyof (typeof messages)['gameCopy'];
 
 export interface GameCopy {
   tagline: string;
@@ -12,16 +6,22 @@ export interface GameCopy {
   controls: string[];
 }
 
-// Catalog slugs are plain strings while message keys are typed, hence the cast; a slug with no
-// copy fails loudly in next-intl rather than rendering an empty card.
+// Read directly rather than through next-intl: the provider ships its messages to every page,
+// and the copy of a few hundred games does not belong in that payload.
 export async function getGameCopy(locale: string): Promise<(slug: string) => GameCopy> {
-  const t = await getTranslations({ locale: resolveLocale(locale), namespace: 'gameCopy' });
-  return (slug) => {
-    const key = slug as GameSlug;
-    return {
-      tagline: t(`${key}.tagline`),
-      description: t(`${key}.description`),
-      controls: t.raw(`${key}.controls`) as string[],
-    };
+  const loaded = (await import(`../games/generated/copy.${resolveLocale(locale)}.json`)) as {
+    default: Record<string, GameCopy>;
   };
+  return (slug) => {
+    const copy = loaded.default[slug];
+    if (!copy) throw new Error(`No copy for game "${slug}"`);
+    return copy;
+  };
+}
+
+export async function getGameText(locale: string, slug: string): Promise<Record<string, string>> {
+  const loaded = (await import(
+    `../games/generated/text/${resolveLocale(locale)}/${slug}.json`
+  )) as { default: Record<string, string> };
+  return loaded.default;
 }

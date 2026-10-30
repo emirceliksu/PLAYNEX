@@ -1,0 +1,11 @@
+{
+  "copy": {
+    "tagline": "Flip the cards, remember the pairs, beat the clock.",
+    "description": "Sixteen cards, eight pairs. The fewer moves and the faster you finish, the higher your score. Ideal for a short break, tough when you chase a record.",
+    "controls": [
+      "Click or tap a card, then find its pair.",
+      "A wrong pair flips back and costs 25 points.",
+      "Every second counts against your score, so be quick."
+    ]
+  }
+}

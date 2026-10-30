@@ -1,0 +1,33 @@
+{
+  "copy": {
+    "tagline": "On soru, on beş saniye, on iki kişiye kadar.",
+    "description": "Altı kategoriden 120 soru, Türkçe ve İngilizce. Hızlı cevap daha çok puan getirir, üst üste doğrular seri bonusu açar. Tek başına rekor kovala, aynı cihazda sırayla yarış ya da çevrim içi odada herkes aynı anda cevaplasın.",
+    "controls": [
+      "Doğru şıkka dokun ya da 1–4 tuşlarından birine bas.",
+      "Doğru cevap 100 puan, kalan süre 100 puana kadar ek getirir.",
+      "Üst üste her doğru cevap seri bonusunu 20 puan artırır.",
+      "Aynı cihazda her oyuncu soruyu sırayla, diğerleri bakmadan cevaplar."
+    ]
+  },
+  "text": {
+    "round": "Soru {n}/{total}",
+    "getReady": "Hazır ol",
+    "yourTurn": "Sıra sende, {name}",
+    "passDevice": "Cihazı {name} alsın; diğerleri ekrana bakmasın.",
+    "ready": "Hazırım",
+    "correct": "Doğru! +{points}",
+    "wrong": "Yanlış cevap",
+    "timeUp": "Süre doldu",
+    "streak": "Seri ×{n}",
+    "noPoints": "Puan yok",
+    "answered": "Cevapladı",
+    "waitingOthers": "Cevabın alındı, diğerleri bekleniyor.",
+    "scoreboard": "Puan durumu",
+    "category_geography": "Coğrafya",
+    "category_science": "Bilim",
+    "category_history": "Tarih",
+    "category_sports": "Spor",
+    "category_culture": "Kültür ve sanat",
+    "category_technology": "Teknoloji"
+  }
+}

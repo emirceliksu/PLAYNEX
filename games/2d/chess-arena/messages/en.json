@@ -1,0 +1,24 @@
+{
+  "copy": {
+    "tagline": "Three or five minutes, fast chess with the full rules.",
+    "description": "Castling, en passant, promotion, stalemate and threefold repetition, all of it. Play the bot on three levels, on one device or in an online room; online matches validate moves and the clock on the server.",
+    "controls": [
+      "Tap a piece, then tap one of the highlighted squares.",
+      "When a pawn reaches the last rank, pick its promotion in the picker that opens.",
+      "The clock runs for the player to move; whoever runs out of time loses.",
+      "Use the buttons below to resign or offer a draw."
+    ]
+  },
+  "text": {
+    "cpu": "Computer",
+    "you": "You",
+    "resign": "Resign",
+    "confirmResign": "Sure? Tap again",
+    "offerDraw": "Offer a draw",
+    "drawOffered": "{name} offers a draw",
+    "drawSent": "Draw offer sent",
+    "accept": "Accept",
+    "decline": "Decline",
+    "thinking": "Computer is thinking"
+  }
+}

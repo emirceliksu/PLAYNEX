@@ -103,7 +103,15 @@
       "strategy": "Strateji",
       "party": "Parti",
       "racing": "Yarış",
-      "action": "Aksiyon"
+      "action": "Aksiyon",
+      "board": "Masa",
+      "card": "Kart",
+      "shooter": "Nişancı",
+      "fighting": "Dövüş",
+      "sports": "Spor",
+      "platform": "Platform",
+      "word": "Kelime",
+      "simulation": "Simülasyon"
     },
     "dimension": {
       "all": "2D ve 3D",
@@ -159,7 +167,15 @@
       "strategy": "Strateji",
       "party": "Parti",
       "racing": "Yarış",
-      "action": "Aksiyon"
+      "action": "Aksiyon",
+      "board": "Masa",
+      "card": "Kart",
+      "shooter": "Nişancı",
+      "fighting": "Dövüş",
+      "sports": "Spor",
+      "platform": "Platform",
+      "word": "Kelime",
+      "simulation": "Simülasyon"
     },
     "dimensions": {
       "2d": "2D",
@@ -174,7 +190,8 @@
     "statuses": {
       "live": "Oynanabilir",
       "beta": "Beta",
-      "coming-soon": "Yakında"
+      "coming-soon": "Yakında",
+      "draft": "Hazırlanıyor"
     }
   },
   "leaderboard": {
@@ -501,237 +518,6 @@
       "race": "Yarış tamamlandı."
     }
   },
-  "gameText": {
-    "connect-four": {},
-    "chess-arena": {
-      "cpu": "Bilgisayar",
-      "you": "Sen",
-      "resign": "Pes et",
-      "confirmResign": "Emin misin? Tekrar dokun",
-      "offerDraw": "Beraberlik teklif et",
-      "drawOffered": "{name} beraberlik teklif ediyor",
-      "drawSent": "Beraberlik teklifi gönderildi",
-      "accept": "Kabul et",
-      "decline": "Reddet",
-      "thinking": "Bilgisayar düşünüyor"
-    },
-    "trivia-battle": {
-      "round": "Soru {n}/{total}",
-      "getReady": "Hazır ol",
-      "yourTurn": "Sıra sende, {name}",
-      "passDevice": "Cihazı {name} alsın; diğerleri ekrana bakmasın.",
-      "ready": "Hazırım",
-      "correct": "Doğru! +{points}",
-      "wrong": "Yanlış cevap",
-      "timeUp": "Süre doldu",
-      "streak": "Seri ×{n}",
-      "noPoints": "Puan yok",
-      "answered": "Cevapladı",
-      "waitingOthers": "Cevabın alındı, diğerleri bekleniyor.",
-      "scoreboard": "Puan durumu",
-      "category_geography": "Coğrafya",
-      "category_science": "Bilim",
-      "category_history": "Tarih",
-      "category_sports": "Spor",
-      "category_culture": "Kültür ve sanat",
-      "category_technology": "Teknoloji"
-    },
-    "drawing-party": {
-      "round": "Tur {n}/{total}",
-      "getReady": "Hazır ol",
-      "scoreboard": "Puan durumu",
-      "yourTurnDraw": "Çizme sırası sende, {name}",
-      "lookAway": "Diğerleri ekrana bakmasın.",
-      "showWord": "Kelimeyi göster",
-      "yourWord": "Kelimen",
-      "memorise": "Aklında tut; çizerken ekranda görünmeyecek.",
-      "hideAndStart": "Gizle ve çizmeye başla",
-      "drawingLocal": "{name} çiziyor. Tahminlerinizi sesli söyleyin.",
-      "drawing": "{name} çiziyor",
-      "drawThis": "Çiz: {word}",
-      "drawerTag": "Çiziyor",
-      "guessed": "Bildi",
-      "whoGuessed": "İlk kim bildi?",
-      "nobody": "Kimse bilemedi",
-      "roundOver": "Tur bitti",
-      "theWordWas": "Kelime: {word}",
-      "guessedBy": "İlk {name} bildi.",
-      "nobodyGuessed": "Bu turda bilen olmadı.",
-      "nextRound": "Sonraki tur",
-      "seeResults": "Sonuçları gör",
-      "drawerHint": "Tahminler yazıldıkça puan tablosunda görünür. Harf ya da kelime yazmak yok.",
-      "yourGuess": "Tahminin",
-      "guessPlaceholder": "Tahminini yaz",
-      "guess": "Tahmin et",
-      "close": "Çok yaklaştın!",
-      "wrong": "Olmadı, tekrar dene.",
-      "youGuessed": "Bildin! Kelime: {word}",
-      "letters": "{n} harf",
-      "color": "Renk",
-      "size": "Kalınlık",
-      "color_0": "Siyah",
-      "color_1": "Vurgu rengi",
-      "color_2": "Sarı",
-      "color_3": "Mercan",
-      "color_4": "Koyu vurgu",
-      "color_5": "Gri",
-      "color_6": "Lacivert",
-      "eraser": "Silgi",
-      "size_0": "İnce",
-      "size_1": "Orta",
-      "size_2": "Kalın",
-      "undo": "Geri al",
-      "clear": "Temizle"
-    },
-    "neon-kart-racing": {
-      "you": "Sen",
-      "bot_1": "Nova",
-      "bot_2": "Pistçi",
-      "bot_3": "Volt",
-      "lap": "Tur {n}/{total}",
-      "position": "{n}/{total}. sıra",
-      "go": "Başla!",
-      "finished": "Bitiş",
-      "left": "Sola dön",
-      "right": "Sağa dön",
-      "gas": "Gaz",
-      "brake": "Fren",
-      "drift": "Drift"
-    },
-    "siper": {
-      "weapon_knife": "Bıçak",
-      "weapon_pistol": "Tabanca",
-      "weapon_revolver": "Altıpatlar",
-      "weapon_smg": "Hafif makineli",
-      "weapon_shotgun": "Pompalı",
-      "weapon_carbine": "Karabina",
-      "weapon_rifle": "Piyade tüfeği",
-      "weapon_sniper": "Keskin nişancı",
-      "weapon_grenade": "El bombası",
-      "weapon_smoke": "Sis bombası",
-      "weapon_armor": "Zırh",
-      "weapon_armorHelmet": "Zırh ve kask",
-      "weapon_bomb": "Bomba",
-      "map_liman": "Liman",
-      "map_carsi": "Çarşı",
-      "map_santral": "Santral",
-      "mode_tdm": "Takım Ölüm Maçı",
-      "mode_bomb": "Bomba Kur/Çöz",
-      "mode_knife": "Bıçak Raundu",
-      "mode_ffa": "Herkes Tek",
-      "mode_gungame": "Silah Oyunu",
-      "announce_firstBlood": "İlk Kan!",
-      "announce_double": "Çift Vuruş!",
-      "announce_triple": "Üçleme!",
-      "announce_quad": "Dörtleme!",
-      "announce_massacre": "Katliam!",
-      "announce_heating": "Isınıyor!",
-      "announce_unstoppable": "Durdurulamaz!",
-      "announce_legend": "Efsane!",
-      "announce_godlike": "Tanrısal!",
-      "announce_headshot": "Kafadan!",
-      "announce_knifeKill": "Bıçakla bitirdi!",
-      "announce_streakEnded": "Seriyi bozdu!",
-      "announce_lastRound": "Son raunt!",
-      "announce_bombPlanted": "Bomba kuruldu!",
-      "announce_bombDefused": "Bomba çözüldü!",
-      "announce_attackersWin": "Akıncılar kazandı!",
-      "announce_defendersWin": "Bekçiler kazandı!",
-      "announce_go": "Başla!",
-      "action_forward": "İleri",
-      "action_back": "Geri",
-      "action_left": "Sola",
-      "action_right": "Sağa",
-      "action_jump": "Zıpla",
-      "action_crouch": "Eğil",
-      "action_walk": "Sessiz yürü",
-      "action_reload": "Şarjör değiştir",
-      "action_use": "Bomba kur / çöz",
-      "action_primary": "Ana silah",
-      "action_secondary": "Tabanca",
-      "action_melee": "Bıçak",
-      "action_grenade": "El bombası",
-      "action_smoke": "Sis bombası",
-      "action_lastWeapon": "Önceki silah",
-      "action_buy": "Satın alma menüsü",
-      "action_scoreboard": "Skor tablosu",
-      "action_chatAll": "Genel sohbet",
-      "action_chatTeam": "Takım sohbeti",
-      "quality_low": "Düşük",
-      "quality_medium": "Orta",
-      "quality_high": "Yüksek",
-      "reason_eliminated": "rakip takım temizlendi",
-      "reason_time": "süre doldu",
-      "reason_exploded": "bomba patladı",
-      "reason_defused": "bomba çözüldü",
-      "chatPlaceholder": "Mesajını yaz, Enter ile gönder",
-      "armorValue": "Zırh {n}",
-      "armorHelmetValue": "Zırh {n} · Kask",
-      "moneyValue": "{n} ₺",
-      "buyHint": "B: satın al",
-      "netStats": "Ping {ping} ms · {fps} FPS",
-      "headshotMark": "(kafa)",
-      "teamTag": "[takım]",
-      "chatTeam": "Takım",
-      "chatAll": "Herkes",
-      "scoreboard": "Skor tablosu",
-      "players": "Oyuncular",
-      "teamAttackers": "Akıncılar",
-      "teamDefenders": "Bekçiler",
-      "levelShort": "Sv",
-      "pingShort": "Ping",
-      "botTag": "bot",
-      "buyTitle": "Satın al",
-      "buySecondary": "Tabancalar",
-      "buyPrimary": "Ana silahlar",
-      "buyGear": "Teçhizat",
-      "close": "Kapat",
-      "buyOpen": "Satın alma açık. Doğma bölgesinden ayrılınca ya da süre bitince kapanır.",
-      "buyClosed": "Şu an satın alamazsın: doğma bölgesinde ve raunt başında olmalısın.",
-      "voteTimer": "Oylama {n} sn sonra kapanıyor",
-      "votes": "{n} oy",
-      "desktopOnly": "Siper fare ve klavyeyle oynanır. Bilgisayardan aç.",
-      "clickToPlay": "Oynamak için tıkla",
-      "sensitivity": "Fare hassasiyeti",
-      "fov": "Görüş açısı",
-      "volumeMaster": "Genel ses",
-      "volumeSfx": "Efektler",
-      "volumeMusic": "Müzik",
-      "volumeVoice": "Anons",
-      "quality": "Grafik kalitesi",
-      "qualityHint": "Değişiklik bir sonraki maçta geçerli olur.",
-      "invertY": "Dikey ekseni ters çevir",
-      "controlsTitle": "Tuşlar",
-      "resetControls": "Varsayılana dön",
-      "mouseHint": "Sol tık ateş, sağ tık dürbün. Esc fareyi bırakır.",
-      "pressKey": "Bir tuşa bas…",
-      "connecting": "Sunucuya bağlanılıyor",
-      "modeOnMap": "{mode} · {map}",
-      "ffaScore": "Sen {me} · Lider {best}",
-      "roundShort": "Raunt {n}",
-      "bombPlantedAt": "Bomba {site} bölgesinde",
-      "youCarry": "Bomba sende",
-      "levelLine": "Seviye {n}/{total} · {weapon}",
-      "planting": "Bomba kuruluyor",
-      "defusing": "Bomba çözülüyor",
-      "killedBy": "{name} seni öldürdü ({weapon})",
-      "youDied": "Öldün",
-      "respawnIn": "{n} sn sonra yeniden doğacaksın",
-      "waitRound": "Raunt bitince yeniden doğacaksın",
-      "killcam": "Ölüm kamerası · {name}",
-      "spectating": "İzliyorsun: {name} · Sol tık ile değiştir",
-      "roundN": "Raunt {n}",
-      "attackersRound": "Raundu Akıncılar aldı: {reason}",
-      "defendersRound": "Raundu Bekçiler aldı: {reason}",
-      "radar": "Radar: yakındaki takım arkadaşları ve görülen rakipler",
-      "halftime": "Devre arası: taraflar değişti",
-      "levelUp": "Yeni silah: {weapon}",
-      "draw": "Berabere",
-      "attackersWinMatch": "Maçı Akıncılar kazandı",
-      "defendersWinMatch": "Maçı Bekçiler kazandı",
-      "playerWins": "Maçı {name} kazandı"
-    }
-  },
   "errors": {
     "forbidden": {
       "title": "Bu sayfa yöneticilere açık",
@@ -868,117 +654,6 @@
       "resolve": "Çözüldü",
       "dismiss": "Yersiz",
       "failed": "Kaydedilemedi."
-    }
-  },
-  "gameCopy": {
-    "snake-rush": {
-      "tagline": "Yılanı büyüt, duvara çarpma, hız kesme.",
-      "description": "Klasik yılan, daha hızlı ve daha sinirli. Her beş elmada tempo artar, kısa süreliğine beliren bonuslar sıralamada fark yaratır. Bir karede yanlış dönüş her şeyi bitirir.",
-      "controls": [
-        "Yön tuşları ya da WASD ile dön.",
-        "Dokunmatik ekranda gitmek istediğin yöne kaydır.",
-        "Her elma +10, kısa süreli bonus +50 puan.",
-        "Esc tuşu oyunu duraklatır."
-      ]
-    },
-    "2048-fusion": {
-      "tagline": "Karoları kaydır, eşleri birleştir, 2048’e ulaş.",
-      "description": "Dört satır, dört sütun, tek hedef. Aynı sayıları üst üste getirip büyüt; tahta dolduğunda oyun biter. 2048’e ulaştıktan sonra da devam edebilirsin, rekor tablosu sınır tanımıyor.",
-      "controls": [
-        "Yön tuşları ya da WASD ile tüm karoları bir yöne kaydır.",
-        "Dokunmatik ekranda kaydırarak oyna.",
-        "Birleşen karoların toplamı puan olarak yazılır.",
-        "Hamle kalmayınca oyun biter."
-      ]
-    },
-    "memory-flip": {
-      "tagline": "Kartları çevir, eşleri hatırla, süreyi yen.",
-      "description": "On altı kart, sekiz eş. Ne kadar az hamlede ve ne kadar hızlı tamamlarsan puanın o kadar yüksek. Kısa molalar için ideal, rekor kovalamak için çetin.",
-      "controls": [
-        "Bir karta tıkla ya da dokun, sonra eşini bul.",
-        "Yanlış eş kartları geri kapatır ve 25 puan götürür.",
-        "Geçen her saniye puandan düşer; hızlı ol."
-      ]
-    },
-    "tugla-tugla": {
-      "tagline": "Parçaları yerleştir, satırları temizle.",
-      "description": "Üç parçadan birini seç, ızgaraya yerleştir, dolan satır ve sütunları sil. Parça sığmayınca oyun biter. Sakin görünür, onuncu dakikada terletir.",
-      "controls": [
-        "Alttaki parçalardan birini sürükleyip ızgaraya bırak.",
-        "Dolan satır ve sütunlar aynı anda silinir; çoklu temizlik bonus verir.",
-        "Üç parça da yerleşince yenileri gelir; hiçbiri sığmazsa oyun biter."
-      ]
-    },
-    "connect-four": {
-      "tagline": "Dört diski hizala, rakibini kilitle.",
-      "description": "Sıra tabanlı 1v1. Diskleri sütunlara bırak, yatay, dikey ya da çapraz dörtlüyü ilk kuran kazanır. Şimdilik aynı cihazda iki kişi; çevrim içi odalar ve sunucu doğrulaması sırada.",
-      "controls": [
-        "Aynı cihazda iki oyuncu sırayla oynar; üstteki disk sıranın kimde olduğunu gösterir.",
-        "Bir sütuna tıkla ya da dokun; disk en alta düşer.",
-        "Yatay, dikey ya da çapraz dört diski hizalayan kazanır."
-      ]
-    },
-    "air-hockey": {
-      "tagline": "Yedi gole ilk ulaşan alır.",
-      "description": "Masa senin yarın ve onun yarı. Pakı duvardan sektir, kaleyi kapat, açığı yakala. Bilgisayara karşı üç zorlukta, aynı ekranda iki kişi ya da çevrim içi odada oyna; çevrim içi maçta fizik sunucuda döner.",
-      "controls": [
-        "Vurucuyu fare ya da parmakla sürükle; yalnızca kendi yarında hareket eder.",
-        "Klavyede yön tuşları alttaki, aynı cihazda WASD üstteki vurucuyu yönetir.",
-        "Pak orta çizgideki boşluktan kaleye girerse gol; yedi gol maçı bitirir.",
-        "Gol yiyen taraf bir sonraki servisi kendi yarısında alır."
-      ]
-    },
-    "chess-arena": {
-      "tagline": "Üç ya da beş dakika, tam kurallarla hızlı satranç.",
-      "description": "Rok, geçerken alma, terfi, pat ve üç tekrar dahil tüm kurallar. Bilgisayara karşı üç seviyede, aynı cihazda ya da çevrim içi odada oyna; çevrim içi maçta hamleler ve saat sunucuda doğrulanır.",
-      "controls": [
-        "Taşa dokun, ardından vurgulanan karelerden birine dokun.",
-        "Piyon son sıraya ulaşınca açılan seçicide terfi taşını seç.",
-        "Sıradaki oyuncunun saati işler; süresi biten kaybeder.",
-        "Alttaki düğmelerle pes edebilir ya da beraberlik teklif edebilirsin."
-      ]
-    },
-    "drawing-party": {
-      "tagline": "Çiz, tahmin et, arkadaşlarına gül.",
-      "description": "Herkes sırayla bir kelimeyi çizer, diğerleri bilmeye çalışır. Aynı ekranda kalabalıkla oyna ya da çevrim içi odada tahminleri yaz; erken bilen daha çok puan alır, çizen de her doğru tahminden pay kapar.",
-      "controls": [
-        "Çizme sırası sendeyse kelimeyi gizlice gör, sonra parmağınla ya da fareyle çiz.",
-        "Renk, kalınlık, geri al ve temizle düğmeleri tuvalin altında.",
-        "Çevrim içinde tahminini yaz; yanlış tahminleri yalnızca sen görürsün.",
-        "Aynı ekranda tahminler sesli söylenir, çizen ilk bileni işaretler."
-      ]
-    },
-    "trivia-battle": {
-      "tagline": "On soru, on beş saniye, on iki kişiye kadar.",
-      "description": "Altı kategoriden 120 soru, Türkçe ve İngilizce. Hızlı cevap daha çok puan getirir, üst üste doğrular seri bonusu açar. Tek başına rekor kovala, aynı cihazda sırayla yarış ya da çevrim içi odada herkes aynı anda cevaplasın.",
-      "controls": [
-        "Doğru şıkka dokun ya da 1–4 tuşlarından birine bas.",
-        "Doğru cevap 100 puan, kalan süre 100 puana kadar ek getirir.",
-        "Üst üste her doğru cevap seri bonusunu 20 puan artırır.",
-        "Aynı cihazda her oyuncu soruyu sırayla, diğerleri bakmadan cevaplar."
-      ]
-    },
-    "neon-kart-racing": {
-      "tagline": "Üç tur, sekiz kart, tek bitiş çizgisi.",
-      "description": "PLAYNEX’in ilk 3D oyunu. Kıvrımlı pistte üç bota karşı tur at ya da çevrim içi odada sekiz kişiye kadar yarış. Çevrim içi yarışta sürüş modeli sunucuda döner; kendi kartın gecikmesiz tepki verir, rakipler pürüzsüzce yetişir.",
-      "controls": [
-        "W ya da yukarı ok gaz, S ya da aşağı ok fren ve geri vites.",
-        "A/D ya da sol/sağ ok ile dön; boşluk tuşu drift ile keskin döner.",
-        "Gamepad: sol çubuk direksiyon, RT gaz, LT fren, A drift.",
-        "Dokunmatik ekranda alt köşelerdeki düğmeleri kullan.",
-        "Pist dışında kart yavaşlar; üç turu ilk bitiren kazanır."
-      ]
-    },
-    "siper": {
-      "tagline": "Üç harita, beş mod, tek tetik.",
-      "description": "Tarayıcıda oynanan takım nişancı oyunu. Akıncılar ile Bekçiler eşit takımlarla karşılaşır: Takım Ölüm Maçı, Bomba Kur/Çöz, Silah Oyunu, Herkes Tek ve Bıçak Raundu. Hareket ve atışlar sunucuda hesaplanır, kafadan vuruşlar ağır gelir, seri öldürmeleri Türkçe anonslar duyurur. Botlarla hesapsız oynayabilirsin; çevrim içi maçlar için hesap gerekir.",
-      "controls": [
-        "WASD ile yürü, fareyle nişan al, sol tık ateş, sağ tık dürbün.",
-        "Boşluk zıplar, Ctrl eğilir, Shift sessiz yürür; R şarjör değiştirir.",
-        "1–5 silah seçer, B satın alma menüsünü açar, Tab skor tablosunu gösterir.",
-        "Bomba modunda E basılı tutularak bomba kurulur ya da çözülür.",
-        "Y genel, U takım sohbetini açar. Tuşları oyun içindeki ayarlardan değiştirebilirsin."
-      ]
     }
   },
   "siper": {

@@ -51,11 +51,12 @@ Hesaplar ADR 0011 ve 0012: `users` (`role`, `suspended_at`), `email_codes` (doğ
 
 ## Oyun ekleme adımları
 
-1. `games/2d/<slug>/` (3D için `games/3d/<slug>/`) paketi (package.json/tsconfig/eslint mevcut oyunlardan kopyalanır), `src/index.ts` `defineGame`, manifestte `modes`.
-2. `apps/web/src/lib/games/registry.ts`'e import satırı; `next.config.ts` `transpilePackages`; `apps/web/package.json` bağımlılığı; `compose.yaml`'a `node_modules` volume'u.
-3. `apps/web/src/lib/catalog/games.ts`'e kayıt (status `live`, `setup`), `packages/ui/src/components/game-cover/game-cover.tsx`'e kapak illüstrasyonu, oyun içi metinler `gameText.<slug>`.
-4. Çevrim içi oyunsa: `apps/realtime/src/matches/<oyun>.rs`, `GameKind` kaydı, gerekiyorsa `validate_options`; `e2e/online.spec.ts`'e senaryo.
-5. `docker compose up -d web` (yeni volume) ve `docker compose exec web pnpm install`; `e2e/games.spec.ts` listesine slug.
+1. `make new-game SLUG=<slug>` (host'ta `docker compose exec web pnpm new-game <slug>`): `docs/games/catalog-200.json` satırından `games/<2d|3d>/<slug>/` paketini, `game.json`'u ve `messages/{tr,en}.json`'u üretir. Oyun `status: draft` başlar, katalogda görünmez, doğrudan `/play/<slug>` adresi de 404 verir.
+2. Oyun yalnız kendi klasöründe yazılır. Registry, `transpilePackages`, katalog ve metinler `pnpm gen:games` ile `apps/web/src/lib/games/generated/` altına üretilir (gitignore'da). `apps/web/package.json` bağımlılıkları da üreteçle eşitlenir; ardından `pnpm install`.
+3. Oyuna özel bir npm bağımlılığı `games/package.json`'a eklenir; oyun paketlerinin kendi bağımlılığı yoktur (ADR 0015).
+4. `packages/ui/src/components/game-cover/game-cover.tsx`'e kapak illüstrasyonu.
+5. Çevrim içi oyunsa: `apps/realtime/src/matches/<oyun>.rs`, `GameKind` kaydı, gerekiyorsa `validate_options`; `e2e/online.spec.ts`'e senaryo.
+6. `e2e/games.spec.ts` listesine slug, kalite çıtası geçince `game.json` içinde `status: live`.
 
 ## Komutlar
 
@@ -68,7 +69,7 @@ Docker içinden: `make up`, `make lint`, `make typecheck`, `make check-rust`, `m
 - Tailwind namespace sıfırlamaları `theme.css`'te; `--container-*` sıfırlanmaz (max-w sınıfları).
 - Phaser 4 tipleri: `Graphics.fillPoints` `Vector2[]`, `Scene.update` `override`.
 - Playwright tarayıcısı container içinde: `e2e/realtime-bridge.ts` (globalSetup) `localhost:8081`'i `realtime:8081`'e köprüler; `page.routeWebSocket` bu kurulumda yönlendirmedi.
-- `messages` kökünde `games` katalog namespace'i dolu; oyun içi metinler bu yüzden `gameText` altında.
+- Oyun metinleri `games/<...>/<slug>/messages/{tr,en}.json` içinde (`copy`, `text`); next-intl yükünün dışında tutulur, sunucu `getGameCopy` ve `getGameText` ile okur.
 - Hokey ve kart sabitleri (`data/*.json`) değişince Rust ve TS modeli birlikte güncellenir; `cargo watch` bu klasörleri izler. Siper'de `movement.rs` ↔ `sim/movement.ts` ve `grid.rs` ↔ `sim/grid.ts` aynı kural.
 - `public/` altındaki yeni dosya uzantıları `src/proxy.ts` eşleyicisinden muaf tutulmazsa dil yönlendirmesine düşer (ör. `.ogg`).
 - Siper oyun içi metin anahtarları düzdür (`weapon_rifle`); next-intl anahtar içinde nokta kabul etmez.

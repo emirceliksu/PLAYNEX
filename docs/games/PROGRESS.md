@@ -7,7 +7,7 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 | Faz | Kapsam | Durum |
 |---|---|---|
 | 0.0 | Plan ve katalog repoya alındı, günlük açıldı | bitti |
-| 0 / 3.1 | `make new-game`, codegen, ADR 0015 (ortak `games` paketi bitti) | yapılıyor |
+| 0 / 3.1 | `make new-game`, codegen, ADR 0015 | bitti |
 | 0 / 3.3 | `@playnex/game-audio` | bekliyor |
 | 0 / 3.2 | `@playnex/game-kit` | bekliyor |
 | 0 / 3.4 | Realtime kayıt tablosu, çerçeveler, eşleşme | bekliyor |
@@ -26,7 +26,9 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 
 ## Bilinen sorunlar
 
-- Henüz yok.
+- Kapak üreteci (3.5) gelene kadar yeni oyunların kapağı `game-cover.tsx` üzerinden elle eklenir.
+- `rust.Dockerfile` ve realtime `cargo watch` listesindeki oyun `data` yolları elle yazılı; 3.4 ile genelleştirilecek.
+- Üretilen EN metinleri Türkçe konseptle başlar; çeviri, oyunun `draft` durumundan çıkma şartıdır.
 
 ## Mevcut oyunlar (Faz 1)
 

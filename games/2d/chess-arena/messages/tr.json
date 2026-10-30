@@ -1,0 +1,24 @@
+{
+  "copy": {
+    "tagline": "Üç ya da beş dakika, tam kurallarla hızlı satranç.",
+    "description": "Rok, geçerken alma, terfi, pat ve üç tekrar dahil tüm kurallar. Bilgisayara karşı üç seviyede, aynı cihazda ya da çevrim içi odada oyna; çevrim içi maçta hamleler ve saat sunucuda doğrulanır.",
+    "controls": [
+      "Taşa dokun, ardından vurgulanan karelerden birine dokun.",
+      "Piyon son sıraya ulaşınca açılan seçicide terfi taşını seç.",
+      "Sıradaki oyuncunun saati işler; süresi biten kaybeder.",
+      "Alttaki düğmelerle pes edebilir ya da beraberlik teklif edebilirsin."
+    ]
+  },
+  "text": {
+    "cpu": "Bilgisayar",
+    "you": "Sen",
+    "resign": "Pes et",
+    "confirmResign": "Emin misin? Tekrar dokun",
+    "offerDraw": "Beraberlik teklif et",
+    "drawOffered": "{name} beraberlik teklif ediyor",
+    "drawSent": "Beraberlik teklifi gönderildi",
+    "accept": "Kabul et",
+    "decline": "Reddet",
+    "thinking": "Bilgisayar düşünüyor"
+  }
+}

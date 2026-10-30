@@ -1,0 +1,51 @@
+{
+  "id": "g_air_hockey",
+  "slug": "air-hockey",
+  "title": "Air Hockey",
+  "engine": "phaser",
+  "dimension": "2d",
+  "mode": "1v1",
+  "category": "arcade",
+  "status": "live",
+  "accent": "cyan",
+  "players": {
+    "min": 1,
+    "max": 2
+  },
+  "version": "0.1.0",
+  "releasedAt": "2026-10-21T09:00:00+03:00",
+  "controls": [
+    "mouse",
+    "touch",
+    "keyboard"
+  ],
+  "ageRating": "3+",
+  "orientation": "portrait",
+  "scoring": "wins",
+  "estimatedMinutes": 5,
+  "setup": {
+    "modes": [
+      "solo",
+      "local",
+      "online"
+    ],
+    "localPlayers": {
+      "min": 2,
+      "max": 2
+    },
+    "options": [
+      {
+        "key": "difficulty",
+        "values": [
+          "easy",
+          "normal",
+          "hard"
+        ],
+        "defaultValue": "normal",
+        "modes": [
+          "solo"
+        ]
+      }
+    ]
+  }
+}

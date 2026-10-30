@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Line up four discs, lock out your opponent.",
+    "description": "Turn-based 1v1. Drop discs into the columns; the first to make a row of four across, down or diagonally wins. Two players on one device for now; online rooms and server validation come next.",
+    "controls": [
+      "Two players take turns on one device; the disc at the top shows whose turn it is.",
+      "Click or tap a column and the disc drops to the bottom.",
+      "Line up four discs across, down or diagonally to win."
+    ]
+  },
+  "text": {}
+}

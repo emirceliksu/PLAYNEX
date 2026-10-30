@@ -1,0 +1,12 @@
+{
+  "copy": {
+    "tagline": "Dört diski hizala, rakibini kilitle.",
+    "description": "Sıra tabanlı 1v1. Diskleri sütunlara bırak, yatay, dikey ya da çapraz dörtlüyü ilk kuran kazanır. Şimdilik aynı cihazda iki kişi; çevrim içi odalar ve sunucu doğrulaması sırada.",
+    "controls": [
+      "Aynı cihazda iki oyuncu sırayla oynar; üstteki disk sıranın kimde olduğunu gösterir.",
+      "Bir sütuna tıkla ya da dokun; disk en alta düşer.",
+      "Yatay, dikey ya da çapraz dört diski hizalayan kazanır."
+    ]
+  },
+  "text": {}
+}

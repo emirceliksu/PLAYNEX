@@ -19,7 +19,7 @@ import {
   Shuffle,
   WifiOff,
 } from 'lucide-react';
-import { useMessages, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { type ReactNode, useCallback, useEffect, useReducer, useRef, useState } from 'react';
 
 import { Link } from '@/i18n/navigation';
@@ -69,6 +69,7 @@ interface GamePlayerProps {
     title: string;
     accent: AccentName;
     controlsGuide: string[];
+    messages: Record<string, string>;
     scoring: GameScoring;
     setup: GameSetup;
   };
@@ -193,7 +194,6 @@ function Stat({ label, children }: { label: string; children: ReactNode }) {
 }
 
 const soloSession: PlaySession = { mode: 'solo', players: [], options: {} };
-const noMessages: Record<string, string> = {};
 
 function needsSetup(setup: GameSetup): boolean {
   return setup.modes.length > 1 || setup.modes[0] !== 'solo' || setup.options.length > 0;
@@ -224,7 +224,6 @@ export function GamePlayer({
   const { best, record } = useBestScore(game.slug);
   const room = useRoom(game.slug, locale);
   const t = useTranslations('lobby');
-  const messages = useMessages();
   const tag = localeTag(locale);
   // Online, the room hands out a fresh session on every match.start; leaving the result
   // screen hides that match until the next one starts.
@@ -239,9 +238,6 @@ export function GamePlayer({
   const solo = session?.mode === 'solo';
   const tracksBest = solo && game.scoring === 'high-score';
 
-  const gameMessages =
-    (messages.gameText as Record<string, Record<string, string> | undefined>)[game.slug] ??
-    noMessages;
 
   useEffect(() => {
     if (!session) return;
@@ -270,7 +266,7 @@ export function GamePlayer({
           locale,
           reducedMotion,
           palette,
-          messages: gameMessages,
+          messages: game.messages,
           session,
           onScore: (score) => dispatch({ type: 'score', score }),
           onStateChange: (runtime) =>
@@ -310,7 +306,7 @@ export function GamePlayer({
       instanceRef.current = null;
       instance?.destroy();
     };
-  }, [game.slug, game.accent, locale, preview, attempt, record, session, gameMessages, tracksBest]);
+  }, [game.slug, game.accent, locale, preview, attempt, record, session, game.messages, tracksBest]);
 
   useEffect(() => {
     if (state.status !== 'playing') return;
