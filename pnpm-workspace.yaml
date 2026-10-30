@@ -1,6 +1,7 @@
 packages:
   - apps/web
   - packages/*
+  - games
   - games/2d/*
   - games/3d/*
 

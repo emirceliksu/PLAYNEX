@@ -17,17 +17,7 @@ x-node: &node
     - node_modules_shared_types:/workspace/packages/shared-types/node_modules
     - node_modules_config:/workspace/packages/config/node_modules
     - node_modules_game_sdk:/workspace/packages/game-sdk/node_modules
-    - node_modules_game_snake_rush:/workspace/games/2d/snake-rush/node_modules
-    - node_modules_game_2048_fusion:/workspace/games/2d/2048-fusion/node_modules
-    - node_modules_game_memory_flip:/workspace/games/2d/memory-flip/node_modules
-    - node_modules_game_tugla_tugla:/workspace/games/2d/tugla-tugla/node_modules
-    - node_modules_game_connect_four:/workspace/games/2d/connect-four/node_modules
-    - node_modules_game_air_hockey:/workspace/games/2d/air-hockey/node_modules
-    - node_modules_game_chess_arena:/workspace/games/2d/chess-arena/node_modules
-    - node_modules_game_trivia_battle:/workspace/games/2d/trivia-battle/node_modules
-    - node_modules_game_drawing_party:/workspace/games/2d/drawing-party/node_modules
-    - node_modules_game_neon_kart_racing:/workspace/games/3d/neon-kart-racing/node_modules
-    - node_modules_game_siper:/workspace/games/3d/siper/node_modules
+    - node_modules_games:/workspace/games/node_modules
     - next_cache:/workspace/apps/web/.next
 
 x-rust: &rust
@@ -271,17 +261,7 @@ volumes:
   node_modules_shared_types:
   node_modules_config:
   node_modules_game_sdk:
-  node_modules_game_snake_rush:
-  node_modules_game_2048_fusion:
-  node_modules_game_memory_flip:
-  node_modules_game_tugla_tugla:
-  node_modules_game_connect_four:
-  node_modules_game_air_hockey:
-  node_modules_game_chess_arena:
-  node_modules_game_trivia_battle:
-  node_modules_game_drawing_party:
-  node_modules_game_neon_kart_racing:
-  node_modules_game_siper:
+  node_modules_games:
   next_cache:
   cargo_registry:
   cargo_target_api:

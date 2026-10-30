@@ -276,49 +276,14 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  games/2d/2048-fusion:
+  games:
     dependencies:
+      '@babylonjs/core':
+        specifier: 9.31.0
+        version: 9.31.0
       '@playnex/game-sdk':
         specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
-
-  games/2d/air-hockey:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
-
-  games/2d/chess-arena:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
+        version: link:../packages/game-sdk
       chess.js:
         specifier: 1.4.0
         version: 1.4.0
@@ -328,7 +293,7 @@ importers:
     devDependencies:
       '@playnex/config':
         specifier: workspace:*
-        version: link:../../../packages/config
+        version: link:../packages/config
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
@@ -336,151 +301,27 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  games/2d/connect-four:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/2048-fusion: {}
 
-  games/2d/drawing-party:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/air-hockey: {}
 
-  games/2d/memory-flip:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/chess-arena: {}
 
-  games/2d/snake-rush:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/connect-four: {}
 
-  games/2d/trivia-battle:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/drawing-party: {}
 
-  games/2d/tugla-tugla:
-    dependencies:
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-      phaser:
-        specifier: 4.2.1
-        version: 4.2.1
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/memory-flip: {}
 
-  games/3d/neon-kart-racing:
-    dependencies:
-      '@babylonjs/core':
-        specifier: 9.31.0
-        version: 9.31.0
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/snake-rush: {}
 
-  games/3d/siper:
-    dependencies:
-      '@babylonjs/core':
-        specifier: 9.31.0
-        version: 9.31.0
-      '@playnex/game-sdk':
-        specifier: workspace:*
-        version: link:../../../packages/game-sdk
-    devDependencies:
-      '@playnex/config':
-        specifier: workspace:*
-        version: link:../../../packages/config
-      eslint:
-        specifier: 9.39.5
-        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+  games/2d/trivia-battle: {}
+
+  games/2d/tugla-tugla: {}
+
+  games/3d/neon-kart-racing: {}
+
+  games/3d/siper: {}
 
   packages/config:
     dependencies:
