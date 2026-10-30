@@ -1,5 +1,6 @@
 {
   "id": "g_chess_arena",
+  "order": 7,
   "slug": "chess-arena",
   "title": "Chess Arena",
   "engine": "phaser",

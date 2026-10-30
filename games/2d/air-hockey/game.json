@@ -1,5 +1,6 @@
 {
   "id": "g_air_hockey",
+  "order": 6,
   "slug": "air-hockey",
   "title": "Air Hockey",
   "engine": "phaser",

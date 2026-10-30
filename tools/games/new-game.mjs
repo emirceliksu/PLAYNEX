@@ -34,6 +34,7 @@ function manifestFor(entry) {
     entry.dimension === '3d' && entry.tier === 'S' && matureCategories.includes(entry.category);
   const manifest = {
     id: `g_${entry.slug.replaceAll('-', '_')}`,
+    order: entry.no + 11,
     slug: entry.slug,
     title: entry.title,
     engine: entry.engine,

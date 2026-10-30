@@ -32,11 +32,7 @@ async function loadGames() {
       games.push({ manifest, messages });
     }
   }
-  return games.sort(
-    (a, b) =>
-      a.manifest.releasedAt.localeCompare(b.manifest.releasedAt) ||
-      a.manifest.slug.localeCompare(b.manifest.slug),
-  );
+  return games.sort((a, b) => a.manifest.order - b.manifest.order);
 }
 
 function assertSameKeys(slug, tr, en) {

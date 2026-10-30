@@ -1,5 +1,6 @@
 {
   "id": "g_connect_four",
+  "order": 5,
   "slug": "connect-four",
   "title": "Connect Four",
   "engine": "phaser",

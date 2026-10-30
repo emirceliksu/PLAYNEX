@@ -1,5 +1,6 @@
 {
   "id": "g_siper",
+  "order": 11,
   "slug": "siper",
   "title": "Siper",
   "engine": "babylon",

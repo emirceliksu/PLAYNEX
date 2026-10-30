@@ -1,5 +1,6 @@
 {
   "id": "g_drawing_party",
+  "order": 8,
   "slug": "drawing-party",
   "title": "Drawing Party",
   "engine": "dom",

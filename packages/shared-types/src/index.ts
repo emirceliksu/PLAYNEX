@@ -58,6 +58,7 @@ export type AccentName = 'brand' | 'cyan' | 'yellow' | 'pink' | 'mint' | 'coral'
 
 // Player-facing copy (tagline, description, controls) is translated, so it lives in the web
 // app's message files under gameCopy.<slug> rather than on this record.
+// `order` is the catalog position; ties on release date would otherwise shuffle the list.
 export interface Game {
   id: string;
   slug: string;
@@ -77,6 +78,7 @@ export interface Game {
   scoring: GameScoring;
   estimatedMinutes: number;
   setup: GameSetup;
+  order: number;
   // Needs a mouse and pointer lock; the catalog card says so.
   desktopOnly?: boolean;
 }

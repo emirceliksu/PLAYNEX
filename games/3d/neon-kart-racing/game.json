@@ -1,5 +1,6 @@
 {
   "id": "g_neon_kart_racing",
+  "order": 10,
   "slug": "neon-kart-racing",
   "title": "Neon Kart Racing",
   "engine": "babylon",

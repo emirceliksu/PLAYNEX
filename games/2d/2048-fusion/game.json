@@ -1,5 +1,6 @@
 {
   "id": "g_2048_fusion",
+  "order": 2,
   "slug": "2048-fusion",
   "title": "2048 Fusion",
   "engine": "phaser",

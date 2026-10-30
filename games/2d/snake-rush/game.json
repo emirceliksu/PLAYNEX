@@ -1,5 +1,6 @@
 {
   "id": "g_snake_rush",
+  "order": 1,
   "slug": "snake-rush",
   "title": "Snake Rush",
   "engine": "phaser",

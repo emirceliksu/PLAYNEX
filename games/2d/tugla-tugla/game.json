@@ -1,5 +1,6 @@
 {
   "id": "g_tugla_tugla",
+  "order": 4,
   "slug": "tugla-tugla",
   "title": "Tuğla Tuğla",
   "engine": "phaser",

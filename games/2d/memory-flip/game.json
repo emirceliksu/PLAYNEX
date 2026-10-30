@@ -1,5 +1,6 @@
 {
   "id": "g_memory_flip",
+  "order": 3,
   "slug": "memory-flip",
   "title": "Memory Flip",
   "engine": "phaser",

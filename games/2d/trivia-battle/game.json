@@ -1,5 +1,6 @@
 {
   "id": "g_trivia_battle",
+  "order": 9,
   "slug": "trivia-battle",
   "title": "Trivia Battle",
   "engine": "dom",
