@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@babylonjs/core": "9.31.0",
+    "@playnex/game-audio": "workspace:*",
     "@playnex/game-sdk": "workspace:*",
     "chess.js": "1.4.0",
     "phaser": "4.2.1"
@@ -16,6 +18,7 @@
   "devDependencies": {
     "@playnex/config": "workspace:*",
     "eslint": "9.39.5",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
   }
 }

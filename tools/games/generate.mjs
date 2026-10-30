@@ -51,7 +51,8 @@ function packageName(slug) {
 
 function registrySource(games) {
   const entries = games.map(
-    ({ manifest }) => `  ${JSON.stringify(manifest.slug)}: () => import('${packageName(manifest.slug)}'),`,
+    ({ manifest }) =>
+      `  ${JSON.stringify(manifest.slug)}: () => import('${packageName(manifest.slug)}'),`,
   );
   return [
     "import type { GameModule } from '@playnex/game-sdk';",

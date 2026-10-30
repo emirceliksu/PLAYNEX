@@ -8,7 +8,7 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 |---|---|---|
 | 0.0 | Plan ve katalog repoya alındı, günlük açıldı | bitti |
 | 0 / 3.1 | `make new-game`, codegen, ADR 0015 | bitti |
-| 0 / 3.3 | `@playnex/game-audio` | bekliyor |
+| 0 / 3.3 | `@playnex/game-audio`, ADR 0016 (tarayıcıda ilk gerçek kullanım Snake Rush ile doğrulanacak) | yapılıyor |
 | 0 / 3.2 | `@playnex/game-kit` | bekliyor |
 | 0 / 3.4 | Realtime kayıt tablosu, çerçeveler, eşleşme | bekliyor |
 | 0 / 3.5 | Katalog ölçekleme | bekliyor |

@@ -17,6 +17,7 @@ x-node: &node
     - node_modules_shared_types:/workspace/packages/shared-types/node_modules
     - node_modules_config:/workspace/packages/config/node_modules
     - node_modules_game_sdk:/workspace/packages/game-sdk/node_modules
+    - node_modules_game_audio:/workspace/packages/game-audio/node_modules
     - node_modules_games:/workspace/games/node_modules
     - next_cache:/workspace/apps/web/.next
 
@@ -261,6 +262,7 @@ volumes:
   node_modules_shared_types:
   node_modules_config:
   node_modules_game_sdk:
+  node_modules_game_audio:
   node_modules_games:
   next_cache:
   cargo_registry:
