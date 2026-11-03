@@ -141,6 +141,13 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 
 **Durum (2026-10-29):** Siper yayında: beş mod, üç harita, sunucu otoriteli atış, botlar, hesapla hızlı eşleşme ve oda listesi, parti, sohbet, ekonomi ve Türkçe anonslar; XP, seviye, rütbe, günlük görevler, başarımlar, kozmetikler, Siper sıralaması, arkadaşlar ve oyuncu şikâyetleri. Ayrıntı ADR 0014'te.
 
+**Oyuncu istekleri (2026-11-03):** dört istek kataloğa alındı ve küçükten büyüğe sırayla yapılıyor. Her biri ayrı dalda.
+- [x] Tokmak Telaşı: 3x3/4x4 tarlada fare tokmaklama, katlanarak hızlanan tempo, kirpi cezası, kombo, günlük tur
+- [ ] Genel Kültür: tarih, coğrafya, bilim, edebiyat ve sanat; PostgreSQL'de binlerce soruluk banka, her tur sunucunun seçtiği 10 soru
+- [ ] Zirve Hattı (3D tırmanış), tek kişilik: stamina, tebeşir (Tab menüsü, 1-2-3), rüzgâr, ıslak ve kırılgan tutamak, süreli mod
+- [ ] Zirve Hattı çevrim içi iki kişilik, sunucu otoriteli, ip ve el uzatma
+- [ ] Elenince sürpriz mail: yalnızca açık izinle, günde en fazla bir kez, tek kullanımlık bağlantı
+
 **Önemli:** MVP'de tek 1v1 oyun var: sıra tabanlı Connect Four. Hamle doğrulaması basit olduğu için oda/WebSocket altyapısını düşük riskle kanıtlar. Sunucu otoriteli fizik gerektiren Air Hockey, bu altyapı oturduktan sonra Faz 2'de gelir ve Neon Kart Racing'in ağ katmanına da ön çalışma olur.
 
 ### Siper — takım nişancı (ADR 0014)

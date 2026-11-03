@@ -21,6 +21,7 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 - Plan metni ve katalog repoya alınırken ürün belgesi diline çekildi; bazı `highlights` ifadeleri "bot" ya da "davranış" olarak yeniden adlandırıldı, oyun kapsamı değişmedi.
 - İş `feat/game-catalog-200` dalında yürür.
 - Yeni oyunlar `draft` durumunda başlar, kalite çıtasını geçince `live` olur; katalog yarım oyun göstermez.
+- Oyuncu istekleriyle gelen oyunlar katalog sonuna 201 ve sonrası numarayla eklenir (`tokmak-telasi`). Tek kişilik oyunların günlük turu ortak `seed` seçeneğiyle (`random` / `daily`) seçilir.
 - Gerçek cihazda ölçülemeyen performans maddeleri kalite raporunda "ölçülmedi (cihaz)" olarak yazılır, karşılandı sayılmaz.
 - Marka taraması (TÜRKPATENT, EUIPO) hukuki iştir, yapılmadı; yayından önce gerekir.
 
@@ -29,7 +30,8 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 - Kapak üreteci (3.5) gelene kadar yeni oyunların kapağı `game-cover.tsx` üzerinden elle eklenir.
 - `rust.Dockerfile` ve realtime `cargo watch` listesindeki oyun `data` yolları elle yazılı; 3.4 ile genelleştirilecek.
 - Üretilen EN metinleri Türkçe konseptle başlar; çeviri, oyunun `draft` durumundan çıkma şartıdır.
-- `@playnex/game-audio` ve `@playnex/game-kit` henüz hiçbir oyunda kullanılmıyor; ilk gerçek doğrulama Snake Rush yenilemesiyle yapılacak.
+- `@playnex/game-audio` ve `@playnex/game-kit` ilk kez Tokmak Telaşı'nda kullanıldı: juice, öğretici, başarım ve günlük tohum tarayıcıda çalıştı. Ses kulakla dinlenmedi.
+- Tokmak Telaşı skoru istemcide kalıyor; girdiler sabit adımlı ve tohumlu olduğu için `InputRecorder` ile sunucu doğrulaması eklenebilir, kayıt henüz tutulmuyor.
 - `tools/games/templates` şablonları kit kullanmıyor; 3.6 öncesinde kitle hizalanmalı.
 - Eski `node_modules_game_*` Docker volume kayıtları artık kullanılmıyor, silinebilir.
 
@@ -253,3 +255,4 @@ Plan: `200-oyun-plani.md`. Katalog: `catalog-200.json`. Durumlar: bekliyor, yap�
 | 198 | 10    | `derinlik`           | bekliyor |
 | 199 | 10    | `imparatorluk`       | bekliyor |
 | 200 | 10    | `ada-hayatta-kal`    | bekliyor |
+| 201 | 1     | `tokmak-telasi`      | bitti    |
