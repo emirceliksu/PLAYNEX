@@ -1,8 +1,9 @@
 import { expect, type Page, test } from '@playwright/test';
 
 // Every playable game must boot its engine and reach the "ready" overlay in the shell.
-// Games with more than one way to play first go through the mode picker and setup.
-const playableGames: { slug: string; mode?: string; dom?: boolean }[] = [
+// Games with more than one way to play first go through the mode picker and setup; a solo-only
+// game with options opens straight on its setup.
+const playableGames: { slug: string; mode?: string; dom?: boolean; setup?: boolean }[] = [
   { slug: 'snake-rush' },
   { slug: '2048-fusion' },
   { slug: 'memory-flip' },
@@ -13,14 +14,19 @@ const playableGames: { slug: string; mode?: string; dom?: boolean }[] = [
   { slug: 'trivia-battle', mode: 'Tek başına', dom: true },
   { slug: 'drawing-party', mode: 'Aynı cihazda' },
   { slug: 'neon-kart-racing', mode: 'Tek başına' },
+  { slug: 'tokmak-telasi', setup: true },
 ];
 
 async function chooseMode(page: Page, mode: string) {
   await page.getByRole('button', { name: new RegExp(`^${mode}`) }).click({ timeout: 60_000 });
-  await page.getByRole('button', { name: 'Devam', exact: true }).click();
+  await confirmSetup(page);
 }
 
-for (const { slug, mode, dom } of playableGames) {
+async function confirmSetup(page: Page) {
+  await page.getByRole('button', { name: 'Devam', exact: true }).click({ timeout: 60_000 });
+}
+
+for (const { slug, mode, dom, setup } of playableGames) {
   test(`${slug} boots and reports ready`, async ({ page }) => {
     const pageErrors: string[] = [];
     page.on('pageerror', (error) => pageErrors.push(error.message));
@@ -28,6 +34,7 @@ for (const { slug, mode, dom } of playableGames) {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto(`/play/${slug}`);
     if (mode) await chooseMode(page, mode);
+    else if (setup) await confirmSetup(page);
 
     // Cold Turbopack compiles of a game bundle can take a while on the first visit.
     // Trivia is pure DOM and renders no canvas; Drawing Party's sketch pad is one.
