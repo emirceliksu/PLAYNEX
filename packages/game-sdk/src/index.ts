@@ -128,6 +128,22 @@ export function hexToColorNumber(hex: string): number {
   return Number.parseInt(hex.replace('#', ''), 16);
 }
 
+export type PaletteColors = Record<keyof GamePalette, number>;
+
+export function toColorNumbers(palette: GamePalette): PaletteColors {
+  return {
+    canvas: hexToColorNumber(palette.canvas),
+    surface: hexToColorNumber(palette.surface),
+    ink: hexToColorNumber(palette.ink),
+    fg: hexToColorNumber(palette.fg),
+    fgMuted: hexToColorNumber(palette.fgMuted),
+    accent: hexToColorNumber(palette.accent),
+    accentSoft: hexToColorNumber(palette.accentSoft),
+    reward: hexToColorNumber(palette.reward),
+    danger: hexToColorNumber(palette.danger),
+  };
+}
+
 export function format(template: string, values: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (match, key: string) =>
     key in values ? String(values[key]) : match,

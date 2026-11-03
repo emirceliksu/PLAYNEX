@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
-import { toError, type GameHost } from '@playnex/game-sdk';
-import { toColorNumbers, type PaletteColors } from './colors';
+import { toColorNumbers, toError, type GameHost, type PaletteColors } from '@playnex/game-sdk';
 import {
   GRID_SIZE,
   TRAY_SIZE,

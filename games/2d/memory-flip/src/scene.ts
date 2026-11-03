@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import { toError, type GameHost } from '@playnex/game-sdk';
-import { mixColors, toColorNumbers, type PaletteColors } from './colors';
+import { toColorNumbers, toError, type GameHost, type PaletteColors } from '@playnex/game-sdk';
+import { mixColors } from './colors';
 import {
   CARD_COUNT,
   computeScore,

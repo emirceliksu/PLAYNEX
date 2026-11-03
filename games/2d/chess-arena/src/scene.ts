@@ -2,13 +2,14 @@ import Phaser from 'phaser';
 import { Chess, type Color, type Move, type PieceSymbol, type Square } from 'chess.js';
 import {
   format,
+  toColorNumbers,
   toError,
   type GameHost,
   type MatchOutcome,
   type OnlineMessage,
   type OnlineSession,
+  type PaletteColors,
 } from '@playnex/game-sdk';
-import { toColorNumbers, type PaletteColors } from './colors';
 import type { Difficulty, EngineMove } from './engine';
 import { drawPiece } from './pieces';
 import { other, timeoutVerdict, verdict, type Verdict } from './rules';

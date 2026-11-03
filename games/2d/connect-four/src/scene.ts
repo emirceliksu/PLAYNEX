@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import {
+  toColorNumbers,
   toError,
   type GameHost,
   type MatchOutcome,
   type OnlineMessage,
   type OnlineSession,
+  type PaletteColors,
 } from '@playnex/game-sdk';
-import { toColorNumbers, type PaletteColors } from './colors';
 import {
   COLUMNS,
   ROWS,
