@@ -217,6 +217,9 @@ importers:
       '@playnex/game-snake-rush':
         specifier: workspace:*
         version: link:../../games/2d/snake-rush
+      '@playnex/game-tokmak-telasi':
+        specifier: workspace:*
+        version: link:../../games/2d/tokmak-telasi
       '@playnex/game-trivia-battle':
         specifier: workspace:*
         version: link:../../games/2d/trivia-battle
@@ -323,6 +326,8 @@ importers:
   games/2d/memory-flip: {}
 
   games/2d/snake-rush: {}
+
+  games/2d/tokmak-telasi: {}
 
   games/2d/trivia-battle: {}
 

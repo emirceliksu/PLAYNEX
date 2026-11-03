@@ -1,0 +1,36 @@
+{
+  "copy": {
+    "tagline": "A mouse pops up, the mallet comes down. Leave the hedgehog alone.",
+    "description": "Whack the mice before they duck back into their holes. They speed up exponentially as the clock runs, and an unbroken streak triples your points. Hit the hedgehog that shows up now and then and you lose points and a life. Easy plays on a 3x3 field, medium and hard on 4x4.",
+    "controls": [
+      "Click or tap a hole to whack it.",
+      "On a keyboard, press the letter shown under each hole; the numeric keypad also works on the 3x3 field.",
+      "A mouse is worth 10, a fast yellow mouse 25; every five hits in a row raise the multiplier.",
+      "Hitting the hedgehog costs 20 points and a life; the round ends when all three are gone.",
+      "Esc pauses the game."
+    ]
+  },
+  "text": {
+    "time_left": "{seconds}s",
+    "combo": "x{multiplier}",
+    "hedgehog_penalty": "-20",
+    "tutorial_hit": "When a mouse pops out of a hole, click it or press the letter below it.",
+    "tutorial_hedgehog": "Don't hit the spiky hedgehog: it costs points and a life. Let it go back down.",
+    "tutorial_combo": "Hit five mice without missing to raise the multiplier. The pace picks up every second.",
+    "achievement_unlocked": "Achievement: {title}",
+    "achievement_first_hit": "First Bonk",
+    "achievement_first_hit_hint": "Whack your first mouse.",
+    "achievement_combo_10": "Mallet Streak",
+    "achievement_combo_10_hint": "Hit 10 mice without missing.",
+    "achievement_combo_25": "Unstoppable",
+    "achievement_combo_25_hint": "Hit 25 mice without missing.",
+    "achievement_score_800": "Field Warden",
+    "achievement_score_800_hint": "Score 800 points in one round.",
+    "achievement_score_2000": "Mouse Nightmare",
+    "achievement_score_2000_hint": "Score 2000 points in one round.",
+    "achievement_clean_run": "Hedgehog Friend",
+    "achievement_clean_run_hint": "Finish a round with at least 40 hits without touching a hedgehog.",
+    "achievement_daily": "Mallet of the Day",
+    "achievement_daily_hint": "Play the daily round to the end."
+  }
+}

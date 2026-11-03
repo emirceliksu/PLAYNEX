@@ -1,0 +1,36 @@
+{
+  "copy": {
+    "tagline": "Fare çıktı mı, tokmağı indir. Kirpiye dokunma.",
+    "description": "Deliklerden fırlayan farelere kaçmadan vur. Süre ilerledikçe fareler katlanarak hızlanır, seri vuruşlar puan çarpanını üç katına kadar çıkarır. Arada beliren kirpiye vuran puan ve can kaybeder. Kolayda 3x3, orta ve zorda 4x4 tarla.",
+    "controls": [
+      "Fareyle ya da dokunarak deliğe vur.",
+      "Klavyede her deliğin altında yazan harfe bas; 3x3 tarlada sayı tuş takımı da çalışır.",
+      "Fare +10, sarı hızlı fare +25 puan; her beş seri vuruşta çarpan artar.",
+      "Kirpiye vurmak 20 puan ve bir can götürür, üç can bitince tur biter.",
+      "Esc tuşu oyunu duraklatır."
+    ]
+  },
+  "text": {
+    "time_left": "{seconds} sn",
+    "combo": "x{multiplier}",
+    "hedgehog_penalty": "-20",
+    "tutorial_hit": "Delikten fare çıkınca üstüne tıkla ya da altındaki harfe bas.",
+    "tutorial_hedgehog": "Dikenli kirpiye vurma: puan ve can götürür. Bırak geri insin.",
+    "tutorial_combo": "Iskalamadan beş fare vur, çarpan artsın. Tempo her saniye biraz daha hızlanır.",
+    "achievement_unlocked": "Başarım: {title}",
+    "achievement_first_hit": "İlk Darbe",
+    "achievement_first_hit_hint": "İlk fareyi vur.",
+    "achievement_combo_10": "Seri Tokmak",
+    "achievement_combo_10_hint": "Iskalamadan 10 fare vur.",
+    "achievement_combo_25": "Durdurulamaz",
+    "achievement_combo_25_hint": "Iskalamadan 25 fare vur.",
+    "achievement_score_800": "Tarla Bekçisi",
+    "achievement_score_800_hint": "Tek turda 800 puan topla.",
+    "achievement_score_2000": "Fare Kâbusu",
+    "achievement_score_2000_hint": "Tek turda 2000 puan topla.",
+    "achievement_clean_run": "Kirpi Dostu",
+    "achievement_clean_run_hint": "En az 40 vuruşla turu kirpiye hiç dokunmadan bitir.",
+    "achievement_daily": "Günün Tokmağı",
+    "achievement_daily_hint": "Günün turunu sonuna kadar oyna."
+  }
+}
