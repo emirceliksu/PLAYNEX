@@ -489,6 +489,34 @@ function Siper() {
   );
 }
 
+function TokmakTelasi() {
+  const holes = [36, 80, 124];
+  return (
+    <>
+      {holes.map((x) => (
+        <g key={x}>
+          <ellipse cx={x} cy="74" rx="19" ry="8" fill={DEEP} {...outline} />
+          <ellipse cx={x} cy="72" rx="12" ry="4" fill={INK} />
+        </g>
+      ))}
+      <g className="attract attract-bob">
+        <circle cx="72" cy="52" r="5" fill={PAPER} {...outline} />
+        <circle cx="88" cy="52" r="5" fill={PAPER} {...outline} />
+        <path d="M68 72a12 12 0 0 1 24 0z" fill={PAPER} {...outline} />
+        <circle cx="76" cy="64" r="1.6" fill={INK} />
+        <circle cx="84" cy="64" r="1.6" fill={INK} />
+      </g>
+      <g className="attract attract-wobble">
+        <Shadow>
+          <rect x="98" y="18" width="34" height="16" rx="4" />
+        </Shadow>
+        <rect x="110" y="32" width="6" height="28" rx="2" fill={PAPER} {...outline} />
+        <rect x="98" y="18" width="34" height="16" rx="4" fill={ACCENT} {...outline} />
+      </g>
+    </>
+  );
+}
+
 const illustrations: Record<string, () => ReactNode> = {
   siper: Siper,
   'snake-rush': SnakeRush,
@@ -501,6 +529,7 @@ const illustrations: Record<string, () => ReactNode> = {
   'drawing-party': DrawingParty,
   'trivia-battle': TriviaBattle,
   'neon-kart-racing': NeonKartRacing,
+  'tokmak-telasi': TokmakTelasi,
 };
 
 function Fallback() {

@@ -14,6 +14,7 @@ const covers: { slug: string; accent: AccentName; title: string }[] = [
   { slug: 'drawing-party', accent: 'pink', title: 'Drawing Party' },
   { slug: 'trivia-battle', accent: 'yellow', title: 'Trivia Battle' },
   { slug: 'neon-kart-racing', accent: 'brand', title: 'Neon Kart Racing' },
+  { slug: 'tokmak-telasi', accent: 'mint', title: 'Tokmak Telaşı' },
 ];
 
 const meta = {
