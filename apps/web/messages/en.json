@@ -427,7 +427,8 @@
     "options": {
       "minutes": "Time",
       "difficulty": "Difficulty",
-      "category": "Category"
+      "category": "Category",
+      "seed": "Run"
     },
     "optionValues": {
       "3": "3 minutes",
@@ -441,7 +442,9 @@
       "history": "History",
       "sports": "Sports",
       "culture": "Arts and culture",
-      "technology": "Technology"
+      "technology": "Technology",
+      "random": "Random",
+      "daily": "Daily challenge"
     },
     "local": {
       "players": "Players",

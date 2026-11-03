@@ -427,7 +427,8 @@
     "options": {
       "minutes": "Süre",
       "difficulty": "Zorluk",
-      "category": "Kategori"
+      "category": "Kategori",
+      "seed": "Tur"
     },
     "optionValues": {
       "3": "3 dakika",
@@ -441,7 +442,9 @@
       "history": "Tarih",
       "sports": "Spor",
       "culture": "Kültür ve sanat",
-      "technology": "Teknoloji"
+      "technology": "Teknoloji",
+      "random": "Rastgele",
+      "daily": "Günün turu"
     },
     "local": {
       "players": "Oyuncular",

@@ -24,7 +24,7 @@ export type ControlScheme = 'keyboard' | 'mouse' | 'touch' | 'gamepad';
 
 // How a match is played: alone (or against the computer), several people on one device, or in an online room.
 export type PlayMode = 'solo' | 'local' | 'online';
-export type GameOptionKey = 'minutes' | 'difficulty' | 'category';
+export type GameOptionKey = 'minutes' | 'difficulty' | 'category' | 'seed';
 export type GameOptionValue =
   | '3'
   | '5'
@@ -37,7 +37,9 @@ export type GameOptionValue =
   | 'history'
   | 'sports'
   | 'culture'
-  | 'technology';
+  | 'technology'
+  | 'random'
+  | 'daily';
 
 export interface GameOptionSpec {
   key: GameOptionKey;
