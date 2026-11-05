@@ -2,6 +2,36 @@
 
 Tarayıcıdan oynanan 2D ve 3D oyunları tek hesap, profil, skor ve sıralama altyapısında birleştiren oyun platformu. Ürün planı `PLAN.md` dosyasında.
 
+![Keşfet sayfası](docs/images/home.png)
+
+## Ekranlar
+
+| Oyun kataloğu                                                           | Oyun sayfası                                               |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| ![Tür, mod ve boyut filtreleriyle oyun kataloğu](docs/images/games.png) | ![Tokmak Telaşı oyun sayfası](docs/images/game-detail.png) |
+
+### Oyunlar
+
+Oyunlar ortak bir oynatıcı kabuğunda açılır: skor, rekor, süre, duraklatma ve tam ekran her oyunda aynı yerde durur.
+
+| Siper — 3D takım nişancı oyunu, bot ya da çevrim içi maç | Siper — maç kurulumu                                                                      |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![Siper maç içi görünüm](docs/images/siper-match.png)    | ![Siper lobisi: mod, harita, bot zorluğu ve takım büyüklüğü](docs/images/siper-lobby.png) |
+
+| Neon Kart Racing — 3D yarış                                          | Chess Arena — bilgisayara karşı süreli satranç           | Tokmak Telaşı — refleks oyunu                                   |
+| -------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
+| ![Neon Kart Racing başlangıç](docs/images/play-neon-kart-racing.png) | ![Chess Arena tahtası](docs/images/play-chess-arena.png) | ![Tokmak Telaşı oyun alanı](docs/images/play-tokmak-telasi.png) |
+
+Katalogda şu an 12 oyun var: Snake Rush, 2048 Fusion, Memory Flip, Tuğla Tuğla, Connect Four, Air Hockey, Chess Arena, Drawing Party, Trivia Battle, Tokmak Telaşı (2D, Phaser) ile Neon Kart Racing ve Siper (3D, Babylon.js).
+
+### Mobil
+
+Arayüz 375 px'ten itibaren tek sütuna iner; gezinme alt çubuğa geçer.
+
+| Keşfet                                                                           | Katalog                                                                          | Oyun sayfası                                                                                     |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| <img src="docs/images/mobile-home.png" alt="Mobilde keşfet sayfası" width="260"> | <img src="docs/images/mobile-games.png" alt="Mobilde oyun kataloğu" width="260"> | <img src="docs/images/mobile-game-detail.png" alt="Mobilde Snake Rush oyun sayfası" width="260"> |
+
 ## Gereksinimler
 
 Host makinede yalnızca Docker (Compose v2 ile) ve Git gerekir. Node, pnpm, Rust ve veritabanları container içinde çalışır.
