@@ -42,4 +42,6 @@ export type { MobileNavProps } from './components/mobile-nav/mobile-nav';
 export { GameCover } from './components/game-cover/game-cover';
 export type { GameCoverProps } from './components/game-cover/game-cover';
 export { GameCard } from './components/game-card/game-card';
+export { SceneCover } from './components/scene-cover/scene-cover';
+export type { SceneCoverProps, SceneShape } from './components/scene-cover/scene-cover';
 export type { GameCardProps } from './components/game-card/game-card';

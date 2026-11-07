@@ -49,3 +49,4 @@ export function createCreatorGame(document: GameDocument, options: SessionOption
     },
   });
 }
+export { buildPrimitive } from './primitives3d';

@@ -11,10 +11,10 @@ import {
   StandardMaterial,
   UniversalCamera,
   Vector3,
-  VertexData,
 } from '@babylonjs/core';
 
 import type { ShapeKind } from './document';
+import { buildPrimitive } from './primitives3d';
 import { F, type RenderSetup, type Renderer, type WorldView } from './view';
 
 const OUTLINE_WIDTH = 0.035;
@@ -196,7 +196,7 @@ class Renderer3d implements Renderer {
     }
     let template = this.templates.get(kind);
     if (!template) {
-      template = this.buildTemplate(kind);
+      template = buildPrimitive(kind, this.scene);
       template.setEnabled(false);
       this.templates.set(kind, template);
     }
@@ -206,29 +206,6 @@ class Renderer3d implements Renderer {
     mesh.outlineColor = this.ink;
     mesh.outlineWidth = OUTLINE_WIDTH;
     return { kind, mesh, color: -1 };
-  }
-
-  private buildTemplate(kind: ShapeKind): Mesh {
-    switch (kind) {
-      case 'sphere':
-        return MeshBuilder.CreateSphere(kind, { diameter: 1, segments: 16 }, this.scene);
-      case 'cylinder':
-        return MeshBuilder.CreateCylinder(
-          kind,
-          { diameter: 1, height: 1, tessellation: 24 },
-          this.scene,
-        );
-      case 'cone':
-        return MeshBuilder.CreateCylinder(
-          kind,
-          { diameterTop: 0, diameterBottom: 1, height: 1, tessellation: 24 },
-          this.scene,
-        );
-      case 'ramp':
-        return buildRamp(this.scene);
-      default:
-        return MeshBuilder.CreateBox(kind, { size: 1 }, this.scene);
-    }
   }
 
   private paintText(visual: Visual, content: string, color: number): void {
@@ -248,38 +225,4 @@ class Renderer3d implements Renderer {
       true,
     );
   }
-}
-
-// A wedge rising along +x, matching the engine's ramp collider.
-function buildRamp(scene: Scene): Mesh {
-  const a = [-0.5, -0.5, -0.5];
-  const b = [0.5, -0.5, -0.5];
-  const c = [0.5, 0.5, -0.5];
-  const d = [-0.5, -0.5, 0.5];
-  const e = [0.5, -0.5, 0.5];
-  const f = [0.5, 0.5, 0.5];
-  const faces = [
-    [a, c, b],
-    [d, e, f],
-    [a, b, e, d],
-    [b, c, f, e],
-    [a, d, f, c],
-  ];
-  const positions: number[] = [];
-  const indices: number[] = [];
-  for (const face of faces) {
-    const start = positions.length / 3;
-    for (const vertex of face) positions.push(...vertex);
-    for (let i = 1; i < face.length - 1; i++) indices.push(start, start + i, start + i + 1);
-  }
-  const normals: number[] = [];
-  VertexData.ComputeNormals(positions, indices, normals);
-  const data = new VertexData();
-  data.positions = positions;
-  data.indices = indices;
-  data.normals = normals;
-  const mesh = new Mesh('ramp', scene);
-  data.applyToMesh(mesh);
-
-  return mesh;
 }
