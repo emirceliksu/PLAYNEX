@@ -283,3 +283,26 @@ fn ball_rolls_up_a_ramp_in_3d() {
         ball.position
     );
 }
+
+/// The same fixture is replayed by the wasm build in
+/// packages/creator-runtime; both must land on these exact numbers.
+#[test]
+fn cross_target_fixture_matches_recorded_result() {
+    let fixture: Value = serde_json::from_str(include_str!("fixtures/cross-target.json")).unwrap();
+    let game = load(&fixture["document"]);
+    let seed = fixture["seed"].as_u64().unwrap();
+    let ticks = fixture["holdRightTicks"].as_u64().unwrap() as u32;
+    let result = game.replay(seed, &hold_right(ticks));
+    assert_eq!(result.outcome, Outcome::TimeUp);
+    assert_eq!(result.ticks, 480);
+    let mut world = game.start(seed);
+    let log = hold_right(ticks);
+    let mut cursor = log.cursor();
+    while world.outcome() == Outcome::Running {
+        world.step(cursor.at(world.tick() + 1));
+    }
+    let hash = format!("{:016x}", world.state_hash());
+    assert_eq!(hash, EXPECTED_CROSS_TARGET_HASH);
+}
+
+const EXPECTED_CROSS_TARGET_HASH: &str = "780c4795d1d3dc2f";

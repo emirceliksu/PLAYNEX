@@ -209,6 +209,33 @@ impl World {
         &self.entities
     }
 
+    /// FNV-1a over the bits of everything that affects play. Two targets that
+    /// disagree here have drifted, even when the score still matches.
+    pub fn state_hash(&self) -> u64 {
+        let mut hash: u64 = 0xcbf2_9ce4_8422_2325;
+        let mut feed = |bits: u64| {
+            for byte in bits.to_le_bytes() {
+                hash ^= u64::from(byte);
+                hash = hash.wrapping_mul(0x0100_0000_01b3);
+            }
+        };
+        feed(u64::from(self.tick));
+        feed(self.score.to_bits());
+        for entity in &self.entities {
+            feed(u64::from(entity.id));
+            for v in [entity.position, entity.velocity] {
+                feed(v.x.to_bits());
+                feed(v.y.to_bits());
+                feed(v.z.to_bits());
+            }
+            feed(entity.rotation.to_bits());
+        }
+        for value in &self.globals {
+            feed(value.number().to_bits());
+        }
+        hash
+    }
+
     pub fn step(&mut self, input: TickInput) {
         if self.outcome != Outcome::Running {
             return;

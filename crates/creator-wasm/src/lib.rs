@@ -98,6 +98,13 @@ impl CreatorWorld {
         serde_json::to_string(&self.world.frame_info()).unwrap_or_default()
     }
 
+    /// Hex digest of the simulation state; used to check that the wasm and
+    /// native builds stay in step.
+    #[wasm_bindgen(js_name = stateHash)]
+    pub fn state_hash(&self) -> String {
+        format!("{:016x}", self.world.state_hash())
+    }
+
     #[wasm_bindgen(js_name = inputLog)]
     pub fn input_log(&self) -> Vec<u8> {
         self.log.encode()

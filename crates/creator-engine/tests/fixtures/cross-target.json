@@ -1,0 +1,35 @@
+{
+  "seed": 4242,
+  "holdRightTicks": 400,
+  "document": {
+    "schemaVersion": 1,
+    "dimension": "2d",
+    "world": { "size": { "x": 40, "y": 20 }, "gravity": 30, "background": 0, "timeLimitSeconds": 8 },
+    "variables": [{ "name": "dalga", "initial": 0 }],
+    "entities": [
+      { "id": 1, "name": "Zemin", "shape": { "kind": "rect" }, "position": { "x": 0, "y": -1 },
+        "size": { "x": 40, "y": 2 }, "color": 3 },
+      { "id": 2, "name": "Oyuncu", "shape": { "kind": "rect" }, "position": { "x": -15, "y": 1 },
+        "size": { "x": 1, "y": 1 }, "color": 5, "body": "dynamic", "tags": ["player"], "bounce": 0.3,
+        "behaviors": [{ "kind": "platformerController", "speed": 5.5, "jump": 11 }] },
+      { "id": 3, "name": "Bekçi", "shape": { "kind": "triangle" }, "position": { "x": 4, "y": 0.5 },
+        "size": { "x": 1, "y": 1 }, "color": 7, "body": "kinematic", "sensor": true,
+        "behaviors": [{ "kind": "patrol", "distance": 6, "speed": 3.3, "axis": "x" }, { "kind": "collectible", "points": 7 }] }
+    ],
+    "prefabs": [
+      { "id": 100, "name": "Yıldız", "shape": { "kind": "star", "points": 5 }, "position": { "x": 0, "y": 0 },
+        "size": { "x": 0.7, "y": 0.7 }, "color": 9, "body": "dynamic", "sensor": true,
+        "behaviors": [{ "kind": "collectible", "points": 3 }] }
+    ],
+    "scripts": [
+      { "event": { "kind": "timer", "seconds": 0.35 }, "body": [
+        { "op": "change", "variable": "dalga", "by": { "op": "unary", "operator": "sin",
+          "value": { "op": "random", "min": { "op": "number", "value": 0 }, "max": { "op": "number", "value": 360 } } } },
+        { "op": "spawn", "prefab": "Yıldız",
+          "x": { "op": "random", "min": { "op": "number", "value": -18 }, "max": { "op": "number", "value": 18 }, "integer": true },
+          "y": { "op": "binary", "operator": "add", "left": { "op": "number", "value": 6 },
+                 "right": { "op": "var", "name": "dalga" } } }
+      ] }
+    ]
+  }
+}

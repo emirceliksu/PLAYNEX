@@ -1,0 +1,33 @@
+{
+  "name": "@playnex/creator-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@playnex/creator-engine-wasm": "workspace:*",
+    "@playnex/game-audio": "workspace:*",
+    "@playnex/game-kit": "workspace:*",
+    "@playnex/game-sdk": "workspace:*"
+  },
+  "peerDependencies": {
+    "@babylonjs/core": "9.31.0",
+    "phaser": "4.2.1"
+  },
+  "devDependencies": {
+    "@babylonjs/core": "9.31.0",
+    "@playnex/config": "workspace:*",
+    "@types/node": "26.6.5",
+    "eslint": "9.39.5",
+    "phaser": "4.2.1",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}
