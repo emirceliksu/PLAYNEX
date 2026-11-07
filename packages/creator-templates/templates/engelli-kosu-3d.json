@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "dimension": "3d",
+  "world": {
+    "size": { "x": 12, "y": 10, "z": 80 },
+    "gravity": 30,
+    "background": 17,
+    "camera": "thirdPerson",
+    "lives": 3
+  },
+  "sounds": [
+    { "name": "zıpla", "recipe": "jump", "volume": 0.5 },
+    { "name": "çarpma", "recipe": "explosion", "volume": 0.6 },
+    { "name": "geçti", "recipe": "click", "volume": 0.4 }
+  ],
+  "hud": [
+    { "kind": { "type": "score" }, "anchor": "topLeft" },
+    { "kind": { "type": "variable", "name": "hız" }, "anchor": "topCenter", "label": "Hız" },
+    { "kind": { "type": "lives" }, "anchor": "topRight" }
+  ],
+  "variables": [{ "name": "hız", "initial": 12 }],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Pist",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": -0.5, "z": 20 },
+      "size": { "x": 9, "y": 1, "z": 70 },
+      "color": 4
+    },
+    {
+      "id": 2,
+      "name": "Sol bariyer",
+      "shape": { "kind": "box" },
+      "position": { "x": -5, "y": 0.5, "z": 20 },
+      "size": { "x": 1, "y": 1, "z": 70 },
+      "color": 21
+    },
+    {
+      "id": 3,
+      "name": "Sağ bariyer",
+      "shape": { "kind": "box" },
+      "position": { "x": 5, "y": 0.5, "z": 20 },
+      "size": { "x": 1, "y": 1, "z": 70 },
+      "color": 21
+    },
+    {
+      "id": 10,
+      "name": "Koşucu",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": 0.6, "z": 0 },
+      "size": { "x": 1, "y": 1.2, "z": 1 },
+      "color": 9,
+      "body": "dynamic",
+      "tags": ["player"],
+      "behaviors": [{ "kind": "cameraTarget" }],
+      "scripts": [
+        {
+          "id": "steer",
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "setVelocityAxis",
+              "target": { "kind": "self" },
+              "axis": "x",
+              "value": {
+                "op": "binary",
+                "operator": "mul",
+                "left": { "op": "inputAxis", "axis": "x" },
+                "right": { "op": "number", "value": 9 }
+              }
+            }
+          ]
+        },
+        {
+          "id": "hop",
+          "event": { "kind": "pressed", "action": "jump" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "property",
+                "target": { "kind": "self" },
+                "property": "onGround"
+              },
+              "then": [
+                {
+                  "op": "setVelocityAxis",
+                  "target": { "kind": "self" },
+                  "axis": "y",
+                  "value": { "op": "number", "value": 11 }
+                },
+                { "op": "playSound", "sound": "zıpla" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "prefabs": [
+    {
+      "id": 100,
+      "name": "Engel",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "size": { "x": 2.4, "y": 1.2, "z": 1 },
+      "color": 7,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["engel"],
+      "scripts": [
+        {
+          "event": { "kind": "start" },
+          "body": [
+            {
+              "op": "setVelocityAxis",
+              "target": { "kind": "self" },
+              "axis": "z",
+              "value": { "op": "unary", "operator": "neg", "value": { "op": "var", "name": "hız" } }
+            }
+          ]
+        },
+        {
+          "id": "passed",
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "lt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "z" },
+                "right": { "op": "number", "value": -6 }
+              },
+              "then": [
+                { "op": "addScore", "amount": { "op": "number", "value": 1 } },
+                { "op": "playSound", "sound": "geçti" },
+                { "op": "destroy", "target": { "kind": "self" } }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "crash",
+          "event": { "kind": "collide", "tag": "player" },
+          "body": [
+            { "op": "playSound", "sound": "çarpma" },
+            { "op": "cameraShake", "strength": { "op": "number", "value": 3 } },
+            { "op": "loseLife", "amount": { "op": "number", "value": 1 } },
+            { "op": "destroy", "target": { "kind": "self" } }
+          ]
+        }
+      ]
+    }
+  ],
+  "scripts": [
+    {
+      "id": "spawner",
+      "event": { "kind": "start" },
+      "body": [
+        {
+          "op": "forever",
+          "body": [
+            {
+              "op": "spawn",
+              "prefab": "Engel",
+              "x": {
+                "op": "binary",
+                "operator": "mul",
+                "left": {
+                  "op": "random",
+                  "min": { "op": "number", "value": -1 },
+                  "max": { "op": "number", "value": 1 },
+                  "integer": true
+                },
+                "right": { "op": "number", "value": 2.8 }
+              },
+              "y": { "op": "number", "value": 0.6 },
+              "z": { "op": "number", "value": 50 }
+            },
+            {
+              "op": "wait",
+              "seconds": {
+                "op": "binary",
+                "operator": "max",
+                "left": { "op": "number", "value": 0.35 },
+                "right": {
+                  "op": "binary",
+                  "operator": "div",
+                  "left": { "op": "number", "value": 10 },
+                  "right": { "op": "var", "name": "hız" }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faster",
+      "event": { "kind": "timer", "seconds": 5 },
+      "body": [{ "op": "change", "variable": "hız", "by": { "op": "number", "value": 1 } }]
+    }
+  ]
+}

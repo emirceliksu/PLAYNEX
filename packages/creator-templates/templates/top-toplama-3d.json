@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "dimension": "3d",
+  "world": {
+    "size": { "x": 30, "y": 12, "z": 30 },
+    "gravity": 25,
+    "background": 15,
+    "camera": "thirdPerson",
+    "timeLimitSeconds": 60,
+    "lives": 3
+  },
+  "sounds": [
+    { "name": "mücevher", "recipe": "coin" },
+    { "name": "zıpla", "recipe": "jump", "volume": 0.5 },
+    { "name": "düştü", "recipe": "hit" },
+    { "name": "bitti", "recipe": "win" }
+  ],
+  "hud": [
+    { "kind": { "type": "score" }, "anchor": "topLeft" },
+    { "kind": { "type": "timer" }, "anchor": "topCenter" },
+    { "kind": { "type": "lives" }, "anchor": "topRight" }
+  ],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Zemin",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": -0.5, "z": 0 },
+      "size": { "x": 24, "y": 1, "z": 24 },
+      "color": 13
+    },
+    {
+      "id": 2,
+      "name": "Yüksek platform",
+      "shape": { "kind": "box" },
+      "position": { "x": 6, "y": 0.5, "z": 6 },
+      "size": { "x": 6, "y": 1, "z": 6 },
+      "color": 12
+    },
+    {
+      "id": 3,
+      "name": "Rampa",
+      "shape": { "kind": "ramp" },
+      "position": { "x": 1.5, "y": 0.5, "z": 6 },
+      "size": { "x": 3, "y": 1, "z": 4 },
+      "color": 12
+    },
+    {
+      "id": 4,
+      "name": "Kule",
+      "shape": { "kind": "cylinder" },
+      "position": { "x": -6, "y": 1, "z": 6 },
+      "size": { "x": 2, "y": 2, "z": 2 },
+      "color": 3
+    },
+    {
+      "id": 5,
+      "name": "Engel",
+      "shape": { "kind": "box" },
+      "position": { "x": -4, "y": 0.5, "z": 1 },
+      "size": { "x": 1.4, "y": 1, "z": 1.4 },
+      "color": 7,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["engel"],
+      "behaviors": [
+        { "kind": "patrol", "distance": 8, "speed": 4, "axis": "x" },
+        { "kind": "hazard", "damage": 1 }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": -8, "y": 0.6, "z": -8 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 10 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": 8, "y": 0.6, "z": -8 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 10 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": 0, "y": 0.6, "z": 2 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 10 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": 6, "y": 1.6, "z": 6 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 20 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": -6, "y": 2.6, "z": 6 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 30 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Mücevher",
+      "shape": { "kind": "cone" },
+      "position": { "x": -10, "y": 0.6, "z": 10 },
+      "size": { "x": 0.7, "y": 0.9, "z": 0.7 },
+      "color": 22,
+      "sensor": true,
+      "tags": ["mücevher"],
+      "behaviors": [
+        { "kind": "collectible", "points": 10 },
+        { "kind": "spin", "degreesPerSecond": 120 }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Top",
+      "shape": { "kind": "sphere" },
+      "position": { "x": 0, "y": 0.5, "z": -6 },
+      "size": { "x": 1, "y": 1, "z": 1 },
+      "color": 18,
+      "body": "dynamic",
+      "tags": ["player"],
+      "behaviors": [{ "kind": "topDownController", "speed": 7 }, { "kind": "cameraTarget" }],
+      "scripts": [
+        {
+          "id": "ball-jump",
+          "event": { "kind": "pressed", "action": "jump" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "property",
+                "target": { "kind": "self" },
+                "property": "onGround"
+              },
+              "then": [
+                {
+                  "op": "setVelocityAxis",
+                  "target": { "kind": "self" },
+                  "axis": "y",
+                  "value": { "op": "number", "value": 11 }
+                },
+                { "op": "playSound", "sound": "zıpla" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ball-fell",
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "lt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "y" },
+                "right": { "op": "number", "value": -6 }
+              },
+              "then": [
+                { "op": "loseLife", "amount": { "op": "number", "value": 1 } },
+                { "op": "broadcast", "message": "hit" },
+                {
+                  "op": "setPosition",
+                  "target": { "kind": "self" },
+                  "x": { "op": "number", "value": 0 },
+                  "y": { "op": "number", "value": 1 },
+                  "z": { "op": "number", "value": -6 }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ball-hit",
+          "event": { "kind": "message", "name": "hit" },
+          "body": [
+            { "op": "playSound", "sound": "düştü" },
+            { "op": "cameraShake", "strength": { "op": "number", "value": 2 } }
+          ]
+        }
+      ]
+    }
+  ],
+  "scripts": [
+    {
+      "id": "all-collected",
+      "event": { "kind": "tick" },
+      "body": [
+        {
+          "op": "if",
+          "condition": {
+            "op": "binary",
+            "operator": "eq",
+            "left": { "op": "count", "tag": "mücevher" },
+            "right": { "op": "number", "value": 0 }
+          },
+          "then": [
+            {
+              "op": "addScore",
+              "amount": {
+                "op": "binary",
+                "operator": "sub",
+                "left": { "op": "number", "value": 60 },
+                "right": { "op": "unary", "operator": "floor", "value": { "op": "time" } }
+              }
+            },
+            { "op": "playSound", "sound": "bitti" },
+            { "op": "win" }
+          ]
+        }
+      ]
+    }
+  ]
+}

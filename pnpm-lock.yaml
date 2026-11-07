@@ -412,6 +412,28 @@ importers:
         specifier: 5.0.5
         version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
 
+  packages/creator-templates:
+    dependencies:
+      '@playnex/creator-runtime':
+        specifier: workspace:*
+        version: link:../creator-runtime
+    devDependencies:
+      '@playnex/config':
+        specifier: workspace:*
+        version: link:../config
+      '@types/node':
+        specifier: 26.6.5
+        version: 26.6.5
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 5.0.5
+        version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
+
   packages/design-tokens:
     devDependencies:
       '@playnex/config':

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "dimension": "2d",
+  "world": {
+    "size": { "x": 21, "y": 15 },
+    "gravity": 0,
+    "background": 5,
+    "camera": "fixed",
+    "timeLimitSeconds": 120,
+    "lives": 3
+  },
+  "sounds": [
+    { "name": "anahtar", "recipe": "powerUp", "volume": 0.6 },
+    { "name": "kilitli", "recipe": "click" },
+    { "name": "yakalandı", "recipe": "hit" }
+  ],
+  "hud": [
+    { "kind": { "type": "score" }, "anchor": "topLeft" },
+    { "kind": { "type": "variable", "name": "kalan anahtar" }, "anchor": "topCenter" },
+    { "kind": { "type": "timer" }, "anchor": "topRight" },
+    { "kind": { "type": "lives" }, "anchor": "bottomRight" }
+  ],
+  "variables": [{ "name": "kalan anahtar", "initial": 3 }],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Üst duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": 0, "y": 7 },
+      "size": { "x": 21, "y": 1 },
+      "color": 3
+    },
+    {
+      "id": 2,
+      "name": "Alt duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": 0, "y": -7 },
+      "size": { "x": 21, "y": 1 },
+      "color": 3
+    },
+    {
+      "id": 3,
+      "name": "Sol duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": -10, "y": 0 },
+      "size": { "x": 1, "y": 13 },
+      "color": 3
+    },
+    {
+      "id": 4,
+      "name": "Sağ duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": 10, "y": 0 },
+      "size": { "x": 1, "y": 13 },
+      "color": 3
+    },
+    {
+      "id": 5,
+      "name": "Bölme 1",
+      "shape": { "kind": "rect" },
+      "position": { "x": -6, "y": 2.75 },
+      "size": { "x": 1, "y": 7.5 },
+      "color": 3
+    },
+    {
+      "id": 6,
+      "name": "Bölme 2",
+      "shape": { "kind": "rect" },
+      "position": { "x": -2, "y": -2.75 },
+      "size": { "x": 1, "y": 7.5 },
+      "color": 3
+    },
+    {
+      "id": 7,
+      "name": "Bölme 3",
+      "shape": { "kind": "rect" },
+      "position": { "x": 2, "y": 2.75 },
+      "size": { "x": 1, "y": 7.5 },
+      "color": 3
+    },
+    {
+      "id": 8,
+      "name": "Bölme 4",
+      "shape": { "kind": "rect" },
+      "position": { "x": 6, "y": -2.75 },
+      "size": { "x": 1, "y": 7.5 },
+      "color": 3
+    },
+    {
+      "id": 9,
+      "name": "Raf 1",
+      "shape": { "kind": "rect" },
+      "position": { "x": -8.7, "y": 1 },
+      "size": { "x": 1.6, "y": 0.6 },
+      "color": 3
+    },
+    {
+      "id": 10,
+      "name": "Raf 2",
+      "shape": { "kind": "rect" },
+      "position": { "x": 0.7, "y": -1 },
+      "size": { "x": 1.6, "y": 0.6 },
+      "color": 3
+    },
+    {
+      "id": 11,
+      "name": "Raf 3",
+      "shape": { "kind": "rect" },
+      "position": { "x": 8.7, "y": 1 },
+      "size": { "x": 1.6, "y": 0.6 },
+      "color": 3
+    },
+    {
+      "id": 20,
+      "name": "Anahtar",
+      "shape": { "kind": "star", "points": 5 },
+      "position": { "x": -8, "y": -5.5 },
+      "size": { "x": 0.8, "y": 0.8 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["anahtar"],
+      "behaviors": [
+        { "kind": "collectible", "points": 25 },
+        { "kind": "spin", "degreesPerSecond": 90 }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Anahtar",
+      "shape": { "kind": "star", "points": 5 },
+      "position": { "x": 0, "y": 5.5 },
+      "size": { "x": 0.8, "y": 0.8 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["anahtar"],
+      "behaviors": [
+        { "kind": "collectible", "points": 25 },
+        { "kind": "spin", "degreesPerSecond": 90 }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Anahtar",
+      "shape": { "kind": "star", "points": 5 },
+      "position": { "x": 4, "y": -5.5 },
+      "size": { "x": 0.8, "y": 0.8 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["anahtar"],
+      "behaviors": [
+        { "kind": "collectible", "points": 25 },
+        { "kind": "spin", "degreesPerSecond": 90 }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Hayalet",
+      "shape": { "kind": "circle" },
+      "position": { "x": 0, "y": -5 },
+      "size": { "x": 0.9, "y": 0.9 },
+      "color": 22,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["hayalet"],
+      "behaviors": [
+        { "kind": "chase", "tag": "player", "speed": 1.8 },
+        { "kind": "hazard", "damage": 1 }
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Çıkış",
+      "shape": { "kind": "rect" },
+      "position": { "x": 8.5, "y": -5.5 },
+      "size": { "x": 1, "y": 1 },
+      "color": 13,
+      "sensor": true,
+      "scripts": [
+        {
+          "id": "exit-reached",
+          "event": { "kind": "collide", "tag": "player" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "eq",
+                "left": { "op": "count", "tag": "anahtar" },
+                "right": { "op": "number", "value": 0 }
+              },
+              "then": [
+                {
+                  "op": "addScore",
+                  "amount": {
+                    "op": "binary",
+                    "operator": "mul",
+                    "left": {
+                      "op": "binary",
+                      "operator": "sub",
+                      "left": { "op": "number", "value": 120 },
+                      "right": { "op": "unary", "operator": "floor", "value": { "op": "time" } }
+                    },
+                    "right": { "op": "number", "value": 2 }
+                  }
+                },
+                { "op": "win" }
+              ],
+              "otherwise": [{ "op": "playSound", "sound": "kilitli" }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Kaşif",
+      "shape": { "kind": "circle" },
+      "position": { "x": -8.5, "y": 5.5 },
+      "size": { "x": 0.8, "y": 0.8 },
+      "color": 16,
+      "body": "dynamic",
+      "tags": ["player"],
+      "behaviors": [{ "kind": "topDownController", "speed": 5 }],
+      "scripts": [
+        {
+          "id": "key-found",
+          "event": { "kind": "collide", "tag": "anahtar" },
+          "body": [
+            { "op": "change", "variable": "kalan anahtar", "by": { "op": "number", "value": -1 } },
+            { "op": "playSound", "sound": "anahtar" }
+          ]
+        },
+        {
+          "id": "caught",
+          "event": { "kind": "message", "name": "hit" },
+          "body": [
+            { "op": "playSound", "sound": "yakalandı" },
+            {
+              "op": "setPosition",
+              "target": { "kind": "self" },
+              "x": { "op": "number", "value": -8.5 },
+              "y": { "op": "number", "value": 5.5 }
+            },
+            {
+              "op": "setPosition",
+              "target": { "kind": "named", "name": "Hayalet" },
+              "x": { "op": "number", "value": 0 },
+              "y": { "op": "number", "value": -5 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

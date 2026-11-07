@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "dimension": "2d",
+  "world": {
+    "size": { "x": 60, "y": 16 },
+    "gravity": 32,
+    "background": 4,
+    "camera": "follow",
+    "timeLimitSeconds": 120,
+    "lives": 3
+  },
+  "sounds": [
+    { "name": "altın", "recipe": "coin" },
+    { "name": "zıpla", "recipe": "jump", "volume": 0.6 },
+    { "name": "can", "recipe": "hit" }
+  ],
+  "hud": [
+    { "kind": { "type": "score" }, "anchor": "topLeft" },
+    { "kind": { "type": "timer" }, "anchor": "topCenter" },
+    { "kind": { "type": "lives" }, "anchor": "topRight" }
+  ],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Zemin 1",
+      "shape": { "kind": "rect" },
+      "position": { "x": -20, "y": -7.5 },
+      "size": { "x": 20, "y": 1 },
+      "color": 14
+    },
+    {
+      "id": 2,
+      "name": "Zemin 2",
+      "shape": { "kind": "rect" },
+      "position": { "x": 3, "y": -7.5 },
+      "size": { "x": 18, "y": 1 },
+      "color": 14
+    },
+    {
+      "id": 3,
+      "name": "Zemin 3",
+      "shape": { "kind": "rect" },
+      "position": { "x": 23, "y": -7.5 },
+      "size": { "x": 14, "y": 1 },
+      "color": 14
+    },
+    {
+      "id": 4,
+      "name": "Platform 1",
+      "shape": { "kind": "rect" },
+      "position": { "x": -14, "y": -4 },
+      "size": { "x": 4, "y": 0.6 },
+      "color": 11
+    },
+    {
+      "id": 5,
+      "name": "Platform 2",
+      "shape": { "kind": "rect" },
+      "position": { "x": -8, "y": -2 },
+      "size": { "x": 3, "y": 0.6 },
+      "color": 11
+    },
+    {
+      "id": 6,
+      "name": "Platform 3",
+      "shape": { "kind": "rect" },
+      "position": { "x": 6, "y": -4 },
+      "size": { "x": 4, "y": 0.6 },
+      "color": 11
+    },
+    {
+      "id": 7,
+      "name": "Platform 4",
+      "shape": { "kind": "rect" },
+      "position": { "x": 14, "y": -5 },
+      "size": { "x": 2, "y": 0.6 },
+      "color": 11
+    },
+    {
+      "id": 10,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": -22, "y": -6 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 11,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": -18, "y": -6 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 12,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": -14, "y": -3 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 13,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": -8, "y": -1.2 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 14,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": 0, "y": -6 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 15,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": 6, "y": -3 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 16,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": 14, "y": -4 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 17,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": 20, "y": -6 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 18,
+      "name": "Altın",
+      "shape": { "kind": "circle" },
+      "position": { "x": 24, "y": -6 },
+      "size": { "x": 0.6, "y": 0.6 },
+      "color": 10,
+      "sensor": true,
+      "tags": ["altın"],
+      "behaviors": [{ "kind": "collectible", "points": 10 }]
+    },
+    {
+      "id": 20,
+      "name": "Devriye 1",
+      "shape": { "kind": "rect" },
+      "position": { "x": -4, "y": -6.5 },
+      "size": { "x": 1, "y": 1 },
+      "color": 7,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["düşman"],
+      "behaviors": [
+        { "kind": "patrol", "distance": 5, "speed": 2.5, "axis": "x" },
+        { "kind": "hazard", "damage": 1 }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Devriye 2",
+      "shape": { "kind": "rect" },
+      "position": { "x": 18, "y": -6.5 },
+      "size": { "x": 1, "y": 1 },
+      "color": 7,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["düşman"],
+      "behaviors": [
+        { "kind": "patrol", "distance": 5, "speed": 3, "axis": "x" },
+        { "kind": "hazard", "damage": 1 }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Bayrak",
+      "shape": { "kind": "rect" },
+      "position": { "x": 28, "y": -5.5 },
+      "size": { "x": 0.6, "y": 3 },
+      "color": 13,
+      "sensor": true,
+      "behaviors": [{ "kind": "goal" }]
+    },
+    {
+      "id": 40,
+      "name": "Oyuncu",
+      "shape": { "kind": "rect" },
+      "position": { "x": -27, "y": -6 },
+      "size": { "x": 1, "y": 1 },
+      "color": 18,
+      "body": "dynamic",
+      "tags": ["player"],
+      "behaviors": [
+        { "kind": "platformerController", "speed": 7, "jump": 15 },
+        { "kind": "cameraTarget" }
+      ],
+      "scripts": [
+        {
+          "id": "p-jump",
+          "event": { "kind": "pressed", "action": "jump" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "property",
+                "target": { "kind": "self" },
+                "property": "onGround"
+              },
+              "then": [{ "op": "playSound", "sound": "zıpla" }]
+            }
+          ]
+        },
+        {
+          "id": "p-coin",
+          "event": { "kind": "collide", "tag": "altın" },
+          "body": [{ "op": "playSound", "sound": "altın" }]
+        },
+        {
+          "id": "p-hit",
+          "event": { "kind": "message", "name": "hit" },
+          "body": [
+            { "op": "playSound", "sound": "can" },
+            { "op": "cameraShake", "strength": { "op": "number", "value": 2 } },
+            {
+              "op": "setPosition",
+              "target": { "kind": "self" },
+              "x": { "op": "number", "value": -27 },
+              "y": { "op": "number", "value": -6 }
+            },
+            {
+              "op": "setVelocity",
+              "target": { "kind": "self" },
+              "x": { "op": "number", "value": 0 },
+              "y": { "op": "number", "value": 0 }
+            }
+          ]
+        },
+        {
+          "id": "p-fall",
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "lt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "y" },
+                "right": { "op": "number", "value": -10 }
+              },
+              "then": [
+                { "op": "loseLife", "amount": { "op": "number", "value": 1 } },
+                {
+                  "op": "setPosition",
+                  "target": { "kind": "self" },
+                  "x": { "op": "number", "value": -27 },
+                  "y": { "op": "number", "value": -6 }
+                },
+                { "op": "broadcast", "message": "hit" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

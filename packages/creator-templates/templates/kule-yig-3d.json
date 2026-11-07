@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "dimension": "3d",
+  "world": {
+    "size": { "x": 16, "y": 60, "z": 16 },
+    "gravity": 0,
+    "background": 19,
+    "camera": "follow"
+  },
+  "sounds": [
+    { "name": "koy", "recipe": "click" },
+    { "name": "yıkıldı", "recipe": "lose" }
+  ],
+  "hud": [{ "kind": { "type": "score" }, "anchor": "topCenter", "label": "Kat" }],
+  "variables": [
+    { "name": "kat", "initial": 1 },
+    { "name": "son x", "initial": 0 },
+    { "name": "yön", "initial": 1 },
+    { "name": "hız", "initial": 4 }
+  ],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Temel",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "size": { "x": 3, "y": 1, "z": 3 },
+      "color": 3
+    },
+    {
+      "id": 2,
+      "name": "Kayan",
+      "shape": { "kind": "box" },
+      "position": { "x": -5, "y": 1, "z": 0 },
+      "size": { "x": 3, "y": 1, "z": 3 },
+      "color": 10,
+      "body": "kinematic",
+      "behaviors": [{ "kind": "cameraTarget" }],
+      "scripts": [
+        {
+          "id": "slide",
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "setVelocityAxis",
+              "target": { "kind": "self" },
+              "axis": "x",
+              "value": {
+                "op": "binary",
+                "operator": "mul",
+                "left": { "op": "var", "name": "yön" },
+                "right": { "op": "var", "name": "hız" }
+              }
+            },
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "gt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "x" },
+                "right": { "op": "number", "value": 5 }
+              },
+              "then": [{ "op": "set", "variable": "yön", "value": { "op": "number", "value": -1 } }]
+            },
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "lt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "x" },
+                "right": { "op": "number", "value": -5 }
+              },
+              "then": [{ "op": "set", "variable": "yön", "value": { "op": "number", "value": 1 } }]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "prefabs": [
+    {
+      "id": 100,
+      "name": "Blok",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "size": { "x": 3, "y": 1, "z": 3 },
+      "color": 9
+    }
+  ],
+  "functions": [
+    {
+      "name": "bloğu bırak",
+      "body": [
+        {
+          "op": "if",
+          "condition": {
+            "op": "binary",
+            "operator": "gt",
+            "left": {
+              "op": "unary",
+              "operator": "abs",
+              "value": {
+                "op": "binary",
+                "operator": "sub",
+                "left": {
+                  "op": "property",
+                  "target": { "kind": "named", "name": "Kayan" },
+                  "property": "x"
+                },
+                "right": { "op": "var", "name": "son x" }
+              }
+            },
+            "right": { "op": "number", "value": 2 }
+          },
+          "then": [{ "op": "playSound", "sound": "yıkıldı" }, { "op": "lose" }]
+        },
+        {
+          "op": "spawn",
+          "prefab": "Blok",
+          "x": {
+            "op": "property",
+            "target": { "kind": "named", "name": "Kayan" },
+            "property": "x"
+          },
+          "y": { "op": "var", "name": "kat" },
+          "z": { "op": "number", "value": 0 }
+        },
+        {
+          "op": "set",
+          "variable": "son x",
+          "value": {
+            "op": "property",
+            "target": { "kind": "named", "name": "Kayan" },
+            "property": "x"
+          }
+        },
+        { "op": "change", "variable": "kat", "by": { "op": "number", "value": 1 } },
+        { "op": "addScore", "amount": { "op": "number", "value": 1 } },
+        { "op": "change", "variable": "hız", "by": { "op": "number", "value": 0.4 } },
+        {
+          "op": "setPosition",
+          "target": { "kind": "named", "name": "Kayan" },
+          "x": { "op": "number", "value": -5 },
+          "y": { "op": "var", "name": "kat" },
+          "z": { "op": "number", "value": 0 }
+        },
+        { "op": "set", "variable": "yön", "value": { "op": "number", "value": 1 } },
+        { "op": "playSound", "sound": "koy" }
+      ]
+    }
+  ],
+  "scripts": [
+    {
+      "id": "drop-jump",
+      "event": { "kind": "pressed", "action": "jump" },
+      "body": [{ "op": "call", "function": "bloğu bırak" }]
+    },
+    {
+      "id": "drop-primary",
+      "event": { "kind": "pressed", "action": "primary" },
+      "body": [{ "op": "call", "function": "bloğu bırak" }]
+    }
+  ]
+}

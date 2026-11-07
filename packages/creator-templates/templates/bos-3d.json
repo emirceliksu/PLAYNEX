@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "dimension": "3d",
+  "world": {
+    "size": { "x": 30, "y": 12, "z": 30 },
+    "gravity": 25,
+    "background": 15,
+    "camera": "fixed"
+  },
+  "hud": [{ "kind": { "type": "score" }, "anchor": "topLeft" }],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Zemin",
+      "shape": { "kind": "box" },
+      "position": { "x": 0, "y": -0.5, "z": 0 },
+      "size": { "x": 24, "y": 1, "z": 24 },
+      "color": 13
+    }
+  ]
+}

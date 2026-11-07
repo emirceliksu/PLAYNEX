@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "dimension": "2d",
+  "world": {
+    "size": { "x": 32, "y": 18 },
+    "gravity": 0,
+    "background": 5,
+    "camera": "fixed",
+    "timeLimitSeconds": 90,
+    "lives": 3
+  },
+  "sounds": [
+    { "name": "lazer", "recipe": "laser", "volume": 0.5 },
+    { "name": "patlama", "recipe": "explosion", "volume": 0.7 },
+    { "name": "çarpma", "recipe": "hit" }
+  ],
+  "hud": [
+    { "kind": { "type": "score" }, "anchor": "topLeft" },
+    { "kind": { "type": "timer" }, "anchor": "topCenter" },
+    { "kind": { "type": "lives" }, "anchor": "topRight" }
+  ],
+  "entities": [
+    {
+      "id": 1,
+      "name": "Sol duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": -16.25, "y": 0 },
+      "size": { "x": 0.5, "y": 18 },
+      "color": 4
+    },
+    {
+      "id": 2,
+      "name": "Sağ duvar",
+      "shape": { "kind": "rect" },
+      "position": { "x": 16.25, "y": 0 },
+      "size": { "x": 0.5, "y": 18 },
+      "color": 4
+    },
+    {
+      "id": 3,
+      "name": "Alt sınır",
+      "shape": { "kind": "rect" },
+      "position": { "x": 0, "y": -9.25 },
+      "size": { "x": 32, "y": 0.5 },
+      "color": 4
+    },
+    {
+      "id": 4,
+      "name": "Üst sınır",
+      "shape": { "kind": "rect" },
+      "position": { "x": 0, "y": -1 },
+      "size": { "x": 32, "y": 0.2 },
+      "color": 5,
+      "visible": false
+    },
+    {
+      "id": 10,
+      "name": "Gemi",
+      "shape": { "kind": "triangle" },
+      "position": { "x": 0, "y": -7 },
+      "size": { "x": 1.4, "y": 1.4 },
+      "color": 16,
+      "body": "dynamic",
+      "tags": ["player"],
+      "behaviors": [{ "kind": "topDownController", "speed": 10 }],
+      "scripts": [
+        {
+          "id": "ship-fire",
+          "event": { "kind": "pressed", "action": "primary" },
+          "body": [{ "op": "call", "function": "ateş et" }]
+        },
+        {
+          "id": "ship-fire-jump",
+          "event": { "kind": "pressed", "action": "jump" },
+          "body": [{ "op": "call", "function": "ateş et" }]
+        },
+        {
+          "id": "ship-hit",
+          "event": { "kind": "message", "name": "hit" },
+          "body": [
+            { "op": "playSound", "sound": "çarpma" },
+            { "op": "cameraShake", "strength": { "op": "number", "value": 3 } }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "ateş et",
+      "body": [
+        {
+          "op": "spawn",
+          "prefab": "Mermi",
+          "x": { "op": "property", "target": { "kind": "named", "name": "Gemi" }, "property": "x" },
+          "y": {
+            "op": "binary",
+            "operator": "add",
+            "left": {
+              "op": "property",
+              "target": { "kind": "named", "name": "Gemi" },
+              "property": "y"
+            },
+            "right": { "op": "number", "value": 1 }
+          }
+        },
+        { "op": "playSound", "sound": "lazer" }
+      ]
+    }
+  ],
+  "variables": [{ "name": "aralık", "initial": 0.9 }],
+  "prefabs": [
+    {
+      "id": 100,
+      "name": "Mermi",
+      "shape": { "kind": "circle" },
+      "position": { "x": 0, "y": 0 },
+      "size": { "x": 0.35, "y": 0.6 },
+      "color": 9,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["mermi"],
+      "scripts": [
+        {
+          "event": { "kind": "start" },
+          "body": [
+            {
+              "op": "setVelocity",
+              "target": { "kind": "self" },
+              "x": { "op": "number", "value": 0 },
+              "y": { "op": "number", "value": 20 }
+            }
+          ]
+        },
+        {
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "gt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "y" },
+                "right": { "op": "number", "value": 10 }
+              },
+              "then": [{ "op": "destroy", "target": { "kind": "self" } }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Göktaşı",
+      "shape": {
+        "kind": "polygon",
+        "points": [
+          [0, 1],
+          [0.7, 0.6],
+          [1, -0.2],
+          [0.4, -0.9],
+          [-0.5, -0.8],
+          [-1, -0.1],
+          [-0.6, 0.7]
+        ]
+      },
+      "position": { "x": 0, "y": 0 },
+      "size": { "x": 1.4, "y": 1.4 },
+      "color": 7,
+      "body": "kinematic",
+      "sensor": true,
+      "tags": ["göktaşı"],
+      "scripts": [
+        {
+          "event": { "kind": "start" },
+          "body": [
+            {
+              "op": "setVelocity",
+              "target": { "kind": "self" },
+              "x": {
+                "op": "random",
+                "min": { "op": "number", "value": -1.5 },
+                "max": { "op": "number", "value": 1.5 }
+              },
+              "y": {
+                "op": "random",
+                "min": { "op": "number", "value": -7 },
+                "max": { "op": "number", "value": -3 }
+              }
+            }
+          ]
+        },
+        {
+          "event": { "kind": "tick" },
+          "body": [
+            {
+              "op": "turn",
+              "target": { "kind": "self" },
+              "degrees": { "op": "number", "value": 2 }
+            },
+            {
+              "op": "if",
+              "condition": {
+                "op": "binary",
+                "operator": "lt",
+                "left": { "op": "property", "target": { "kind": "self" }, "property": "y" },
+                "right": { "op": "number", "value": -10 }
+              },
+              "then": [{ "op": "destroy", "target": { "kind": "self" } }]
+            }
+          ]
+        },
+        {
+          "id": "rock-shot",
+          "event": { "kind": "collide", "tag": "mermi" },
+          "body": [
+            { "op": "addScore", "amount": { "op": "number", "value": 5 } },
+            { "op": "playSound", "sound": "patlama" },
+            { "op": "destroy", "target": { "kind": "other" } },
+            { "op": "destroy", "target": { "kind": "self" } }
+          ]
+        },
+        {
+          "id": "rock-hit-ship",
+          "event": { "kind": "collide", "tag": "player" },
+          "body": [
+            { "op": "loseLife", "amount": { "op": "number", "value": 1 } },
+            { "op": "broadcast", "message": "hit" },
+            { "op": "destroy", "target": { "kind": "self" } }
+          ]
+        }
+      ]
+    }
+  ],
+  "scripts": [
+    {
+      "id": "spawn-rocks",
+      "event": { "kind": "start" },
+      "body": [
+        {
+          "op": "forever",
+          "body": [
+            {
+              "op": "spawn",
+              "prefab": "Göktaşı",
+              "x": {
+                "op": "random",
+                "min": { "op": "number", "value": -14 },
+                "max": { "op": "number", "value": 14 }
+              },
+              "y": { "op": "number", "value": 10 }
+            },
+            { "op": "wait", "seconds": { "op": "var", "name": "aralık" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "speed-up",
+      "event": { "kind": "timer", "seconds": 10 },
+      "body": [
+        {
+          "op": "set",
+          "variable": "aralık",
+          "value": {
+            "op": "binary",
+            "operator": "max",
+            "left": { "op": "number", "value": 0.3 },
+            "right": {
+              "op": "binary",
+              "operator": "sub",
+              "left": { "op": "var", "name": "aralık" },
+              "right": { "op": "number", "value": 0.1 }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
