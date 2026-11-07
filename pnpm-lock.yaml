@@ -184,6 +184,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@babylonjs/core':
+        specifier: 9.31.0
+        version: 9.31.0
       '@playnex/creator-runtime':
         specifier: workspace:*
         version: link:../../packages/creator-runtime

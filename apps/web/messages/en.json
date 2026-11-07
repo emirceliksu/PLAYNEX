@@ -37,7 +37,8 @@
     "friends": "Friends",
     "tournaments": "Tournaments",
     "leaderboard": "Leaderboard",
-    "profile": "Profile"
+    "profile": "Profile",
+    "community": "Community"
   },
   "meta": {
     "games": "Games",
@@ -53,7 +54,10 @@
     "adminUsers": "Player management",
     "loginCode": "Sign-in code",
     "friends": "Friends",
-    "adminReports": "Reports"
+    "adminReports": "Reports",
+    "community": "Community games",
+    "workshop": "Workshop",
+    "editor": "Game editor"
   },
   "home": {
     "title": "PLAYNEX arcade",
@@ -230,7 +234,11 @@
     },
     "welcome": "Your account is ready, {name}. Your records now travel with you.",
     "signOut": "Sign out",
-    "addFriend": "Add friend"
+    "addFriend": "Add friend",
+    "games": "Games made",
+    "gamesHint": "{n, plural, =0 {Nothing published yet} one {# game} other {# games}}",
+    "gamesWorkshop": "Open the workshop",
+    "gamesEmpty": "Build your first game in the workshop and publish it to show it here."
   },
   "auth": {
     "backHome": "Back to the arcade",
@@ -984,6 +992,575 @@
         "rate_limited": "Too fast, wait a moment.",
         "unauthorized": "Sign in first."
       }
+    }
+  },
+  "creator": {
+    "runtime": {
+      "score": "Score",
+      "timer": "Time",
+      "lives": "Lives",
+      "jump": "Jump",
+      "primary": "A",
+      "secondary": "B",
+      "joystick": "Direction stick"
+    },
+    "community": {
+      "eyebrow": "Games made by players",
+      "title": "Community",
+      "subtitle": "Every one of these was built from blocks in the Workshop. Play, like, beat the record, then make your own.",
+      "make": "Make a game",
+      "play": "Play",
+      "meta": "{author} · {plays, plural, one {# play} other {# plays}} · {likes, plural, one {# like} other {# likes}}",
+      "sortLabel": "Sort",
+      "sorts": {
+        "new": "New",
+        "popular": "Most played",
+        "liked": "Most liked"
+      },
+      "dimensionLabel": "Dimension",
+      "dimensions": {
+        "all": "All"
+      },
+      "empty": "No games on this shelf yet",
+      "emptyHint": "Publish the first one; starting from a template takes five minutes."
+    },
+    "game": {
+      "version": "Version {n}",
+      "by": "Made by {author}",
+      "stats": "{plays, plural, one {Played once} other {Played # times}} · published {date}",
+      "olderVersion": "There is a newer version of this game. This link opens an older one; each version keeps its own leaderboard.",
+      "play": "Play",
+      "edit": "Edit",
+      "like": "Like",
+      "likes": "{n, plural, one {# like} other {# likes}}",
+      "liked": "Liked · {n}",
+      "controls": "Arrow keys or WASD to move, Space to jump, J and K for actions. On touch screens a stick and buttons appear.",
+      "controlsMove": "Arrow keys or WASD: move",
+      "controlsJump": "Space: jump",
+      "controlsAction": "J and K: action buttons",
+      "leaderboard": "Leaderboard",
+      "leaderboardHint": "Only scores replayed and verified on the server",
+      "leaderboardEmpty": "No verified scores yet. Sign in and play to take first place.",
+      "back": "Back to the game page",
+      "backToCommunity": "Back to the community"
+    },
+    "report": {
+      "open": "Report",
+      "title": "Report this game",
+      "description": "The team reviews it; games that break the rules are taken down.",
+      "reason": "Reason",
+      "reasons": {
+        "content": "Inappropriate content",
+        "name": "Inappropriate name or text",
+        "abuse": "Harassment or insults",
+        "other": "Something else"
+      },
+      "note": "Details (optional)",
+      "submit": "Send",
+      "sent": "Thanks, the team has your report.",
+      "errors": {
+        "generic": "Could not send, try again shortly.",
+        "rate_limited": "You have sent a lot of reports, wait a little.",
+        "cannot_target_self": "You cannot report your own game."
+      }
+    },
+    "workshop": {
+      "eyebrow": "Workshop",
+      "title": "Make your own game",
+      "subtitle": "Build a scene from ready-made shapes, write the rules with blocks, test it and publish in one click. No code, no file uploads.",
+      "mine": "Your games",
+      "mineHint": "{n, plural, one {# project} other {# projects}}",
+      "draft": "Draft",
+      "publishedMeta": "Live · {plays, plural, one {# play} other {# plays}} · {likes, plural, one {# like} other {# likes}}",
+      "updated": "updated {date}",
+      "open": "Game page",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteNamed": "Delete {title}",
+      "deleteTitle": "Delete this project?",
+      "deleteDescription": "{title} and its published versions will be removed. This cannot be undone.",
+      "cancel": "Cancel",
+      "new": "New game",
+      "pickTemplate": "Start from a template. Each one is playable; open it up and change whatever you like.",
+      "gameName": "Game name",
+      "create": "Create and open",
+      "creating": "Creating",
+      "templates": {
+        "platform-kosusu": {
+          "title": "Platform Run",
+          "description": "Jump, grab the coins, dodge the patrols, reach the flag."
+        },
+        "yorunge-savunmasi": {
+          "title": "Orbit Defence",
+          "description": "Steer the ship and shoot falling rocks. The waves keep speeding up."
+        },
+        "labirent-kacisi": {
+          "title": "Maze Escape",
+          "description": "Find three keys, avoid the ghost, get out through the door."
+        },
+        "top-toplama-3d": {
+          "title": "Gem Roller 3D",
+          "description": "Roll the ball, climb the ramp, collect the gems before time runs out."
+        },
+        "engelli-kosu-3d": {
+          "title": "Obstacle Dash 3D",
+          "description": "Slide between lanes and jump the blocks. The track speeds up every five seconds."
+        },
+        "kule-yig-3d": {
+          "title": "Tower Stack 3D",
+          "description": "Drop the sliding block at the right moment and build as high as you can."
+        },
+        "bos-2d": {
+          "title": "Empty 2D scene",
+          "description": "Just a floor. You build the rest."
+        },
+        "bos-3d": {
+          "title": "Empty 3D scene",
+          "description": "A flat floor and a camera. The rest is yours."
+        }
+      },
+      "steps": {
+        "shapes": {
+          "title": "Build the scene",
+          "body": "Boxes, spheres, ramps, stars... Drag, resize and colour shapes. Give an object a behavior to make it the player, a pickup or a trap."
+        },
+        "blocks": {
+          "title": "Write the rules in blocks",
+          "body": "Events, conditions, loops, variables, lists and functions. Blocks snap together and cannot be connected the wrong way."
+        },
+        "publish": {
+          "title": "Test and publish",
+          "body": "Try it right away with the Play button. Once published anyone can play, and scores are verified on the server before they rank."
+        }
+      },
+      "safety": "Games made in the Workshop contain no code and no files; they are stored as a recipe that only the PLAYNEX engine reads, so they cannot harm anyone's device. Names and text go through a filter before publishing.",
+      "errors": {
+        "generic": "Could not create the project, try again.",
+        "project_limit": "You can have up to 100 projects. Delete an old one and try again.",
+        "rate_limited": "You are creating projects quickly, wait a little.",
+        "invalid_input": "Pick a template and give the game a name."
+      }
+    },
+    "editor": {
+      "back": "Back to the workshop",
+      "title": "Game name",
+      "status": {
+        "saved": "Saved",
+        "dirty": "Unsaved changes",
+        "saving": "Saving",
+        "error": "Could not save, will retry",
+        "conflict": "This project changed in another tab",
+        "reload": "Reload"
+      },
+      "undo": "Undo",
+      "redo": "Redo",
+      "test": "Play",
+      "publishButton": "Publish",
+      "tabs": {
+        "scene": "Scene",
+        "blocks": "Blocks",
+        "settings": "Game settings"
+      },
+      "library": "Shapes",
+      "objects": "Objects in the scene",
+      "noObjects": "Click one of the shapes on the left.",
+      "prefabs": "Spawn templates",
+      "noPrefabs": "Turn an object into a spawn template to copy it with blocks.",
+      "prefab": "template",
+      "snap": "Snap to grid",
+      "gizmo": {
+        "move": "Move",
+        "rotate": "Rotate",
+        "scale": "Resize"
+      },
+      "viewport": "Scene. Select an object and drag it; resize from the corners, rotate with the top handle.",
+      "hint2d": "Drag: move · Corners: size · Top handle: rotate · Alt: free",
+      "hint3d": "Drag: orbit the camera · Wheel: zoom · Click: select",
+      "nothingSelected": "Select an object in the scene to set its position, colour, physics and behaviors here.",
+      "blocksFor": "Blocks for",
+      "stageScripts": "Stage and functions",
+      "blocksArea": "Block area",
+      "problems": "Problems",
+      "noProblems": "Everything looks fine.",
+      "blocksHint": "Blocks that are not under an event block do not run. Click a problem to jump to its block.",
+      "diagnostics": {
+        "budgetExceeded": "A loop ran too long and was stopped. Add a wait block inside it or repeat fewer times.",
+        "recursionTooDeep": "A function called itself too deeply and was stopped.",
+        "stackOverflow": "A calculation was nested too deeply and was stopped.",
+        "tooManyEntities": "At most 2000 objects can exist at once; new copies were not created.",
+        "listFull": "A list reached 10,000 items; the new item was not added."
+      },
+      "shapes": {
+        "rect": "Rectangle",
+        "circle": "Circle",
+        "triangle": "Triangle",
+        "star": "Star",
+        "polygon": "Polygon",
+        "text": "Text",
+        "box": "Box",
+        "sphere": "Sphere",
+        "cylinder": "Cylinder",
+        "cone": "Cone",
+        "ramp": "Ramp"
+      },
+      "bodies": {
+        "static": "Fixed",
+        "dynamic": "Physical",
+        "kinematic": "Moving",
+        "none": "Decoration",
+        "staticHint": "Never moves; for floors, walls and platforms.",
+        "dynamicHint": "Falls with gravity, collides and stands on things; for players and balls.",
+        "kinematicHint": "Moves at the speed you set, ignoring gravity and collisions; for patrols and bullets.",
+        "noneHint": "Touches nothing; only seen."
+      },
+      "behaviors": {
+        "platformerController": "Platform player",
+        "topDownController": "Top-down player",
+        "patrol": "Patrol",
+        "chase": "Chaser",
+        "collectible": "Pickup",
+        "hazard": "Trap",
+        "goal": "Finish point",
+        "cameraTarget": "Camera follows",
+        "spin": "Spin in place"
+      },
+      "params": {
+        "speed": "Speed",
+        "jump": "Jump",
+        "distance": "Distance",
+        "axis": "Axis",
+        "tag": "Tag",
+        "points": "Points",
+        "damage": "Damage",
+        "degreesPerSecond": "Degrees/s"
+      },
+      "inspector": {
+        "object": "Object",
+        "prefab": "Spawn template",
+        "duplicate": "Duplicate",
+        "delete": "Delete",
+        "name": "Name",
+        "shape": "Shape",
+        "starPoints": "Points",
+        "text": "Text",
+        "toPrefab": "Turn into a spawn template",
+        "toScene": "Put back in the scene",
+        "prefabHint": "Templates are not in the scene; the \"spawn copy\" block creates them wherever you want.",
+        "transform": "Position and size",
+        "width": "Width",
+        "height": "Height",
+        "depth": "Depth",
+        "rotation": "Direction (degrees)",
+        "look": "Look",
+        "color": "Colour",
+        "swatch": "Colour {n}",
+        "visible": "Visible",
+        "physics": "Physics",
+        "body": "Body",
+        "sensor": "Sensor (passes through, touching fires events)",
+        "bounce": "Bounce",
+        "friction": "Friction",
+        "tags": "Tags",
+        "tagsHint": "comma separated: enemy, coin",
+        "behaviors": "Behaviors",
+        "behaviorsHint": "Ready-made behaviors work without blocks. Player behaviors add the player tag to the object.",
+        "removeBehavior": "Remove behavior",
+        "addBehavior": "Add behavior"
+      },
+      "settings": {
+        "world": "World",
+        "width": "Width",
+        "height": "Height",
+        "depth": "Depth",
+        "gravity": "Gravity",
+        "timeLimit": "Time limit (s)",
+        "lives": "Lives",
+        "camera": "Camera",
+        "cameras": {
+          "fixed": "Fixed, whole scene",
+          "follow": "Follow",
+          "topDown": "Top-down",
+          "thirdPerson": "From behind"
+        },
+        "zeroMeansNone": "0 for time or lives means no limit.",
+        "background": "Background",
+        "swatch": "Colour {n}",
+        "variables": "Variables",
+        "variablesHint": "Numbers and text any block can read and change. Show them on screen in the HUD section.",
+        "addVariable": "Add variable",
+        "newVariable": "variable",
+        "name": "Name",
+        "initial": "Starts at",
+        "remove": "Remove",
+        "lists": "Lists",
+        "addList": "Add list",
+        "newList": "list",
+        "items": "Items",
+        "itemsHint": "comma separated",
+        "sounds": "Sounds",
+        "soundsHint": "Sounds are synthesised by the PLAYNEX audio kit and played by name with the \"play sound\" block.",
+        "addSound": "Add sound",
+        "newSound": "sound",
+        "recipe": "Kind",
+        "recipes": {
+          "coin": "Coin",
+          "jump": "Jump",
+          "hit": "Hit",
+          "explosion": "Explosion",
+          "powerUp": "Power up",
+          "laser": "Laser",
+          "click": "Click",
+          "win": "Win",
+          "lose": "Lose"
+        },
+        "pitch": "Pitch",
+        "volume": "Volume",
+        "hud": "HUD",
+        "addHud": "Add HUD item",
+        "hudShows": "Shows",
+        "hudTypes": {
+          "score": "Score",
+          "timer": "Time",
+          "lives": "Lives",
+          "variable": "Variable",
+          "text": "Text"
+        },
+        "variable": "Variable name",
+        "text": "Text",
+        "label": "Label",
+        "anchor": "Position",
+        "anchors": {
+          "topLeft": "Top left",
+          "topCenter": "Top centre",
+          "topRight": "Top right",
+          "bottomLeft": "Bottom left",
+          "bottomCenter": "Bottom centre",
+          "bottomRight": "Bottom right"
+        }
+      },
+      "testPlay": {
+        "title": "Test run",
+        "hint": "Esc returns to the editor",
+        "finished": "Game over",
+        "failed": "The game could not start. Check the problems list.",
+        "restart": "Restart",
+        "close": "Back to editor"
+      },
+      "publish": {
+        "title": "Publish your game",
+        "description": "The published version is frozen; you can keep editing and publish again later.",
+        "summary": "Short description",
+        "summaryHint": "Up to 300 characters. Shown on the community page.",
+        "rules": "Names, text and the description go through a profanity filter. Games that break the rules are taken down.",
+        "submit": "Publish",
+        "publishing": "Publishing",
+        "doneTitle": "Your game is live",
+        "doneDescription": "Share the link; scores from signed-in players go on the leaderboard.",
+        "play": "Play now",
+        "page": "Game page",
+        "errors": {
+          "generic": "Could not publish, try again.",
+          "save_failed": "The latest changes could not be saved; fix that first and try again.",
+          "invalid_document": "A few things need fixing first:",
+          "offensive_text": "The name, description or some text in the game is not allowed.",
+          "rate_limited": "You can publish at most 10 times an hour."
+        }
+      },
+      "desktopOnly": {
+        "title": "The editor needs a wide screen",
+        "description": "Use a computer or a tablet in landscape to build games. On your phone you can play the games in Community.",
+        "back": "Back to the workshop"
+      }
+    },
+    "errors": {
+      "generic": "An unknown problem",
+      "tooLarge": "The game is too large (512 KB at most).",
+      "malformed": "The game file could not be read.",
+      "unsupportedVersion": "This game was made with a newer version of the editor.",
+      "tooMany": "A limit was exceeded (objects, blocks, variables or lists).",
+      "duplicateId": "Two objects share the same id.",
+      "duplicateName": "The same name is used twice.",
+      "invalidName": "A name is empty, too long or starts with #.",
+      "textTooLong": "Text can be at most 120 characters.",
+      "invalidNumber": "There is an invalid number.",
+      "outOfRange": "A value is outside its allowed range.",
+      "invalidColor": "Invalid colour.",
+      "invalidPolygon": "A polygon needs between 3 and 32 corners.",
+      "unknownVariable": "No variable with that name. Add it in game settings or fix the name.",
+      "unknownList": "No list with that name.",
+      "unknownFunction": "No function with that name.",
+      "unknownPrefab": "No spawn template with that name.",
+      "unknownSound": "No sound with that name. Add it in game settings.",
+      "wrongArgumentCount": "The function got the wrong number of inputs.",
+      "nestingTooDeep": "Blocks are nested too deeply (32 levels at most).",
+      "shapeNotInDimension": "This shape cannot be used in this dimension.",
+      "behaviorNeedsMovingBody": "This behavior needs a Physical or Moving body.",
+      "eventNotForStage": "This event only works on objects."
+    },
+    "blocks": {
+      "else": "else",
+      "categories": {
+        "events": "Events",
+        "control": "Flow",
+        "motion": "Motion",
+        "looks": "Looks",
+        "world": "Game",
+        "values": "Values",
+        "variables": "Variables",
+        "lists": "Lists",
+        "functions": "Functions"
+      },
+      "options": {
+        "actions": {
+          "left": "left",
+          "right": "right",
+          "up": "up",
+          "down": "down",
+          "jump": "jump",
+          "primary": "action A",
+          "secondary": "action B"
+        },
+        "axes": {
+          "x": "x",
+          "y": "y",
+          "z": "z"
+        },
+        "properties": {
+          "x": "x position",
+          "y": "y position",
+          "z": "z position",
+          "velocityX": "x speed",
+          "velocityY": "y speed",
+          "velocityZ": "z speed",
+          "rotation": "direction",
+          "width": "width",
+          "height": "height",
+          "depth": "depth",
+          "visible": "is visible",
+          "onGround": "is on ground",
+          "color": "colour",
+          "exists": "exists"
+        },
+        "arithmetic": {
+          "add": "+",
+          "sub": "−",
+          "mul": "×",
+          "div": "÷",
+          "mod": "mod",
+          "pow": "to the power",
+          "min": "min",
+          "max": "max"
+        },
+        "comparison": {
+          "eq": "=",
+          "ne": "≠",
+          "lt": "<",
+          "le": "≤",
+          "gt": ">",
+          "ge": "≥"
+        },
+        "logic": {
+          "and": "and",
+          "or": "or"
+        },
+        "math": {
+          "neg": "negative",
+          "abs": "absolute",
+          "floor": "round down",
+          "ceil": "round up",
+          "round": "round",
+          "sqrt": "square root",
+          "sin": "sin",
+          "cos": "cos",
+          "tan": "tan"
+        },
+        "booleans": {
+          "true": "true",
+          "false": "false"
+        },
+        "targets": {
+          "self": "myself",
+          "other": "the touched object",
+          "named": "named:",
+          "nearest": "nearest tagged:"
+        }
+      },
+      "pn_ev_start": "when it starts",
+      "pn_ev_tick": "every frame",
+      "pn_ev_pressed": "when %1 is pressed",
+      "pn_ev_released": "when %1 is released",
+      "pn_ev_collide": "when touching something tagged %1",
+      "pn_ev_timer": "every %1 seconds",
+      "pn_ev_message": "when I receive %1",
+      "pn_ev_cloned": "when I start as a copy",
+      "pn_ev_variable": "when %1 changes",
+      "pn_if": "if %1 then",
+      "pn_if_else": "if %1 then",
+      "pn_repeat": "repeat %1 times",
+      "pn_while": "repeat while %1",
+      "pn_forever": "forever",
+      "pn_for_each": "for each %1 in list %2",
+      "pn_wait": "wait %1 seconds",
+      "pn_stop": "stop this script",
+      "pn_set": "set %1 to %2",
+      "pn_change": "change %1 by %2",
+      "pn_var": "%1",
+      "pn_list_add": "add %1 to list %2",
+      "pn_list_remove": "delete item %2 of list %1",
+      "pn_list_set": "replace item %2 of list %1 with %3",
+      "pn_list_clear": "clear list %1",
+      "pn_list_item": "item %2 of list %1",
+      "pn_list_length": "length of list %1",
+      "pn_list_contains": "list %1 contains %2",
+      "pn_move": "move %1 %2 by x %3 y %4 z %5",
+      "pn_set_position": "move %1 %2 to x %3 y %4 z %5",
+      "pn_set_velocity": "set speed of %1 %2 to x %3 y %4 z %5",
+      "pn_set_velocity_axis": "set %3 speed of %1 %2 to %4",
+      "pn_push": "push %1 %2 by x %3 y %4 z %5",
+      "pn_turn": "turn %1 %2 by %3 degrees",
+      "pn_set_rotation": "point %1 %2 at %3 degrees",
+      "pn_glide_to": "glide %1 %2 to x %3 y %4 z %5 in %6 seconds",
+      "pn_set_size": "set size of %1 %2 to %3 × %4 × %5",
+      "pn_show": "show %1 %2",
+      "pn_hide": "hide %1 %2",
+      "pn_set_color": "set colour of %1 %2 to %3",
+      "pn_set_text": "set text of %1 %2 to %3",
+      "pn_camera_follow": "camera follows %1 %2",
+      "pn_camera_shake": "shake the camera with strength %1",
+      "pn_spawn": "spawn a copy of %1 at x %2 y %3 z %4",
+      "pn_destroy": "remove %1 %2",
+      "pn_broadcast": "broadcast %1",
+      "pn_play_sound": "play sound %1",
+      "pn_add_score": "add %1 to score",
+      "pn_set_score": "set score to %1",
+      "pn_lose_life": "lose %1 lives",
+      "pn_win": "win the game",
+      "pn_lose": "lose the game",
+      "pn_number": "%1",
+      "pn_text": "%1",
+      "pn_bool": "%1",
+      "pn_arithmetic": "%1 %2 %3",
+      "pn_compare": "%1 %2 %3",
+      "pn_logic": "%1 %2 %3",
+      "pn_join": "join %1 %2",
+      "pn_not": "not %1",
+      "pn_math": "%1 of %2",
+      "pn_length": "length of %1",
+      "pn_random": "random from %1 to %2, whole number %3",
+      "pn_property": "%3 of %1 %2",
+      "pn_held": "%1 held",
+      "pn_input_axis": "direction input %1",
+      "pn_score": "score",
+      "pn_lives": "lives",
+      "pn_time": "time elapsed",
+      "pn_distance": "distance to %1 %2",
+      "pn_direction_to": "direction to %1 %2 along %3",
+      "pn_touching": "touching something tagged %1",
+      "pn_count": "number of objects tagged %1",
+      "pn_function": "function %1 with inputs %2",
+      "pn_call": "run %1 %2 %3 %4",
+      "pn_call_value": "result of %1 %2 %3 %4",
+      "pn_return": "return %1"
     }
   }
 }

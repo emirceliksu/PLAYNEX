@@ -11,6 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@babylonjs/core": "9.31.0",
     "@playnex/creator-runtime": "workspace:*",
     "@playnex/creator-templates": "workspace:*",
     "@playnex/design-tokens": "workspace:*",

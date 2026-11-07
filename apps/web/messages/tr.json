@@ -37,7 +37,8 @@
     "friends": "Arkadaşlar",
     "tournaments": "Turnuvalar",
     "leaderboard": "Sıralama",
-    "profile": "Profil"
+    "profile": "Profil",
+    "community": "Topluluk"
   },
   "meta": {
     "games": "Oyunlar",
@@ -53,7 +54,10 @@
     "adminUsers": "Oyuncu yönetimi",
     "loginCode": "Giriş kodu",
     "friends": "Arkadaşlar",
-    "adminReports": "Şikâyetler"
+    "adminReports": "Şikâyetler",
+    "community": "Topluluk oyunları",
+    "workshop": "Atölye",
+    "editor": "Oyun editörü"
   },
   "home": {
     "title": "PLAYNEX oyun salonu",
@@ -230,7 +234,11 @@
     },
     "welcome": "Hesabın hazır, {name}. Rekorların artık seninle.",
     "signOut": "Çıkış yap",
-    "addFriend": "Arkadaş ekle"
+    "addFriend": "Arkadaş ekle",
+    "games": "Yaptığı oyunlar",
+    "gamesHint": "{n, plural, =0 {Henüz yayınlanmış oyun yok} other {# oyun}}",
+    "gamesWorkshop": "Atölyeye git",
+    "gamesEmpty": "Atölyede ilk oyununu kur, yayınla, burada görünsün."
   },
   "auth": {
     "backHome": "Salona dön",
@@ -984,6 +992,575 @@
         "rate_limited": "Çok hızlı, biraz bekle.",
         "unauthorized": "Önce giriş yap."
       }
+    }
+  },
+  "creator": {
+    "runtime": {
+      "score": "Puan",
+      "timer": "Süre",
+      "lives": "Can",
+      "jump": "Zıpla",
+      "primary": "A",
+      "secondary": "B",
+      "joystick": "Yön çubuğu"
+    },
+    "community": {
+      "eyebrow": "Oyuncuların yaptığı oyunlar",
+      "title": "Topluluk",
+      "subtitle": "Her biri Atölye'de bloklarla kuruldu. Oyna, beğen, rekoru kır; sonra kendininkini yap.",
+      "make": "Oyun yap",
+      "play": "Oyna",
+      "meta": "{author} · {plays, plural, other {# oynanma}} · {likes, plural, other {# beğeni}}",
+      "sortLabel": "Sıralama",
+      "sorts": {
+        "new": "Yeni",
+        "popular": "Çok oynanan",
+        "liked": "Çok beğenilen"
+      },
+      "dimensionLabel": "Boyut",
+      "dimensions": {
+        "all": "Hepsi"
+      },
+      "empty": "Bu rafta henüz oyun yok",
+      "emptyHint": "İlk oyunu sen yayınla; şablonlardan biriyle başlamak beş dakika sürer."
+    },
+    "game": {
+      "version": "Sürüm {n}",
+      "by": "{author} yaptı",
+      "stats": "{plays, plural, other {# kez oynandı}} · {date} tarihinde yayınlandı",
+      "olderVersion": "Bu oyunun daha yeni bir sürümü var. Bu bağlantı eski sürümü açıyor; sıralama her sürüm için ayrı tutulur.",
+      "play": "Oyna",
+      "edit": "Düzenle",
+      "like": "Beğen",
+      "likes": "{n, plural, other {# beğeni}}",
+      "liked": "Beğendin · {n}",
+      "controls": "Ok tuşları veya WASD ile hareket, Boşluk ile zıplama, J ve K eylem tuşları. Dokunmatik ekranda yön çubuğu ve düğmeler çıkar.",
+      "controlsMove": "Ok tuşları veya WASD: hareket",
+      "controlsJump": "Boşluk: zıplama",
+      "controlsAction": "J ve K: eylem tuşları",
+      "leaderboard": "Sıralama",
+      "leaderboardHint": "Yalnızca sunucuda yeniden oynatılıp doğrulanan skorlar",
+      "leaderboardEmpty": "Henüz doğrulanmış skor yok. Giriş yapıp oyna, ilk sıra senin olsun.",
+      "back": "Oyun sayfasına dön",
+      "backToCommunity": "Topluluğa dön"
+    },
+    "report": {
+      "open": "Şikâyet et",
+      "title": "Oyunu şikâyet et",
+      "description": "Yönetim ekibi inceler; kurallara aykırıysa oyun yayından kaldırılır.",
+      "reason": "Neden",
+      "reasons": {
+        "content": "Uygunsuz içerik",
+        "name": "Uygunsuz ad veya yazı",
+        "abuse": "Taciz veya hakaret",
+        "other": "Başka bir sorun"
+      },
+      "note": "Açıklama (isteğe bağlı)",
+      "submit": "Gönder",
+      "sent": "Teşekkürler, şikâyetin ekibe ulaştı.",
+      "errors": {
+        "generic": "Gönderilemedi, biraz sonra tekrar dene.",
+        "rate_limited": "Çok fazla şikâyet gönderdin, biraz bekle.",
+        "cannot_target_self": "Kendi oyununu şikâyet edemezsin."
+      }
+    },
+    "workshop": {
+      "eyebrow": "Atölye",
+      "title": "Kendi oyununu yap",
+      "subtitle": "Hazır şekillerden sahneni kur, bloklarla kurallarını yaz, test et ve tek tıkla yayınla. Kod yazmak yok, dosya yüklemek yok.",
+      "mine": "Oyunların",
+      "mineHint": "{n, plural, other {# proje}}",
+      "draft": "Taslak",
+      "publishedMeta": "Yayında · {plays, plural, other {# oynanma}} · {likes, plural, other {# beğeni}}",
+      "updated": "{date} güncellendi",
+      "open": "Oyun sayfası",
+      "edit": "Düzenle",
+      "delete": "Sil",
+      "deleteNamed": "{title} projesini sil",
+      "deleteTitle": "Proje silinsin mi?",
+      "deleteDescription": "{title} ve yayınlanmış sürümleri kaldırılır. Bu işlem geri alınamaz.",
+      "cancel": "Vazgeç",
+      "new": "Yeni oyun",
+      "pickTemplate": "Bir şablonla başla. Hepsi oynanabilir; içini açıp istediğin gibi değiştirebilirsin.",
+      "gameName": "Oyunun adı",
+      "create": "Oluştur ve aç",
+      "creating": "Oluşturuluyor",
+      "templates": {
+        "platform-kosusu": {
+          "title": "Platform Koşusu",
+          "description": "Zıpla, altınları topla, devriyelerden kaç, bayrağa ulaş."
+        },
+        "yorunge-savunmasi": {
+          "title": "Yörünge Savunması",
+          "description": "Gemini yönet, düşen göktaşlarını vur. Dalgalar giderek hızlanır."
+        },
+        "labirent-kacisi": {
+          "title": "Labirent Kaçışı",
+          "description": "Üç anahtarı bul, hayaletten kaç, kapıdan çık."
+        },
+        "top-toplama-3d": {
+          "title": "Top Toplama 3D",
+          "description": "Topu yuvarla, rampaya tırman, süre bitmeden mücevherleri topla."
+        },
+        "engelli-kosu-3d": {
+          "title": "Engelli Koşu 3D",
+          "description": "Şeritte kay, engellerin üstünden atla. Pist her beş saniyede hızlanır."
+        },
+        "kule-yig-3d": {
+          "title": "Kule Yığ 3D",
+          "description": "Kayan bloğu doğru anda bırak, kuleyi olabildiğince yükselt."
+        },
+        "bos-2d": {
+          "title": "Boş 2D sahne",
+          "description": "Yalnızca bir zemin. Her şeyi sen kur."
+        },
+        "bos-3d": {
+          "title": "Boş 3D sahne",
+          "description": "Düz bir zemin ve kamera. Gerisi senin."
+        }
+      },
+      "steps": {
+        "shapes": {
+          "title": "Sahneyi kur",
+          "body": "Kutu, küre, rampa, yıldız... Şekilleri sürükle, boyutlandır, renklendir. Bir nesneye davranış ekle; oyuncu, toplanabilir ya da tuzak olsun."
+        },
+        "blocks": {
+          "title": "Kuralları bloklarla yaz",
+          "body": "Olaylar, koşullar, döngüler, değişkenler, listeler ve fonksiyonlar. Bloklar birbirine takılır; yanlış takılamaz."
+        },
+        "publish": {
+          "title": "Test et ve yayınla",
+          "body": "Oyna düğmesiyle hemen dene. Yayınlayınca herkes oynar, skorlar sunucuda doğrulanıp sıralamaya girer."
+        }
+      },
+      "safety": "Atölyede yapılan oyunlar kod ya da dosya içermez; yalnızca PLAYNEX motorunun okuduğu bir tarif olarak saklanır. Bu yüzden oynayan kimsenin cihazına zarar veremez. Adlar ve yazılar yayından önce süzgeçten geçer.",
+      "errors": {
+        "generic": "Proje oluşturulamadı, tekrar dene.",
+        "project_limit": "En fazla 100 projen olabilir. Eskilerden birini silip tekrar dene.",
+        "rate_limited": "Çok hızlı proje açıyorsun, biraz bekle.",
+        "invalid_input": "Bir şablon seç ve oyuna ad ver."
+      }
+    },
+    "editor": {
+      "back": "Atölyeye dön",
+      "title": "Oyunun adı",
+      "status": {
+        "saved": "Kaydedildi",
+        "dirty": "Kaydedilecek",
+        "saving": "Kaydediliyor",
+        "error": "Kaydedilemedi, tekrar denenecek",
+        "conflict": "Proje başka bir sekmede değişti",
+        "reload": "Yeniden yükle"
+      },
+      "undo": "Geri al",
+      "redo": "Yinele",
+      "test": "Oyna",
+      "publishButton": "Yayınla",
+      "tabs": {
+        "scene": "Sahne",
+        "blocks": "Bloklar",
+        "settings": "Oyun ayarları"
+      },
+      "library": "Şekiller",
+      "objects": "Sahnedeki nesneler",
+      "noObjects": "Soldaki şekillerden birine tıkla.",
+      "prefabs": "Kopya şablonları",
+      "noPrefabs": "Bir nesneyi kopya şablonuna çevirirsen bloklarla çoğaltabilirsin.",
+      "prefab": "şablon",
+      "snap": "Izgaraya yapıştır",
+      "gizmo": {
+        "move": "Taşı",
+        "rotate": "Döndür",
+        "scale": "Boyutlandır"
+      },
+      "viewport": "Sahne. Nesneyi seçip sürükle; köşelerden boyutlandır, üstteki tutamaçla döndür.",
+      "hint2d": "Sürükle: taşı · Köşeler: boyut · Üst tutamaç: döndür · Alt: serbest",
+      "hint3d": "Sürükle: kamerayı çevir · Tekerlek: yakınlaş · Tıkla: seç",
+      "nothingSelected": "Sahnede bir nesne seç; burada konumunu, rengini, fiziğini ve davranışlarını ayarlarsın.",
+      "blocksFor": "Kimin blokları",
+      "stageScripts": "Sahne ve fonksiyonlar",
+      "blocksArea": "Blok alanı",
+      "problems": "Sorunlar",
+      "noProblems": "Her şey yolunda.",
+      "blocksHint": "Olay bloğunun altına takılmayan bloklar çalışmaz. Bir soruna tıklarsan ilgili bloğa gidersin.",
+      "diagnostics": {
+        "budgetExceeded": "Bir döngü çok uzun sürdü ve durduruldu. İçine bekle bloğu ekle ya da tekrar sayısını azalt.",
+        "recursionTooDeep": "Bir fonksiyon kendini çok derin çağırdı ve durduruldu.",
+        "stackOverflow": "Bir hesap çok iç içe geçti ve durduruldu.",
+        "tooManyEntities": "Aynı anda en fazla 2000 nesne olabilir; yeni kopyalar oluşturulmadı.",
+        "listFull": "Bir liste 10.000 ögeye ulaştı; yeni öge eklenmedi."
+      },
+      "shapes": {
+        "rect": "Dikdörtgen",
+        "circle": "Daire",
+        "triangle": "Üçgen",
+        "star": "Yıldız",
+        "polygon": "Çokgen",
+        "text": "Yazı",
+        "box": "Kutu",
+        "sphere": "Küre",
+        "cylinder": "Silindir",
+        "cone": "Koni",
+        "ramp": "Rampa"
+      },
+      "bodies": {
+        "static": "Sabit",
+        "dynamic": "Fizikli",
+        "kinematic": "Hareketli",
+        "none": "Süs",
+        "staticHint": "Yerinden oynamaz; zemin, duvar ve platformlar için.",
+        "dynamicHint": "Yer çekimine uyar, çarpar ve üstünde durur; oyuncular ve toplar için.",
+        "kinematicHint": "Verdiğin hızla ilerler, yer çekimi ve çarpışma ona işlemez; devriyeler ve mermiler için.",
+        "noneHint": "Hiçbir şeye değmez; yalnızca görünür."
+      },
+      "behaviors": {
+        "platformerController": "Platform oyuncusu",
+        "topDownController": "Kuşbakışı oyuncu",
+        "patrol": "Devriye",
+        "chase": "Takipçi",
+        "collectible": "Toplanabilir",
+        "hazard": "Tuzak",
+        "goal": "Bitiş noktası",
+        "cameraTarget": "Kamera izlesin",
+        "spin": "Kendi etrafında dön"
+      },
+      "params": {
+        "speed": "Hız",
+        "jump": "Zıplama",
+        "distance": "Mesafe",
+        "axis": "Eksen",
+        "tag": "Etiket",
+        "points": "Puan",
+        "damage": "Hasar",
+        "degreesPerSecond": "Derece/sn"
+      },
+      "inspector": {
+        "object": "Nesne",
+        "prefab": "Kopya şablonu",
+        "duplicate": "Çoğalt",
+        "delete": "Sil",
+        "name": "Ad",
+        "shape": "Şekil",
+        "starPoints": "Köşe sayısı",
+        "text": "Yazı",
+        "toPrefab": "Kopya şablonuna çevir",
+        "toScene": "Sahneye geri koy",
+        "prefabHint": "Şablonlar sahnede durmaz; \"kopya oluştur\" bloğuyla istediğin yerde doğar.",
+        "transform": "Konum ve boyut",
+        "width": "Genişlik",
+        "height": "Yükseklik",
+        "depth": "Derinlik",
+        "rotation": "Yön (derece)",
+        "look": "Görünüş",
+        "color": "Renk",
+        "swatch": "Renk {n}",
+        "visible": "Görünür",
+        "physics": "Fizik",
+        "body": "Gövde",
+        "sensor": "Algılayıcı (içinden geçilir, değince olay tetiklenir)",
+        "bounce": "Seklenme",
+        "friction": "Sürtünme",
+        "tags": "Etiketler",
+        "tagsHint": "virgülle ayır: düşman, altın",
+        "behaviors": "Davranışlar",
+        "behaviorsHint": "Hazır davranışlar blok yazmadan çalışır. Oyuncu davranışı nesneye player etiketini ekler.",
+        "removeBehavior": "Davranışı kaldır",
+        "addBehavior": "Davranış ekle"
+      },
+      "settings": {
+        "world": "Dünya",
+        "width": "Genişlik",
+        "height": "Yükseklik",
+        "depth": "Derinlik",
+        "gravity": "Yer çekimi",
+        "timeLimit": "Süre sınırı (sn)",
+        "lives": "Can",
+        "camera": "Kamera",
+        "cameras": {
+          "fixed": "Sabit, tüm sahne",
+          "follow": "Takip",
+          "topDown": "Kuşbakışı",
+          "thirdPerson": "Arkadan"
+        },
+        "zeroMeansNone": "Süre ve can için 0, sınır yok demek.",
+        "background": "Arka plan",
+        "swatch": "Renk {n}",
+        "variables": "Değişkenler",
+        "variablesHint": "Her yerden okunup değiştirilebilen sayılar ve yazılar. Gösterge kısmında ekranda gösterebilirsin.",
+        "addVariable": "Değişken ekle",
+        "newVariable": "değişken",
+        "name": "Ad",
+        "initial": "Başlangıç",
+        "remove": "Kaldır",
+        "lists": "Listeler",
+        "addList": "Liste ekle",
+        "newList": "liste",
+        "items": "Ögeler",
+        "itemsHint": "virgülle ayır",
+        "sounds": "Sesler",
+        "soundsHint": "Sesler PLAYNEX ses kitinden üretilir; \"ses çal\" bloğuyla adıyla çalınır.",
+        "addSound": "Ses ekle",
+        "newSound": "ses",
+        "recipe": "Tür",
+        "recipes": {
+          "coin": "Altın",
+          "jump": "Zıplama",
+          "hit": "Darbe",
+          "explosion": "Patlama",
+          "powerUp": "Güçlenme",
+          "laser": "Lazer",
+          "click": "Tık",
+          "win": "Zafer",
+          "lose": "Yenilgi"
+        },
+        "pitch": "Perde",
+        "volume": "Ses",
+        "hud": "Gösterge",
+        "addHud": "Gösterge ekle",
+        "hudShows": "Gösterilen",
+        "hudTypes": {
+          "score": "Puan",
+          "timer": "Süre",
+          "lives": "Can",
+          "variable": "Değişken",
+          "text": "Yazı"
+        },
+        "variable": "Değişken adı",
+        "text": "Yazı",
+        "label": "Etiket",
+        "anchor": "Yer",
+        "anchors": {
+          "topLeft": "Sol üst",
+          "topCenter": "Üst orta",
+          "topRight": "Sağ üst",
+          "bottomLeft": "Sol alt",
+          "bottomCenter": "Alt orta",
+          "bottomRight": "Sağ alt"
+        }
+      },
+      "testPlay": {
+        "title": "Deneme",
+        "hint": "Esc ile editöre dön",
+        "finished": "Oyun bitti",
+        "failed": "Oyun başlatılamadı. Sorunlar listesine bak.",
+        "restart": "Baştan",
+        "close": "Editöre dön"
+      },
+      "publish": {
+        "title": "Oyunu yayınla",
+        "description": "Yayınlanan sürüm dondurulur; sonra düzenlemeye devam edebilir, yeniden yayınlayabilirsin.",
+        "summary": "Kısa açıklama",
+        "summaryHint": "En fazla 300 karakter. Topluluk sayfasında görünür.",
+        "rules": "Adlar, yazılar ve açıklama küfür süzgecinden geçer. Kurallara aykırı oyunlar yayından kaldırılır.",
+        "submit": "Yayınla",
+        "publishing": "Yayınlanıyor",
+        "doneTitle": "Oyunun yayında",
+        "doneDescription": "Bağlantıyı paylaş; giriş yapan oyuncuların skorları sıralamaya girer.",
+        "play": "Şimdi oyna",
+        "page": "Oyun sayfası",
+        "errors": {
+          "generic": "Yayınlanamadı, tekrar dene.",
+          "save_failed": "Son değişiklikler kaydedilemedi; kayıt sorununu çözüp tekrar dene.",
+          "invalid_document": "Oyunda düzeltilmesi gereken yerler var:",
+          "offensive_text": "Ad, açıklama ya da oyundaki yazılardan biri uygun değil.",
+          "rate_limited": "Bir saatte en fazla 10 kez yayınlayabilirsin."
+        }
+      },
+      "desktopOnly": {
+        "title": "Editör geniş ekran istiyor",
+        "description": "Oyun kurmak için bilgisayar ya da tablet yatay modunu kullan. Telefonda Topluluk'taki oyunları oynayabilirsin.",
+        "back": "Atölyeye dön"
+      }
+    },
+    "errors": {
+      "generic": "Bilinmeyen bir sorun",
+      "tooLarge": "Oyun çok büyük (en fazla 512 KB).",
+      "malformed": "Oyun dosyası okunamadı.",
+      "unsupportedVersion": "Bu oyun daha yeni bir editör sürümüyle yapılmış.",
+      "tooMany": "Sınır aşıldı (nesne, blok, değişken ya da liste sayısı).",
+      "duplicateId": "İki nesne aynı kimliği taşıyor.",
+      "duplicateName": "Aynı adı iki kez kullandın.",
+      "invalidName": "Ad boş, çok uzun ya da # ile başlıyor.",
+      "textTooLong": "Yazı en fazla 120 karakter olabilir.",
+      "invalidNumber": "Geçersiz bir sayı var.",
+      "outOfRange": "Bir değer izin verilen aralığın dışında.",
+      "invalidColor": "Geçersiz renk.",
+      "invalidPolygon": "Çokgenin 3 ile 32 arası köşesi olmalı.",
+      "unknownVariable": "Böyle bir değişken yok. Oyun ayarlarından ekle ya da adını düzelt.",
+      "unknownList": "Böyle bir liste yok.",
+      "unknownFunction": "Böyle bir fonksiyon yok.",
+      "unknownPrefab": "Böyle bir kopya şablonu yok.",
+      "unknownSound": "Böyle bir ses yok. Oyun ayarlarından ekle.",
+      "wrongArgumentCount": "Fonksiyona yanlış sayıda girdi verildi.",
+      "nestingTooDeep": "Bloklar çok iç içe (en fazla 32 kat).",
+      "shapeNotInDimension": "Bu şekil bu boyutta kullanılamaz.",
+      "behaviorNeedsMovingBody": "Bu davranış için gövde Fizikli ya da Hareketli olmalı.",
+      "eventNotForStage": "Bu olay yalnızca nesnelerde kullanılabilir."
+    },
+    "blocks": {
+      "else": "değilse",
+      "categories": {
+        "events": "Olaylar",
+        "control": "Akış",
+        "motion": "Hareket",
+        "looks": "Görünüş",
+        "world": "Oyun",
+        "values": "Değerler",
+        "variables": "Değişkenler",
+        "lists": "Listeler",
+        "functions": "Fonksiyonlar"
+      },
+      "options": {
+        "actions": {
+          "left": "sol",
+          "right": "sağ",
+          "up": "yukarı",
+          "down": "aşağı",
+          "jump": "zıplama",
+          "primary": "eylem A",
+          "secondary": "eylem B"
+        },
+        "axes": {
+          "x": "x",
+          "y": "y",
+          "z": "z"
+        },
+        "properties": {
+          "x": "x konumu",
+          "y": "y konumu",
+          "z": "z konumu",
+          "velocityX": "x hızı",
+          "velocityY": "y hızı",
+          "velocityZ": "z hızı",
+          "rotation": "yönü",
+          "width": "genişliği",
+          "height": "yüksekliği",
+          "depth": "derinliği",
+          "visible": "görünür mü",
+          "onGround": "yerde mi",
+          "color": "rengi",
+          "exists": "var mı"
+        },
+        "arithmetic": {
+          "add": "+",
+          "sub": "−",
+          "mul": "×",
+          "div": "÷",
+          "mod": "mod",
+          "pow": "üssü",
+          "min": "küçüğü",
+          "max": "büyüğü"
+        },
+        "comparison": {
+          "eq": "=",
+          "ne": "≠",
+          "lt": "<",
+          "le": "≤",
+          "gt": ">",
+          "ge": "≥"
+        },
+        "logic": {
+          "and": "ve",
+          "or": "veya"
+        },
+        "math": {
+          "neg": "eksi",
+          "abs": "mutlak değer",
+          "floor": "aşağı yuvarla",
+          "ceil": "yukarı yuvarla",
+          "round": "yuvarla",
+          "sqrt": "karekök",
+          "sin": "sin",
+          "cos": "cos",
+          "tan": "tan"
+        },
+        "booleans": {
+          "true": "doğru",
+          "false": "yanlış"
+        },
+        "targets": {
+          "self": "kendisi",
+          "other": "değdiği nesne",
+          "named": "adı:",
+          "nearest": "en yakın etiket:"
+        }
+      },
+      "pn_ev_start": "başladığında",
+      "pn_ev_tick": "her karede",
+      "pn_ev_pressed": "%1 tuşuna basılınca",
+      "pn_ev_released": "%1 tuşu bırakılınca",
+      "pn_ev_collide": "%1 etiketli nesneye değince",
+      "pn_ev_timer": "her %1 saniyede",
+      "pn_ev_message": "%1 mesajı gelince",
+      "pn_ev_cloned": "kopya olarak doğunca",
+      "pn_ev_variable": "%1 değişkeni değişince",
+      "pn_if": "eğer %1 ise",
+      "pn_if_else": "eğer %1 ise",
+      "pn_repeat": "%1 kez tekrarla",
+      "pn_while": "%1 olduğu sürece tekrarla",
+      "pn_forever": "sürekli tekrarla",
+      "pn_for_each": "%2 listesindeki her %1 için",
+      "pn_wait": "%1 saniye bekle",
+      "pn_stop": "bu betiği durdur",
+      "pn_set": "%1 değişkenini %2 yap",
+      "pn_change": "%1 değişkenini %2 artır",
+      "pn_var": "%1",
+      "pn_list_add": "%1 ögesini %2 listesine ekle",
+      "pn_list_remove": "%1 listesinden %2. ögeyi sil",
+      "pn_list_set": "%1 listesinin %2. ögesini %3 yap",
+      "pn_list_clear": "%1 listesini boşalt",
+      "pn_list_item": "%1 listesinin %2. ögesi",
+      "pn_list_length": "%1 listesinin uzunluğu",
+      "pn_list_contains": "%1 listesinde %2 var mı",
+      "pn_move": "%1 %2 x %3 y %4 z %5 kaydır",
+      "pn_set_position": "%1 %2 x %3 y %4 z %5 konumuna git",
+      "pn_set_velocity": "%1 %2 hızını x %3 y %4 z %5 yap",
+      "pn_set_velocity_axis": "%1 %2 %3 hızını %4 yap",
+      "pn_push": "%1 %2 x %3 y %4 z %5 it",
+      "pn_turn": "%1 %2 %3 derece dön",
+      "pn_set_rotation": "%1 %2 yönünü %3 derece yap",
+      "pn_glide_to": "%1 %2 x %3 y %4 z %5 konumuna %6 saniyede kay",
+      "pn_set_size": "%1 %2 boyutunu %3 × %4 × %5 yap",
+      "pn_show": "%1 %2 görünsün",
+      "pn_hide": "%1 %2 gizlensin",
+      "pn_set_color": "%1 %2 rengini %3 yap",
+      "pn_set_text": "%1 %2 yazısını %3 yap",
+      "pn_camera_follow": "kamera %1 %2 nesnesini izlesin",
+      "pn_camera_shake": "kamerayı %1 güçle salla",
+      "pn_spawn": "%1 kopyasını x %2 y %3 z %4 konumunda oluştur",
+      "pn_destroy": "%1 %2 yok olsun",
+      "pn_broadcast": "%1 mesajını yayınla",
+      "pn_play_sound": "%1 sesini çal",
+      "pn_add_score": "puana %1 ekle",
+      "pn_set_score": "puanı %1 yap",
+      "pn_lose_life": "%1 can kaybet",
+      "pn_win": "oyunu kazan",
+      "pn_lose": "oyunu kaybet",
+      "pn_number": "%1",
+      "pn_text": "%1",
+      "pn_bool": "%1",
+      "pn_arithmetic": "%1 %2 %3",
+      "pn_compare": "%1 %2 %3",
+      "pn_logic": "%1 %2 %3",
+      "pn_join": "%1 ile %2 birleşimi",
+      "pn_not": "%1 değil",
+      "pn_math": "%1 %2",
+      "pn_length": "%1 uzunluğu",
+      "pn_random": "%1 ile %2 arası rastgele, tam sayı %3",
+      "pn_property": "%1 %2 %3",
+      "pn_held": "%1 basılı mı",
+      "pn_input_axis": "yön girdisi %1",
+      "pn_score": "puan",
+      "pn_lives": "can",
+      "pn_time": "geçen süre",
+      "pn_distance": "%1 %2 uzaklığı",
+      "pn_direction_to": "%1 %2 yönü %3",
+      "pn_touching": "%1 etiketine değiyor mu",
+      "pn_count": "%1 etiketli nesne sayısı",
+      "pn_function": "%1 fonksiyonu, girdiler: %2",
+      "pn_call": "%1 çalıştır %2 %3 %4",
+      "pn_call_value": "%1 sonucu %2 %3 %4",
+      "pn_return": "%1 sonucunu döndür"
     }
   }
 }

@@ -8,6 +8,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeader } from '@/components/section-header';
 import { logout } from '@/features/auth/actions';
 import { FormAlert } from '@/features/auth/form-alert';
+import { CommunityCard } from '@/features/creator/community-card';
+import { loadPlayerGames } from '@/features/creator/load';
 import { loadProfile } from '@/features/profile/load-profile';
 import { FriendButton } from '@/features/siper/friend-button';
 import { ReportButton } from '@/features/siper/report-button';
@@ -46,10 +48,11 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
     notFound();
   }
 
-  const [t, viewer, token] = await Promise.all([
+  const [t, viewer, token, games] = await Promise.all([
     getTranslations('profile'),
     getCurrentAccount(),
     sessionToken(),
+    loadPlayerGames(profile.username),
   ]);
   const welcome = profile.own && query.welcome === '1';
 
@@ -98,6 +101,30 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
         token={profile.own ? (token ?? null) : null}
       />
 
+      {games.length > 0 || profile.own ? (
+        <section className="flex flex-col gap-5">
+          {' '}
+          <SectionHeader
+            title={t('games')}
+            hint={t('gamesHint', { n: games.length })}
+            href={profile.own ? '/create' : undefined}
+            linkLabel={profile.own ? t('gamesWorkshop') : undefined}
+          />{' '}
+          {games.length === 0 ? (
+            <EmptyState scene="shelf" title={t('gamesEmpty')} />
+          ) : (
+            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {' '}
+              {games.map((game) => (
+                <li key={game.releaseId}>
+                  {' '}
+                  <CommunityCard game={game} />{' '}
+                </li>
+              ))}{' '}
+            </ul>
+          )}{' '}
+        </section>
+      ) : null}
       <section className="flex flex-col gap-5">
         <SectionHeader title={t('bestScores')} />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
