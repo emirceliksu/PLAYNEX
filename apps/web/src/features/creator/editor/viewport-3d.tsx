@@ -16,7 +16,8 @@ import {
   StandardMaterial,
   Vector3,
 } from '@babylonjs/core';
-import { buildPrimitive, type GameDocument } from '@playnex/creator-runtime';
+import type { GameDocument } from '@playnex/creator-runtime';
+import { buildPrimitive } from '@playnex/creator-runtime/primitives3d';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
 import type { Selection } from './state';

@@ -38,7 +38,7 @@ export function sceneShapes(cover: Cover): SceneShape[] {
       points: localPoints(shape).map(([u, v]) => {
         const px = (u * width) / 2;
         const py = (v * h) / 2;
-        return [x + px * cos - py * sin, y + px * sin + py * cos] as [number, number];
+        return [round(x + px * cos - py * sin), round(y + px * sin + py * cos)] as [number, number];
       }),
       fill: swatchHex[color] ?? swatchHex[0]!,
     };
@@ -85,4 +85,8 @@ export function documentCover(document: GameDocument): Cover {
         entity.rotation ?? 0,
       ]),
   };
+}
+
+function round(value: number): number {
+  return Math.round(value * 1000) / 1000;
 }

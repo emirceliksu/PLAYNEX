@@ -1,6 +1,6 @@
 'use client';
 
-import { createCreatorGame, type CreatorRun, type GameDocument } from '@playnex/creator-runtime';
+import type { CreatorRun, GameDocument } from '@playnex/creator-runtime';
 import { useCallback, useEffect, useRef } from 'react';
 
 import { GamePlayer, type GamePlayerLabels } from '@/features/game-player/game-player';
@@ -41,7 +41,7 @@ export function CreatorPlayer({
   // and ranked; guests play a local seed that never reaches the leaderboard.
   const loadModule = useCallback(
     () =>
-      Promise.resolve(
+      import('@playnex/creator-runtime/game').then(({ createCreatorGame }) =>
         createCreatorGame(release.document, {
           swatches: [...swatchHex],
           seedSource: async () => {

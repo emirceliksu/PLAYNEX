@@ -76,6 +76,7 @@ function definition(spec: BlockSpec, text: BlockText): object {
     message0: text(spec.type),
     args0: spec.args.flatMap((arg) => argJson(arg, text)),
     inputsInline: true,
+    ...(spec.args.some((arg) => arg.kind === 'target') ? { extensions: [TARGET_EXTENSION] } : {}),
   };
   const statements = spec.args.filter((arg) => arg.kind === 'statements');
   statements.forEach((arg, index) => {
@@ -92,9 +93,30 @@ function definition(spec: BlockSpec, text: BlockText): object {
 
 let registeredLocale: string | null = null;
 
+const TARGET_EXTENSION = 'pn_target_name';
+
+// The name box only means something for "named" and "nearest"; for "myself" and
+// "the touched object" it is hidden so the block reads as a sentence.
+function registerTargetExtension(): void {
+  if (Blockly.Extensions.isRegistered(TARGET_EXTENSION)) return;
+  Blockly.Extensions.register(TARGET_EXTENSION, function (this: Blockly.Block) {
+    const kind = this.getField('TARGET_KIND');
+    const name = this.getField('TARGET_NAME');
+    if (!kind || !name) return;
+    const sync = (value: string) => name.setVisible(value === 'named' || value === 'nearest');
+    sync(String(kind.getValue()));
+    kind.setValidator((value: string) => {
+      sync(value);
+      if (this.rendered) void (this as Blockly.BlockSvg).queueRender();
+      return value;
+    });
+  });
+}
+
 // Block labels are part of the definitions, so switching language redefines them.
 export function registerBlocks(locale: string, text: BlockText): void {
   if (registeredLocale === locale) return;
+  registerTargetExtension();
   Blockly.common.defineBlocksWithJsonArray(specs.map((spec) => definition(spec, text)));
   registeredLocale = locale;
 }

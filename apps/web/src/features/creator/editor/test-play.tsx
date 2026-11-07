@@ -1,6 +1,6 @@
 'use client';
 
-import { createCreatorGame, type Diagnostic, type GameDocument } from '@playnex/creator-runtime';
+import type { Diagnostic, GameDocument } from '@playnex/creator-runtime';
 import type { GameInstance } from '@playnex/game-sdk';
 import { Button } from '@playnex/ui';
 import { RotateCcw, X } from 'lucide-react';
@@ -39,34 +39,37 @@ export function TestPlay({ document, swatches, locale, onClose, onDiagnostics }:
     const container = containerRef.current;
     if (!container) return;
     let disposed = false;
-    const game = createCreatorGame(snapshot, {
-      swatches: [...swatches],
-      onDiagnostics: (diagnostics) => diagnosticsRef.current(diagnostics),
+    void import('@playnex/creator-runtime/game').then(({ createCreatorGame }) => {
+      if (disposed) return;
+      const game = createCreatorGame(snapshot, {
+        swatches: [...swatches],
+        onDiagnostics: (diagnostics) => diagnosticsRef.current(diagnostics),
+      });
+      game
+        .mount(container, {
+          locale,
+          reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+          palette: buildGamePalette('brand'),
+          messages,
+          session: { mode: 'solo', players: [], options: {} },
+          onScore: setScore,
+          onStateChange: (state) => {
+            if (state === 'playing') setPhase('playing');
+            if (state === 'finished') setPhase('finished');
+          },
+          onFinish: () => undefined,
+          onError: () => setPhase('failed'),
+        })
+        .then((instance) => {
+          if (disposed) {
+            instance.destroy();
+            return;
+          }
+          instanceRef.current = instance;
+          instance.start();
+        })
+        .catch(() => setPhase('failed'));
     });
-    game
-      .mount(container, {
-        locale,
-        reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-        palette: buildGamePalette('brand'),
-        messages,
-        session: { mode: 'solo', players: [], options: {} },
-        onScore: setScore,
-        onStateChange: (state) => {
-          if (state === 'playing') setPhase('playing');
-          if (state === 'finished') setPhase('finished');
-        },
-        onFinish: () => undefined,
-        onError: () => setPhase('failed'),
-      })
-      .then((instance) => {
-        if (disposed) {
-          instance.destroy();
-          return;
-        }
-        instanceRef.current = instance;
-        instance.start();
-      })
-      .catch(() => setPhase('failed'));
     return () => {
       disposed = true;
       instanceRef.current?.destroy();
