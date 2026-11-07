@@ -1558,6 +1558,15 @@ name = "playnex-chat-filter"
 version = "0.1.0"
 
 [[package]]
+name = "playnex-creator-engine"
+version = "0.1.0"
+dependencies = [
+ "libm",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "playnex-mailer"
 version = "0.1.0"
 dependencies = [

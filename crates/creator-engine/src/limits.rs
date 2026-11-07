@@ -1,0 +1,31 @@
+pub const MAX_DOCUMENT_BYTES: usize = 512 * 1024;
+pub const MAX_ENTITIES: usize = 2000;
+pub const MAX_PREFABS: usize = 200;
+pub const MAX_LIVE_ENTITIES: usize = 2000;
+pub const MAX_BLOCKS: usize = 20_000;
+pub const MAX_NESTING: usize = 32;
+pub const MAX_TEXT_CHARS: usize = 120;
+pub const MAX_NAME_CHARS: usize = 40;
+pub const MAX_VARIABLES: usize = 500;
+pub const MAX_LISTS: usize = 100;
+pub const MAX_LIST_ITEMS: usize = 10_000;
+pub const MAX_FUNCTIONS: usize = 200;
+pub const MAX_PARAMS: usize = 8;
+pub const MAX_SOUNDS: usize = 64;
+pub const MAX_HUD_ITEMS: usize = 12;
+pub const MAX_TAGS: usize = 8;
+pub const MAX_POLYGON_POINTS: usize = 32;
+pub const MAX_CALL_DEPTH: usize = 16;
+pub const MAX_STACK: usize = 256;
+
+pub const PALETTE_SIZE: u8 = 24;
+pub const MIN_SIZE: f64 = 0.05;
+pub const MAX_SIZE: f64 = 1000.0;
+pub const MAX_COORDINATE: f64 = 10_000.0;
+pub const MAX_WORLD_SIZE: f64 = 5000.0;
+
+pub const TICKS_PER_SECOND: u32 = 60;
+pub const MAX_TICKS: u32 = 10 * 60 * TICKS_PER_SECOND;
+pub const THREAD_BUDGET: u32 = 10_000;
+pub const TICK_BUDGET: u32 = 200_000;
+pub const MAX_THREADS: usize = 4000;
