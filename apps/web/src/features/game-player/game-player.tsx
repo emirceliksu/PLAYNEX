@@ -1,6 +1,12 @@
 'use client';
 
-import type { GameInstance, GameResult, GameRuntimeState, PlaySession } from '@playnex/game-sdk';
+import type {
+  GameInstance,
+  GameModule,
+  GameResult,
+  GameRuntimeState,
+  PlaySession,
+} from '@playnex/game-sdk';
 import type {
   AccentName,
   GamePlayerState,
@@ -81,6 +87,11 @@ interface GamePlayerProps {
   roomCode?: string;
   // Username of the signed-in visitor; games that need an account read it.
   viewer?: string | null;
+  // Player-made games are not in the generated registry: their page builds the module.
+  loadModule?: () => Promise<GameModule>;
+  // Where "back" and "quit" lead; catalog games go to their detail page.
+  backHref?: string;
+  catalogHref?: string;
 }
 
 interface PlayerState {
@@ -206,6 +217,9 @@ export function GamePlayer({
   preview,
   roomCode,
   viewer = null,
+  loadModule,
+  backHref,
+  catalogHref = '/games',
 }: GamePlayerProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [attempt, setAttempt] = useState(0);
@@ -238,7 +252,6 @@ export function GamePlayer({
   const solo = session?.mode === 'solo';
   const tracksBest = solo && game.scoring === 'high-score';
 
-
   useEffect(() => {
     if (!session) return;
     dispatch({ type: 'reload' });
@@ -260,7 +273,7 @@ export function GamePlayer({
     const palette = buildGamePalette(game.accent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    loadGameModule(game.slug)
+    (loadModule ?? (() => loadGameModule(game.slug)))()
       .then((module) =>
         module.mount(container, {
           locale,
@@ -306,7 +319,18 @@ export function GamePlayer({
       instanceRef.current = null;
       instance?.destroy();
     };
-  }, [game.slug, game.accent, locale, preview, attempt, record, session, game.messages, tracksBest]);
+  }, [
+    game.slug,
+    game.accent,
+    locale,
+    preview,
+    attempt,
+    record,
+    session,
+    game.messages,
+    tracksBest,
+    loadModule,
+  ]);
 
   useEffect(() => {
     if (state.status !== 'playing') return;
@@ -375,7 +399,7 @@ export function GamePlayer({
     <div ref={wrapperRef} className="flex h-dvh flex-col bg-surface-canvas">
       <header className="flex h-14 shrink-0 items-center gap-2 border-b-2 border-border-subtle px-2 md:gap-3 md:px-4">
         <IconButton asChild label={labels.backToGame} size="sm">
-          <Link href={`/games/${game.slug}`}>
+          <Link href={backHref ?? `/games/${game.slug}`}>
             <ArrowLeft />
           </Link>
         </IconButton>
@@ -541,7 +565,7 @@ export function GamePlayer({
                   {labels.restart}
                 </Button>
                 <Button asChild variant="ghost">
-                  <Link href={`/games/${game.slug}`}>{labels.quit}</Link>
+                  <Link href={backHref ?? `/games/${game.slug}`}>{labels.quit}</Link>
                 </Button>
               </div>
             </div>
@@ -611,7 +635,7 @@ export function GamePlayer({
                   </Button>
                 ) : null}
                 <Button asChild variant={online || canChangeMode ? 'ghost' : 'secondary'}>
-                  <Link href="/games">{labels.backToCatalog}</Link>
+                  <Link href={catalogHref}>{labels.backToCatalog}</Link>
                 </Button>
               </div>
               {tracksBest ? (
@@ -632,7 +656,7 @@ export function GamePlayer({
                 <div className="flex gap-2">
                   <Button onClick={retry}>{labels.retry}</Button>
                   <Button asChild variant="ghost">
-                    <Link href={`/games/${game.slug}`}>{labels.quit}</Link>
+                    <Link href={backHref ?? `/games/${game.slug}`}>{labels.quit}</Link>
                   </Button>
                 </div>
               }

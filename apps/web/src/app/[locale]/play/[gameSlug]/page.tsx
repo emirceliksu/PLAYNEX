@@ -5,6 +5,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { GamePlayer } from '@/features/game-player/game-player';
+import { playerLabels } from '@/features/game-player/labels';
 import { resolveLocale, routing } from '@/i18n/routing';
 import { getCurrentAccount } from '@/lib/auth/session';
 import { hasGameModule } from '@/lib/games/registry';
@@ -48,7 +49,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
     notFound();
   }
 
-  const [t, account] = await Promise.all([getTranslations('player'), getCurrentAccount()]);
+  const account = await getCurrentAccount();
   // Shell-state preview is a development aid for design review; production ignores it.
   const preview =
     process.env.NODE_ENV === 'development' && previewStates.includes(query.state as GamePlayerState)
@@ -75,33 +76,7 @@ export default async function PlayPage({ params, searchParams }: PlayPageProps) 
       viewer={account?.username ?? null}
       locale={locale}
       preview={preview}
-      labels={{
-        backToGame: t('backToGame'),
-        score: t('score'),
-        best: t('best'),
-        time: t('time'),
-        pause: t('pause'),
-        resume: t('resume'),
-        restart: t('restart'),
-        fullscreen: t('fullscreen'),
-        exitFullscreen: t('exitFullscreen'),
-        quit: t('quit'),
-        localBestNote: t('localBestNote'),
-        loadingTitle: t('states.loading.title'),
-        loadingHint: t('states.loading.hint'),
-        readyTitle: t('states.ready.title'),
-        start: t('states.ready.start'),
-        controls: t('states.ready.controls'),
-        pausedTitle: t('states.paused.title'),
-        pausedHint: t('states.paused.hint'),
-        finishedTitle: t('states.finished.title'),
-        newRecord: t('states.finished.newRecord'),
-        playAgain: t('states.finished.playAgain'),
-        backToCatalog: t('states.finished.backToCatalog'),
-        errorTitle: t('states.error.title'),
-        errorDescription: t('states.error.description'),
-        retry: t('states.error.retry'),
-      }}
+      labels={await playerLabels()}
     />
   );
 }

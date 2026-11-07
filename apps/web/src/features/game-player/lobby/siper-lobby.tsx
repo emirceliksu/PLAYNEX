@@ -304,7 +304,9 @@ export function SiperLobby({
               />
               <Button
                 variant="secondary"
-                onClick={() => room.createWith({ mode, map, bots: onlineBots, size: Number(players) })}
+                onClick={() =>
+                  room.createWith({ mode, map, bots: onlineBots, size: Number(players) })
+                }
               >
                 {t('create')}
               </Button>
