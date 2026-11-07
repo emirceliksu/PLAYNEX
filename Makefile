@@ -1,6 +1,6 @@
 COMPOSE ?= docker compose
 
-.PHONY: new-game bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust tokens brand storybook-build screenshots voices migrate
+.PHONY: new-game bootstrap up down nuke logs ps sh-web sh-api lint typecheck test fmt check-rust wasm tokens brand storybook-build screenshots voices migrate
 
 .env:
 	cp infrastructure/development.env .env
@@ -10,6 +10,7 @@ bootstrap: .env
 	$(COMPOSE) build
 	$(COMPOSE) run --rm deps
 	$(COMPOSE) run --rm --no-deps api cargo fetch
+	$(COMPOSE) run --rm --no-deps api sh tools/creator/build-wasm.sh
 
 up: .env
 	$(COMPOSE) up -d --build
@@ -51,6 +52,10 @@ check-rust:
 	$(COMPOSE) exec api cargo fmt --all --check
 	$(COMPOSE) exec api cargo clippy --workspace --all-targets -- -D warnings
 	$(COMPOSE) exec api cargo check --workspace
+
+# Browser build of the creator engine; the output is not committed.
+wasm:
+	$(COMPOSE) exec api sh tools/creator/build-wasm.sh
 
 new-game:
 	$(COMPOSE) exec web pnpm new-game $(SLUG)

@@ -27,6 +27,15 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # The creator runtime imports the engine's wasm build, which is not committed.
+      - run: rustup target add wasm32-unknown-unknown
+
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-bindgen@0.2.130
+
+      - run: sh tools/creator/build-wasm.sh
+
       - run: pnpm turbo run build --filter=@playnex/design-tokens
 
       - run: pnpm format:check

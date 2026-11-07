@@ -1,0 +1,10 @@
+{
+  "name": "@playnex/creator-engine-wasm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./pkg/engine.js"
+  },
+  "sideEffects": false
+}

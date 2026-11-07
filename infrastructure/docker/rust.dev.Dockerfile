@@ -7,6 +7,7 @@ RUN apt-get update \
 
 # cargo-binstall pulls prebuilt binaries, so the image builds in seconds instead of compiling the tools.
 RUN curl -fsSL https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash \
-  && cargo binstall -y cargo-watch sqlx-cli
+  && cargo binstall -y cargo-watch sqlx-cli wasm-bindgen-cli@0.2.130 \
+  && rustup target add wasm32-unknown-unknown
 
 WORKDIR /workspace

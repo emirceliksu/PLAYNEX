@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["apps/api", "apps/mailer", "apps/realtime", "crates/chat-filter", "crates/creator-engine", "crates/service"]
+members = ["apps/api", "apps/mailer", "apps/realtime", "crates/chat-filter", "crates/creator-engine", "crates/creator-wasm", "crates/service"]
 
 [workspace.package]
 version = "0.1.0"
@@ -14,3 +14,8 @@ tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+
+# The browser downloads the creator engine, so its wasm is built for size.
+[profile.release.package.playnex-creator-wasm]
+opt-level = "s"
+codegen-units = 1
