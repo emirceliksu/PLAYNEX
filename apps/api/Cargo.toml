@@ -11,13 +11,15 @@ base64 = "0.23.1"
 hex = "0.4.3"
 hmac = "0.13.0"
 lettre = { version = "0.11.23", default-features = false }
+playnex-chat-filter = { path = "../../crates/chat-filter" }
+playnex-creator-engine = { path = "../../crates/creator-engine" }
 playnex-service = { path = "../../crates/service" }
 rand = "0.10.3"
 reqwest = { version = "0.13.5", default-features = false, features = ["json"] }
 serde.workspace = true
 serde_json.workspace = true
 sha2 = "0.11.1"
-sqlx = { version = "0.9.0", default-features = false, features = ["runtime-tokio", "postgres", "uuid", "time", "migrate", "macros"] }
+sqlx = { version = "0.9.0", default-features = false, features = ["runtime-tokio", "postgres", "uuid", "time", "json", "migrate", "macros"] }
 thiserror = "2.0.21"
 time = { version = "0.3.55", features = ["serde", "formatting", "parsing"] }
 tokio.workspace = true

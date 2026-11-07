@@ -1,6 +1,7 @@
 mod accounts;
 mod admin;
 mod config;
+mod creator;
 mod email_codes;
 mod error;
 mod friends;
@@ -32,6 +33,7 @@ pub struct AppState {
     pub admin_emails: Arc<[String]>,
     pub ticket_key: Option<Arc<[u8]>>,
     pub internal_token: Option<Arc<str>>,
+    pub replays: Arc<tokio::sync::Semaphore>,
 }
 
 #[derive(Serialize)]
@@ -84,6 +86,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .realtime_account_secret
             .map(|secret| Arc::from(secret.into_bytes())),
         internal_token: config.internal_token.map(Arc::from),
+        replays: creator::replay_slots(),
     };
 
     let app = Router::new()
@@ -94,6 +97,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .merge(siper::router())
         .merge(friends::router())
         .merge(reports::router())
+        .merge(creator::router())
         .with_state(state);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], config.port));

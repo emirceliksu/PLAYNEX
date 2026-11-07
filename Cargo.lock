@@ -1539,6 +1539,8 @@ dependencies = [
  "hex",
  "hmac 0.13.0",
  "lettre",
+ "playnex-chat-filter",
+ "playnex-creator-engine",
  "playnex-service",
  "rand 0.10.3",
  "reqwest",
