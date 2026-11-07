@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { callApi } from '@/lib/auth/api';
 
 import type {
@@ -31,13 +33,14 @@ export async function loadPlayerGames(username: string): Promise<CommunityGame[]
   return result.ok ? result.data : [];
 }
 
-export async function loadRelease(id: string): Promise<Release | null> {
+// Cached per request: the layout, metadata and page of a game all ask for it.
+export const loadRelease = cache(async (id: string): Promise<Release | null> => {
   if (!uuid.test(id)) return null;
   const result = await callApi<Release>(`/v1/creator/releases/${id}`);
   if (result.ok) return result.data;
   if (result.status === 404) return null;
   throw new Error(`release failed: ${result.body.error}`);
-}
+});
 
 export async function loadLeaderboard(id: string): Promise<LeaderboardEntry[]> {
   const result = await callApi<LeaderboardEntry[]>(`/v1/creator/releases/${id}/leaderboard`);
