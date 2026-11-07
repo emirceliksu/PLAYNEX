@@ -7,9 +7,12 @@
     "build": "node ../../tools/games/generate.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@playnex/creator-runtime": "workspace:*",
+    "@playnex/creator-templates": "workspace:*",
     "@playnex/design-tokens": "workspace:*",
     "@playnex/game-2048-fusion": "workspace:*",
     "@playnex/game-air-hockey": "workspace:*",
@@ -26,6 +29,7 @@
     "@playnex/game-tugla-tugla": "workspace:*",
     "@playnex/shared-types": "workspace:*",
     "@playnex/ui": "workspace:*",
+    "blockly": "13.4.0",
     "lucide-react": "1.60.0",
     "motion": "14.4.0",
     "next": "16.4.2",
@@ -35,6 +39,7 @@
   },
   "devDependencies": {
     "@playnex/config": "workspace:*",
+    "@playnex/creator-engine-wasm": "workspace:*",
     "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "26.6.5",
@@ -42,6 +47,7 @@
     "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
     "tailwindcss": "4.3.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
   }
 }

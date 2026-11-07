@@ -14,7 +14,7 @@ export type ApiResult<T> =
   { ok: true; status: number; data: T } | { ok: false; status: number; body: ApiErrorBody };
 
 interface ApiRequest {
-  method?: 'GET' | 'POST' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   body?: unknown;
   token?: string;
 }
