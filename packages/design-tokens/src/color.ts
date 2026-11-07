@@ -108,3 +108,32 @@ export const ink: ColorScale = {
 export const palette = { brand, cyan, yellow, pink, mint, coral, ink } as const;
 
 export type PaletteName = keyof typeof palette;
+
+// Swatches for player-made games. Saved games store an index into this list,
+// so the order is part of the game format: only ever append.
+export const creatorSwatches: readonly string[] = [
+  ink[50],
+  ink[200],
+  ink[400],
+  ink[600],
+  ink[800],
+  ink[950],
+  coral[300],
+  coral[500],
+  coral[700],
+  yellow[300],
+  yellow[500],
+  yellow[700],
+  mint[300],
+  mint[500],
+  mint[700],
+  cyan[300],
+  cyan[500],
+  cyan[700],
+  brand[300],
+  brand[500],
+  brand[700],
+  pink[300],
+  pink[500],
+  pink[700],
+];

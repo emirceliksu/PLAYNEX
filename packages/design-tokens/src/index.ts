@@ -1,4 +1,15 @@
-export { brand, coral, cyan, ink, mint, palette, pink, scaleSteps, yellow } from './color';
+export {
+  brand,
+  coral,
+  creatorSwatches,
+  cyan,
+  ink,
+  mint,
+  palette,
+  pink,
+  scaleSteps,
+  yellow,
+} from './color';
 export type { ColorScale, PaletteName, ScaleStep } from './color';
 export { dark, light, themes } from './themes';
 export type { AccentTokens, SemanticTheme, ThemeName } from './themes';
