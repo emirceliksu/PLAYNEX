@@ -28,7 +28,7 @@ PLAYNEX; herkese açık, renkli arcade tasarımlı, tarayıcıdan erişilebilen 
 ### Kapsam dışı (ilk sürüm)
 - Gerçek para, loot box, bahis, ücretli ödül ve kullanıcılar arası ticaret.
 - Her 3D oyunu aynı anda geliştirme.
-- Açık metin sohbet ve üçüncü tarafların denetimsiz oyun yüklemesi.
+- Açık metin sohbet ve üçüncü tarafların denetimsiz oyun yüklemesi. (Atölye bu maddeyle çelişmez: kullanıcı oyunu kod veya dosya değil, motorun okuduğu doğrulanmış belgedir; ADR 0018.)
 - Başlangıçta gereksiz mikroservis parçalanması.
 
 ## 2. Hedef kullanıcı ve deneyim
@@ -439,6 +439,23 @@ playnex/
 - [ ] 50+ oyun için katalog, yayın ve asset pipeline kapasitesi
 - [ ] Çoklu oyun sunucusu, kapasite planlama ve bölgesel dağıtım
 - [ ] İleri anti-cheat, operasyon ve maliyet optimizasyonu
+
+### Atölye — oyuncuların yaptığı oyunlar (ADR 0018)
+Oyuncular hazır primitiflerle 2D veya 3D sahne kurar, mantığı görsel bloklarla yazar ve oyunu anında yayınlar. Kod ve dosya yüklemesi yoktur.
+- [ ] `crates/creator-engine`: belge şeması ve doğrulama
+- [ ] Deterministik simülasyon ve fizik
+- [ ] Blok dili: derleyici ve bütçeli yorumlayıcı
+- [ ] wasm derlemesi ve `make wasm`
+- [ ] `packages/creator-runtime`: 2D (Phaser) ve 3D (Babylon) çizim, girdi
+- [ ] Hazır şablonlar: Platform Koşusu, Yörünge Savunması, Labirent Kaçışı, Top Toplama 3D, Engelli Koşu 3D, Kule Yığ 3D, boş 2D/3D
+- [ ] API: projeler, taslak kaydı
+- [ ] API: yayın, topluluk listesi, oynanma, beğeni, şikâyet, yönetici gizleme
+- [ ] Skor gönderme, sunucuda tekrar oynatma, liderlik
+- [ ] Editör: sahne, seçim ve dönüşüm araçları, denetçi, geri al, otomatik kayıt
+- [ ] Editör: blok düzenleyici ve test oynatma
+- [ ] Topluluk sayfaları, kapak, oynatma sayfası, profil bölümü
+- [ ] Uçtan uca testler ve ekran görüntüleri
+- Sonraki dilimler: remix, çok oyunculu kullanıcı oyunları, delik (CSG) şekiller, çoklu seviye, ortak düzenleme.
 
 ## 15. MVP kabul testleri
 
