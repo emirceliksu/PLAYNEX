@@ -442,20 +442,21 @@ playnex/
 
 ### Atölye — oyuncuların yaptığı oyunlar (ADR 0018)
 Oyuncular hazır primitiflerle 2D veya 3D sahne kurar, mantığı görsel bloklarla yazar ve oyunu anında yayınlar. Kod ve dosya yüklemesi yoktur.
-- [ ] `crates/creator-engine`: belge şeması ve doğrulama
-- [ ] Deterministik simülasyon ve fizik
-- [ ] Blok dili: derleyici ve bütçeli yorumlayıcı
-- [ ] wasm derlemesi ve `make wasm`
-- [ ] `packages/creator-runtime`: 2D (Phaser) ve 3D (Babylon) çizim, girdi
-- [ ] Hazır şablonlar: Platform Koşusu, Yörünge Savunması, Labirent Kaçışı, Top Toplama 3D, Engelli Koşu 3D, Kule Yığ 3D, boş 2D/3D
-- [ ] API: projeler, taslak kaydı
-- [ ] API: yayın, topluluk listesi, oynanma, beğeni, şikâyet, yönetici gizleme
-- [ ] Skor gönderme, sunucuda tekrar oynatma, liderlik
-- [ ] Editör: sahne, seçim ve dönüşüm araçları, denetçi, geri al, otomatik kayıt
-- [ ] Editör: blok düzenleyici ve test oynatma
-- [ ] Topluluk sayfaları, kapak, oynatma sayfası, profil bölümü
-- [ ] Uçtan uca testler ve ekran görüntüleri
-- Sonraki dilimler: remix, çok oyunculu kullanıcı oyunları, delik (CSG) şekiller, çoklu seviye, ortak düzenleme.
+- [x] `crates/creator-engine`: belge şeması ve doğrulama
+- [x] Deterministik simülasyon ve fizik
+- [x] Blok dili: derleyici ve bütçeli yorumlayıcı
+- [x] wasm derlemesi ve `make wasm`
+- [x] `packages/creator-runtime`: 2D (Phaser) ve 3D (Babylon) çizim, girdi
+- [x] Hazır şablonlar: Platform Koşusu, Yörünge Savunması, Labirent Kaçışı, Top Toplama 3D, Engelli Koşu 3D, Kule Yığ 3D, boş 2D/3D
+- [x] API: projeler, taslak kaydı
+- [x] API: yayın, topluluk listesi, oynanma, beğeni, şikâyet, yönetici gizleme
+- [x] Skor gönderme, sunucuda tekrar oynatma, liderlik
+- [x] Editör: sahne, seçim ve dönüşüm araçları, denetçi, geri al, otomatik kayıt
+- [x] Editör: blok düzenleyici ve test oynatma
+- [x] Topluluk sayfaları, kapak, oynatma sayfası, profil bölümü
+- [x] Uçtan uca testler ve ekran görüntüleri
+- [ ] Yönetim ekranında oyun şikâyetlerine bağlantı ve gizle/geri al düğmesi (API hazır: `/v1/admin/creator/releases/{id}/hide|restore`)
+- Sonraki dilimler: remix, çok oyunculu kullanıcı oyunları, delik (CSG) şekiller, çoklu seviye, ortak düzenleme, eğimli dönen cisim fiziği.
 
 ## 15. MVP kabul testleri
 
