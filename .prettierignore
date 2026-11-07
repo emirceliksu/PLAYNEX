@@ -10,5 +10,6 @@ pnpm-lock.yaml
 Cargo.lock
 docs/design/screenshots/
 packages/design-tokens/fonts/
+packages/creator-engine-wasm/pkg/
 # The product plan is authored by hand; keep its formatting as-is.
 PLAN.md
